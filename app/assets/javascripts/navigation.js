@@ -66,31 +66,31 @@ var Nav = {
 
             // schovavanie user elementu
             if(scroll < this.ueHeight && scroll > this.lastScroll) {
+                $('body').css('overflow','hidden');
                 this.isScrolling = true;
-                $('body').bind('touchmove', function(e){e.preventDefault()});
                 $('html,body').animate({
                     scrollTop: this.ueHeight
                 }, 200, function() {
                     Nav.isScrolling = false;
-                    $('body').unbind('touchmove');
                     Nav.nav.css('position','fixed');
                     Nav.nav.css('top',0);
                     Nav.lastScroll = Math.round($(document).scrollTop());
+                    $('body').css('overflow','visible');
                 });
             }
 
             // zobrazovanie user elementu
             if(scroll < this.ueHeight && scroll < this.lastScroll) {
+                $('body').css('overflow','hidden');
                 this.nav.css('position','absolute');
                 this.nav.css('top',this.ueHeight);
                 this.isScrolling = true;
-                $('body').bind('touchmove', function(e){e.preventDefault()});
                 $('html,body').animate({
                     scrollTop: 0
                 }, 200, function() {
                     Nav.isScrolling = false;
-                    $('body').unbind('touchmove');
                     Nav.lastScroll = Math.round($(document).scrollTop());
+                    $('body').css('overflow','visible');
                 });
             }
 
