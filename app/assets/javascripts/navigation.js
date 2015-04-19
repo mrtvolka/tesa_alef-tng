@@ -67,6 +67,7 @@ var Nav = {
             // schovavanie user elementu
             if(scroll < this.ueHeight && scroll > this.lastScroll) {
                 $('body').css('overflow','hidden');
+                $('body').bind('touchmove', function(e){e.preventDefault()});
                 this.isScrolling = true;
                 $('html,body').animate({
                     scrollTop: this.ueHeight
@@ -76,12 +77,14 @@ var Nav = {
                     Nav.nav.css('top',0);
                     Nav.lastScroll = Math.round($(document).scrollTop());
                     $('body').css('overflow','visible');
+                    $('body').unbind('touchmove');
                 });
             }
 
             // zobrazovanie user elementu
             if(scroll < this.ueHeight && scroll < this.lastScroll) {
                 $('body').css('overflow','hidden');
+                $('body').bind('touchmove', function(e){e.preventDefault()});
                 this.nav.css('position','absolute');
                 this.nav.css('top',this.ueHeight);
                 this.isScrolling = true;
@@ -91,6 +94,7 @@ var Nav = {
                     Nav.isScrolling = false;
                     Nav.lastScroll = Math.round($(document).scrollTop());
                     $('body').css('overflow','visible');
+                    $('body').unbind('touchmove');
                 });
             }
 
