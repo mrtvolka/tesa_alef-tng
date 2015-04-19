@@ -67,10 +67,12 @@ var Nav = {
             // schovavanie user elementu
             if(scroll < this.ueHeight && scroll > this.lastScroll) {
                 this.isScrolling = true;
+                $('body').bind('touchmove', function(e){e.preventDefault()});
                 $('html,body').animate({
                     scrollTop: this.ueHeight
                 }, 200, function() {
                     Nav.isScrolling = false;
+                    $('body').unbind('touchmove');
                     Nav.nav.css('position','fixed');
                     Nav.nav.css('top',0);
                     Nav.lastScroll = Math.round($(document).scrollTop());
@@ -82,26 +84,17 @@ var Nav = {
                 this.nav.css('position','absolute');
                 this.nav.css('top',this.ueHeight);
                 this.isScrolling = true;
+                $('body').bind('touchmove', function(e){e.preventDefault()});
                 $('html,body').animate({
                     scrollTop: 0
                 }, 200, function() {
                     Nav.isScrolling = false;
+                    $('body').unbind('touchmove');
                     Nav.lastScroll = Math.round($(document).scrollTop());
                 });
             }
 
             this.lastScroll = Math.round($(document).scrollTop());
-        }
-
-        // uprava spravania elementov pri rychlom scrollovani
-        if(scroll < this.ueHeight) {
-            Nav.nav.css('position','fixed');
-            Nav.nav.css('top',0);
-        }
-
-        if(scroll < this.ueHeight) {
-            this.nav.css('position','absolute');
-            this.nav.css('top',this.ueHeight);
         }
 
     }
