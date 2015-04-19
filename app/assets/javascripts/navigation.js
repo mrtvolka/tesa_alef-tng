@@ -91,7 +91,18 @@ var Nav = {
             }
 
             this.lastScroll = Math.round($(document).scrollTop());
-
         }
+
+        // uprava spravania elementov pri rychlom scrollovani
+        if(scroll < this.ueHeight) {
+            Nav.nav.css('position','fixed');
+            Nav.nav.css('top',0);
+        }
+
+        if(scroll < this.ueHeight) {
+            this.nav.css('position','absolute');
+            this.nav.css('top',this.ueHeight);
+        }
+
     }
 };
