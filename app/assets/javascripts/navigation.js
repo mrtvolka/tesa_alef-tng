@@ -69,7 +69,7 @@ var Nav = {
                 this.isScrolling = true;
                 $('html,body').animate({
                     scrollTop: this.ueHeight
-                }, 500, function() {
+                }, 200, function() {
                     Nav.isScrolling = false;
                     Nav.nav.css('position','fixed');
                     Nav.nav.css('top',0);
@@ -84,7 +84,7 @@ var Nav = {
                 this.isScrolling = true;
                 $('html,body').animate({
                     scrollTop: 0
-                }, 500, function() {
+                }, 200, function() {
                     Nav.isScrolling = false;
                     Nav.lastScroll = Math.round($(document).scrollTop());
                 });
