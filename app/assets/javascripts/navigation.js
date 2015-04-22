@@ -6,8 +6,6 @@ var Nav = {
 
     lastZoom : null,
     firstZoom : null,
-    lastScroll : null,
-    isScrolling : false,
 
     init : function() {
         Contact.init();
@@ -15,7 +13,6 @@ var Nav = {
 
         // nastavovanie spravania pri scrollovani
         $(document).scrollTop(this.ueHeight);
-        this.lastScroll = this.ueHeight;
         Nav.autoScrollNav();
         $(window).scroll(function() {
             Nav.autoScrollNav();
@@ -61,45 +58,15 @@ var Nav = {
     },
 
     autoScrollNav : function() {
-        if(this.isScrolling == false) {
-            var scroll = Math.round($(document).scrollTop());
+        var scroll = $(document).scrollTop();
+        if(scroll < this.ueHeight) {
 
-            // schovavanie user elementu
-            if(scroll < this.ueHeight && scroll > this.lastScroll) {
-                $('body').css('overflow','hidden');
-                $('body').bind('touchmove', function(e){e.preventDefault()});
-                this.isScrolling = true;
-                $('html,body').animate({
-                    scrollTop: this.ueHeight
-                }, 200, function() {
-                    Nav.isScrolling = false;
-                    Nav.nav.css('position','fixed');
-                    Nav.nav.css('top',0);
-                    Nav.lastScroll = Math.round($(document).scrollTop());
-                    $('body').css('overflow','visible');
-                    $('body').unbind('touchmove');
-                });
-            }
+            this.nav.css('position','absolute');
+            this.nav.css('top',this.ueHeight);
 
-            // zobrazovanie user elementu
-            if(scroll < this.ueHeight && scroll < this.lastScroll) {
-                $('body').css('overflow','hidden');
-                $('body').bind('touchmove', function(e){e.preventDefault()});
-                this.nav.css('position','absolute');
-                this.nav.css('top',this.ueHeight);
-                this.isScrolling = true;
-                $('html,body').animate({
-                    scrollTop: 0
-                }, 200, function() {
-                    Nav.isScrolling = false;
-                    Nav.lastScroll = Math.round($(document).scrollTop());
-                    $('body').css('overflow','visible');
-                    $('body').unbind('touchmove');
-                });
-            }
-
-            this.lastScroll = Math.round($(document).scrollTop());
+        } else {
+            this.nav.css('position','fixed');
+            this.nav.css('top',0);
         }
-
     }
 };
