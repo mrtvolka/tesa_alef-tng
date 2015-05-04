@@ -1,4 +1,7 @@
 class AdministrationsController < ApplicationController
+
+  after_filter :save_my_previous_url
+
   authorize_resource :class => false
   def index
     @setups = Setup.all
@@ -36,6 +39,33 @@ class AdministrationsController < ApplicationController
       c.weeks = w
     end
     redirect_to setup_config_path, :notice => "Úspešne uložené"
+  end
+
+  def question_config
+    @questions = LearningObject.all
+  end
+
+  def edit_question_config
+    @question = LearningObject.find_by_id(params[:question_id])
+  end
+
+  def save_my_previous_url
+    # session[:previous_url] is a Rails built-in variable to save last url.
+    session[:my_previous_url] = URI(request.referer).path
+  end
+
+  def edit_question
+    lo = LearningObject.find_by_id(params[:question_id])
+    lo.update(:lo_id => params[:edit_question_name]) if params[:edit_question_name] != ""
+    lo.update(:question_text => params[:edit_question_text]) if params[:edit_question_text] != ""
+    lo.answers.each do |a|
+      is_correct = false
+      is_correct = true if params["correct_answer_#{a.id}"]
+      a.update(:answer_text => params["edit_answer_text_#{a.id}"], :is_correct => is_correct) if params["edit_answer_text_#{a.id}"] != ""
+    end
+
+    redirect_to session.delete(:my_previous_url), :notice => "Otázka bola upravená"
+    #redirect_to question_config_path, :notice => "Otázka bola upravená"
   end
 
 
