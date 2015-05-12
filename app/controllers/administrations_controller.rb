@@ -1,5 +1,4 @@
 class AdministrationsController < ApplicationController
-
   authorize_resource :class => false
   def index
     @setups = Setup.all
@@ -65,6 +64,31 @@ class AdministrationsController < ApplicationController
     @setup = Setup.find(params[:_setup_id])
     filepath_full = @setup.compute_stats()
     send_file filepath_full
+  end
+
+  def concept_config
+    @course = Course.find(params[:course_id])
+    @concepts = Concept.where(:course_id => params[:course_id])
+  end
+
+  def delete_concept
+    concept = Concept.find_by_id(params[:concept_id])
+    concept.destroy
+    redirect_to concept_config_path, :notice => "Koncept odstránený"
+  end
+
+  def add_concept
+    pseudo = false
+    pseudo = true if params[:pseudo_concept]
+    Concept.create!(name: params[:add_concept_name], pseudo: pseudo, course_id: params[:course_id])
+    redirect_to concept_config_path, :notice => "Koncept pridaný"
+  end
+
+  def edit_concept
+    pseudo = false
+    pseudo = true if params[:pseudo_concept]
+    Concept.find_by_id(params[:concept_id]).update(name: params[:edit_concept_name], pseudo: pseudo)
+    redirect_to concept_config_path, :notice => "Koncept upravený"
   end
 
   def question_concept_config

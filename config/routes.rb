@@ -31,8 +31,6 @@ Rails.application.routes.draw do
 
   post 'feedback' => 'users#send_feedback', as: 'feedback'
 
-
-
   # Administracia
   get 'admin' => 'administrations#index', as: 'administration'
 
@@ -44,6 +42,11 @@ Rails.application.routes.draw do
   get 'admin/question_config/' => 'administrations#question_config', as: 'question_config'
   get 'admin/question_config/:question_id/edit_question_config' => 'administrations#edit_question_config', as: 'edit_question_config'
   post 'admin/question_config/:question_id/edit_question' => 'administrations#edit_question', as: 'edit_question'
+
+  get 'admin/concept_config/:course_id' => 'administrations#concept_config', as: 'concept_config'
+  post 'admin/concept_config/:course_id/delete_concept' => 'administrations#delete_concept', as: 'delete_concept'
+  post 'admin/concept_config/:course_id/add_concept' => 'administrations#add_concept', as: 'add_concept'
+  post 'admin/concept_config/:course_id/edit_concept' => 'administrations#edit_concept', as: 'edit_concept'
 
   get 'admin/question_concept_config/:course_id' => 'administrations#question_concept_config', as: 'question_concept_config'
   post 'admin/question_concept_config/:course_id/delete_question_concept' => 'administrations#delete_question_concept', as: 'delete_question_concept'
