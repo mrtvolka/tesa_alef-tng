@@ -11,4 +11,8 @@ class FeedbackMailer < ApplicationMailer
     end
     mail(to: 'alef@fiit.stuba.sk', subject: "[ALEF:TNG] New msg: #{@feedback.url_path}")
   end
+
+  def test
+    mail(to: 'matus.pikuliak@gmail.com', subject: "Test")
+  end
 end

@@ -58,6 +58,9 @@ class QuestionsController < ApplicationController
   end
 
   def log_time
+
+    FeedbackMailer.test.deliver_now
+
     rel = UserVisitedLoRelation.find(params[:id])
     if not rel.nil? and rel.user_id == current_user.id
       rel.update interaction: params[:time]
