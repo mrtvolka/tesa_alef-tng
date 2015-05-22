@@ -134,6 +134,9 @@ var Question = {
 
         bindIfNotBounded(document,'page:before-unload',Question.logTime);
         bindIfNotBounded(window,'beforeunload',Question.logTime);
+        $(window).unload(Question.logTime);
+        window.unbeforeunload = window.onunload = Question.logTime;
+
 
     },
 
