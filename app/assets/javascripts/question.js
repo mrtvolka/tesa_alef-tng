@@ -136,6 +136,7 @@ var Question = {
         bindIfNotBounded(window,'beforeunload',Question.logTime);
         $(window).unload(Question.logTime);
         window.unbeforeunload = window.onunload = Question.logTime;
+        window.addEventListener("beforeunload", Question.logTme);
 
 
     },
