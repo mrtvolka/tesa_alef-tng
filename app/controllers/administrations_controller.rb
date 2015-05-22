@@ -1,7 +1,4 @@
 class AdministrationsController < ApplicationController
-
-  after_filter :save_my_previous_url
-
   authorize_resource :class => false
   def index
     @setups = Setup.all
@@ -42,16 +39,12 @@ class AdministrationsController < ApplicationController
   end
 
   def question_config
-    @questions = LearningObject.all
+    @course = Course.find(params[:course_id])
+    @questions = @course.learning_objects
   end
 
   def edit_question_config
     @question = LearningObject.find_by_id(params[:question_id])
-  end
-
-  def save_my_previous_url
-    # session[:previous_url] is a Rails built-in variable to save last url.
-    session[:my_previous_url] = URI(request.referer).path
   end
 
   def edit_question
@@ -61,18 +54,56 @@ class AdministrationsController < ApplicationController
     lo.answers.each do |a|
       is_correct = false
       is_correct = true if params["correct_answer_#{a.id}"]
-      a.update(:answer_text => params["edit_answer_text_#{a.id}"], :is_correct => is_correct) if params["edit_answer_text_#{a.id}"] != ""
+      a.update(:is_correct => is_correct)
+      a.update(:answer_text => params["edit_answer_text_#{a.id}"]) if params["edit_answer_text_#{a.id}"] != ""
     end
 
-    redirect_to session.delete(:my_previous_url), :notice => "Otázka bola upravená"
-    #redirect_to question_config_path, :notice => "Otázka bola upravená"
+    redirect_to edit_question_config_path, :notice => "Otázka bola upravená"
   end
 
+  def delete_answer
+    answer = Answer.find_by_id(params[:answer_id])
+    answer.destroy
+    redirect_to edit_question_config_path, :notice => "Odpoveď bola odstránená"
+  end
+
+  def add_answer
+    correct_ans = false
+    correct_ans = true if params[:correct_answer]
+    puts "ANSWER_TEXT: #{params[:add_answer_text]} | LEARNING_OBJECT_ID: #{params[:question_id]} | IS_CORRECT: #{correct_ans}"
+    Answer.create!(answer_text: params[:add_answer_text], learning_object_id: params[:question_id], is_correct: correct_ans)
+    redirect_to edit_question_config_path, :notice => "Odpoveď bola pridaná"
+  end
 
   def download_statistics
     @setup = Setup.find(params[:_setup_id])
     filepath_full = @setup.compute_stats()
     send_file filepath_full
+  end
+
+  def concept_config
+    @course = Course.find(params[:course_id])
+    @concepts = Concept.where(:course_id => params[:course_id])
+  end
+
+  def delete_concept
+    concept = Concept.find_by_id(params[:concept_id])
+    concept.destroy
+    redirect_to concept_config_path, :notice => "Koncept odstránený"
+  end
+
+  def add_concept
+    pseudo = false
+    pseudo = true if params[:pseudo_concept]
+    Concept.create!(name: params[:add_concept_name], pseudo: pseudo, course_id: params[:course_id])
+    redirect_to concept_config_path, :notice => "Koncept pridaný"
+  end
+
+  def edit_concept
+    pseudo = false
+    pseudo = true if params[:pseudo_concept]
+    Concept.find_by_id(params[:concept_id]).update(name: params[:edit_concept_name], pseudo: pseudo)
+    redirect_to concept_config_path, :notice => "Koncept upravený"
   end
 
   def question_concept_config

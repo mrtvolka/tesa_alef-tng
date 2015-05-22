@@ -9,6 +9,10 @@
     border-bottom: 1px solid $gray;
   }
 
+  .question_text_field {
+    width: 95%;
+  }
+
   input[type="submit"] {
     @include red-white;
     border: none;
@@ -19,7 +23,7 @@
     box-sizing: border-box;
   }
 
-  .correct_ans {
+  .edit_question_table {
     margin-top: 0px;
     padding-top: 0rem;
     th {
@@ -43,6 +47,10 @@
   tr:not(:first-child) {
     border-top: 1px solid $gray;
   }
+
+  .style_image {
+    margin-left: 10px;
+  }
 }
 
 .admin-nav {
@@ -65,6 +73,34 @@
   td:nth-child(2n) {background-color: $porcelain;}
   input {display: inline-block;}
   tr:not(:first-child) {border-top: 1px solid $gray;}
+}
+
+#concept-table {
+  tr:nth-child(2n) {background-color: $porcelain;}
+  .concept-table-cell {
+    padding: 0.5rem 0.5rem;
+  }
+  .concept-header {
+    padding: 0.5rem 0.5rem;
+    background-color: $porcelain_dark;
+  }
+  .concept-button {
+    padding-left: 1.5rem;
+    padding-right: 0.5rem;
+  }
+  .delete_concept_button {
+    width: 100%;
+    text-align: center;
+  }
+  .bold_text_row {
+    font-weight: bold;
+  }
+  table {
+    margin: 0px;
+  }
+  button:hover {
+    color: $red;
+  }
 }
 
 #question-concept-table {
