@@ -15,10 +15,6 @@ module RecommenderSystem
       @@los
     end
 
-    def learning_objects
-      self.class.learning_objects
-    end
-
     def self.relations
       if @@rels.empty?
         @@rels = UserToLoRelation.where('user_id = (?) AND learning_object_id IN (?)',
@@ -29,19 +25,15 @@ module RecommenderSystem
       @@rels
     end
 
-    def relations
-      self.class.relations
-    end
-
-    def user_id
+    def self.user_id
       @@user_id
     end
 
-    def week_id
+    def self.week_id
       @@week_id
     end
 
-    def get_list
+    def self.get_list
         los = self.learning_objects
         list = Hash.new
         los.each do |lo|
@@ -51,12 +43,11 @@ module RecommenderSystem
         list
     end
 
-    def get_best
-      self.get_list.first
+    def self.get_best
+      get_list.first
     end
 
-    def normalize list
-
+    def self.normalize list
       max = list.values.max
 
       unless max == 0
@@ -66,7 +57,6 @@ module RecommenderSystem
       end
 
       list
-
     end
 
   end

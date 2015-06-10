@@ -1,7 +1,7 @@
 module RecommenderSystem
   class HybridRecommender < RecommenderSystem::Recommender
 
-  def get_list
+  def self.get_list
 
     # Najde prislusnu konfiguraciu odporucania
 =begin
@@ -21,7 +21,7 @@ module RecommenderSystem
 
     # Vytvori list, do ktoreho sa budu ukladat vysledky odporucani
     list = Hash.new
-    self.learning_objects.map(&:id).uniq.each do |id|
+    learning_objects.map(&:id).uniq.each do |id|
       list[id] = 0
     end
 
@@ -29,7 +29,7 @@ module RecommenderSystem
     unless config.nil? or config.recommenders_options.nil?
       config.recommenders_options.includes(:recommender).each do |r|
         r_class = Object.const_get "RecommenderSystem::#{r.recommender.name}Recommender"
-        result = r_class.new.get_list
+        result = r_class.get_list
         result.each do |id, value|
           list[id] += value * r.weight
         end

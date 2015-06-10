@@ -1,13 +1,13 @@
 module RecommenderSystem
   class ActivityRecommender < RecommenderSystem::Recommender
 
-    def get_list
+    def self.get_list
 
-      relations = get_model
+      model = get_model
 
       list = Hash.new
 
-      product = self.learning_objects.product(relations)
+      product = learning_objects.product(model)
       product.map! do |p| "(#{p[0].id}, #{p[1].learning_object_id}, \'#{p[1].type}\')" end
       product = product.join(',')
 
@@ -18,19 +18,19 @@ module RecommenderSystem
       )
 
       # Pre kazdu otazku z tyzdna vyrata priemernu pravdepodobnost vzhladom na otazky z modelu aktivity
-      self.learning_objects.each do |lo|
+      learning_objects.each do |lo|
         list[lo.id] = 0
-        relations.each do |r|
+        model.each do |r|
           list[lo.id] += get_probability(lo, r)
         end
-        list[lo.id] = list[lo.id].to_f / relations.count unless relations.count == 0
+        list[lo.id] = list[lo.id].to_f / model.count unless model.count == 0
       end
 
       normalize list
     end
 
 
-    def get_model
+    def self.get_model
       recent_activity = UserToLoRelation.where('user_id = (?) AND created_at > (?)', self.user_id, Date.today - 1.day).order(:created_at).to_a
 
       return [] if recent_activity.empty? or recent_activity.last.created_at < Date.today - 1.hour
@@ -72,7 +72,7 @@ module RecommenderSystem
     end
 
 
-    def get_probability (learning_object, relation)
+    def self.get_probability (learning_object, relation)
       record = @activity.find do |a|
         a.learning_object_id == learning_object.id and
         a.relation_learning_object_id == relation.learning_object_id and
@@ -87,7 +87,7 @@ module RecommenderSystem
 
 
     # Uprednostnuje este neriesene otazky, aby sa nazbierala aktivita
-    def get_success_rate obj
+    def self.get_success_rate obj
       if obj.nil?
         1
       elsif obj.right_answers == 0
