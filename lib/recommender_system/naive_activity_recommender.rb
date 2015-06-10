@@ -7,13 +7,13 @@ class NaiveActivityRecommender < RecommenderSystem::Recommender
 
   def self.get_list
 
-    # najdi vsekty interakcie pouzivatela s otazkami z daneho tyzdna
+    # inicializuje zoznam pre learning objecty
     list = Hash.new
     learning_objects.each do |lo|
       list[lo.id] = 1
     end
 
-    # pre kazdu otazku najdi interakciu s najnizsim skore
+    # pre kazdu otazku najdi interakciu s najnizsim skore a prirad ju learning objectu
     relations.each do |rel|
       value = self.evaluate_relation(rel)
       if list[rel.learning_object_id] > value
@@ -21,6 +21,7 @@ class NaiveActivityRecommender < RecommenderSystem::Recommender
       end
     end
 
+    # penalizuj learning objecty, s ktorymi student pracoval naposledy
     relations.map(&:learning_object_id).reverse.uniq.first(@@ignore_last) do |id|
       list[id] -= 0.2
     end
