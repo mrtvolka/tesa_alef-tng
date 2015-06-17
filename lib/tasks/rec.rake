@@ -7,7 +7,6 @@ namespace :alef do
       RecommendersOption.delete_all
       RecommendationLinker.delete_all
       RecommendationConfiguration.delete_all
-      Recommender.delete_all
 
     end
 
@@ -53,12 +52,6 @@ namespace :alef do
 
     end
 
-    desc 'Vytvori tabulku odporucacov'
-    task :register_recommenders => :environment do
-      Recommender.create(name: 'Activity')
-      Recommender.create(name: 'NaiveActivity')
-      Recommender.create(name: 'NaiveConcept')
-    end
 
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529234716) do
+ActiveRecord::Schema.define(version: 20150617193426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,14 +93,10 @@ ActiveRecord::Schema.define(version: 20150529234716) do
     t.integer "recommendation_configuration_id", null: false
   end
 
-  create_table "recommenders", force: :cascade do |t|
-    t.string "name", null: false
-  end
-
   create_table "recommenders_options", force: :cascade do |t|
     t.integer "recommendation_configuration_id", null: false
-    t.integer "recommender_id",                  null: false
     t.integer "weight",                          null: false
+    t.string  "recommender_name"
   end
 
   create_table "setups", force: :cascade do |t|
@@ -176,7 +172,6 @@ ActiveRecord::Schema.define(version: 20150529234716) do
   add_foreign_key "recommendation_linkers", "users"
   add_foreign_key "recommendation_linkers", "weeks"
   add_foreign_key "recommenders_options", "recommendation_configurations"
-  add_foreign_key "recommenders_options", "recommenders"
   add_foreign_key "setups", "courses"
   add_foreign_key "setups_users", "setups"
   add_foreign_key "setups_users", "users"

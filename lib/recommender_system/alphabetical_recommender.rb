@@ -4,11 +4,11 @@ class AlphabeticalRecommender < RecommenderSystem::Recommender
 
     # Toto nefunguje dobre s diakritikou
     # Cely tento recommender je vsak len na testovanie, takze nemusi fungovat na 100%
-    los = learning_objects.sort_by {|x| x.lo_id}
+    sorted_los = learning_objects.sort_by {|x| x.lo_id}
 
     list = Hash.new
     i = 0
-    los.each do |lo|
+    sorted_los.each do |lo|
       list[lo.id] = i
       i += 1
     end

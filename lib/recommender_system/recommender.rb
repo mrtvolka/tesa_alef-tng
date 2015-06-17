@@ -1,12 +1,32 @@
 module RecommenderSystem
   class Recommender
 
+    # Nastavi recommender pre daneho pouzivatela a tyzden
     def self.setup(user_id, week_id)
       @@user_id = user_id
       @@week_id = week_id
       @@los = Hash.new
       @@rels = Hash.new
     end
+
+    # Vrati hash s prvkami [lo_id => skore]
+    def self.get_list
+      los = self.learning_objects
+      list = Hash.new
+      los.each do |lo|
+        list[lo.id] = 0
+      end
+
+      list
+    end
+
+    # Vrati otazku s najvyssim skore
+    def self.get_best
+      get_list.first
+    end
+
+
+private
 
     def self.learning_objects
       if @@los.empty?
@@ -31,20 +51,6 @@ module RecommenderSystem
 
     def self.week_id
       @@week_id
-    end
-
-    def self.get_list
-        los = self.learning_objects
-        list = Hash.new
-        los.each do |lo|
-          list[lo.id] = 0
-        end
-
-        list
-    end
-
-    def self.get_best
-      get_list.first
     end
 
     def self.normalize list

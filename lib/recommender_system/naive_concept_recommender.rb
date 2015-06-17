@@ -3,18 +3,20 @@ module RecommenderSystem
   class NaiveConceptRecommender < RecommenderSystem::Recommender
 
     # Kolko ostatnych aktivity sa berie do uvahy
-    @@history = 5
+    @@history = 10
 
     def self.get_list
 
+      #vybrat poslednych 10 otazok s ktorymi interagoval a pozriet s aktore riesil
+
       # Zober poslednych X relations z otazok z daneho tyzdna
-      top_relations = relations.select do |x|
+      top_relations = relations.last(50).select do |x|
         x.type == "UserSolvedLoRelation" or
             x.type == "UserFailedLoRelation" or
             x.type == "UserDidntKnowLoRelation"
       end.map(&:learning_object_id).reverse.uniq.first(@@history)
 
-      los = LearningObject.where('id IN (?)', top_relations.map(&:learning_object_id)).includes(:concepts)
+      los = LearningObject.where('id IN (?)', top_relations).includes(:concepts)
 
       # Vytvor hash, kde sa zaznaci kolko z tych otazok sa tykalo ktorych konceptov
       concepts = Hash.new

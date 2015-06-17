@@ -73,7 +73,7 @@ class QuestionsController < ApplicationController
     setup = Setup.take
     week = setup.weeks.find_by_number(params[:week_number])
     RecommenderSystem::Recommender.setup(current_user.id,week.id)
-    best = RecommenderSystem::HybridRecommender.new.get_best
+    best = RecommenderSystem::HybridRecommender.get_best
     los = LearningObject.find(best[0])
     redirect_to action: "show", id: los.url_name
   end

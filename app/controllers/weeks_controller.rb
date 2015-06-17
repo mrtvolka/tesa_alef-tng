@@ -9,7 +9,7 @@ class WeeksController < ApplicationController
     @results = UserToLoRelation.get_results(current_user.id,@week.id)
 
     RecommenderSystem::Recommender.setup(current_user.id,@week.id)
-    recommendations = RecommenderSystem::HybridRecommender.new.get_list
+    recommendations = RecommenderSystem::HybridRecommender.get_list
 
     @sorted_los = Array.new
     recommendations.each do |key, value|
