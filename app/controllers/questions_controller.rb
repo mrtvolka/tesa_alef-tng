@@ -14,10 +14,12 @@ class QuestionsController < ApplicationController
 
     if @user.show_solutions
       UserViewedSolutionLoRelation.create(user_id: user_id, learning_object_id: params[:id], setup_id: 1, )
-      solution = @question.get_solution
+      solution = @question.get_solution(current_user.id)
       gon.show_solutions = TRUE
       gon.solution = solution
     end
+
+    @feedbacks = @question.feedbacks.includes(:user)
   end
 
   def evaluate
@@ -30,7 +32,7 @@ class QuestionsController < ApplicationController
 
     lo_class = Object.const_get params[:type]
     lo = lo_class.find(params[:id])
-    @solution = lo.get_solution current_user.id
+    @solution = lo.get_solution(current_user.id)
 
     @user = current_user
     user_id = @user.id
@@ -58,13 +60,23 @@ class QuestionsController < ApplicationController
   end
 
   def log_time
-
     FeedbackMailer.test.deliver_now
 
-    rel = UserVisitedLoRelation.find(params[:id])
-    if not rel.nil? and rel.user_id == current_user.id
-      rel.update interaction: params[:time]
+    unless params[:id].nil?
+      rel = UserVisitedLoRelation.find(params[:id])
+      if not rel.nil? and rel.user_id == current_user.id
+        rel.update interaction: params[:time]
+      end
     end
     render nothing: true
+  end
+
+  def next
+    setup = Setup.take
+    week = setup.weeks.find_by_number(params[:week_number])
+    RecommenderSystem::Recommender.setup(current_user.id,week.id)
+    best = RecommenderSystem::HybridRecommender.new.get_best
+    los = LearningObject.find(best[0])
+    redirect_to action: "show", id: los.url_name
   end
 end

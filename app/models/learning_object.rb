@@ -1,6 +1,7 @@
 class LearningObject < ActiveRecord::Base
   has_many :answers
   has_many :user_to_lo_relations
+  has_many :feedbacks
   has_and_belongs_to_many :concepts, -> { uniq }
   belongs_to :course
 
@@ -24,11 +25,4 @@ class LearningObject < ActiveRecord::Base
     self.concepts << concept unless self.concepts.include?(concept)
   end
 
-  def seen? user_id
-    UserVisitedLoRelation.where(learning_object_id: self.id, user_id: user_id).count
-  end
-
-  def done? user_id
-    UserSolvedLoRelation.where(learning_object_id: self.id, user_id: user_id).count
-  end
 end
