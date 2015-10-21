@@ -2,6 +2,7 @@ class UserToLoRelation < ActiveRecord::Base
   belongs_to :learning_object
   belongs_to :setup
   belongs_to :user
+  belongs_to :exercise
 
   def self.get_basic_relations(los, user_id)
     self.

@@ -1,0 +1,6 @@
+Login,Role,First name,Last name,Password,Type
+teacher10,teacher,Fero,Ucitel,teacher10,LocalUser
+teacher11,teacher,Juro,Ucitel,teacher11,LocalUser
+teacher12,teacher,Jano,Ucitel,teacher12,LocalUser
+teacher13,teacher,Peter,Ucitel,teacher13,LocalUser
+teacher14,teacher,Andrej,Ucitel,teacher14,LocalUser

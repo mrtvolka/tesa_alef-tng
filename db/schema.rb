@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902175030) do
+ActiveRecord::Schema.define(version: 20151021154326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(version: 20150902175030) do
     t.datetime "updated_at"
   end
 
+  create_table "exercises", force: :cascade do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.integer  "code"
+    t.integer  "week_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "feedbacks", force: :cascade do |t|
     t.text     "message",            null: false
     t.integer  "user_id"
@@ -81,6 +91,8 @@ ActiveRecord::Schema.define(version: 20150902175030) do
     t.integer  "right_answers",      default: 0
     t.integer  "wrong_answers",      default: 0
     t.string   "difficulty",         default: "unknown_difficulty"
+    t.float    "points"
+    t.boolean  "is_test_question"
   end
 
   create_table "recommendation_configurations", force: :cascade do |t|
@@ -132,6 +144,8 @@ ActiveRecord::Schema.define(version: 20150902175030) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "activity_recommender_check", default: false
+    t.binary   "submitted_image"
+    t.text     "submitted_text"
   end
 
   create_table "users", force: :cascade do |t|

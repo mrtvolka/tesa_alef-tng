@@ -2,6 +2,7 @@ class Week < ActiveRecord::Base
   belongs_to :setup
   has_and_belongs_to_many :concepts
   has_many :learning_objects, through: :concepts
+  has_many :exercises
 
   def next
     Week.where('number > ? AND setup_id = ?', self.number, self.setup_id).order(number: :asc).first

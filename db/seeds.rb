@@ -6,4 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 load(Rails.root.join( 'db', '', "#{Rails.env.downcase}.rb"))
+
+# only for development usage, csv files will be used later
+#load(Rails.root.join( 'db', '', "#{Rails.env.downcase}_tesa.rb"))
+
