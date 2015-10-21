@@ -10,16 +10,16 @@ weeks = Week.all
 
 exercises = Exercise.create!(
                         [
-                            {code: 13568, user_id: users[0].id, week_id: 1},
-                            {code: 17894, user_id: users[1].id, week_id: 2},
-                            {code: 25864, user_id: users[1].id, week_id: 3},
-                            {code: 85246, user_id: users[2].id, week_id: 1},
-                            {code: 45823, user_id: users[2].id, week_id: 2},
-                            {code: 45244, user_id: users[3].id, week_id: 3},
-                            {code: 10535, user_id: users[3].id, week_id: 4},
-                            {code: 37561, user_id: users[3].id, week_id: 3},
-                            {code: 12543, user_id: users[4].id, week_id: 1},
-                            {code: 50050, user_id: users[4].id, week_id: 2}
+                            {code: 13568, user_id: users[0].id, week_id: 1, test_started: false},
+                            {code: 17894, user_id: users[1].id, week_id: 2, test_started: false},
+                            {code: 25864, user_id: users[1].id, week_id: 3, test_started: false},
+                            {code: 85246, user_id: users[2].id, week_id: 1, test_started: false},
+                            {code: 45823, user_id: users[2].id, week_id: 2, test_started: false},
+                            {code: 45244, user_id: users[3].id, week_id: 3, test_started: false},
+                            {code: 10535, user_id: users[3].id, week_id: 4, test_started: false},
+                            {code: 37561, user_id: users[3].id, week_id: 3, test_started: false},
+                            {code: 12543, user_id: users[4].id, week_id: 1, test_started: false},
+                            {code: 50050, user_id: users[4].id, week_id: 2, test_started: false}
                         ]
 )
 

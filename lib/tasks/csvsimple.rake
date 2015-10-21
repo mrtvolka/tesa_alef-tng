@@ -13,7 +13,7 @@ namespace :tesa do
       CSV.read(file, :headers => true).each do |row|
          # row names in [] must be same in csv file!
           Exercise.create!(:start => row['Exercise start'], :end => row['Exercise end'],
-                                  :code => row['Code'], :user_id => row['Lecturer'], :week_id => row['Week'])
+                                  :code => row['Code'], :user_id => row['Lecturer'], :week_id => row['Week'], :test_started => row['Test started'])
 
       end
     end
