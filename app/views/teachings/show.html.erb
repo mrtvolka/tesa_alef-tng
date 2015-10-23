@@ -1,0 +1,62 @@
+<nav>
+  <div class="admin-nav">
+    <h2><%= @setup.name %>- Stránka učiteľa</h2>
+    <%= link_to "Domov", root_path, class: 'admin-nav-button' %>
+  </div>
+</nav>
+<hr class="nav-offset">
+
+<div class="admin">
+  <h3>Zoznam cvičení</h3>
+  <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+      .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+      .tg .tg-yw4l{vertical-align:top}
+  </style>
+  <table class="tg">
+    <tr>
+      <th class="tg-yw4l">Týždeň</th>
+      <th class="tg-yw4l">Deň</th>
+      <th class="tg-yw4l">Čas<br></th>
+      <th class="tg-yw4l">Stav<br></th>
+      <th class="tg-yw4l">Štart/Výsledky</th>
+    </tr>
+
+    <% @exercises.each do |c| %>
+        <tr>
+          <td class="tg-yw4l"><%= c.week.number %></td>
+          <td class="tg-yw4l">
+
+            <%=case c.start.wday
+                 when 1
+                   "Pondelok"
+                 when 2
+                   "Utorok"
+                 when 3
+                   "Streda"
+                 when 4
+                   "Štvrtok"
+                 when 5
+                   "Piatok"
+                 else
+                   "Toto sa nestane"
+               end %>
+
+          </td>
+
+          <td class="tg-yw4l"><%= c.start.strftime("%I:%M%p") %></td>
+          <td class="tg-yw4l">
+
+            <% if c.test_started && c.end==NULL %> Prebieha
+                <%elseif c.test_started && c.end!=NULL %> Ukončený
+                <%else %> Nezačal
+                <% end %>
+
+          </td>
+          <td class="tg-yw4l">TODO</td>
+        </tr>
+    <% end %>
+
+  </table>
+</div>

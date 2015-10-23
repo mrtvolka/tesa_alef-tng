@@ -5,14 +5,17 @@ class Ability
 
     if user.administrator?
       can :manage, :administration
+      can :manage, :teaching
     end
 
     if user.teacher?
       cannot :manage, :administration
+      can :manage, :teaching
     end
 
     if user.student?
       cannot :manage, :administration
+      cannot :manage, :teaching
     end
     # Define abilities for the passed in user here. For example:
     #
