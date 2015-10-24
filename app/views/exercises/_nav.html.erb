@@ -1,9 +1,7 @@
-<nav class="question-nav not-zoomable">
+<nav class="not-zoomable">
   <%= render 'shared/user_element' %>
   <div class="mobile-content">
-    <a href="<%=
-        url_for :controller => 'teachings', :action => 'show'
-    %>"><i class="nav-right-icons icon-level-up"></i></a>
+    <a href="<%=url_for :controller => 'teachings', :action => 'show' %>"><i class="nav-right-icons icon-level-up"></i></a>
     <a class="user-element-cta"><i class="nav-right-icons icon-user"></i></a>
     <h2><%= Week.find_by_id(@exercise.week_id).number %>. týždeň - Cvičenie <%= show_day_of_week(@exercise.start)%> o
       <%= @exercise.start.strftime('%H:%M') %></h2>

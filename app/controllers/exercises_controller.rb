@@ -6,6 +6,11 @@ class ExercisesController < ApplicationController
   end
 
   def update
+    if(@exercise.test_started == false)
+      @exercise.test_started = true
+    else
+      @exercise.end = Time.current
+    end
     respond_to do |format|
       if @exercise.update(exercise_params)
         format.html { redirect_to @exercise}
@@ -20,7 +25,7 @@ class ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params.require(:exercise).permit(:start, :end, :test_started, :user_id, :week_id, :code)
+    params.require(:exercise).permit(:start, :user_id, :week_id, :code)
   end
 
 end

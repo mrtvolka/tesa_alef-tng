@@ -6,25 +6,25 @@
   </div>
 </div>
 <div class="my-mobile-content main">
-  <br> <br><br><br><br><br><br><br>
+  <div class="exercise-general">
 <% if @exercise.test_started == false %>
-     Test zatiaľ nebol spustený.
+     <b>Test zatiaľ nebol spustený.</b>
          <%= form_for @exercise do |f| %>
             <%= f.hidden_field :test_started, :value => true %>
-            <%= f.submit "Spustiť" %>
+            <center><%= f.submit "Spustiť" %></center>
         <%end%>
     <% elsif @exercise.end == nil %>
-        Test práve prebieha.<br>
+        <b>Test práve prebieha.</b><br>
         Kod testu: <%= @exercise.code %><br>
         Link: <a href="/test/<%= @exercise.week_id%>/<%= @exercise.code %>">/test/<%= @exercise.week_id%>/<%= @exercise.code %></a>
         <%= form_for @exercise do |f| %>
-            <%= f.hidden_field :test_started, :value => true %>
-            <%= f.hidden_field :end, :value => Time.zone.now %>
-            <%= f.submit "Ukoncit" %>
+               <%= f.hidden_field :end, :value => Time.current %>
+            <center><%= f.submit "Ukoncit"%></center>
          <%end%>
     <% else %>
         <!-- information that test is finished -->
-       Test bol už ukončený
-        <%= submit_tag "Prejsť na hodnotenie testov" %>
+       <b>Test bol už ukončený</b>
+        <center><%= submit_tag "Prejsť na hodnotenie testov" %></center>
     <% end %>
+    </div>
 </div>
