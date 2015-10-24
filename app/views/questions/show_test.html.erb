@@ -1,0 +1,32 @@
+
+<%= render 'testnav' %>
+<hr class="nav-offset not-zoomable">
+<div class="question-name not-zoomable">
+  <div class="mobile-content">
+
+  </div>
+</div>
+
+  <% @sorted_los.each do |lo| %>
+    <div class="my-mobile-content main">
+          <p class="card-text">
+            <%= lo.question_text %>
+
+          <% case lo.type
+               when 'SingleChoiceQuestion' %>
+              <% @question= lo%>
+              <%@answers= @question.answers %>
+              <%= render 'single_choice_options' %>
+          <% when 'MultiChoiceQuestion' %>
+              <% @question= lo%>
+              <%@answers= @question.answers %>
+              <%= render 'multi_choice_options' %>
+          <% when 'EvaluatorQuestion' %>
+              <% @question= lo%>
+              <%= render 'evaluator_slider' %>
+          <% end %>
+          </p>
+        </div>
+  <% end %>
+
+
