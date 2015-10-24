@@ -1,0 +1,30 @@
+<div id="faux-background" class="mobile-content"></div>
+<%= render 'nav' %>
+<hr class="nav-offset not-zoomable">
+<div class="question-name not-zoomable">
+  <div class="mobile-content">
+  </div>
+</div>
+<div class="my-mobile-content main">
+  <br> <br><br><br><br><br><br><br>
+<% if @exercise.test_started == false %>
+     Test zatiaľ nebol spustený.
+         <%= form_for @exercise do |f| %>
+            <%= f.hidden_field :test_started, :value => true %>
+            <%= f.submit "Spustiť" %>
+        <%end%>
+    <% elsif @exercise.end == nil %>
+        Test práve prebieha.<br>
+        Kod testu: <%= @exercise.code %><br>
+        Link: <a href="/test/<%= @exercise.week_id%>/<%= @exercise.code %>">/test/<%= @exercise.week_id%>/<%= @exercise.code %></a>
+        <%= form_for @exercise do |f| %>
+            <%= f.hidden_field :test_started, :value => true %>
+            <%= f.hidden_field :end, :value => Time.zone.now %>
+            <%= f.submit "Ukoncit" %>
+         <%end%>
+    <% else %>
+        <!-- information that test is finished -->
+       Test bol už ukončený
+        <%= submit_tag "Prejsť na hodnotenie testov" %>
+    <% end %>
+</div>

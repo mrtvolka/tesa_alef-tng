@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'exercises/show'
+
+  get 'exercises/edit'
+
+  resources :exercises do
+
+  end
+
   root to: redirect('w')
 
   devise_for :ldap_users, :local_users, skip: [:sessions]

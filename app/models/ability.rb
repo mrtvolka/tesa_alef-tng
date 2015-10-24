@@ -11,6 +11,9 @@ class Ability
     if user.teacher?
       cannot :manage, :administration
       can :manage, :teaching
+      can :manage, Exercise, Exercise.find_by_user_id(user.id) do |exercise|
+        exercise.user.id == user.id
+      end
     end
 
     if user.student?

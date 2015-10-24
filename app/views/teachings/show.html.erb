@@ -48,13 +48,13 @@
           <td class="tg-yw4l"><%= c.start.strftime("%I:%M%p") %></td>
           <td class="tg-yw4l">
 
-            <% if c.test_started && c.end==NULL %> Prebieha
-                <%elseif c.test_started && c.end!=NULL %> Ukončený
+            <% if c.test_started && !c.end %> Prebieha
+                <%elsif c.test_started && c.end %> Ukončený
                 <%else %> Nezačal
                 <% end %>
 
           </td>
-          <td class="tg-yw4l">TODO</td>
+          <td class="tg-yw4l"><%= link_to 'Vstúpiť', exercises_show_path(:id => c.id) %></td>
         </tr>
     <% end %>
 
