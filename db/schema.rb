@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031202054) do
+ActiveRecord::Schema.define(version: 20151031230744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(version: 20151031202054) do
     t.boolean  "activity_recommender_check", default: false
     t.binary   "submitted_image"
     t.text     "submitted_text"
+    t.integer  "exercise_id"
   end
 
   create_table "users", force: :cascade do |t|

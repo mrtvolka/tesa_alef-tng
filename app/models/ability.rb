@@ -6,6 +6,7 @@ class Ability
     if user.administrator?
       can :manage, :administration
       can :manage, :teaching
+      can :manage, Exercise
     end
 
     if user.teacher?

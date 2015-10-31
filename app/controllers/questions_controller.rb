@@ -81,8 +81,14 @@ class QuestionsController < ApplicationController
   # Testing
   #
   def show_test
+    # user can not write test multiple times
+    if Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
+      redirect_to root_path
+      flash[:notice] = "Test je možné písať len raz!"
+      return
+    end
     exc= Exercise.find_by_code(params[:exercise_code])
-    if exc.nil? || exc.test_started==false ||!exc.end.nil? then  redirect_to root_path
+    if exc.nil? || exc.real_start==false ||!exc.real_end.nil? then  redirect_to root_path
     end
     @setup = Setup.take
     @week = @setup.weeks.find(params[:week_id])
