@@ -45,11 +45,11 @@
 
           </td>
 
-          <td class="tg-yw4l"><%= c.start.strftime("%I:%M%p") %></td>
+          <td class="tg-yw4l"><%= c.start.strftime("%H:%M") %></td>
           <td class="tg-yw4l">
 
-            <% if c.test_started && !c.end %> Prebieha
-                <%elsif c.test_started && c.end %> Ukončený
+            <% if c.real_start && !c.real_end %> Prebieha
+                <%elsif c.real_end %> Ukončený
                 <%else %> Nezačal
                 <% end %>
 

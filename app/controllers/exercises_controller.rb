@@ -6,18 +6,15 @@ class ExercisesController < ApplicationController
   end
 
   def update
-    if(@exercise.test_started == false)
-      @exercise.test_started = true
+    if(!@exercise.real_start)
+      @exercise.real_start = Time.current
     else
-      @exercise.end = Time.current
+      @exercise.real_end = Time.current
     end
     respond_to do |format|
       if @exercise.update(exercise_params)
         format.html { redirect_to @exercise}
         format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @exercise.errors, status: :unprocessable_entity }
       end
     end
   end

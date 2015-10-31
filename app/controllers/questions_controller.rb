@@ -82,7 +82,7 @@ class QuestionsController < ApplicationController
   #
   def show_test
     exc= Exercise.find_by_code(params[:exercise_code])
-    if(exc.test_started==false)||(!exc.end.nil?) then  redirect_to root_path
+    if exc.nil? || exc.test_started==false ||!exc.end.nil? then  redirect_to root_path
     end
     @setup = Setup.take
     @week = @setup.weeks.find(params[:week_id])
