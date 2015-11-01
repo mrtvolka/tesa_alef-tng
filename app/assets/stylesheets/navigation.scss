@@ -47,10 +47,19 @@ nav h2 {
   }
 }
 
+
 // Dodatocny blok az navigacnym panelom, ktory obsahuje informacie o danej stranke
 .nav-info {
   @include bold;
   @include red-light-white;
   padding: 1rem 0 0.5rem;
   text-align: center;
+}
+
+//Docasne Ad-hoc riesenie pre prvu otazky v texte
+.test-offset {
+  margin: 0;
+  height: 7rem;
+  border: 0;
+
 }
