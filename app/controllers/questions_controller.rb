@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  authorize_resource :class => false , :only => [:submit_test,:show_test]
   def show
     @user = current_user
     user_id = @user.id
@@ -77,6 +78,7 @@ class QuestionsController < ApplicationController
     los = LearningObject.find(best[0])
     redirect_to action: "show", id: los.url_name
   end
+
   #
   # Testing
   #
@@ -114,4 +116,6 @@ class QuestionsController < ApplicationController
     #TODO
     redirect_to :back
   end
+
+
 end

@@ -7,6 +7,7 @@ class Ability
       can :manage, :administration
       can :manage, :teaching
       can :manage, Exercise
+      cannot :manage, :question
     end
 
     if user.teacher?
@@ -15,11 +16,13 @@ class Ability
       can :manage, Exercise, Exercise.find_by_user_id(user.id) do |exercise|
         exercise.user.id == user.id
       end
+      cannot :manage, :question
     end
 
     if user.student?
       cannot :manage, :administration
       cannot :manage, :teaching
+      can :manage, :question
     end
     # Define abilities for the passed in user here. For example:
     #
