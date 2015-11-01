@@ -114,4 +114,32 @@ class QuestionsController < ApplicationController
     #TODO
     redirect_to :back
   end
+
+  def access_test
+    @setup = Setup.take
+    @week = @setup.weeks.find(params[:week_number])
+    @exercise = Exercise.new
+  end
+
+  def check_code
+    @exercise = Exercise.new(exercise_code_param)
+    @exercise = Exercise.find_by_code(@exercise.code)
+    if(@exercise.nil?)
+      redirect_to :back
+      flash[:notice] = "Nespravny kod!"
+    elsif(!@exercise.real_end.nil?)
+      # TODO: working with submitted tests
+      redirect_to :back
+      flash[:notice] = "Test uz bol skonceny!"
+    else
+      @exercise = Exercise.find_by_code(@exercise.code)
+      redirect_to :action => "show_test", :week_id => @exercise.week_id, :exercise_code => @exercise.code
+    end
+  end
+
+  private
+    def exercise_code_param
+      params.require(:exercise).permit(:code)
+    end
+
 end
