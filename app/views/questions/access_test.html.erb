@@ -1,0 +1,23 @@
+<div id="faux-background" class="mobile-content"></div>
+<nav class="question-nav not-zoomable">
+  <%= render 'shared/user_element' %>
+  <div class="mobile-content">
+    <a href="<%= url_for controller: 'weeks', action: 'list' %>">
+      <i class="nav-right-icons icon-level-up"></i>
+    </a>
+    <a class="user-element-cta"><i class="nav-right-icons icon-user"></i></a>
+    <h2> Test pre <%= @week.number %>. týždeň semestra</h2>
+  </div>
+</nav>
+<hr class="nav-offset not-zoomable">
+  <div class="my-mobile-content main">
+    <div class="exercise-general">
+
+        <%= form_for @exercise , url: check_code_path do |e| %>
+            <%= e.label "Zadajte kód testu:" %>
+          <center>
+            <%= e.text_field :code%>
+            <%= e.submit "Spustiť test" %></center>
+        <% end %>
+    </div>
+  </div>

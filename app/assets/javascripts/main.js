@@ -46,6 +46,13 @@ var ready = (function () {
         Question.setupForm();
         Question.initTimeLog();
     }
+
+    if ($('#body-questions-access_test').length) {
+        Nav.init();
+        Slider.setupEvaluatorSlider();
+        Question.setupForm();
+        Question.initTimeLog();
+    }
 });
 
 // Uprava kvoli turbolinkam, tento ready kod sa nacita pri kazdom presmerovani
