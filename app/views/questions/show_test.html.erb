@@ -3,27 +3,33 @@
 <hr class="test-offset not-zoomable">
 
 
+<form method="post" action="<%= submit_test_path %>" id="question-form-<%= @question.type.downcase %>" class="question-form" data-remote>
+<% @sorted_los.each do |lo| %>
+<input type="hidden" name="type[<%=lo.id%>]" value="<%= lo.type %>">
+<div class="my-mobile-content main">
+  <p class="card-text">
+    <%= lo.question_text %>
+    <% unless lo.image.nil? %>
+        <%= image_tag qimages_url(@week.id,lo.id), class: 'question-image', alt: @question.lo_id+' Obrázok' %>
+    <% end %>
 
-  <% @sorted_los.each do |lo| %>
-    <div class="my-mobile-content main">
-          <p class="card-text">
-            <%= lo.question_text %>
-
+      <div id="question-options">
           <% case lo.type
                when 'SingleChoiceQuestion' %>
-              <% @question= lo%>
-              <%@answers= @question.answers %>
-              <%= render 'single_choice_options' %>
+            <% @question= lo%>
+            <%= render 'test_single_q' %>
           <% when 'MultiChoiceQuestion' %>
-              <% @question= lo%>
-              <%@answers= @question.answers %>
-              <%= render 'multi_choice_options' %>
+            <% @question= lo%>
+            <%= render 'test_multi_q' %>
           <% when 'EvaluatorQuestion' %>
-              <% @question= lo%>
-              <%= render 'evaluator_slider' %>
+             <!--- SHOULD NOT HAPPEN---->
+            <!--- NOT WORKING, WILL BE REMOVED--->
           <% end %>
-          </p>
-        </div>
-  <% end %>
+      </div>
+  </p>
+</div>
+<% end %>
 
+<button class="question-button question-button-red" name="commit" value="submitted" >Odovzdaj test</button>
+</form>
 

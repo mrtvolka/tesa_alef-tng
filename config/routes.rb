@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   # Vypis otazky, napr. /PSI/3/16-validacia-a-verifikacia
   get 'w/:week_number/:id' => 'questions#show', as: 'questions'
-  get 'w/:week_number/:id/image' => 'questions#show_image'
+  get 'w/:week_number/:id/image' => 'questions#show_image', as: 'qimages'
 
   # Loguje cas straveny na otazke
   post 'log_time' => 'questions#log_time'
@@ -63,4 +63,5 @@ Rails.application.routes.draw do
 
   get 'test/:week_id/:exercise_code' => 'questions#show_test'
   post 'test/:week_id/:exercise_code/submit' => 'questions#submit_test', as: 'submit_test'
+  get 'test/:week_id/:exercicise_code/:id' => 'questions#show_image'
 end
