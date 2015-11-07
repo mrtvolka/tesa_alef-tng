@@ -21,6 +21,9 @@
           <% when 'MultiChoiceQuestion' %>
             <% @question= lo%>
             <%= render 'test_multi_q' %>
+          <% when 'OpenQuestion' %>
+            <% @question= lo%>
+            <%= render 'test_open_q' %>
           <% when 'EvaluatorQuestion' %>
              <!--- SHOULD NOT HAPPEN---->
             <!--- NOT WORKING, WILL BE REMOVED--->

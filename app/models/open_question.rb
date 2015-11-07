@@ -1,0 +1,4 @@
+class OpenQuestion < LearningObject
+
+
+end
