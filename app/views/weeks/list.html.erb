@@ -10,14 +10,20 @@
 
 
 <div class="mobile-content main">
+  <% if @exercise %>
+      <div class="exercise-general">
+
+        <%= form_for @exercise , url: check_code_path do |e| %>
+            <%= e.label "Zadajte kód testu:" %>
+            <center>
+              <%= e.text_field :code%><%= e.submit "vstúpiť" %></center>
+        <% end %>
+        _______________________________________________________
+      </div>
+  <% end %>
   <% @weeks.each do |w|
      if @setup.show_all || Date.today > w.start_at
   %>
-      <a href="<%= url_for controller: 'questions', action: 'access_test', week_number: w.number %>"
-         class="card <%= 'week-current' if w.actual? %>">
-            <h3 class="card-header"><%= w.number %>. týždeň - TEST<%= '(aktuálny)' if w.actual? %><date class="week-date"><%=
-            w.start_at.strftime("%-d.%-m.")  %> - <%= w.end_at.strftime("%-d.%-m.%Y") %></date></h3>
-      </a>
       <a href="<%=
           url_for controller: 'weeks', action: 'show', week_number: w.number
       %>" class="card <%= 'week-current' if w.actual? %>">
@@ -34,4 +40,14 @@
       </a>
   <% end
   end %>
+  <center>Odovzdané testy:</center>
+  <br>
+  <% @week_tests.each do |w| %>
+      <a href=""
+         class="card <%= 'week-current' if w.actual? %>">
+        <h3 class="card-header"><%= w.number %>. týždeň - TEST<%= '(aktuálny)' if w.actual? %><date class="week-date"><%=
+            w.start_at.strftime("%-d.%-m.")  %> - <%= w.end_at.strftime("%-d.%-m.%Y") %></date></h3>
+      </a>
+  <% end %>
+  <br>
 </div>

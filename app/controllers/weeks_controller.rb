@@ -23,5 +23,17 @@ class WeeksController < ApplicationController
     @setup = Setup.take
     @weeks = @setup.weeks.order(number: :desc)
     @user = current_user
+    exercises = Exercise.find_by_sql(["SELECT e.* FROM exercises e
+                                        JOIN user_to_lo_relations u
+                                        ON e.id=u.exercise_id
+                                        JOIN users us
+                                        ON u.user_id=us.id
+                                        WHERE us.id = ?", current_user.id])
+    ids = exercises.collect(&:week_id)
+    @week_tests = @setup.weeks.where(id: ids).order(number: :desc)
+    available_test = !Exercise.where('real_end IS NULL AND real_start < ?',Time.current).nil?
+    if(available_test)
+      @exercise = Exercise.new
+    end
   end
 end
