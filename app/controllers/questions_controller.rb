@@ -113,8 +113,41 @@ class QuestionsController < ApplicationController
   end
 
   def submit_test
-    #TODO
-    redirect_to :back
+    params[:questions].each do |key, val|
+      #puts "OPenQ"
+      lo_class = Object.const_get params[:questions][key][:type]
+      lo = lo_class.find(key)
+
+
+      @user = current_user
+      user_id = @user.id
+      setup_id = 1
+
+      rel = UserToLoRelation.new(setup_id: setup_id, user_id: user_id)
+
+      if (params[:questions][key][:type]!= 'OpenQuestion')
+        @solution = lo.get_solution(current_user.id)
+        result = lo.right_answer? params[:questions][key][:answer], @solution
+        @eval = true # informacie pre js odpoved
+        rel.interaction = params[:questions][key][:answer]
+
+        rel.type = 'UserSolvedLoRelation' if  result
+        rel.type = 'UserFailedLoRelation' if  not result
+      elsif(params[:questions][key][:type]== 'OpenQuestion')
+            rel.interaction= params[:questions][key][:submitted_text]
+            rel.type =  'UserSubmittedLoRelation' if params[:questions][key][:commit] == 'send_answer'
+
+           elsif(params[:questions][key][:type]== 'PhotoQuestion')
+                  #TODO
+                end
+
+
+      lo.user_to_lo_relations << rel
+    end
+    #puts "WAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAAA"
+
+    render :js => "window.location = '#{root_path}'"
+    flash[:notice] = "Test bol odovzdany"
   end
 
   def access_test

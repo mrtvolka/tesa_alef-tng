@@ -5,7 +5,8 @@
 
 <form method="post" action="<%= submit_test_path %>" id="question-form-<%= @question.type.downcase %>" class="question-form" data-remote>
 <% @sorted_los.each do |lo| %>
-<input type="hidden" name="type[<%=lo.id%>]" value="<%= lo.type %>">
+<input type="hidden" name="questions[<%=lo.id%>][type]" value="<%= lo.type %>">
+<input type="hidden" name="questions[<%=lo.id%>][commit]" value="<%= "send_answer" %>">
 <div class="my-mobile-content main">
   <p class="card-text">
     <%= lo.question_text %>
@@ -33,6 +34,6 @@
 </div>
 <% end %>
 
-<button class="question-button question-button-red" name="commit" value="submitted" >Odovzdaj test</button>
+<button class="question-button question-button-red" name="commit" value="submit_test">Odovzdaj test</button>
 </form>
 
