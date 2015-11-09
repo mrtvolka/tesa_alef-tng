@@ -124,7 +124,7 @@ class QuestionsController < ApplicationController
       setup_id = 1
 
       rel = UserToLoRelation.new(setup_id: setup_id, user_id: user_id)
-
+      rel.exercise_id= Exercise.find_by_code(params[:exercise_code]).id
       if (params[:questions][key][:type]!= 'OpenQuestion')
         @solution = lo.get_solution(current_user.id)
         result = lo.right_answer? params[:questions][key][:answer], @solution
@@ -134,7 +134,7 @@ class QuestionsController < ApplicationController
         rel.type = 'UserSolvedLoRelation' if  result
         rel.type = 'UserFailedLoRelation' if  not result
       elsif(params[:questions][key][:type]== 'OpenQuestion')
-            rel.interaction= params[:questions][key][:submitted_text]
+            rel.submitted_text= params[:questions][key][:submitted_text]
             rel.type =  'UserSubmittedLoRelation' if params[:questions][key][:commit] == 'send_answer'
 
            elsif(params[:questions][key][:type]== 'PhotoQuestion')
@@ -144,8 +144,6 @@ class QuestionsController < ApplicationController
 
       lo.user_to_lo_relations << rel
     end
-    #puts "WAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAAA"
-
     render :js => "window.location = '#{root_path}'"
     flash[:notice] = "Test bol odovzdany"
   end
