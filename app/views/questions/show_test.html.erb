@@ -3,7 +3,7 @@
 <hr class="test-offset not-zoomable">
 
 
-<form method="post" action="<%= submit_test_path %>" id="question-form-<%= @question.type.downcase %>" class="question-form" data-remote>
+<form method="post" action="<%= submit_test_path %>" id="test-form" class="question-form" data-remote>
 <% @sorted_los.each do |lo| %>
 <input type="hidden" name="questions[<%=lo.id%>][type]" value="<%= lo.type %>">
 <input type="hidden" name="questions[<%=lo.id%>][commit]" value="<%= "send_answer" %>">
