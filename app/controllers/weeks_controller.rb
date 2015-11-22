@@ -31,7 +31,7 @@ class WeeksController < ApplicationController
                                         WHERE us.id = ?", current_user.id])
     ids = exercises.collect(&:week_id)
     @week_tests = @setup.weeks.where(id: ids).order(number: :desc)
-    available_test = !Exercise.where('real_end IS NULL AND real_start < ?',Time.current).nil?
+    available_test = !Exercise.where('real_end IS NULL AND real_start < (?)',Time.current).nil?
     if(available_test)
       @exercise = Exercise.new
     end

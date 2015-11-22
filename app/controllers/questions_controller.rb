@@ -100,8 +100,10 @@ class QuestionsController < ApplicationController
     learning_objects =@week.learning_objects.all.distinct
     @results = UserToLoRelation.get_results(current_user.id,@week.id)
 
-    RecommenderSystem::Recommender.setup(current_user.id,@week.id)
-    recommendations = RecommenderSystem::HybridRecommender.new.get_list
+    #RecommenderSystem::Recommender.setup(current_user.id,@week.id)
+    #recommendations = RecommenderSystem::HybridRecommender.new.get_list
+    RecommenderSystem::TesaSimpleRecommender.setup(current_user,@week.id,params[:exercise_code])
+    recommendations = RecommenderSystem::TesaSimpleRecommender.new.get_list
 
     @sorted_los = Array.new
     recommendations.each do |key, value|
