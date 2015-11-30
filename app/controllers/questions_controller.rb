@@ -83,25 +83,23 @@ class QuestionsController < ApplicationController
   # Testing
   #
   def show_test
-    # user can not write test multiple times
+    exercise = Exercise.find_by_code(params[:exercise_code])
+    if exercise.nil? || exercise.real_start.nil? ||!exercise.real_end.nil?
+      redirect_to root_path
+      flash[:notice] = "Test nie je dostupný"
+      return
+    end
+
     if Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
       redirect_to root_path
       flash[:notice] = "Test je možné písať len raz!"
       return
     end
-    exc= Exercise.find_by_code(params[:exercise_code])
-    if exc.nil? || exc.real_start.nil? ||!exc.real_end.nil? then  redirect_to root_path
-    end
-    @setup = Setup.take
-    @week = @setup.weeks.find(params[:week_id])
-    #@next_week = @week.next
-    #@previous_week = @week.previous
 
-    learning_objects =@week.learning_objects.all.distinct
-    @results = UserToLoRelation.get_results(current_user.id,@week.id)
+    @week = exercise.week
+    @setup= Setup.take
 
-    #RecommenderSystem::Recommender.setup(current_user.id,@week.id)
-    #recommendations = RecommenderSystem::HybridRecommender.new.get_list
+    learning_objects = @week.learning_objects.all.distinct
     RecommenderSystem::TesaSimpleRecommender.setup(current_user,@week.id,params[:exercise_code])
     recommendations = RecommenderSystem::TesaSimpleRecommender.new.get_list
 
@@ -109,43 +107,30 @@ class QuestionsController < ApplicationController
     recommendations.each do |key, value|
       @sorted_los << learning_objects.find {|l| l.id == key}
     end
-
-    @user = current_user
-    @question= @sorted_los.first
   end
 
   def submit_test
     params[:questions].each do |key, val|
-      #puts "OPenQ"
-      lo_class = Object.const_get params[:questions][key][:type]
-      lo = lo_class.find(key)
+      lo= LearningObject.find(key)
+      rel = UserToLoRelation.new(setup_id: Setup.take.id,
+                                 user_id: current_user.id,
+                                 exercise_id: Exercise.find_by_code(params[:exercise_code]).id)
 
+      if params[:questions][key][:type]!= 'OpenQuestion'
+        solution = lo.get_solution(current_user.id)
+        result = lo.right_answer? params[:questions][key][:answer], solution
 
-      @user = current_user
-      user_id = @user.id
-      setup_id = 1
-
-      rel = UserToLoRelation.new(setup_id: setup_id, user_id: user_id)
-      rel.exercise_id= Exercise.find_by_code(params[:exercise_code]).id
-      if (params[:questions][key][:type]!= 'OpenQuestion')
-        @solution = lo.get_solution(current_user.id)
-        result = lo.right_answer? params[:questions][key][:answer], @solution
-        @eval = true # informacie pre js odpoved
         rel.interaction = params[:questions][key][:answer]
-
-        rel.type = 'UserSolvedLoRelation' if  result
-        rel.type = 'UserFailedLoRelation' if  not result
-      elsif(params[:questions][key][:type]== 'OpenQuestion')
+        rel.type = result ? 'UserSolvedLoRelation' : 'UserFailedLoRelation'
+      elsif params[:questions][key][:type]== 'OpenQuestion'
             rel.submitted_text= params[:questions][key][:submitted_text]
-            rel.type =  'UserSubmittedLoRelation' if params[:questions][key][:commit] == 'send_answer'
-
+            rel.type =  'UserSubmittedLoRelation'
            elsif(params[:questions][key][:type]== 'PhotoQuestion')
                   #TODO
                 end
-
-
       lo.user_to_lo_relations << rel
     end
+
     render :js => "window.location = '#{root_path}'"
     flash[:notice] = "Test bol odovzdany"
   end
