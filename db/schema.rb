@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031230744) do
+ActiveRecord::Schema.define(version: 20151206144444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,11 +90,12 @@ ActiveRecord::Schema.define(version: 20151031230744) do
     t.string   "external_reference"
     t.binary   "image"
     t.integer  "course_id"
-    t.integer  "right_answers",      default: 0
-    t.integer  "wrong_answers",      default: 0
-    t.string   "difficulty",         default: "unknown_difficulty"
+    t.integer  "right_answers",       default: 0
+    t.integer  "wrong_answers",       default: 0
+    t.string   "difficulty",          default: "unknown_difficulty"
     t.float    "points"
     t.boolean  "is_test_question"
+    t.boolean  "is_special_question"
   end
 
   create_table "recommendation_configurations", force: :cascade do |t|

@@ -15,12 +15,22 @@ module RecommenderSystem
       student_questions = Hash.new
       list = Hash.new
 
+      # adding special questions for all students
+      special_questions = all_questions.where(is_special_question: TRUE)
+      all_questions -= special_questions
+      special_questions.each do |special_question|
+        list[special_question.id] = 1
+      end
+
       # set questions counts
       all_questions_count = all_questions.length
       # TODO setting these parameters for subject, actual for OS
       # exercise_questions_count > student_questions_count
       exercise_questions_count = 7
       student_questions_count = 4
+
+      # reduce student questions count
+      student_questions_count -= special_questions.length
 
       if all_questions_count > exercise_questions_count
         # select specific number of questions for exercise
