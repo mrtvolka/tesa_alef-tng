@@ -1,0 +1,35 @@
+<center><div style="width: 100%;padding: 3px;">
+  <style type="text/css">
+      .tg  {border-collapse:collapse;border-spacing:0;}
+      .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+      .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding: 0.25rem 1rem;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+      .tg .tg-yw4l{vertical-align:top}
+  </style>
+<table class="tg">
+  <tr>
+    <th class="tg-yw4l">Meno študenta</th>
+    <th class="tg-yw4l">Ais id</th>
+    <th class="tg-yw4l">Správnych odpovedí</th>
+
+  </tr>
+
+  <% @exercise.user_to_lo_relations.select("DISTINCT(user_id)").each do |c| %>
+    <tr>
+        <td class="tg-yw4l"><%= c.user.first_name %> <%= c.user.last_name%></td>
+        <td class="tg-yw4l">
+          <%=
+        case c.user.aisid.nil?
+            when true
+            #WILL NOT HAPPEN
+            "NIL-local_user-are you testing?"
+            when false
+            c.user.aisid
+        end %>
+        </td>
+        <td> <%=@exercise.user_to_lo_relations.where("user_id=? AND type= 'UserSolvedLoRelation'",c.user_id).count %></td>
+    </tr>
+  <% end %>
+
+</table>
+</div>
+</center>
