@@ -4,12 +4,12 @@ class TeachingsController < ApplicationController
     @setup= Setup.take
 
     #@exercises= Exercise.all.order(week_id: :asc)
-
+    @actual_week= Week.get_actual
     if current_user.role == 'administrator'
       @exercises= Exercise.all.order(:week_id, :start)
     else
       @exercises= Exercise.all.where(user_id: current_user.id).order(:week_id, :start)
     end
-    @actual_week= Week.get_actual
+
   end
 end

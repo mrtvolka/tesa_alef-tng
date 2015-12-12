@@ -23,6 +23,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    if current_user.role == 'teacher'
+      return teaching_path
+    end
     session[:previous_url] || root_path
   end
 
