@@ -10,5 +10,6 @@ class TeachingsController < ApplicationController
     else
       @exercises= Exercise.all.where(user_id: current_user.id).order(:week_id, :start)
     end
+    @actual_week= Week.get_actual
   end
 end

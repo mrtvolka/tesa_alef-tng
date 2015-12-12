@@ -8,12 +8,14 @@
 
 <div class="admin">
   <h3>Zoznam cvičení</h3>
+
   <style type="text/css">
       .tg  {border-collapse:collapse;border-spacing:0;}
-      .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-      .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+      .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 10px 10px 10px ;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+      .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 10px 10px 10px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
       .tg .tg-yw4l{vertical-align:top}
   </style>
+
   <table class="tg">
     <tr>
       <th class="tg-yw4l">Týždeň</th>
@@ -22,9 +24,30 @@
       <th class="tg-yw4l">Stav<br></th>
       <th class="tg-yw4l">Štart/Výsledky</th>
     </tr>
-
+    <%
+        wb= false # week before
+        ab= false  # all before (without week before, obviously)
+        wa= false  # week after
+        aa= false  # all after
+    %>
     <% @exercises.each do |c| %>
-        <tr>
+        <% if c.week.number < @actual_week.number-1  && !ab %> <%# all other weeks before%>
+            <tr> <td colspan="5">  <a  class="show_hidden" name="1,<%= @actual_week.number-2%>">Zobraz ostatné predchádzajúce týždne</a></td></tr>
+            <% ab= true%>
+        <% end%>
+        <% if c.week.number  == @actual_week.number-1  && !wb %> <%# one week before %>
+            <tr> <td colspan="5">  <a  class="show_hidden" name="<%= c.week.number%>,<%= c.week.number%>">Zobraz posledný týždeň</a></td></tr>
+            <% wb= true%>
+        <% end%>
+        <% if c.week.number == @actual_week.number+1  && !wa %> <%# one week after %>
+            <tr> <td colspan="5">  <a  class="show_hidden" name="<%= c.week.number%>,<%= c.week.number%>">Zobraz nadchádzajúci týždeň</a></td></tr>
+            <% wa= true%>
+        <% end%>
+        <% if c.week.number > @actual_week.number+1  && !aa %> <%# all other weeks after %>
+            <tr> <td colspan="5">  <a  class="show_hidden" name="<%= @actual_week.number+2%>,<%= 13%>">Zobraz ostatné nadchádzajúce týždne</a></td></tr>
+            <% aa= true%>
+        <% end%>
+        <tr class="hiddenBlock" id= "<%= c.week.number%>">
           <td class="tg-yw4l"><%= c.week.number %></td>
           <td class="tg-yw4l">
 
@@ -57,6 +80,6 @@
           <td class="tg-yw4l"><%= link_to 'Vstúpiť', exercises_show_path(:id => c.id) %></td>
         </tr>
     <% end %>
-
   </table>
+
 </div>

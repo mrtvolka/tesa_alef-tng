@@ -35,6 +35,14 @@ class Week < ActiveRecord::Base
     (Date.today-self.start_at).to_i.between?(0,6)
   end
 
+  def self.get_actual
+    self.all.each do |c|
+      if c.actual?
+        return c
+      end
+    end
+  end
+
   before_destroy do |week|
     Concept.all.each do |concept|
       concept.weeks.delete(week)
