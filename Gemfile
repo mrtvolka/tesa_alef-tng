@@ -85,5 +85,7 @@ group :development, :test do
   gem 'capistrano-passenger'
 
   gem 'factory_girl_rails'
+  gem 'lazy_high_charts'
+  gem 'activesupport'
 end
 

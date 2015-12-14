@@ -53,6 +53,11 @@ var ready = (function () {
         Question.setupForm();
         Question.initTimeLog();
     }
+
+    if ($('#body-teachings-statistics').length) {
+        Nav.init();
+
+    }
 });
 
 // Uprava kvoli turbolinkam, tento ready kod sa nacita pri kazdom presmerovani

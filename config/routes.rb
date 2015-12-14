@@ -67,4 +67,8 @@ Rails.application.routes.draw do
 
   get 'access_test/:week_number' => 'questions#access_test'
   post 'check_code' => 'questions#check_code'
+
+  get 'exercises/event/refresh' => 'exercises#refresh'
+  get 'exercise/statistics' => 'teachings#statistics' , as: 'statistics'
+
 end

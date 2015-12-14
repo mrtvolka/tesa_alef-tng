@@ -1,0 +1,1 @@
+<%= "Počet odovzdaných testov: " + data.to_s %>

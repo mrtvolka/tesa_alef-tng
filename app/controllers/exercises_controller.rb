@@ -5,11 +5,23 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find_by_id(params[:id])
   end
 
+  def refresh
+    unless params[:id].blank?
+      @counter = UserToLoRelation.where(exercise_id: params[:id]).group(:user_id).count.count
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   def update
     if(!@exercise.real_start)
       @exercise.real_start = Time.current
-    else
+    elsif(!@exercise.real_end)
       @exercise.real_end = Time.current
+    else
+      redirect_to statistics_path(id: @exercise.id)
+      return
     end
     respond_to do |format|
       if @exercise.update(exercise_params)

@@ -1,0 +1,48 @@
+<nav>
+  <div class="admin-nav">
+    <h2>- Stránka učiteľa</h2>
+    <%= link_to "Domov", root_path, class: 'admin-nav-button' %>
+  </div>
+</nav>
+<hr class="nav-offset">
+
+<div class="admin">
+  <ul class="nav nav-pills">
+    <% @chart.each.with_index do |chart, index| %>
+      <li class="<%= 'active' unless index > 0 %>" id="week-toggle-testing">
+        <a data-toggle="tab" href="#<%=chart.__id__.to_s %>">
+        <%= "Otázka " + (index+1).to_s %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <% @chart.each.with_index do |chart,index| %>
+        <div id="<%=chart.__id__.to_s %>" class="chart tab-pane fade  <%= 'in active' unless index > 0 %>">
+          <% if chart.instance_of?(LazyHighCharts::HighChart)%>
+              <%= high_chart(chart.__id__.to_s, chart) %>
+          <% else %>
+              <div class="highcharts-container" id="highcharts-8" style="position: relative; overflow: hidden; min-width: 600px; min-height: 200px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                <div class="graph-title">
+                  <%=  chart[0] %>
+                </div>
+                <table class="tg" style="margin: 0 auto;text-align: center";>
+                  <tr>
+                    <th class="tg-yw4l">Počet</th>
+                    <th class="tg-yw4l">Text odpovede</th>
+                  </tr>
+                  <% chart[1].each do |key,value| %>
+                      <tr>
+                        <td class="tg-yw4l"><%= value %></td>
+                        <td class="tg-yw4l"><%= key %></td>
+                      </tr>
+                  <% end %>
+                </table>
+                </div>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+
