@@ -1,25 +1,31 @@
-users = User.create!([
-                         {login: 'teacher10', role: User::ROLES[:TEACHER], first_name: 'Fero', last_name: 'Ucitelovic', password: 'teacher1', type: 'LocalUser'},
-                         {login: 'teacher11', role: User::ROLES[:TEACHER], first_name: 'Jano', last_name: 'Ucitelovic', password: 'teacher1', type: 'LocalUser'},
-                         {login: 'teacher12', role: User::ROLES[:TEACHER], first_name: 'Juro', last_name: 'Ucitelovic', password: 'teacher1', type: 'LocalUser'},
-                         {login: 'teacher13', role: User::ROLES[:TEACHER], first_name: 'Peter', last_name: 'Ucitelovic', password: 'teacher1', type: 'LocalUser'},
-                         {login: 'teacher14', role: User::ROLES[:TEACHER], first_name: 'Michal', last_name: 'Ucitelovic', password: 'teacher1', type: 'LocalUser'},
+course = Course.where(name: 'Course One').first
+if course
+  course.update(name: 'OS')
+else
+  course = Course.create!(name: 'OS')
+end
+
+setup = Setup.create!(name: 'OS 2016', first_week_at: '2016-02-01 00:00:00.00000', week_count: 12, course_id: course.id)
+
+weeks = Week.create!([
+                         {setup_id: setup.id, number: 1},
+                         {setup_id: setup.id, number: 2},
+                         {setup_id: setup.id, number: 3},
+                         {setup_id: setup.id, number: 4},
+                         {setup_id: setup.id, number: 5},
+                         {setup_id: setup.id, number: 6},
+                         {setup_id: setup.id, number: 7},
+                         {setup_id: setup.id, number: 8},
+                         {setup_id: setup.id, number: 9},
+                         {setup_id: setup.id, number: 10},
+                         {setup_id: setup.id, number: 11},
+                         {setup_id: setup.id, number: 12},
                      ])
 
-weeks = Week.all
-
-exercises = Exercise.create!(
-                        [
-                            {code: 13568, user_id: users[0].id, week_id: 1, test_started: false},
-                            {code: 17894, user_id: users[1].id, week_id: 2, test_started: false},
-                            {code: 25864, user_id: users[1].id, week_id: 3, test_started: false},
-                            {code: 85246, user_id: users[2].id, week_id: 1, test_started: false},
-                            {code: 45823, user_id: users[2].id, week_id: 2, test_started: false},
-                            {code: 45244, user_id: users[3].id, week_id: 3, test_started: false},
-                            {code: 10535, user_id: users[3].id, week_id: 4, test_started: false},
-                            {code: 37561, user_id: users[3].id, week_id: 3, test_started: false},
-                            {code: 12543, user_id: users[4].id, week_id: 1, test_started: false},
-                            {code: 50050, user_id: users[4].id, week_id: 2, test_started: false}
-                        ]
-)
+users = User.create!([
+                         {login: 'student1', role: User::ROLES[:STUDENT], first_name: 'Peter', last_name: 'Studentovic', password: 'student1', type: 'LocalUser'},
+                         {login: 'student2', role: User::ROLES[:STUDENT], first_name: 'Roman', last_name: 'Studentovic', password: 'student2', type: 'LocalUser'},
+                         {login: 'teacher1', role: User::ROLES[:TEACHER], first_name: 'Fero', last_name: 'Ucitelovic', password: 'teacher1', type: 'LocalUser'},
+                         {login: 'administrator1', role: User::ROLES[:ADMINISTRATOR], first_name: 'Lubos', last_name: 'Adminovic', password: 'administrator1', type: 'LocalUser'},
+                     ])
 
