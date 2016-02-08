@@ -2,8 +2,17 @@ language: ruby
 
 before_install:
   - gem install bundler
+  - psql -c 'create database aleftng_test;' -U postgres
   - ls -la
   - cp config/travis_database.yml config/database.yml
+
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.3"
+
+
 
 rvm:
 - 2.2.0
