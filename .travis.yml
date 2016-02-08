@@ -2,3 +2,6 @@ language: ruby
 rvm:
 - 2.2.0
 
+notifications:
+  slack: tesateam:9X4eC8Kij8523YspIOSxIvyC
+
