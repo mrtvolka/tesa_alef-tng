@@ -2,7 +2,7 @@ language: ruby
 
 before_install:
   - gem install bundler
-  - cp ./config/travis.database.yml ./config/database.yml
+  - cp /config/travis_database.yml /config/database.yml
 
 rvm:
 - 2.2.0
