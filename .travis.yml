@@ -2,6 +2,8 @@ language: ruby
 
 before_install:
   - gem install bundler
+  - ls -la
+  - cd tesa_alef-tng
   - cp /config/travis_database.yml /config/database.yml
 
 rvm:
