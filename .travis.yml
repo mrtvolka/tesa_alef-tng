@@ -7,7 +7,7 @@ before_install:
   - cp config/travis_database.yml config/database.yml
 
 before_script:
-  - chmod u+x bin/rails
+  - chmod u+x bin/rake
   - bin/rake db:migrate RAILS_ENV=test
 
 services:
