@@ -6,6 +6,9 @@ before_install:
   - ls -la
   - cp config/travis_database.yml config/database.yml
 
+before_script:
+  - bin/rake db:migrate RAILS_ENV=test
+
 services:
   - postgresql
 
