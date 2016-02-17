@@ -41,6 +41,11 @@ class Week < ActiveRecord::Base
         return c
       end
     end
+    if (self.all.first.start_at> Date.today)
+      return self.first
+    else
+        return self.last
+    end
   end
 
   before_destroy do |week|
