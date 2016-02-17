@@ -11,7 +11,7 @@
   <p class="card-text">
     <%= lo.question_text %>
     <% unless lo.image.nil? %>
-        <%= image_tag qimages_url(@week.id,lo.id), class: 'question-image', alt: @question.lo_id+' Obrázok' %>
+        <%= image_tag qimages_url(@week.id,lo.id), class: 'question-image', alt: 'Obrázok' %>
     <% end %>
 
       <div id="question-options">

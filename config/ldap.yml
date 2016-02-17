@@ -5,6 +5,15 @@ stuba_ldap: &STUBA_LDAP
   attribute: uid
   base: ou=People,dc=stuba,dc=sk
   ssl: simple_tls
+  timeout: 10
+
+stuba_ldap2: &STUBA_LDAP2
+   host: ldap2.stuba.sk
+   port: 636
+   attribute: uid
+   base: ou=People,dc=stuba,dc=sk
+   ssl: simple_tls
+   timeout: 10
 
 ## Environment
 development:

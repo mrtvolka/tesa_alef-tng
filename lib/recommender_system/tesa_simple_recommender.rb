@@ -32,34 +32,38 @@ module RecommenderSystem
       # reduce student questions count
       student_questions_count -= special_questions.length
 
-      if all_questions_count > exercise_questions_count
-        # select specific number of questions for exercise
-        srand(access_key.to_i)
-        (1..exercise_questions_count).each do
-          # try generate random number
-          begin
-            # generate random number with exercise test access key seed
-            random_number = random_value(all_questions_count)
-            # numbers must be unique!
-          end until !exercise_questions.has_key? random_number
-          exercise_questions[random_number] = 1
-        end
+      # change questions counts to as many as possible
+      exercise_questions_count = all_questions_count if exercise_questions_count > all_questions_count
+      student_questions_count = exercise_questions_count if student_questions_count > exercise_questions_count
 
-        (1..student_questions_count).each do
-          begin
-            # generate random number with current time seed
-            random_number = random_value_seed(exercise_questions_count)
-            # numbers must be unique!
-          end until !student_questions.has_key? random_number
-          student_questions[random_number] = 1
-        end
-
-        # specify final list of questions
-        (0..student_questions_count-1).each do |i|
-          # select final question with id (hash with key=id, value = 1)
-          list[all_questions[exercise_questions.keys[student_questions.keys[i]]].id] = 1
-        end
+      # select specific number of questions for exercise
+      srand(access_key.to_i)
+      (1..exercise_questions_count).each do
+        # try generate random number
+        begin
+          # generate random number with exercise test access key seed
+          random_number = random_value(all_questions_count)
+          # numbers must be unique!
+        end until !exercise_questions.has_key? random_number
+        exercise_questions[random_number] = 1
       end
+
+      srand(user_id.id)
+      (1..student_questions_count).each do
+        begin
+          # generate random number with current time seed
+          random_number = random_value(exercise_questions_count)
+          # numbers must be unique!
+        end until !student_questions.has_key? random_number
+        student_questions[random_number] = 1
+      end
+
+      # specify final list of questions
+      (0..student_questions_count-1).each do |i|
+        # select final question with id (hash with key=id, value = 1)
+        list[all_questions[exercise_questions.keys[student_questions.keys[i]]].id] = 1
+      end
+
       normalize list
     end
 

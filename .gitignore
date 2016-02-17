@@ -13,3 +13,7 @@ tmp
 shared/**/*
 .idea
 config/database.yml
+otazkyAZA.csv
+azausers.csv
+azaschedule.csv
+img/*

@@ -79,7 +79,7 @@ namespace :tesa do
     # import questions from CSV test questions file
     # run:
     #    rake tesa:data:import_tests[filename.csv]
-    task :import_tests, [:tests_csv] => :environment do |t, args|
+    task :import_OStests, [:tests_csv] => :environment do |t, args|
       import_testquestions(args.tests_csv)
     end
   end

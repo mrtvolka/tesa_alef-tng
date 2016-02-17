@@ -19,6 +19,12 @@
       "src": "fontawesome"
     },
     {
+      "uid": "dc3f1d5b1d006f7f7b3b6295eccab9da",
+      "css": "camera",
+      "code": 59417,
+      "src": "fontawesome"
+    },
+    {
       "uid": "12f4ece88e46abd864e40b35e05b11cd",
       "css": "done",
       "code": 59396,
@@ -49,6 +55,18 @@
       "src": "fontawesome"
     },
     {
+      "uid": "acf41aa4018e58d49525665469e35665",
+      "css": "thumbs-up",
+      "code": 59412,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "7533e68038fc6d520ede7a7ffa0a2f64",
+      "css": "thumbs-down",
+      "code": 59413,
+      "src": "fontawesome"
+    },
+    {
       "uid": "d35a1d35efeb784d1dc9ac18b9b6c2b6",
       "css": "edit",
       "code": 59409,
@@ -64,6 +82,12 @@
       "uid": "bbfb51903f40597f0b70fd75bc7b5cac",
       "css": "delete",
       "code": 59406,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "559647a6f430b3aeadbecd67194451dd",
+      "css": "menu",
+      "code": 59414,
       "src": "fontawesome"
     },
     {
@@ -124,6 +148,18 @@
       "uid": "81bb68665e8e595505272a746db07c7a",
       "css": "radio-checked",
       "code": 59398,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "266d5d9adf15a61800477a5acf9a4462",
+      "css": "chart-bar",
+      "code": 59416,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "20fc52f9a88bb7bda023ef209acac095",
+      "css": "graduation-cap",
+      "code": 59415,
       "src": "fontawesome"
     }
   ]
