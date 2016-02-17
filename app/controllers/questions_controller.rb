@@ -153,7 +153,7 @@ class QuestionsController < ApplicationController
       flash[:notice] = "Test uz bol skonceny!"
     else
       @exercise = Exercise.find_by_code(@exercise.code)
-      redirect_to :action => "show_test", :week_id => @exercise.week_id, :exercise_code => @exercise.code
+      redirect_to :action => "show_test",  :exercise_code => @exercise.code
     end
   end
 

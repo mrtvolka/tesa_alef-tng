@@ -2,8 +2,6 @@ class TeachingsController < ApplicationController
   authorize_resource :class => false
   def show
     @setup= Setup.take
-
-    #@exercises= Exercise.all.order(week_id: :asc)
     @actual_week= Week.get_actual
     if current_user.role == 'administrator'
       @exercises= Exercise.all.order(:week_id, :start)
