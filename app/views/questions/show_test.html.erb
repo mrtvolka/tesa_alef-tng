@@ -26,8 +26,10 @@
             <% @question= lo%>
             <%= render 'test_open_q' %>
           <% when 'EvaluatorQuestion' %>
+            <% @question= lo%>
+            <%= render 'test_eval_q' %>
              <!--- SHOULD NOT HAPPEN---->
-            <!--- NOT WORKING, WILL BE REMOVED--->
+            <!--- NOT WORKING, WILL BE REMOVED, maybe--->
           <% end %>
       </div>
   </p>
