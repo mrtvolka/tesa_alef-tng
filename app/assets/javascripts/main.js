@@ -22,6 +22,14 @@ var ready = (function () {
         Question.initTimeLog();
 
     }
+    if ($('#body-questions-show_answers').length) {
+
+        Nav.init();
+        Slider.setupEvaluatorSlider();
+        Question.setupForm();
+        Question.initTimeLog();
+
+    }
 
     if ($('#body-weeks-list').length) {
         Nav.init();

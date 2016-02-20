@@ -32,6 +32,23 @@
   }
 }
 
+.answer-output {
+  display: none;
+
+  &:checked ~ .answer-text,
+  &:checked + .answer-icon {
+    color: $red;
+  }
+
+  &[type="checkbox"]:checked + .answer-icon::before {
+    content: '\e809';
+  }
+
+  &[type="radio"]:checked + .answer-icon::before {
+    content: '\e806';
+  }
+}
+
 .answer-input.answer-is-incorrect {
 
 

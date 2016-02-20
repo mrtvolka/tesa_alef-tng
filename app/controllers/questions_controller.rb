@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  authorize_resource :class => false , :only => [:submit_test,:show_test]
+  authorize_resource :class => false , :only => [:submit_test,:show_test,:access_answers]
   def show
     @user = current_user
     user_id = @user.id
@@ -155,6 +155,31 @@ class QuestionsController < ApplicationController
       @exercise = Exercise.find_by_code(@exercise.code)
       redirect_to :action => "show_test",  :exercise_code => @exercise.code
     end
+  end
+
+  def access_answers
+
+    week_id= Week.find_by_number(params[:week_number]).id
+    id= Exercise.joins('JOIN user_to_lo_relations u ON exercises.id=u.exercise_id').where("week_id= ? AND u.user_id = ?",week_id, current_user.id).take.id
+
+    redirect_to :action => "show_answers",  :exercise_id => id
+  end
+
+  def show_answers
+    exercise = Exercise.find(params[:exercise_id])
+
+    @week = exercise.week
+    @setup= Setup.take
+
+    learning_objects = @week.learning_objects.all.distinct
+    RecommenderSystem::TesaSimpleRecommender.setup(current_user,@week.id,exercise.code)
+    recommendations = RecommenderSystem::TesaSimpleRecommender.new.get_list
+
+    @sorted_los = Array.new
+    recommendations.each do |key, value|
+      @sorted_los << learning_objects.find {|l| l.id == key}
+    end
+    @student_answers= UserToLoRelation.where("user_id = ? AND exercise_id = ?", current_user.id, exercise.id)
   end
 
   private

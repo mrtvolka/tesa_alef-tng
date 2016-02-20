@@ -64,6 +64,9 @@ Rails.application.routes.draw do
   get 'test/:exercise_code' => 'questions#show_test'
   post 'test/:exercise_code/submit' => 'questions#submit_test', as: 'submit_test'
 
+  get 'test/:exercise_id/answers' => 'questions#show_answers'
+  get 'test/:week_number/access' => 'questions#access_answers'
+
 
   get 'access_test/:week_number' => 'questions#access_test'
   post 'check_code' => 'questions#check_code'
