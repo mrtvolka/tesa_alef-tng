@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  authorize_resource :class => false , :only => [:submit_test,:show_test,:access_answers]
+  authorize_resource :class => false , :only => [:submit_test,:show_test,:access_answers, :show_answers]
   def show
     @user = current_user
     user_id = @user.id
@@ -159,14 +159,29 @@ class QuestionsController < ApplicationController
 
   def access_answers
 
-    week_id= Week.find_by_number(params[:week_number]).id
-    id= Exercise.joins('JOIN user_to_lo_relations u ON exercises.id=u.exercise_id').where("week_id= ? AND u.user_id = ?",week_id, current_user.id).take.id
-
-    redirect_to :action => "show_answers",  :exercise_id => id
+    week= Week.find_by_number(params[:week_number])
+    if (week.nil?)
+      redirect_to root_path
+      flash[:notice] = "Neznámy týždeň!"
+      return
+    end
+    exercise= Exercise.joins('JOIN user_to_lo_relations u ON exercises.id=u.exercise_id').where("week_id= ? AND u.user_id = ?",week.id, current_user.id).take
+    if (exercise.nil?)
+      redirect_to root_path
+      flash[:notice] = "Neznáme cvičenie!"
+      return
+    end
+    redirect_to :action => "show_answers",  :exercise_id => exercise.id
   end
 
   def show_answers
     exercise = Exercise.find(params[:exercise_id])
+
+    if exercise.nil? || exercise.real_start.nil? ||exercise.real_end.nil?
+      redirect_to root_path
+      flash[:notice] = "Test nebol napísaný!"
+      return
+    end
 
     @week = exercise.week
     @setup= Setup.take
