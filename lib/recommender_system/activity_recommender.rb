@@ -7,7 +7,7 @@ module RecommenderSystem
 
       list = Hash.new
 
-      product = self.learning_objects.product(relations)
+      product = self.nontest_learning_objects.product(relations)
       product.map! do |p| "(#{p[0].id}, #{p[1].learning_object_id}, \'#{p[1].type}\')" end
       product = product.join(',')
 
@@ -18,7 +18,7 @@ module RecommenderSystem
       )
 
       # Pre kazdu otazku z tyzdna vyrata priemernu pravdepodobnost vzhladom na otazky z modelu aktivity
-      self.learning_objects.each do |lo|
+      self.nontest_learning_objects.each do |lo|
         list[lo.id] = 0
         relations.each do |r|
           list[lo.id] += get_probability(lo, r)

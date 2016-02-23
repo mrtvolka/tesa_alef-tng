@@ -30,7 +30,7 @@ module RecommenderSystem
 
       # Ohodnot otazky z tyzdna na zaklade toho, kolko ich konceptov bolo pouzitych nedavno
       list = Hash.new
-      self.learning_objects.each do |lo|
+      self.nontest_learning_objects.each do |lo|
         list[lo.id] = 0
         lo.concepts.each do |c|
           unless concepts[c.id].nil?

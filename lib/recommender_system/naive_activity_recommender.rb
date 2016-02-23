@@ -6,7 +6,7 @@ class NaiveActivityRecommender < RecommenderSystem::Recommender
 
     # najdi vsekty interakcie pouzivatela s otazkami z daneho tyzdna
     list = Hash.new
-    self.learning_objects.each do |lo|
+    self.nontest_learning_objects.each do |lo|
       list[lo.id] = 1
     end
 

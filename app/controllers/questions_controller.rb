@@ -179,7 +179,7 @@ class QuestionsController < ApplicationController
 
     if exercise.nil? || exercise.real_start.nil? ||exercise.real_end.nil?
       redirect_to root_path
-      flash[:notice] = "Test nebol napísaný!"
+      flash[:notice] = "Test nebol ešte ukončený!"
       return
     end
 

@@ -4,7 +4,7 @@ class AlphabeticalRecommender < RecommenderSystem::Recommender
 
     # Toto nefunguje dobre s diakritikou
     # Cely tento recommender je vsak len na testovanie, takze nemusi fungovat na 100%
-    los = self.learning_objects.sort_by {|x| x.lo_id}
+    los = self.nontest_learning_objects.sort_by {|x| x.lo_id}
 
     list = Hash.new
     i = 0

@@ -13,11 +13,11 @@ class Week < ActiveRecord::Base
   end
 
   def question_count
-    self.learning_objects.all.distinct.count
+    self.learning_objects.where(is_test_question: nil || false).distinct.count
   end
 
   def question_count_done user_id
-    lo_ids = self.learning_objects.all.distinct.map(&:id)
+    lo_ids = self.learning_objects.where(is_test_question: nil || false).distinct.map(&:id)
     UserSolvedLoRelation.where(learning_object_id: lo_ids, user_id: user_id).
         group(:learning_object_id).count.
         count

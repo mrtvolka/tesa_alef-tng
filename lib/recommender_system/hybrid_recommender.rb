@@ -21,7 +21,7 @@ module RecommenderSystem
 
     # Vytvori list, do ktoreho sa budu ukladat vysledky odporucani
     list = Hash.new
-    self.learning_objects.map(&:id).uniq.each do |id|
+    self.nontest_learning_objects.map(&:id).uniq.each do |id|
       list[id] = 0
     end
 

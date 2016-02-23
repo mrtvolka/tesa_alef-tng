@@ -15,6 +15,14 @@ module RecommenderSystem
       @@los
     end
 
+    def test_learning_objects
+      self.class.learning_objects.where(is_test_question: true)
+    end
+
+    def nontest_learning_objects
+      self.class.learning_objects.where(is_test_question: nil || false)
+    end
+
     def learning_objects
       self.class.learning_objects
     end
@@ -23,7 +31,7 @@ module RecommenderSystem
       if @@rels.empty?
         @@rels = UserToLoRelation.where('user_id = (?) AND learning_object_id IN (?)',
                                        @@user_id,
-                                       self.learning_objects.map(&:id)
+                                       nontest_learning_objects.map(&:id)
         ).order(:created_at)
       end
       @@rels
