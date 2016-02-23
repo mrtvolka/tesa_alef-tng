@@ -5,7 +5,6 @@ stuba_ldap: &STUBA_LDAP
   attribute: uid
   base: ou=People,dc=stuba,dc=sk
   ssl: simple_tls
-  timeout: 10
 
 stuba_ldap2: &STUBA_LDAP2
    host: ldap2.stuba.sk
@@ -13,20 +12,34 @@ stuba_ldap2: &STUBA_LDAP2
    attribute: uid
    base: ou=People,dc=stuba,dc=sk
    ssl: simple_tls
-   timeout: 10
 
 ## Environment
 development:
+-
   <<: *STUBA_LDAP # Use the VPN, Luke. Or local users.
+-
+  <<: *STUBA_LDAP2
 
 test:
+-
   <<: *STUBA_LDAP
+-
+  <<: *STUBA_LDAP2
 
 sandbox:
+-
   <<: *STUBA_LDAP
+-
+  <<: *STUBA_LDAP2
 
 staging:
+-
   <<: *STUBA_LDAP
+-
+  <<: *STUBA_LDAP2
 
 production:
+-
   <<: *STUBA_LDAP
+-
+  <<: *STUBA_LDAP2
