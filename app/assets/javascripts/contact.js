@@ -32,7 +32,7 @@
   },
 
   hide : function() {
-      Contact.div.css('bottom','100%');
+      Contact.div.css('bottom','200%');
   }
 
 
