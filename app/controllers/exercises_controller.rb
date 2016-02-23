@@ -15,20 +15,24 @@ class ExercisesController < ApplicationController
   end
 
   def update
-    if(!@exercise.real_start)
-      @exercise.real_start = Time.current
-    elsif(!@exercise.real_end)
-      @exercise.real_end = Time.current
-    else
+    if(params[:stats])
       redirect_to statistics_path(id: @exercise.id)
-      return
-    end
-    respond_to do |format|
-      if @exercise.update(exercise_params)
-        format.html { redirect_to @exercise}
-        format.json { head :no_content }
+    else
+      if(!@exercise.real_start)
+        @exercise.real_start = Time.current
+      elsif(!@exercise.real_end)
+        @exercise.real_end = Time.current
+      else
+        @exercise.real_end = nil
+      end
+      respond_to do |format|
+        if @exercise.update(exercise_params)
+          format.html { redirect_to @exercise}
+          format.json { head :no_content }
+        end
       end
     end
+
   end
 
   private

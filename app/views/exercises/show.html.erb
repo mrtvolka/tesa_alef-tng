@@ -7,35 +7,34 @@
 </div>
 <div class="my-mobile-content main">
     <div class="exercise-general">
-        <% if !@exercise.real_start %>
-            <b>Test zatiaľ nebol spustený.</b>
-            <%= form_for @exercise do |f| %>
-                <%= f.hidden_field :real_start, :value => Time.current %>
-                <center><%= f.submit "Spustiť" %></center>
-            <%end%>
-        <% elsif !@exercise.real_end %>
-            <b>Test práve prebieha.</b><br>
-            Kód testu: <%= @exercise.code %><br>
-            Link: <a href="/test/<%= @exercise.week_id%>/<%= @exercise.code %>">/test/<%= @exercise.week_id%>/<%= @exercise.code %></a>
-            <div id="counter">
+      <% if !@exercise.real_start %>
+          <b>Test zatiaľ nebol spustený.</b>
+          <%= form_for @exercise do |f| %>
+              <%= f.hidden_field :real_start, :value => Time.current %>
+              <center><%= f.submit "Spustiť" %></center>
+          <%end%>
+      <% elsif !@exercise.real_end %>
+          <b>Test práve prebieha.</b><br>
+          Kód testu: <%= @exercise.code %><br>
+          Link: <a href="/test/<%= @exercise.week_id%>/<%= @exercise.code %>">/test/<%= @exercise.week_id%>/<%= @exercise.code %></a>
+          <div id="counter">
             <%= render partial: 'counter', :locals => { id: params[:id], :data => 0} %>
-            </div>
-            <%= form_for @exercise do |f| %>
-                <%= f.hidden_field :real_end, :value => Time.current %>
-                <center><%= f.submit "Ukončiť", :onsubmit => "clearInterval(myId)"%></center>
-            <%end%>
+          </div>
+          <%= form_for @exercise do |f| %>
+              <%= f.hidden_field :real_end, :value => Time.current %>
+              <center><%= f.submit "Ukončiť", :onsubmit => "clearInterval(myId)"%></center>
+          <%end%>
           <script>
               var myId = null;
               $(document).ready(function () {
                   myId = setInterval(refreshPartial, 1000)
               });
-
               /*$(document).on("click",function() {
-                  if (myId) {
-                      clearInterval(myId);
-                      myId = null;
-                  }
-              });*/
+               if (myId) {
+               clearInterval(myId);
+               myId = null;
+               }
+               });*/
               // calls action refreshing the partial
               function refreshPartial() {
                   $.ajax({
@@ -44,13 +43,14 @@
                   })
               }
           </script>
-        <% else %>
-            <!-- information that test is finished -->
-            <b>Test bol už ukončený</b>
-            <%= form_for @exercise do |f| %>
-              <center><%= f.submit "Prejsť na hodnotenie testov"%></center>
-            <%end%>
-            <%= render 'attendance' %>
-        <% end %>
+      <% else %>
+          <b>Test bol už ukončený</b>
+          <%= form_for @exercise do |f| %>
+              <%= f.hidden_field :real_end, :value => Time.current %>
+              <center><%= f.submit "Prejsť na štatistiky", :name => "stats" %></center>
+              <center><%= f.submit "Spustiť znovu"%></center>
+          <%end%>
+          <%= render 'attendance' %>
+      <% end %>
     </div>
 </div>
