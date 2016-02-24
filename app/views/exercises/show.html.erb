@@ -16,7 +16,7 @@
       <% elsif !@exercise.real_end %>
           <b>Test práve prebieha.</b><br>
           Kód testu: <%= @exercise.code %><br>
-          Link: <a href="/test/<%= @exercise.week_id%>/<%= @exercise.code %>">/test/<%= @exercise.week_id%>/<%= @exercise.code %></a>
+          Link: /test/<%= @exercise.code %></a>
           <div id="counter">
             <%= render partial: 'counter', :locals => { id: params[:id], :data => 0} %>
           </div>

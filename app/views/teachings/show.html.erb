@@ -77,7 +77,7 @@
                 <% end %>
 
           </td>
-          <td class="tg-yw4l"><%= link_to 'Vstúpiť', exercises_show_path(:id => c.id) %></td>
+          <td class="tg-yw4l"><%= link_to 'Vstúpiť', exercises_show_path(:id => c.id) %><%=  if (!c.real_start && !c.real_end)  then  link_to ' / Spustiť', exercises_show_path(:id => c.id, :real_start=> Time.current) end %></td>
         </tr>
     <% end %>
   </table>

@@ -3,6 +3,11 @@ class ExercisesController < ApplicationController
   def show
     @setup= Setup.take
     @exercise = Exercise.find_by_id(params[:id])
+
+    if (!params[:real_start].nil?)
+      @exercise.real_start= Time.current
+      @exercise.save!
+    end
   end
 
   def refresh
