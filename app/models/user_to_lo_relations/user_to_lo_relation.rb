@@ -28,7 +28,7 @@ class UserToLoRelation < ActiveRecord::Base
         GROUP BY learning_objects.id
       ) AS los
       LEFT JOIN user_to_lo_relations as rels ON rels.learning_object_id = los.id
-      WHERE user_id = '+user_id.to_s+'
+      WHERE user_id = '+user_id.to_s+' AND rels.exercise_id IS NULL
       GROUP BY los.id
     '
     ActiveRecord::Base.connection.execute(sql)

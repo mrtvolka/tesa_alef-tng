@@ -10,7 +10,7 @@ module RecommenderSystem
 
     def get_list
       # get all weeks test questions
-      all_questions = self.test_learning_objects.where(is_test_question: TRUE)
+      all_questions = self.test_learning_objects
       exercise_questions = Hash.new
       student_questions = Hash.new
       list = Hash.new

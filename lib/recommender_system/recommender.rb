@@ -16,11 +16,11 @@ module RecommenderSystem
     end
 
     def test_learning_objects
-      self.class.learning_objects.where(is_test_question: true)
+      self.class.learning_objects.where(is_test_question: [nil,true])
     end
 
     def nontest_learning_objects
-      self.class.learning_objects.where(is_test_question: nil || false)
+      self.class.learning_objects.where(is_test_question: [nil,false])
     end
 
     def learning_objects

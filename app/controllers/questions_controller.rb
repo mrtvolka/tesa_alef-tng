@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
     @previous_question = @question.previous(params[:week_number])
 
     @answers = @question.answers
-    @relations = UserToLoRelation.where(learning_object_id: params[:id], user_id: user_id).group('type').count
+    @relations = UserToLoRelation.where(learning_object_id: params[:id], user_id: user_id, exercise_id: nil).group('type').count
 
     if @user.show_solutions
       UserViewedSolutionLoRelation.create(user_id: user_id, learning_object_id: params[:id], setup_id: 1, )
