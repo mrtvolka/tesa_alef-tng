@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     # super
 
-    user_class = User.guess_type(params['local_user']['login'])
+    user_class = User.guess_type(params['local_user']['login'], request)
     request.params['ldap_user'] = request.params['local_user']
 
     self.resource = warden.authenticate! scope: user_class, recall: "#{controller_path}#new"
