@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
   def self.guess_type(login)
     # try to find the user in DB (LdapUser/LocalUser) otherwise use LDAP
     u = User.where(login: login.downcase).first
+    unless u.nil?
+      now = DateTime.now.to_datetime.strftime('%a, %d %b %Y %H:%M:%S')
+      logger.info '[INFO] '+ now.to_s + ' DB user ' + login + ' authorization successed'
+    end
+
     return u ? u.class.model_name.param_key.to_sym : :ldap_user
   end
 
