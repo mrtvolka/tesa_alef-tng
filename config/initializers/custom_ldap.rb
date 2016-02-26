@@ -1,5 +1,5 @@
 Devise::LDAP::Connection.class_eval do
-  # overriden method from devise_ldap_authenticatable gem for working with multiple different LDAP configs in ldap.yml
+  # overridden method from devise_ldap_authenticatable gem for working with multiple different LDAP configs in ldap.yml
   def initialize(params = {})
     ldap_configs = YAML.load(ERB.new(File.read(::Devise.ldap_config || "#{Rails.root}/config/ldap.yml")).result)[Rails.env]
     ldap_configs = ldap_configs.is_a?(Hash) ? [ldap_configs] : ldap_configs
@@ -32,6 +32,28 @@ Devise::LDAP::Connection.class_eval do
          # puts "Authentification success on " + ldap_config["host"]
          break
       end
+    end
+  end
+
+  # overridden method from devise_ldap_authenticatable gem added custom logs
+  def authorized?
+    now = DateTime.now.to_datetime.strftime('%a, %d %b %Y %H:%M:%S')
+    DeviseLdapAuthenticatable::Logger.send("Authorizing user #{dn}")
+    if !authenticated?
+      Rails.logger.warn '[WARNING] '+ now.to_s + " LDAP user #{dn} authorization failed"
+      DeviseLdapAuthenticatable::Logger.send("Not authorized because not authenticated.")
+      return false
+    elsif !in_required_groups?
+      Rails.logger.warn '[WARNING] '+ now.to_s + " LDAP user #{dn} authorization failed"
+      DeviseLdapAuthenticatable::Logger.send("Not authorized because not in required groups.")
+      return false
+    elsif !has_required_attribute?
+      Rails.logger.warn '[WARNING] '+ now.to_s + " LDAP user #{dn} authorization failed"
+      DeviseLdapAuthenticatable::Logger.send("Not authorized because does not have required attribute.")
+      return false
+    else
+      Rails.logger.info '[INFO] '+ now.to_s + " LDAP user #{dn} authorization successed"
+      return true
     end
   end
 end

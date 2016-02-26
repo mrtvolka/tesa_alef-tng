@@ -20,9 +20,14 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :setups
   has_many :exercises
 
-  def self.guess_type(login)
+  def self.guess_type(login, request)
     # try to find the user in DB (LdapUser/LocalUser) otherwise use LDAP
     u = User.where(login: login.downcase).first
+    unless u.nil?
+      now = DateTime.now.to_datetime.strftime('%a, %d %b %Y %H:%M:%S')
+      logger.info '[INFO] '+ now.to_s + ' DB user ' + login + ' authorization successed from ' + request.remote_ip
+    end
+
     return u ? u.class.model_name.param_key.to_sym : :ldap_user
   end
 
