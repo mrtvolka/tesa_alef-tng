@@ -5,12 +5,39 @@
 .exercise-general {
   font-size: 1.5rem;
   text-align: center;
+
 }
 
-.exercise-general a {
-  color: #0000FF;
+@mixin code-input {
+  @include center-block;
+  height: 2rem;
+  border: 3px solid $white;
+  @include border-radius(19px);
+  padding: 0 1em;
 }
 
-.exercise-general a:hover {
-  color: #0000AA;
+.code-text {
+  @include code-input;
+  width: 70%;
+  color: $white;
+  max-width: 300px;
+  text-align: center;
+  background-color: $dark;
+}
+
+#code-submit {
+  @include color-transition;
+  @include white-dark;
+  @include big-top-margin;
+  @include login-input;
+
+  box-sizing: content-box;
+  width: 125px;
+
+
+
+  &:hover {
+    @include red-dark;
+    border-color: $red;
+  }
 }
