@@ -132,7 +132,7 @@ class QuestionsController < ApplicationController
       lo.user_to_lo_relations << rel
     end
 
-    render :js => "window.location = '#{root_path}'"
+    render :js => "window.location = '#{weeks_path}'"
     flash[:notice] = "Test bol odovzdaný"
   end
 
