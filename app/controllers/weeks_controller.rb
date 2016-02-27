@@ -23,6 +23,12 @@ class WeeksController < ApplicationController
     @setup = Setup.take
     @weeks = @setup.weeks.order(number: :desc)
     @user = current_user
+  end
+
+  def test_list
+    @setup = Setup.take
+    @weeks = @setup.weeks.order(number: :desc)
+    @user = current_user
     exercises = Exercise.find_by_sql(["SELECT e.* FROM exercises e
                                         JOIN user_to_lo_relations u
                                         ON e.id=u.exercise_id
@@ -32,8 +38,29 @@ class WeeksController < ApplicationController
     ids = exercises.collect(&:week_id)
     @week_tests = @setup.weeks.where(id: ids).order(number: :desc)
     available_test = !Exercise.where('real_end IS NULL AND real_start < (?)',Time.current).nil?
-    if(available_test)
-      @exercise = Exercise.new
+  end
+
+  def enter_test
+    @setup = Setup.take
+    @exercise = Exercise.new
+  end
+
+  def index
+    @setup = Setup.take
+    @weeks = @setup.weeks.order(number: :desc)
+    @user = current_user
+    if @user.student?
+      # students options for root
+      available_test = Exercise.where('real_start IS NOT NULL AND real_end IS NULL').first
+      if !available_test.nil?
+        @exercise = Exercise.new
+        render :action => 'enter_test', :controller => 'weeks'
+      else
+        render :action => 'list', :controller => 'weeks'
+      end
+    else
+      #TODO: teachers and admin options for root
+      render :action => 'list', :controller => 'weeks'
     end
   end
 end

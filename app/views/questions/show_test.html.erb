@@ -1,8 +1,9 @@
-
+<div id="faux-background" class="mobile-content"></div>
 <%= render 'testnav' %>
-<hr class="test-offset not-zoomable">
-
-
+<hr class="nav-offset not-zoomable">
+<div class="question-name not-zoomable">
+</div>
+<div class="mobile-content main">
 <form method="post" action="<%= submit_test_path %>" id="test-form" class="question-form" data-remote>
 <% @sorted_los.each do |lo| %>
 <input type="hidden" name="questions[<%=lo.id%>][type]" value="<%= lo.type %>">
@@ -37,4 +38,4 @@
 
 <button class="question-button question-button-red" name="commit" value="submit_test">Odovzdaj test</button>
 </form>
-
+</div>

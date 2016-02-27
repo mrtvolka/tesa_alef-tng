@@ -55,7 +55,7 @@ var ready = (function () {
         Question.initTimeLog();
     }
 
-    if ($('#body-questions-access_test').length) {
+    if ($('#body-weeks-enter_test').length) {
         Nav.init();
         Slider.setupEvaluatorSlider();
         Question.setupForm();
@@ -65,6 +65,21 @@ var ready = (function () {
     if ($('#body-teachings-statistics').length) {
         Nav.init();
 
+    }
+
+    if ($('#body-teachings-show').length) {
+        Nav.init();
+
+    }
+
+    if ($('#body-weeks-test_list').length) {
+        Nav.init();
+
+    }
+
+    if ($('#body-weeks-index').length) {
+        Nav.init();
+        Progressbar.setupProgressbars();
     }
 });
 
