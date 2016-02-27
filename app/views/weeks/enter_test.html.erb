@@ -1,0 +1,24 @@
+<nav class="without-icons not-zoomable">
+  <%= render 'shared/user_element' %>
+  <div class="mobile-content">
+    <h2><%= @setup.name %></h2>
+    <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
+  </div>
+</nav>
+<hr class="nav-offset not-zoomable">
+
+<div class="mobile-content">
+  <% if @exercise %>
+      <div class="exercise-general">
+
+        <%= form_for @exercise , url: check_code_path do |e| %>
+            <br>
+            <%= e.label "Zadajte kód testu:"%>
+            <br>
+            <center>
+              <%= e.text_field :code, class: "code-text"%>
+              <%= e.submit "vstúpiť" , id: "code-submit" %></center>
+        <% end %>
+      </div>
+  <% end %>
+</div>

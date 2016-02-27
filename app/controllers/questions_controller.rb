@@ -83,6 +83,7 @@ class QuestionsController < ApplicationController
   # Testing
   #
   def show_test
+    @setup = Setup.take
     exercise = Exercise.find_by_code(params[:exercise_code])
     if exercise.nil? || exercise.real_start.nil? ||!exercise.real_end.nil?
       redirect_to root_path
@@ -135,21 +136,15 @@ class QuestionsController < ApplicationController
     flash[:notice] = "Test bol odovzdany"
   end
 
-  def access_test
-    @setup = Setup.take
-    @week = @setup.weeks.find(params[:week_number])
-    @exercise = Exercise.new
-  end
-
   def check_code
     @exercise = Exercise.new(exercise_code_param)
     @exercise = Exercise.find_by_code(@exercise.code)
     if(@exercise.nil?)
-      redirect_to :back
+      redirect_to :root
       flash[:notice] = "Nespravny kod!"
     elsif(!@exercise.real_end.nil?)
       # TODO: working with submitted tests
-      redirect_to :back
+      redirect_to :root
       flash[:notice] = "Test uz bol skonceny!"
     else
       @exercise = Exercise.find_by_code(@exercise.code)

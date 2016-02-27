@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   end
 
-  root to: redirect('w')
+  root to: redirect('i')
 
   devise_for :ldap_users, :local_users, skip: [:sessions]
   # the login controllers and views are shared for local and ldap users, use :local_user for routes
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   # Vypis tyzdnov z daneho setupu, napr. /PSI
-  get 'w' => 'weeks#list'
+  get 'w' => 'weeks#list', as: 'weeks'
 
     # Vypis otazok z daneho tyzdna, napr. /PSI/3
   get 'w/:week_number' => 'weeks#show'
@@ -70,10 +70,13 @@ Rails.application.routes.draw do
   get 'test/:week_number/access' => 'questions#access_answers'
 
 
-  get 'access_test/:week_number' => 'questions#access_test'
+  get 'enter_test' => 'weeks#enter_test', as: 'enter_test'
   post 'check_code' => 'questions#check_code'
 
   get 'exercises/event/refresh' => 'exercises#refresh'
   get 'exercise/statistics' => 'teachings#statistics' , as: 'statistics'
+  get 'tests' => 'weeks#test_list', as: 'tests'
+
+  get 'i' => 'weeks#index'
 
 end

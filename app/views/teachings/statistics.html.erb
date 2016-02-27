@@ -1,10 +1,12 @@
-<nav>
-  <div class="admin-nav">
-    <h2>- Stránka učiteľa</h2>
-    <%= link_to "Domov", root_path, class: 'admin-nav-button' %>
+<div id="faux-background" class="mobile-content"></div>
+<nav class="without-icons not-zoomable">
+  <%= render 'shared/user_element' %>
+  <div class="mobile-content">
+    <h2><%= @setup.name %> - štatistiky testu</h2>
+    <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
   </div>
 </nav>
-<hr class="nav-offset">
+<hr class="nav-offset not-zoomable">
 
 <div class="admin">
   <div>

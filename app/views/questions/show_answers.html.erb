@@ -1,42 +1,38 @@
-
+<div id="faux-background" class="mobile-content"></div>
 <nav class="question-nav not-zoomable">
   <%= render 'shared/user_element' %>
   <div class="mobile-content">
-    <h2>Test- odpovede</h2>
-    <%= link_to "Domov", root_path, class: 'admin-nav-button' %>
-    <a class="user-element-cta"><i class="nav-right-icons icon-user"></i></a>
+    <h2><%= @setup.name %> - hodnotenie testu</h2>
+    <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
   </div>
 </nav>
-
-<hr class="test-offset not-zoomable">
-
-
-
-  <% @sorted_los.each do |lo| %>
-      <div class="my-mobile-content main">
-        <p class="card-text">
-          <%= lo.question_text %>
-          <% unless lo.image.nil? %>
-              <%= image_tag qimages_url(@week.id,lo.id), class: 'question-image', alt: 'Obrázok' %>
-          <% end %>
-
-        <div id="question-options">
-          <% case lo.type
-               when 'SingleChoiceQuestion' %>
-              <% @question= lo%>
-              <%= render 'answer_single_q' %>
-          <% when 'MultiChoiceQuestion' %>
-              <% @question= lo%>
-              <%= render 'answer_multi_q' %>
-          <% when 'OpenQuestion' %>
-              <% @question= lo%>
-              <%= render 'answer_open_q' %>
-          <% when 'EvaluatorQuestion' %>
-              <p><b>  not working </b></p>
-          <% end %>
-        </div>
-        </p>
-      </div>
-  <% end %>
+<hr class="nav-offset not-zoomable">
+<div class="question-name not-zoomable">
+</div>
+<div class="my-mobile-content main">
+     <% @sorted_los.each do |lo| %>
+            <p class="card-text">
+              <%= lo.question_text %>
+              <% unless lo.image.nil? %>
+                  <%= image_tag qimages_url(@week.id,lo.id), class: 'question-image', alt: 'Obrázok' %>
+              <% end %>
+            <div id="question-options">
+              <% case lo.type
+                   when 'SingleChoiceQuestion' %>
+                  <% @question= lo%>
+                  <%= render 'answer_single_q' %>
+              <% when 'MultiChoiceQuestion' %>
+                  <% @question= lo%>
+                  <%= render 'answer_multi_q' %>
+              <% when 'OpenQuestion' %>
+                  <% @question= lo%>
+                  <%= render 'answer_open_q' %>
+              <% when 'EvaluatorQuestion' %>
+                  <p><b>  not working </b></p>
+              <% end %>
+            </div>
+            </p>
+      <% end %>
+</div>
 
 

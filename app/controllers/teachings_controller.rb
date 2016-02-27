@@ -11,6 +11,7 @@ class TeachingsController < ApplicationController
   end
 
   def statistics
+    @setup = Setup.take
     @chart = []
     @titles = []
     i = 0
