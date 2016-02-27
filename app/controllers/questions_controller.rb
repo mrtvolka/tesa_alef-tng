@@ -133,7 +133,7 @@ class QuestionsController < ApplicationController
     end
 
     render :js => "window.location = '#{root_path}'"
-    flash[:notice] = "Test bol odovzdany"
+    flash[:notice] = "Test bol odovzdaný"
   end
 
   def check_code
@@ -141,11 +141,11 @@ class QuestionsController < ApplicationController
     @exercise = Exercise.find_by_code(@exercise.code)
     if(@exercise.nil?)
       redirect_to :root
-      flash[:notice] = "Nespravny kod!"
+      flash[:notice] = "Nesprávny kód!"
     elsif(!@exercise.real_end.nil?)
       # TODO: working with submitted tests
       redirect_to :root
-      flash[:notice] = "Test uz bol skonceny!"
+      flash[:notice] = "Test už bol ukončený!"
     else
       @exercise = Exercise.find_by_code(@exercise.code)
       redirect_to :action => "show_test",  :exercise_code => @exercise.code

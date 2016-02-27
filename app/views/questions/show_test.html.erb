@@ -1,21 +1,21 @@
-<div id="faux-background" class="mobile-content"></div>
+<nav class="without-icons not-zoomable">
 <%= render 'testnav' %>
-<hr class="nav-offset not-zoomable">
-<div class="question-name not-zoomable">
-</div>
-<div class="mobile-content main">
+</nav>
+<hr class="test-offset not-zoomable">
 <form method="post" action="<%= submit_test_path %>" id="test-form" class="question-form" data-remote>
 <% @sorted_los.each do |lo| %>
 <input type="hidden" name="questions[<%=lo.id%>][type]" value="<%= lo.type %>">
 <input type="hidden" name="questions[<%=lo.id%>][commit]" value="<%= "send_answer" %>">
 <div class="my-mobile-content main">
   <p class="card-text">
-    <%= lo.question_text %>
+    <br>
+      <%= lo.question_text %>
     <% unless lo.image.nil? %>
         <%= image_tag qimages_url(@week.id,lo.id), class: 'question-image', alt: 'Obrázok' %>
     <% end %>
 
       <div id="question-options">
+          <br>
           <% case lo.type
                when 'SingleChoiceQuestion' %>
             <% @question= lo%>
@@ -25,12 +25,13 @@
             <%= render 'test_multi_q' %>
           <% when 'OpenQuestion' %>
             <% @question= lo%>
-            <%= render 'test_open_q' %>
+            <%= render 'test_open_q'%>
           <% when 'EvaluatorQuestion' %>
             <% @question= lo%>
             <%= render 'test_eval_q' %>
              <!--- submitting answer does not work---->
           <% end %>
+        <br>
       </div>
   </p>
 </div>
