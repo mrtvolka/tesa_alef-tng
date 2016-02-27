@@ -37,7 +37,7 @@ class TeachingsController < ApplicationController
           f.yAxis [ {:min => 0, :tickInterval=> 1, :title => nil},]
           f.legend(:enabled => false, :align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
         end
-      else
+      elsif question.type == 'OpenQuestion'
         @chart << process_open_answers(question)
       end
     end
