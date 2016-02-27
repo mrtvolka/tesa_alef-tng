@@ -49,6 +49,27 @@
   }
 }
 
+.answer-output.answer-is-incorrect {
+
+
+  & + .answer-icon {
+    color: $red;
+  }
+
+  & ~ .answer-text {
+    color: $red;
+    text-decoration: underline;
+  }
+
+  &:checked + .answer-icon {
+    color: $dark;
+  }
+
+  &:checked ~ .answer-text {
+    color: $dark;
+    text-decoration: line-through;
+  }
+}
 .answer-input.answer-is-incorrect {
 
 

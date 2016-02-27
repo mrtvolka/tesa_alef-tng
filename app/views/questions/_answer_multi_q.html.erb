@@ -1,7 +1,7 @@
 <%@answers= @question.answers %>
 <% @answers.each do |a| %>
-    <% interaction= @student_answers.where("learning_object_id = ?", @question.id).first.interaction.to_s%>
-    <label style="background-color: <%= a.is_correct ? "aquamarine" : "lightcoral" %>"><input type="checkbox" name="answer<%= a.id%>" <%= interaction.eql?("{\"#{a.id }\"=>\"#{a.id}\"}") ? "checked=true":"" %> disabled="true" class="answer-output">
+    <% interaction= (@student_answers.where("learning_object_id = ?", @question.id).first.interaction.to_s).include?("\"#{a.id }\"=>\"#{a.id}\"")%>
+    <label><input type="checkbox" name="answer<%= a.id%>" <%= interaction ? "checked=true":"" %> disabled="true" class="answer-output <%= (a.is_correct && interaction)||(!a.is_correct && !interaction) ? "answer-is-correct" : "answer-is-incorrect"%>">
       <i class="icon-checkbox answer-icon"></i>
       <div class="answer-text"><%= a.answer_text %></div></label>
 <% end %>
