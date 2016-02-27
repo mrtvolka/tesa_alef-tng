@@ -12,22 +12,27 @@ class TeachingsController < ApplicationController
 
   def statistics
     @chart = []
-
+    @titles = []
     i = 0
-    submitted_answer = UserToLoRelation.select(:learning_object_id).where("exercise_id = ?", params[:id]).group(:learning_object_id)
+    submitted_answer = UserToLoRelation.select(:learning_object_id).where("exercise_id = (?)", params[:id]).group(:learning_object_id)
     submitted_answer.each do |answer|
-      questions = LearningObject.where("id = ? AND is_test_question = TRUE", answer.learning_object_id)
+      questions = LearningObject.where("id = (?) AND is_test_question = TRUE", answer.learning_object_id)
       question = questions[0]
+      @titles << question.question_text
       if question.type == 'SingleChoiceQuestion' or question.type == 'MultiChoiceQuestion'
         @chart << LazyHighCharts::HighChart.new('graph') do |f|
-          answers = Answer.where(learning_object_id: question.id )
+          answers = Answer.where(learning_object_id: question.id)
           legend = process_legend(question, answers)
+          if question.type == 'SingleChoiceQuestion'
+            data = process_single_choice_answers(question, legend)
+          else
+            data = process_multi_choice_answers(question, legend)
+          end
           i+=1
-          f.title(:text => question.question_text, :order => i)
           f.chart({:defaultSeriesType=>"bar"})
           f.colors(["#D64541"])
-          f.xAxis(:categories => extract_names(legend)) # , :labels => {:style => ""} # clear style
-          f.series(:name => "Počet odpovedí", :yAxis => 0, :data => process_choice_answers(question, legend))
+          f.xAxis(:categories => extract_names(legend), :labels => {:style => ""}) # clear style
+          f.series(:name => "Počet odpovedí", :yAxis => 0, :data => data)
           f.yAxis [ {:min => 0, :tickInterval=> 1, :title => nil},]
           f.legend(:enabled => false, :align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
         end
@@ -53,13 +58,30 @@ class TeachingsController < ApplicationController
     return names
   end
 
-  def process_choice_answers(question, legend)
+  def process_single_choice_answers(question, legend)
     result = Hash.new
     legend.each do |key|
       result[key[0]] =  0 ;
     end
 
-    answers = UserToLoRelation.where(learning_object_id: question.id )
+    answers = UserToLoRelation.where(learning_object_id: question.id, exercise_id: params[:id])
+    answers.each do |answer|
+      result[answer.interaction.to_i] +=1
+    end
+    values = []
+    result.each do |element|
+      values <<  element[1] ;
+    end
+    return values
+  end
+
+  def process_multi_choice_answers(question, legend)
+    result = Hash.new
+    legend.each do |key|
+      result[key[0]] =  0 ;
+    end
+
+    answers = UserToLoRelation.where(learning_object_id: question.id, exercise_id: params[:id])
     answers.each do |answer|
       choice = JSON(answer.interaction.gsub('=>', ':'));
       choice.each do |i|
@@ -70,7 +92,6 @@ class TeachingsController < ApplicationController
     result.each do |element|
       values <<  element[1] ;
     end
-
     return values
   end
 
@@ -79,7 +100,7 @@ class TeachingsController < ApplicationController
     result[0] = question.question_text
     result[1] = Hash.new
 
-    answers = UserToLoRelation.where(learning_object_id: question.id )
+    answers = UserToLoRelation.where(learning_object_id: question.id, exercise_id: params[:id])
     answers.each do |answer|
       choice = ActiveSupport::Inflector.transliterate(answer.submitted_text).downcase.gsub(/\W/, ' ').strip
       if result[1][choice].nil?
