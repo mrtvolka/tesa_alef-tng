@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mathjax 'mathjax'
+
   get 'exercises/show'
 
   get 'exercises/edit'

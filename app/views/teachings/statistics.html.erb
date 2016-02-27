@@ -7,25 +7,26 @@
 <hr class="nav-offset">
 
 <div class="admin">
-  <ul class="nav nav-pills">
-    <% @chart.each.with_index do |chart, index| %>
-      <li class="<%= 'active' unless index > 0 %>" id="week-toggle-testing">
-        <a data-toggle="tab" href="#<%=chart.__id__.to_s %>">
-        <%= "Otázka " + (index+1).to_s %>
-        </a>
-      </li>
-    <% end %>
-  </ul>
+  <div>
+      <ul class="nav nav-pills">
+        <% @chart.each.with_index do |chart, index| %>
+          <li class="<%= 'active' unless index > 0 %>" id="week-toggle-testing">
+            <a data-toggle="tab" href="#<%=index.to_s%>">
+            <%= "Otázka " + (index+1).to_s %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <hr>
   <div class="tab-content">
     <% @chart.each.with_index do |chart,index| %>
-        <div id="<%=chart.__id__.to_s %>" class="chart tab-pane fade  <%= 'in active' unless index > 0 %>">
+        <div id="<%=index.to_s%>" class=" tab-pane fade  <%= 'in active' unless index > 0 %>">
+          <div class="graph-title"> <%= mathjax_tag %><%= @titles[index] %></div>
           <% if chart.instance_of?(LazyHighCharts::HighChart)%>
-              <%= high_chart(chart.__id__.to_s, chart) %>
+              <div class="chart"><%= high_chart(chart.__id__.to_s, chart) %></div>
           <% else %>
-              <div class="highcharts-container" id="highcharts-8" style="position: relative; overflow: hidden; min-width: 600px; min-height: 200px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                <div class="graph-title">
-                  <%=  chart[0] %>
-                </div>
+              <div class="highcharts-container" id="highcharts-8">
                 <table class="tg" style="margin: 0 auto;text-align: center";>
                   <tr>
                     <th class="tg-yw4l">Počet</th>
@@ -38,11 +39,12 @@
                       </tr>
                   <% end %>
                 </table>
-                </div>
+              </div>
           <% end %>
         </div>
     <% end %>
   </div>
 </div>
-
-
+<script type="text/javascript">
+    if (window.MathJax){ MathJax.Hub.Queue(["Typeset",MathJax.Hub]);}
+</script>

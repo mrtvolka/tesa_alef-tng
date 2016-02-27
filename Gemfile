@@ -87,5 +87,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'lazy_high_charts'
   gem 'activesupport'
+  gem 'mathjax-rails'
 end
 

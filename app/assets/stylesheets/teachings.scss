@@ -3,6 +3,7 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  overflow: auto;
 }
 .nav > li {
   position: relative;
@@ -214,13 +215,21 @@
 .highcharts-axis-labels text{
 }
 
-.highcharts-container .graph-title{
-  margin-top:10px;
-  margin-bottom:10px;
-  font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+.highcharts-container{
+  position: relative;
+  overflow: hidden;
+  min-width: 600px;
+  min-height: 200px;
+  text-align: left;
+  line-height: normal;
+  z-index: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+.graph-title{
+  margin-top:2%;
+  margin-bottom:1%;
+  @include big-font;
   text-align:center;
-  color:#274b6d;
-  font-size:16px;
-  fill:#274b6d;
-  width:536px;
 }
