@@ -152,34 +152,29 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def access_answers
-
+  def show_answers
     week= Week.find_by_number(params[:week_number])
     if (week.nil?)
-      redirect_to root_path
+      redirect_to :back
       flash[:notice] = "Neznámy týždeň!"
       return
     end
     exercise= Exercise.joins('JOIN user_to_lo_relations u ON exercises.id=u.exercise_id').where("week_id= ? AND u.user_id = ?",week.id, current_user.id).take
     if (exercise.nil?)
-      redirect_to root_path
+      redirect_to :back
       flash[:notice] = "Neznáme cvičenie!"
       return
     end
-    if (((exercise.real_end+exercise.cooldown_time_amount*60) <=> Time.now)!=-1)
-      redirect_to root_path
-      flash[:notice] = "Odpovede ešte nie sú dostupné!"
-      return
-    end
-    redirect_to :action => "show_answers",  :exercise_id => exercise.id
-  end
-
-  def show_answers
-    exercise = Exercise.find(params[:exercise_id])
 
     if exercise.nil? || exercise.real_start.nil? ||exercise.real_end.nil?
-      redirect_to root_path
+      redirect_to :back
       flash[:notice] = "Test nebol ešte ukončený!"
+      return
+    end
+
+    if (((exercise.real_end+exercise.cooldown_time_amount*60) <=> Time.now)!=-1)
+      redirect_to :back
+      flash[:notice] = "Odpovede ešte nie sú dostupné!"
       return
     end
 
