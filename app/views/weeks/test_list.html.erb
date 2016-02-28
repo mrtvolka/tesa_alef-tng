@@ -11,7 +11,8 @@
 
 <div class="mobile-content main">
   <% if !@week_tests.any? %>
-      Žiadne odovzdané testy!
+      <br>
+      <center><h1><i>Žiadne odovzdané testy!</i></h1></center>
   <% end %>
   <% @week_tests.each do |w| %>
       <a href="<%= url_for controller: 'questions', action: 'access_answers', week_number: w.number %>"
