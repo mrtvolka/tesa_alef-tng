@@ -60,10 +60,6 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -76,5 +72,36 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #Mail
+  #Determines whether deliveries are actually carried out.
+  config.action_mailer.perform_deliveries = true
+
+  # Ignore bad email addresses and do not raise email delivery errors.
+  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
+  config.action_mailer.raise_delivery_errors = true
+
+  # Defines a delivery method.
+  config.action_mailer.delivery_method = :smtp
+  # sendmail delivery method defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   location: '/usr/sbin/sendmail',
+  #   arguments: '-i -t'
+  # }
+
+  #SMTP config
+  config.action_mailer.smtp_settings = {
+    address:              'mail.fiit.stuba.sk',
+    port:                 25,
+    domain:               'stuba.sk',
+    user_name:            '<aislogin>',
+    password:             '<aispassword>',
+    authentication:       'login',
+    enable_starttls_auto: true  }
+  
+  #Alows you to set default values for the mail method options
+  config.action_mailer.default_options = {
+    from: 'team17@fiit.stuba.sk', 
+    to: 'team17@fiit.stuba.sk' }
 
 end

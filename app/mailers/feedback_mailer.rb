@@ -9,6 +9,6 @@ class FeedbackMailer < ApplicationMailer
                                   content: @learning_object.image}
       end
     end
-    mail(to: 'alef@fiit.stuba.sk', subject: "[ALEF:TNG] New msg: #{@feedback.url_path}")
+    mail(subject: "[ALEF:TNG] New msg: #{@feedback.url_path}")
   end
 end
