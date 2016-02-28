@@ -166,6 +166,11 @@ class QuestionsController < ApplicationController
       flash[:notice] = "Neznáme cvičenie!"
       return
     end
+    if (((exercise.real_end+exercise.cooldown_time_amount*60) <=> Time.now)!=-1)
+      redirect_to root_path
+      flash[:notice] = "Odpovede ešte nie sú dostupné!"
+      return
+    end
     redirect_to :action => "show_answers",  :exercise_id => exercise.id
   end
 
