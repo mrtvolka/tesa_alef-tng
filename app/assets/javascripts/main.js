@@ -58,8 +58,6 @@ var ready = (function () {
     if ($('#body-weeks-enter_test').length) {
         Nav.init();
         Slider.setupEvaluatorSlider();
-        Question.setupForm();
-        Question.initTimeLog();
     }
 
     if ($('#body-teachings-statistics').length) {
