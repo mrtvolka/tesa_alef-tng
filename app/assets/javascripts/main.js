@@ -46,6 +46,7 @@ var ready = (function () {
 
     if ($('#body-exercises-show').length) {
         Nav.init();
+        Refresh.init();
     }
 
     if ($('#body-questions-show_test').length) {

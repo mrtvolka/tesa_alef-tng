@@ -17,32 +17,13 @@
           <b>Test práve prebieha.</b><br>
           Kód testu: <%= @exercise.code %><br>
           Link: /test/<%= @exercise.code %></a>
-          <div id="counter">
+          <div id="counter<%=params[:id]%>">
             <%= render partial: 'counter', :locals => { id: params[:id], :data => 0} %>
           </div>
           <%= form_for @exercise do |f| %>
               <%= f.hidden_field :real_end, :value => Time.current %>
-              <center><%= f.submit "Ukončiť", :onsubmit => "clearInterval(myId)"%></center>
+              <center><%= f.submit "Ukončiť"%></center>
           <%end%>
-          <script>
-              var myId = null;
-              $(document).ready(function () {
-                  myId = setInterval(refreshPartial, 1000)
-              });
-              /*$(document).on("click",function() {
-               if (myId) {
-               clearInterval(myId);
-               myId = null;
-               }
-               });*/
-              // calls action refreshing the partial
-              function refreshPartial() {
-                  $.ajax({
-                      url: "event/refresh",
-                      data: { id: <%= params[:id] %> } ,
-                  })
-              }
-          </script>
       <% else %>
           <b>Test bol už ukončený</b>
           <%= form_for @exercise do |f| %>

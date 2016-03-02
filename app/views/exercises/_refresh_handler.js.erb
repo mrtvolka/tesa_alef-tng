@@ -1,0 +1,17 @@
+var myId = null;
+
+$(document).ready(function () {
+    myId = setInterval(refreshPartial, 1000)
+});
+
+// calls action refreshing the partial
+function refreshPartial() {
+    if ($('#counter<%= params[:id] %>').length > 0) {
+        $.ajax({
+            url: "event/refresh",
+            data: {id: <%= params[:id] %>},
+        });
+    } else {
+        clearInterval(myId);
+    }
+}
