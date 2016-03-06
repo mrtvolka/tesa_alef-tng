@@ -23,6 +23,8 @@ class ExercisesController < ApplicationController
   def update
     if(params[:stats])
       redirect_to statistics_path(id: @exercise.id)
+    elsif (params[:results])
+      redirect_to results_path(id: @exercise.id)
     else
       if(!@exercise.real_start)
         @exercise.real_start = Time.current
@@ -38,6 +40,14 @@ class ExercisesController < ApplicationController
         end
       end
     end
+
+  end
+
+  def results
+
+    @setup= Setup.take
+    @exercise = Exercise.find_by_id(params[:id])
+
 
   end
 

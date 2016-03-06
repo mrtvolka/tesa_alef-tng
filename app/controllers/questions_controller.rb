@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  authorize_resource :class => false , :only => [:submit_test,:show_test,:access_answers, :show_answers]
+  authorize_resource :class => false , :only => [:submit_test,:show_test]
   def show
     @user = current_user
     user_id = @user.id
@@ -161,7 +161,13 @@ class QuestionsController < ApplicationController
     end
     @week = @exercise.week
     @setup= Setup.take
-    @user = current_user
+
+    if(current_user.role? != 'student')
+      @user = User.find(params[:user_id])
+    else
+      @user = current_user
+    end
+
 
     learning_objects = @week.learning_objects.all
     RecommenderSystem::TesaSimpleRecommender.setup(@user,@week.id,@exercise.code)

@@ -66,7 +66,7 @@ Rails.application.routes.draw do
   get 'test/:exercise_code' => 'questions#show_test'
   post 'test/:exercise_code/submit' => 'questions#submit_test', as: 'submit_test'
 
-  get 'test/:exercise_code/answers' => 'questions#show_answers'
+  get 'test/:exercise_code/answers' => 'questions#show_answers', as: 'student_results'
 
 
   get 'enter_test' => 'weeks#enter_test', as: 'enter_test'
@@ -75,6 +75,7 @@ Rails.application.routes.draw do
   get 'exercises/event/refresh' => 'exercises#refresh'
   get 'exercise/statistics' => 'teachings#statistics' , as: 'statistics'
   get 'tests' => 'weeks#test_list', as: 'tests'
+  get  'exercise/results' => 'exercises#results' , as: 'results'
 
   get 'i' => 'weeks#index'
 

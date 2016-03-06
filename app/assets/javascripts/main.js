@@ -71,6 +71,11 @@ var ready = (function () {
 
     }
 
+    if ($('#body-exercises-results').length) {
+        Nav.init();
+
+    }
+
     if ($('#body-weeks-test_list').length) {
         Nav.init();
 

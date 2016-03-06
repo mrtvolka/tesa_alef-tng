@@ -10,6 +10,7 @@
     <th class="tg-yw4l">Meno študenta</th>
     <th class="tg-yw4l">Ais id</th>
     <th class="tg-yw4l">Správnych odpovedí</th>
+    <th class="tg-yw4l">Výsledky</th>
 
   </tr>
 
@@ -27,6 +28,7 @@
         end %>
         </td>
         <td> <%=@exercise.user_to_lo_relations.where("user_id=? AND type= 'UserSolvedLoRelation'",c.user_id).count %></td>
+        <td> <%= link_to "Prezrieť test" , student_results_path(exercise_code: @exercise.code, user_id: c.user.id )%></td>
     </tr>
   <% end %>
 
