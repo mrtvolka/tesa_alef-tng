@@ -41,3 +41,32 @@
     border-color: $red;
   }
 }
+
+#teacher-submit {
+  @include color-transition;
+  @include white-dark;
+  @include big-top-margin;
+  @include code-input;
+
+  box-sizing: content-box;
+  width: auto;
+  margin-top: 20px;
+
+
+  &:hover {
+    @include red-dark;
+    border-color: $red;
+  }
+}
+
+.title_exercises{
+  font-size: 200%;
+}
+
+.title_small_exercises{
+  font-size: 150%;
+}
+
+.title_smaller_exercises{
+  font-size: 20%;
+}

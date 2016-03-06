@@ -1,4 +1,3 @@
-<div class="mobile-content"></div>
 <nav class="without-icons not-zoomable">
   <%= render 'shared/user_element' %>
   <div class="mobile-content">
@@ -7,9 +6,12 @@
   </div>
 </nav>
 <hr class="nav-offset not-zoomable">
+<br>
+<div class="exercise-general">
 
-<div class="mobile-content main">
-  <h3>Zoznam cvičení</h3>
+<div class="my-mobile-content main">
+  <br>
+  <center><b>Zoznam cvičení</b></center>
 
   <style type="text/css">
       .tg  {border-collapse:collapse;border-spacing:0;}
@@ -17,7 +19,7 @@
       .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 10px 10px 10px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
       .tg .tg-yw4l{vertical-align:top}
   </style>
-
+  <center>
   <table class="tg">
     <tr>
       <th class="tg-yw4l">Týždeň</th>
@@ -79,9 +81,11 @@
                 <% end %>
 
           </td>
-          <td class="tg-yw4l"><%= link_to 'Vstúpiť', exercises_show_path(:id => c.id) %><%=  if (!c.real_start && !c.real_end)  then  link_to ' / Spustiť', exercises_show_path(:id => c.id, :real_start=> Time.current) end %></td>
+          <td class="tg-yw4l"><%=  if (!c.real_start && !c.real_end)  then  link_to 'Spustiť', exercises_show_path(:id => c.id, :real_start=> Time.current) else link_to 'Vstúpiť', exercises_show_path(:id => c.id) end %></td>
         </tr>
     <% end %>
   </table>
-
+</center>
+  <br>
 </div>
+  </div>

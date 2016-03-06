@@ -168,7 +168,7 @@ class QuestionsController < ApplicationController
 
     if exercise.nil? || exercise.real_start.nil? ||exercise.real_end.nil?
       redirect_to :back
-      flash[:notice] = "Test nebol ešte ukončený!"
+      flash[:notice] = "Test ešte nebol ukončený!"
       return
     end
 

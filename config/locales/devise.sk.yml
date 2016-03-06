@@ -54,6 +54,10 @@ sk:
       send_instructions: O niekoľko minút obdržíte email s inštrukciami ako odomknúť váš účet.
       send_paranoid_instructions: Ak váš účet existuje, o niekoľko minút obdržíte email s inštrukciami ako ho odomknúť.
       unlocked: Váš účet bol úspešne odomknutý. Prosím prihláste sa, aby ste mohli pokračovať.
+    questions:
+      wrong_code: Nesprávny kód!
+      test_ended: Test už bol ukončený!
+      test_send: Test bol odovzdaný!
   errors:
     messages:
       already_confirmed: bol už potvrdený, skúste sa prihlásiť
