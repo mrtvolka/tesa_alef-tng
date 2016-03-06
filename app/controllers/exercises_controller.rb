@@ -1,6 +1,7 @@
 class ExercisesController < ApplicationController
   load_and_authorize_resource
   def show
+    gon.exercise_id = params[:id]
     @setup= Setup.take
     @exercise = Exercise.find_by_id(params[:id])
 

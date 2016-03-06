@@ -1,5 +1,9 @@
 <nav class="without-icons not-zoomable">
-<%= render 'testnav' %>
+  <%= render 'shared/user_element' %>
+  <div class="mobile-content">
+    <h2><%= @setup.name %> - test</h2>
+    <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
+  </div>
 </nav>
 <hr class="test-offset not-zoomable">
 <form method="post" action="<%= submit_test_path %>" id="test-form" class="question-form" data-remote>

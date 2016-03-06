@@ -46,6 +46,7 @@ var ready = (function () {
 
     if ($('#body-exercises-show').length) {
         Nav.init();
+        Refresh.init();
     }
 
     if ($('#body-questions-show_test').length) {
@@ -58,8 +59,6 @@ var ready = (function () {
     if ($('#body-weeks-enter_test').length) {
         Nav.init();
         Slider.setupEvaluatorSlider();
-        Question.setupForm();
-        Question.initTimeLog();
     }
 
     if ($('#body-teachings-statistics').length) {

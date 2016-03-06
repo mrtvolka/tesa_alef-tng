@@ -25,6 +25,7 @@
       <th class="tg-yw4l">Týždeň</th>
       <th class="tg-yw4l">Deň</th>
       <th class="tg-yw4l">Čas<br></th>
+      <% if current_user.administrator? %><th class="tg-yw4l">Cvičiaci</th><% end%>
       <th class="tg-yw4l">Stav<br></th>
       <th class="tg-yw4l">Štart/Výsledky</th>
     </tr>
@@ -36,19 +37,19 @@
     %>
     <% @exercises.each do |c| %>
         <% if c.week.number < @actual_week.number-1  && !ab %> <%# all other weeks before%>
-            <tr> <td colspan="5">  <a  class="show_hidden" name="1,<%= @actual_week.number-2%>">Zobraz ostatné predchádzajúce týždne</a></td></tr>
+            <tr> <td colspan="6">  <a  class="show_hidden" name="1,<%= @actual_week.number-2%>">Zobraz ostatné predchádzajúce týždne</a></td></tr>
             <% ab= true%>
         <% end%>
         <% if c.week.number  == @actual_week.number-1  && !wb %> <%# one week before %>
-            <tr> <td colspan="5">  <a  class="show_hidden" name="<%= c.week.number%>,<%= c.week.number%>">Zobraz posledný týždeň</a></td></tr>
+            <tr> <td colspan="6">  <a  class="show_hidden" name="<%= c.week.number%>,<%= c.week.number%>">Zobraz posledný týždeň</a></td></tr>
             <% wb= true%>
         <% end%>
         <% if c.week.number == @actual_week.number+1  && !wa %> <%# one week after %>
-            <tr> <td colspan="5">  <a  class="show_hidden" name="<%= c.week.number%>,<%= c.week.number%>">Zobraz nadchádzajúci týždeň</a></td></tr>
+            <tr> <td colspan="6">  <a  class="show_hidden" name="<%= c.week.number%>,<%= c.week.number%>">Zobraz nadchádzajúci týždeň</a></td></tr>
             <% wa= true%>
         <% end%>
         <% if c.week.number > @actual_week.number+1  && !aa %> <%# all other weeks after %>
-            <tr> <td colspan="5">  <a  class="show_hidden" name="<%= @actual_week.number+2%>,<%= 13%>">Zobraz ostatné nadchádzajúce týždne</a></td></tr>
+            <tr> <td colspan="6">  <a  class="show_hidden" name="<%= @actual_week.number+2%>,<%= 13%>">Zobraz ostatné nadchádzajúce týždne</a></td></tr>
             <% aa= true%>
         <% end%>
         <tr class="hiddenBlock" id= "<%= c.week.number%>">
@@ -73,6 +74,7 @@
           </td>
 
           <td class="tg-yw4l"><%= c.start.strftime("%H:%M") %></td>
+          <% if current_user.administrator? %><td class="tg-yw4l"><%= c.user.first_name + " " + c.user.last_name %></td><% end%>
           <td class="tg-yw4l">
 
             <% if c.real_start && !c.real_end %> Prebieha

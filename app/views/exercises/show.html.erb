@@ -6,6 +6,7 @@
 </div>
 <br>
     <div class="exercise-general">
+<<<<<<< HEAD
       <% if !@exercise.real_end %>
           <div class="my-mobile-content main">
             <br>
@@ -23,25 +24,6 @@
               <%= f.hidden_field :real_end, :value => Time.current %>
               <%= f.submit "Ukončiť", :onsubmit => "clearInterval(myId)", id:"teacher-submit"%>
           <%end%>
-          <script>
-              var myId = null;
-              $(document).ready(function () {
-                  myId = setInterval(refreshPartial, 1000)
-              });
-              /*$(document).on("click",function() {
-               if (myId) {
-               clearInterval(myId);
-               myId = null;
-               }
-               });*/
-              // calls action refreshing the partial
-              function refreshPartial() {
-                  $.ajax({
-                      url: "event/refresh",
-                      data: { id: <%= params[:id] %> } ,
-                  })
-              }
-          </script>
       <% else %>
           <div class="my-mobile-content main">
             <br>

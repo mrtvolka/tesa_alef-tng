@@ -21,12 +21,9 @@
         <%= link_to raw("<i class='icon-table'></i>Učenie"), teaching_path, class: 'user-panel-button' %>
     <% end %>
     <% if current_user.student? %>
-        <% if @exercise %>
-            <%= link_to raw("<i class='icon-graduation-cap'></i>Učenie"), weeks_path, class: 'user-panel-button' %>
-        <% else %>
-            <%= link_to raw("<i class='icon-play'></i>Spustiť test"), enter_test_path, class: 'user-panel-button' %>
-        <% end %>
-        <%= link_to raw("<i class='icon-history'></i>Odovzdané testy"), tests_path, class: 'user-panel-button' %>
+        <%= link_to raw("<i class='icon-graduation-cap'></i>Učenie"), weeks_path, class: 'user-panel-button'+is_active_page(@weeks, controller_name+"/"+action_name) %>
+        <%= link_to raw("<i class='icon-play'></i>Spustiť test"), enter_test_path, class: 'user-panel-button'+is_active_page(@exercise, controller_name+"/"+action_name) %>
+        <%= link_to raw("<i class='icon-history'></i>Odovzdané testy"), tests_path, class: 'user-panel-button'+is_active_page(@exercises, controller_name+"/"+action_name) %>
     <% end %>
     <a class="user-panel-button" id="contact-btn"><i class="icon-mail"></i>Spätná väzba</a>
     <%= link_to raw("<i class='icon-logout'></i>Odhlásiť"), destroy_user_session_path, :method => :delete, class: 'user-panel-button' %>

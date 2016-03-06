@@ -153,43 +153,29 @@ class QuestionsController < ApplicationController
   end
 
   def show_answers
-    week= Week.find_by_number(params[:week_number])
-    if (week.nil?)
-      redirect_to :back
-      flash[:notice] = "Neznámy týždeň!"
-      return
-    end
-    exercise= Exercise.joins('JOIN user_to_lo_relations u ON exercises.id=u.exercise_id').where("week_id= ? AND u.user_id = ?",week.id, current_user.id).take
-    if (exercise.nil?)
-      redirect_to :back
-      flash[:notice] = "Neznáme cvičenie!"
-      return
-    end
-
-    if exercise.nil? || exercise.real_start.nil? ||exercise.real_end.nil?
-      redirect_to :back
-      flash[:notice] = "Test ešte nebol ukončený!"
-      return
-    end
-
-    if (((exercise.real_end+exercise.cooldown_time_amount*60) <=> Time.now)!=-1)
+    @exercise = Exercise.find_by_code(params[:exercise_code])
+    if @exercise.unavailable_answers?
       redirect_to :back
       flash[:notice] = "Odpovede ešte nie sú dostupné!"
       return
     end
-
-    @week = exercise.week
+    @week = @exercise.week
     @setup= Setup.take
+    @user = current_user
 
-    learning_objects = @week.learning_objects.all.distinct
-    RecommenderSystem::TesaSimpleRecommender.setup(current_user,@week.id,exercise.code)
+    learning_objects = @week.learning_objects.all
+    RecommenderSystem::TesaSimpleRecommender.setup(@user,@week.id,@exercise.code)
     recommendations = RecommenderSystem::TesaSimpleRecommender.new.get_list
 
     @sorted_los = Array.new
     recommendations.each do |key, value|
       @sorted_los << learning_objects.find {|l| l.id == key}
     end
-    @student_answers= UserToLoRelation.where("user_id = ? AND exercise_id = ?", current_user.id, exercise.id)
+    @student_answers= UserToLoRelation.where("user_id = ? AND exercise_id = ?", @user.id, @exercise.id)
+    prev_answer = UserToLoRelation.where("id < ? AND user_id = ? AND exercise_id IS NOT NULL",@student_answers.first.id, @user.id).last
+    next_answer = UserToLoRelation.where("id > ? AND user_id = ? AND exercise_id IS NOT NULL",@student_answers.last.id, @user.id).first
+    @previous_test = prev_answer.nil? ? nil : prev_answer.exercise
+    @next_test = next_answer.nil? ? nil : next_answer.exercise
   end
 
   private
