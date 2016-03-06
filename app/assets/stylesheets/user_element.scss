@@ -85,3 +85,26 @@
     margin: 1rem 1rem 0 0;
   }
 }
+
+.user-panel-button-inactive {
+  display: block;
+  padding: 0.5rem 1rem;
+  @include medium-font;
+  border-bottom: 1px solid $madison;
+  float: left;
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  pointer-events: none;
+  cursor: default;
+  background-color: $madison;
+
+  i {
+    display: inline-block;
+    padding-right: 1.5rem;
+    width: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    line-height: inherit;
+  }
+}

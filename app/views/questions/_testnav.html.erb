@@ -1,7 +1,24 @@
 <nav class="question-nav not-zoomable">
   <%= render 'shared/user_element' %>
   <div class="mobile-content">
-    <h2><%= @setup.name %> - test</h2>
+    <% if @previous_test == nil %>
+        <i class="icon-left disabled"></i>
+    <% else %>
+        <a href="<%=
+            url_for :controller => 'questions', :action => 'show_answers', :exercise_code => @previous_test.code
+        %>"><i class="icon-left"></i></a>
+    <% end %>
+    <% if @next_test == nil %>
+        <i class="nav-right-icons icon-right disabled"></i>
+    <% else %>
+        <a href="<%=
+            url_for :controller => 'questions', :action => 'show_answers', :exercise_code => @next_test.code
+        %>"><i class="nav-right-icons icon-right"></i></a>
+    <% end %>
+    <a href="<%=
+        url_for :controller => 'weeks', :action => 'test_list'
+    %>"><i class="nav-right-icons icon-level-up"></i></a>
+    <h2><%= @setup.name %> - hodnotenie testu</h2>
     <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
   </div>
 </nav>
