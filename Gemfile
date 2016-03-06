@@ -67,6 +67,15 @@ gem 'rails-i18n'
 # Reoccuring tasks
 gem 'whenever', :require => false
 
+# Math tex
+gem 'mathjax-rails'
+
+# Charts
+gem 'lazy_high_charts'
+
+# Support
+gem 'activesupport'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'  # disabled for it interferes with RubyMine's debugger
@@ -85,8 +94,5 @@ group :development, :test do
   gem 'capistrano-passenger'
 
   gem 'factory_girl_rails'
-  gem 'lazy_high_charts'
-  gem 'activesupport'
-  gem 'mathjax-rails'
 end
 
