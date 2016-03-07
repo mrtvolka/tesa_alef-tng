@@ -14,7 +14,7 @@
               <div class="title_smaller_exercises"><br></div>
           <b><%= url_for :action => 'show_test', :controller => 'questions', :exercise_code => @exercise.code , :only_path => false %></b></a>
               <div class="title_smaller_exercises"><br></div>
-          <div id="counter">
+          <div id="counter<%= params[:id] %>">
             <%= render partial: 'counter', :locals => { id: params[:id], :data => 0} %>
           </div>
           <br></div>

@@ -22,6 +22,12 @@ var Question = {
             this.disableForm();
             this.showSolution(gon.solution);
         }
+        if (window.MathJax){
+            MathJax.Hub.Config({
+                menuSettings: { CHTMLpreview: false }
+            });
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        }
     },
 
     disableForm : function() {

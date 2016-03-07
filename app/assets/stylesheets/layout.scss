@@ -38,3 +38,8 @@ hr {
   display: block; height: 1px;
   border: 0; border-top: 1px solid $gray;
 }
+
+.answer-text .MathJax_SVG_Display{
+  text-align: left !important;
+  margin: 0px !important;
+}

@@ -1,5 +1,5 @@
 <%@answers= @question.answers %>
-<div class="question-text">"<%= @answers.first.answer_text %>" Súhlasíte s touto odpoveďou?</div>
+<div class="question-text">"<%= mathjax_tag %><%= @answers.first.answer_text %>" Súhlasíte s touto odpoveďou?</div>
 
 <div id="evaluator-slider-container">
   <div id="evaluator-slider"></div>
