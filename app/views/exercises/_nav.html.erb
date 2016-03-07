@@ -3,7 +3,7 @@
   <div class="mobile-content">
     <a href="<%=url_for :controller => 'teachings', :action => 'show' %>"><i class="nav-right-icons icon-level-up"></i></a>
     <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
-    <h2><%= Week.find_by_id(@exercise.week_id).number %>. týždeň - Prednáška <%= show_day_of_week(@exercise.start)%> o
+    <h2><%= Week.find_by_id(@exercise.week_id).number %>. týždeň - Termín <%= show_day_of_week(@exercise.start)%> o
       <%= @exercise.start.strftime('%H:%M') %></h2>
   </div>
 </nav>
