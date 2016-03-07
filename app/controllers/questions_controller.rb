@@ -154,7 +154,7 @@ class QuestionsController < ApplicationController
 
   def show_answers
     @exercise = Exercise.find_by_code(params[:exercise_code])
-    if @exercise.unavailable_answers?
+    if @exercise.unavailable_answers?(current_user)
       redirect_to :back
       flash[:notice] = "Odpovede ešte nie sú dostupné!"
       return
@@ -162,7 +162,7 @@ class QuestionsController < ApplicationController
     @week = @exercise.week
     @setup= Setup.take
 
-    if(current_user.role? != 'student')
+    if(!current_user.student?)
       @user = User.find(params[:user_id])
     else
       @user = current_user

@@ -17,7 +17,7 @@
   <% @exercises.each do |e| %>
       <a href="<%= url_for controller: 'questions', action: 'show_answers', exercise_code: e.code %>"
          class="card <%= 'week-current' if e.week.actual? %>">
-        <h3 class="card-header"><%= e.week.number %>. týždeň - TEST<%= '(nedostupný)' if e.unavailable_answers? %><date class="week-date"><%=
+        <h3 class="card-header"><%= e.week.number %>. týždeň - TEST<%= '(nedostupný)' if e.unavailable_answers?(current_user) %><date class="week-date"><%=
             e.week.start_at.strftime("%-d.%-m.")  %> - <%= e.week.end_at.strftime("%-d.%-m.%Y") %></date></h3>
       </a>
   <% end %>
