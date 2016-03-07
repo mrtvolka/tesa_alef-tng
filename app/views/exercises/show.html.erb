@@ -12,7 +12,7 @@
             <div class="title_exercises"><b>Test práve prebieha</b></div><br>
             <div class="title_small_exercises"> Kód testu: <b><%= @exercise.code %></b><br>
               <div class="title_smaller_exercises"><br></div>
-          <b>https://tesa.fiit.stuba.sk/aza/test/<%= @exercise.code %></b></a>
+          <b><%= url_for :action => 'show_test', :controller => 'questions', :exercise_code => @exercise.code , :only_path => false %></b></a>
               <div class="title_smaller_exercises"><br></div>
           <div id="counter">
             <%= render partial: 'counter', :locals => { id: params[:id], :data => 0} %>
