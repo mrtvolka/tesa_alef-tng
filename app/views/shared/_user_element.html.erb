@@ -18,7 +18,7 @@
         <%= link_to raw("<i class='icon-admin'></i>Administrácia"), administration_path, class: 'user-panel-button' %>
     <% end %>
     <% if can? :manage, :teaching %>
-        <%= link_to raw("<i class='icon-table'></i>Učenie"), teaching_path, class: 'user-panel-button' %>
+        <%= link_to raw("<i class='icon-table'></i>Učenie"), teaching_path, class: 'user-panel-button'+is_active_page(@exercises, controller_name+"/"+action_name)  %>
     <% end %>
     <% if current_user.student? %>
         <%= link_to raw("<i class='icon-graduation-cap'></i>Učenie"), weeks_path, class: 'user-panel-button'+is_active_page(@weeks, controller_name+"/"+action_name) %>
