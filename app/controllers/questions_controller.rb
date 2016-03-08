@@ -111,6 +111,11 @@ class QuestionsController < ApplicationController
   end
 
   def submit_test
+    if Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
+      redirect_to root_path
+      flash[:notice] = "Už ste raz odpovedali alebo ste zaslali duplicitné odpovede!"
+      return
+    end
     params[:questions].each do |key, val|
       lo= LearningObject.find(key)
       rel = UserToLoRelation.new(setup_id: Setup.take.id,
