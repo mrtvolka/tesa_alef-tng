@@ -5,6 +5,9 @@
       URL <%= request.original_url %>
       </div>
       <%= text_area_tag :message, '', id: 'contact-textarea' %>
+      <% if controller_name.eql?('questions') && action_name.eql?('show') %>
+          <input type="hidden" name="question_id" value="<%= @question.id %>">
+      <% end %>
       <div id="contact-button-field">
         <button id="contact-send-btn">Odoslať</button>
         <button id="contact-cancel-btn">Zrušiť</button>
