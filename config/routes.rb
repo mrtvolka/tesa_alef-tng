@@ -76,7 +76,7 @@ Rails.application.routes.draw do
   get 'exercise/statistics' => 'teachings#statistics' , as: 'statistics'
   get 'tests' => 'weeks#test_list', as: 'tests'
   get  'exercise/results' => 'exercises#results' , as: 'results'
-
+  get 'exercises/:id/answers' => 'exercises#answers', as: 'answers'
   get 'i' => 'weeks#index'
 
 end

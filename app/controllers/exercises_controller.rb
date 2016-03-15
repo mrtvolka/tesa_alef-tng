@@ -25,6 +25,8 @@ class ExercisesController < ApplicationController
       redirect_to statistics_path(id: @exercise.id)
     elsif (params[:results])
       redirect_to results_path(id: @exercise.id)
+    elsif (params[:answers])
+      redirect_to answers_path(id: @exercise.id, format: "csv")
     else
       if(!@exercise.real_start)
         @exercise.real_start = Time.current
@@ -44,11 +46,23 @@ class ExercisesController < ApplicationController
   end
 
   def results
-
     @setup= Setup.take
     @exercise = Exercise.find_by_id(params[:id])
+  end
 
-
+  def answers
+    @answers = UserToLoRelation.where(:exercise_id => params[:id])
+    if !@answers.any?
+      redirect_to :back
+      flash[:notice] = "Žiadne odpovede na export!"
+    else
+      teacher = User.find_by_id(@exercise.user_id).login
+      filename = "Vysledky_pre_#{@exercise.id.to_s}_#{teacher}.csv"
+      respond_to do |format|
+          format.html
+          format.csv { send_data @answers.to_csv, filename: filename }
+      end
+    end
   end
 
   private

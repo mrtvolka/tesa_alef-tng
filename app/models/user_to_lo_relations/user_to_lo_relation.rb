@@ -33,4 +33,48 @@ class UserToLoRelation < ActiveRecord::Base
     '
     ActiveRecord::Base.connection.execute(sql)
   end
+
+  def self.to_csv
+    selected_columns = ['user_id','learning_object_id','type','interaction','submitted_text']
+    output_column_names = ['Meno študenta','Otázka','Výsledok','Označené','Textová odpoveď']
+    CSV.generate(:col_sep => "|") do |csv|
+      csv << output_column_names
+      all.each do |answer|
+        csv_values = []
+        #answer.attributes.values_at(*selected_columns).each do |attr_value|
+        answer.attributes.select{|k, v| selected_columns.include?(k)}.each do |attr_name, attr_value|
+          if attr_name == 'user_id'
+            user = User.find_by_id(attr_value)
+            attr_value = user.aisid + ": " + user.first_name + " " + user.last_name
+          elsif attr_name == 'learning_object_id'
+            question = LearningObject.find_by_id(attr_value)
+            # lo_id + id because of potential duplicity of lo_id values
+            attr_value = question.lo_id + "_" + question.id.to_s
+          elsif attr_name == 'type'
+            case attr_value
+              when 'UserVisitedLoRelation'
+                attr_value = 'videné'
+              when 'UserSolvedLoRelation'
+                attr_value = 'správne'
+              when 'UserFailedLoRelation'
+                attr_value = 'nesprávne'
+              when 'UserSubmittedLoRelation'
+                attr_value = 'odoslané'
+              when 'UserCompletedLoRelation'
+                attr_value = 'dokončené'
+              when 'UserDidntKnowLoRelation'
+                attr_value = 'neodpovedané'
+              else
+            end
+          elsif attr_name == 'interaction'
+            # TODO: answer numbers
+          else
+          end
+          csv_values << attr_value
+        end
+        csv << csv_values
+      end
+    end
+  end
+
 end
