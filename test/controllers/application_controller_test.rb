@@ -61,7 +61,7 @@ require 'test_helper'
 
     test "login through https" do
     # login via https
-    https!
+    https! # use only with valid certificate
     get "/login"
     assert_response :success
 
@@ -73,7 +73,6 @@ require 'test_helper'
     end
 
     test "unauthorized user cannot login"
-    # login via http
     get "/login"
     assert_response :success
 
