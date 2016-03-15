@@ -74,7 +74,6 @@ require 'test_helper'
 
     test "unauthorized user cannot login"
     # login via http
-    http!
     get "/login"
     assert_response :success
 
