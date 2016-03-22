@@ -3,6 +3,7 @@
   <%= render 'shared/user_element' %>
   <div class="mobile-content">
     <h2><%= @setup.name %> - štatistiky testu</h2>
+    <a href="<%=url_for exercise_path params[:id] %>"><i class="nav-right-icons icon-level-up"></i></a>
     <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
   </div>
 </nav>
