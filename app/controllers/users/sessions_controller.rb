@@ -16,8 +16,8 @@ class Users::SessionsController < Devise::SessionsController
 
     user_class = User.guess_type(params['local_user']['login'], request)
     request.params['ldap_user'] = request.params['local_user']
-
     self.resource = warden.authenticate! scope: user_class, recall: "#{controller_path}#new"
+    log_info request.params['ldap_user']['login'].to_s + " signed in successfully"
     set_flash_message(:notice, :signed_in) if is_flashing_format?
     sign_in(user_class, self.resource)
     respond_with self.resource, :location => after_sign_in_path_for(self.resource)
@@ -25,7 +25,9 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def destroy
+    user = current_user
     super
+    log_info  user.login + " signed out successfully"
   end
 
   # protected

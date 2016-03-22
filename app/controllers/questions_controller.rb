@@ -88,12 +88,14 @@ class QuestionsController < ApplicationController
     if exercise.nil? || exercise.real_start.nil? ||!exercise.real_end.nil?
       redirect_to root_path
       flash[:notice] = "Test nie je dostupný"
+      log_warn current_user.login + " tried to access test with code: " + params[:exercise_code]
       return
     end
 
     if Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
       redirect_to root_path
       flash[:notice] = "Test je možné písať len raz!"
+      log_warn current_user.login + " tried to write test with code: " + params[:exercise_code] + " multiple times"
       return
     end
 
@@ -114,8 +116,10 @@ class QuestionsController < ApplicationController
     if Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
       redirect_to root_path
       flash[:notice] = "Už ste raz odpovedali alebo ste zaslali duplicitné odpovede!"
+      log_warn current_user.login + " tried to submit test with exercise code: " + params[:exercise_code] + " multiple times"
       return
     end
+    log_info current_user.login + " submitted test with exercise code: " + params[:exercise_code]
     params[:questions].each do |key, val|
       lo= LearningObject.find(key)
       rel = UserToLoRelation.new(setup_id: Setup.take.id,
@@ -147,10 +151,12 @@ class QuestionsController < ApplicationController
     if(@exercise.nil?)
       redirect_to :root
       flash[:notice] = "Nesprávny kód!"
+      log_warn current_user.login + " tried to access test with code: " + exercise_code_param.to_s
     elsif(!@exercise.real_end.nil?)
       # TODO: working with submitted tests
       redirect_to :root
       flash[:notice] = "Test už bol ukončený!"
+      log_warn current_user.login + " tried to access finished test with code: " + @exercise.code.to_s
     else
       @exercise = Exercise.find_by_code(@exercise.code)
       redirect_to :action => "show_test",  :exercise_code => @exercise.code

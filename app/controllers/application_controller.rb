@@ -43,5 +43,35 @@ class ApplicationController < ActionController::Base
     local_user_session || ldap_user_session
   end
 
+  def log_unknown(message, *params)
+    params.push request.remote_ip
+    AlefLoggingSystem::Logger.unknown(message, params)
+  end
+
+  def log_fatal(message, *params)
+    params.push request.remote_ip
+    AlefLoggingSystem::Logger.fatal(message, params)
+  end
+
+  def log_error(message, *params)
+    params.push request.remote_ip
+    AlefLoggingSystem::Logger.error(message, params)
+  end
+
+  def log_warn(message, *params)
+    params.push request.remote_ip
+    AlefLoggingSystem::Logger.warn(message, params)
+  end
+
+  def log_info(message, *params)
+    params.push request.remote_ip
+    AlefLoggingSystem::Logger.info(message, params)
+  end
+
+  def log_debug(message, *params)
+    params.push request.remote_ip
+    AlefLoggingSystem::Logger.debug(message, params)
+  end
+
   helper_method :user_signed_in?, :current_user, :user_session
 end
