@@ -94,11 +94,27 @@ namespace :tesa do
         lo = LearningObject.find_or_create_by(question_text: question_text) do |lo|
           lo.course = Course.first
         end
+
         lo.update( type: question_type, lo_id: question_name, question_text: question_text, is_test_question: true, is_special_question: is_special)
+
+        if (!TESA_QUESTION_TYPES.has_key?(row[3]))
+          puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has unknown question type!"
+        end
+
+        if question_name.nil?
+          puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has question name undefined!"
+        end
+
+        if  question_text.nil?
+          puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has questtion text undefined!"
+        end
 
         # TODO import answers when updating existing LO, not only upon first creation
         # ^NOTE: answer ID should be preserved whenever possible for logged relations
         if lo.answers.empty? && question_type != 'OpenQuestion'
+          if(question_type == 'SingleChoiceQuestion' && answers.scan(/<correct>/).length>1) || (question_type != 'EvaluatorQuestion' && row[4].scan(/<correct>/).length==0)
+            puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has wrong number of correct answers"
+          end
           answers.split(';').each do |answer|
             correct_answer = answer.include? '<correct>'
             answer_text = convert_format(answer, true)
