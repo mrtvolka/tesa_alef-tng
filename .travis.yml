@@ -9,6 +9,9 @@ before_install:
 before_script:
   - chmod u+x bin/rake
   - bin/rake db:migrate RAILS_ENV=test
+  - bin/rake tesa:data:aza_setup
+  - bin/rake tesa:data:import_users[travis_users.csv]
+  - bin/rake tesa:data:import_tests[travis_question.csv,.]
 
 services:
   - postgresql
