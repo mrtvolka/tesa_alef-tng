@@ -1,0 +1,5 @@
+Title,Question,Concepts,Type,Answers,Difficulty,Image,Is special,Week
+Triedenie,Aká je minimálna zložitosť algoritmov triedenia (usporadúvania) porovnávaním?,sorts,single-choice,\[ \Omega (n^2) \];<correct>\[ \Omega (n log_n) \]</correct>;\[ \Omega (n) \],lahke,,TRUE,1
+QuickSort,Aká je zložitosť quicksortu v najlepšom prípade?,sorts,single-choice,<correct>\[ O(n^2) \]</correct>;\[ O(n log_n) \];\[ O(n) \],lahke,,TRUE,1
+HeapSort,Aká je zložitosť triedenia pomocou haldy (heapsort)?,sorts,single-choice,\[ O(n^2) \];<correct>\[ O(n log_n) \]</correct>;\[ O(n) \],lahke,,TRUE,1
+Vyzvedna,Ktorý z algoritmov triedenia ste už implementovali?,sorts,open-question,,lahke,,TRUE,1

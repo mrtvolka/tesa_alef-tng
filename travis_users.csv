@@ -1,0 +1,4 @@
+Login,Role,First name,Last name,Password,Type
+admin,administrator,Maria,Lucka,qadmin,LocalUser
+teacher,teacher,Martin,Becka,qteacher,LocalUser
+student,teacher,Robert,Lukotka,qstudent,LocalUser
