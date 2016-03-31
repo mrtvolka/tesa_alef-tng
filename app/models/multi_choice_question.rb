@@ -4,6 +4,18 @@ class MultiChoiceQuestion < LearningObject
     self.answers.where(is_correct: true).ids
   end
 
+  def construct_righ_hash
+    #{"8"=>"8", "10"=>"10", "11"=>"11"}
+    answers= Answer.where("learning_object_id = (?) ANd is_correct = true",self.id)
+    response= '{'
+    answers.each  do |key, val|
+      response << "\"#{key.id}\"=>\"#{key.id}\","
+    end
+    response.chomp(',')
+    response << '}'
+    return response
+  end
+
   def right_answer?(answer, solution)
 
     if answer == nil

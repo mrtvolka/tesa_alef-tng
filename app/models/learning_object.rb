@@ -40,4 +40,7 @@ class LearningObject < ActiveRecord::Base
     self.concepts << concept unless self.concepts.include?(concept)
   end
 
+  def construct_righ_hash
+
+  end
 end

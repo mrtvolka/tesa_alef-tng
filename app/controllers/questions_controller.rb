@@ -113,7 +113,14 @@ class QuestionsController < ApplicationController
   end
 
   def submit_test
-    if Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
+    if (Exercise.find_by_code(params[:exercise_code]).nil?)
+      redirect_to root_path
+      flash[:notice] = "Zlý kód cvičenia!"
+      log_warn current_user.login + " tried to submit test with exercise code: " + params[:exercise_code] + " ,which does not exists"
+      return
+    end
+
+    if  !Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.exists? && Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
       redirect_to root_path
       flash[:notice] = "Už ste raz odpovedali alebo ste zaslali duplicitné odpovede!"
       log_warn current_user.login + " tried to submit test with exercise code: " + params[:exercise_code] + " multiple times"

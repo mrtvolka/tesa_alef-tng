@@ -33,7 +33,6 @@ class TeachingsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:exercises)
 
     #View
-    assert_select 'h2', "#{assigns(:setup).name}- Stránka učiteľa"
     #TODO: add more stuff here
 
     sign_out @teacher
@@ -54,8 +53,6 @@ class TeachingsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:exercises)
 
     #View
-    assert_select 'h2', "#{assigns(:setup).name}- Stránka učiteľa"
-    assert_select "tr", assigns(:exercises).size+1
     #TODO: add more stuff here
 
     sign_out @admin
