@@ -28,8 +28,8 @@ namespace :tesa do
         #Rake::Task['tesa:data:aza_setup'].invoke
         puts %x(rake tesa:data:aza_setup)
         puts %x(rake tesa:data:import_users[azausers.csv])
-        puts %x(rake tesa:data:import_exercises[exercises.csv])
         puts %x(rake tesa:data:import_tests[otazkyAZA.csv,img])
+        puts %x(rake tesa:data:import_exercises[exercises.csv])
         #Kernel.system('rake tesa:data:import_users[azausers.csv]')
         #Rake::Task['tesa:data:import_exercises'].invoke('exercises.csv')
         #Kernel.system('rake tesa:data:import_tests[otazkyAZA.csv,img]')

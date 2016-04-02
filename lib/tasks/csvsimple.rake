@@ -12,9 +12,18 @@ namespace :tesa do
     def import_exercises(file)
       CSV.read(file, :headers => true).each do |row|
          # row names in [] must be same in csv file!
-          Exercise.create!(:start => row['Exercise start'], :end => row['Exercise end'],
+          exercise=Exercise.new(:start => row['Exercise start'], :end => row['Exercise end'],
                                   :code => row['Code'], :user_id => row['Lecturer'], :week_id => row['Week'],:cooldown_time_amount => 5)
 
+          concepts= row['Concepts'].split(';')
+          concepts.each do |concept_name|
+            concept = Concept.find_or_create_by(name: concept_name) do |c|
+              c.course = Course.first
+              c.pseudo = (concept_name == Concept::DUMMY_CONCEPT_NAME)
+            end
+            exercise.concepts << concept
+          end
+          exercise.save
       end
     end
 

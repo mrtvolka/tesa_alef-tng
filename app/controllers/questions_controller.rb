@@ -102,13 +102,13 @@ class QuestionsController < ApplicationController
     @week = exercise.week
     @setup= Setup.take
 
-    learning_objects = @week.learning_objects.all.distinct
-    RecommenderSystem::TesaSimpleRecommender.setup(current_user,@week.id,params[:exercise_code])
+    learning_objects = LearningObject.all#@week.learning_objects.all.distinct
+    RecommenderSystem::TesaSimpleRecommender.setup(current_user,@week.id,params[:exercise_code],false,true)
     recommendations = RecommenderSystem::TesaSimpleRecommender.new.get_list
 
     @sorted_los = Array.new
     recommendations.each do |key, value|
-      @sorted_los << learning_objects.find {|l| l.id == key}
+      @sorted_los << learning_objects.find_by(id: key.to_i)
     end
   end
 

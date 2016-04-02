@@ -3,17 +3,37 @@
 module RecommenderSystem
   class TesaSimpleRecommender < RecommenderSystem::Recommender
 
-    def self.setup(user_id, week_id, access_key)
+    def self.setup(user_id, week_id, access_key, use_local_concepts, use_global_concept)
       @@access_key = access_key
+      @@use_global_concepts= use_global_concept
+      @@use_local_concepts= use_local_concepts
+
       super(user_id,week_id)
     end
 
     def get_list
-      # get all weeks test questions
-      all_questions = self.test_learning_objects
+
       exercise_questions = Hash.new
       student_questions = Hash.new
       list = Hash.new
+
+      #Get all question according to their concepts, and concepts of exercises/weeks
+      if use_global_concepts
+        global_questions= LearningObject.joins(concepts: :exercises).where("exercises.code = (?)",access_key).distinct
+      end
+      if use_local_concepts
+        local_questions= LearningObject.joins(concepts: :weeks).where("weeks.id= (?)", @@week_id).distinct
+      end
+
+      if use_global_concepts && use_local_concepts
+        all_questions= global_questions.merge(local_questions)
+      elsif !use_global_concepts && !use_local_concepts
+        all_questions = self.test_learning_objects
+      elsif use_global_concepts
+        all_questions= global_questions
+      elsif use_local_concepts
+        all_questions= local_questions
+      end
 
       # adding special questions for all students
       special_questions = all_questions.where(is_special_question: TRUE)
@@ -69,6 +89,14 @@ module RecommenderSystem
 
     def access_key
       @@access_key
+    end
+
+    def use_local_concepts
+      @@use_local_concepts
+    end
+
+    def use_global_concepts
+      @@use_global_concepts
     end
 
     def random_value(range)
