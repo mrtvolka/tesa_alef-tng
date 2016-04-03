@@ -7,6 +7,7 @@ class Ability
       can :manage, :administration
       can :manage, :learning_object
       can :manage, :answer
+      can :manage, :user
       can :manage, :teaching
       can :manage, Exercise
       cannot :manage, :question

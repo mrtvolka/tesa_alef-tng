@@ -76,6 +76,9 @@ gem 'lazy_high_charts'
 # Support
 gem 'activesupport'
 
+# ZIP- file compression
+gem 'rubyzip'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'  # disabled for it interferes with RubyMine's debugger

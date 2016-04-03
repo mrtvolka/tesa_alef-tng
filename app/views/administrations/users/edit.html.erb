@@ -1,0 +1,18 @@
+<nav>
+  <div class="admin-nav">
+    <h2>Administrácia</h2>
+    <%= link_to "Domov", root_path, class: 'admin-nav-button' %>
+  </div>
+</nav>
+<hr class="nav-offset">
+<div class="container">
+  <div class="tabs">
+    <div role="tabpanel" class="tab-pane active" id="question-settings">
+        <% if @user.type == "LocalUser" %>
+            <%= render "localUser"%>
+        <% else %>
+            <%= render "ldapUser" %>
+        <% end %>
+    </div>
+  </div>
+</div>

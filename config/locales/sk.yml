@@ -10,6 +10,16 @@ sk:
         lo_id:                        "Názov"
         question_text:                "Text otázky"
         type:                         "Typ"
+      user:
+        aisemail:                     "AIS email"
+        confirm_password:             "Potvrdiť heslo"
+        email:                        "Email"
+        first_name:                   "Meno"
+        last_name:                    "Priezvisko"
+        login:                        "Prihlasovacie meno"
+        password:                     "Heslo"
+        role:                         "Rola"
+        type:                         "Typ autentifikácie"
 
   homescreen:
     links:
@@ -35,3 +45,10 @@ sk:
       please_fill_in:                 "Prosím, vyplňte všetky povinné polia."
       saving:                         "prebieha ukladanie..."
       updated:                        "Všetky zmeny boli úspešne uložené."
+      login_exists:
+    password:
+      notmatch:                        "Heslá sa nezhodujú!"
+      notmatch_or_empty:               "Heslá sa nezhodujú alebo ste ich zadali prázdne!"
+    login:
+      exists:                          "Požívateľké meno už existuje!"
+      empty:                           "Používateľské meno nesmie byť prázdne!"

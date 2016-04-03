@@ -40,3 +40,17 @@ sk:
         created:                      "Vzdelávací objekt bol úspešne vytvorený."
         deleted:                      "Vzdelávací objekt bol úspešne odstránený."
         restored:                     "Vzdelávací objekt bol úspešne obnovený."
+
+    user:
+        links:
+          create:                     "Pridať používateľa"
+        texts:
+          created:                    "Používateľ bol úspešne vytvorený"
+        labels:
+          roles:
+            student:                  "Student"
+            teacher:                  "Učiteľ"
+            administrator:            "Administrátor"
+          types:
+            localuser:                "lokálne"
+            ldapuser:                 "cez LDAP"

@@ -1,0 +1,42 @@
+<%= form_for @user, as: :user, url: {
+                          controller: 'administrations/users',
+                          action: :update},
+             method: :patch do |f| %>
+    <div class="admin">
+      <div class="form-group">
+        <dl class="dl-horizontal">
+          <dt><%= f.label :login, t('activerecord.attributes.user.login') %></dt>
+          <dd><%= @user.login %></dd>
+
+          <dt><%= f.label :type, t('activerecord.attributes.user.type') %></dt>
+          <dd><%= t("admin.user.labels.types.#{@user.type.downcase}") %></dd>
+
+          <dt><%= f.label :role, t('activerecord.attributes.user.role') %></dt>
+          <dd><%= f.select(:role, options_for_select(User::ROLES.map { |id, role|
+                                                       [t("admin.user.labels.roles.#{role}"), role]
+                                                     }, @user.role), class: 'form-control') %></dd>
+          <dt><%= f.label :first_name, t('activerecord.attributes.user.first_name') %></dt>
+          <dd><%= f.text_field :first_name, class: "question_text_field" %></dd>
+
+          <dt><%= f.label :last_name, t('activerecord.attributes.user.last_name') %></dt>
+          <dd><%= f.text_field :last_name, class: "question_text_field" %></dd>
+
+          <dt><%= f.label :email, t('activerecord.attributes.user.email') %></dt>
+          <dd><%= f.email_field :email, class: "question_text_field" %></dd>
+
+          <dt><%= f.label :password, t('activerecord.attributes.user.password') %></dt>
+          <dd><%= f.password_field :password, class: "question_text_field" %></dd>
+
+          <dt><%= f.label :confirm_password, t('activerecord.attributes.user.confirm_password') %></dt>
+          <dd><%= f.password_field :confirm_password, class: "question_text_field" %></dd>
+
+          <dt></dt>
+          <dd>
+            <%= submit_tag t('global.links.save_changes'), class: :btn, data: { disable_with: t('global.texts.saving') } %>
+            <%= button_tag t('global.links.discard_changes'), class: :btn, type: :reset %>
+          </dd>
+
+        </dl>
+      </div>
+    </div>
+<% end %>

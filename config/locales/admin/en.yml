@@ -40,3 +40,17 @@ en:
         created:                      "Learning object has been successfully created."
         deleted:                      "Learning object has been successfully deleted."
         restored:                     "Learning object has been successfully restored."
+
+    user:
+        links:
+          create:                     "Add user"
+        texts:
+          created:                    "User has been successfully created."
+        labels:
+          roles:
+            student:                  "Student"
+            teacher:                  "Teacher"
+            administrator:            "Administrator"
+        types:
+          localuser:                "local"
+          ldapuser:                 "LDAP"

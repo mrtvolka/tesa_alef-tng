@@ -4,6 +4,8 @@ module Exceptions
 
   # Chybajuci kluc v Hashi.
   class MissingKeyError < StandardError; end
+  class LoginExistsError < StandardError; end
+  class LoginEmptyError < StandardError; end
 
   # use this when ENV variables are missing
   class ApplicationConfigurationIncomplete < StandardError
@@ -11,4 +13,6 @@ module Exceptions
       "Application cofiguration is incomplete. Fill in 'config/application.yml' or set ENVs. #{@message}"
     end
   end
+
+  class PasswordsNotMatchError < StandardError; end
 end
