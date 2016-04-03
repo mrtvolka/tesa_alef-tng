@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   #Ucenie
   get 'teaching' => 'teachings#show', as: 'teaching'
 
+  post 'import_question_csv' => 'teachings#csv_question_import'
   #testovanie
 
   get 'test/:exercise_code' => 'questions#show_test'

@@ -137,6 +137,7 @@ namespace :tesa do
         import_difficulty(difficulty_text, lo)
         import_concepts(local_concept_names,global_concept_names, lo, week_number)
         import_pictures(picture, pictures_dir, lo) if picture
+        puts "INFO: '#{lo.external_reference}' - '#{lo.lo_id}' was saved"
       end
     end
 
