@@ -16,7 +16,7 @@ module AlefTng
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Bratislava'
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :sk
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
@@ -27,5 +27,8 @@ module AlefTng
 
     # Autoloadable lib directories with classes and modules.
     config.autoload_paths += %W(#{config.root}/lib)
+
+    # Exceptions.
+    config.autoload_paths += Dir[File.join(Rails.root, "lib", "exceptions.rb")].each {|l| require l }
   end
 end

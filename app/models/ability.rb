@@ -5,6 +5,8 @@ class Ability
 
     if user.administrator?
       can :manage, :administration
+      can :manage, :learning_object
+      can :manage, :answer
       can :manage, :teaching
       can :manage, Exercise
       cannot :manage, :question

@@ -79,4 +79,26 @@ Rails.application.routes.draw do
   get 'exercises/:id/answers' => 'exercises#answers', as: 'answers'
   get 'i' => 'weeks#index'
 
+  namespace :administrations do
+
+    resources :learning_objects do
+      get :index, :new, :edit
+      patch :update, :restore
+      post :create
+      delete :destroy
+
+      resources :answers do
+        patch :update, on: :collection
+        post :create
+        delete :delete
+      end
+
+    end
+
+
+  end
+
+  # Docasne takto, postupne sa prejde na namespace aj pre vzdelavacie objekty.
+  get 'learning_objects/:id/image' => 'questions#show_image', as: 'show_single_image'
+
 end

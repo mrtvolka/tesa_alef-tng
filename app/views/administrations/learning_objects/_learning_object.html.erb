@@ -1,0 +1,28 @@
+<div id="learning-object<%= learning_object.id %>" class="question row">
+  <div class="question-tools">
+    <%= link_to(@feedbacks[:all_aggs][learning_object.id] || 0, edit_administrations_learning_object_path(learning_object),
+                class: 'counter',title: 'Žiadne nové komentáre', data: { toggle: :tooltip }) %>
+    <%= link_to('<i class="icon-edit"></i>'.html_safe, edit_administrations_learning_object_path(learning_object)) %>
+  </div>
+  <div class="question-icon"><i data-toggle="tooltip" title="<%= learning_object.type.downcase %>" class="icon-<%=
+      case learning_object.type
+        when "SingleChoiceQuestion"
+          'radio-checked'
+        when "MultiChoiceQuestion"
+          'checkbox-checked'
+        when "EvaluatorQuestion"
+          'sliders'
+        when "OpenQuestion"
+          'edit'
+      end %>"></i></div>
+  <div class="question-headline">
+    <div class="title"><%= link_to learning_object.lo_id, edit_administrations_learning_object_path(learning_object) %></div>
+    <div class="text"><%= learning_object.question_text %></div>
+    <div class="answers">
+      <% learning_object.answers.each do |answer|%>
+        <% if answer.is_correct %><span class="correct"><%= answer.answer_text %></span><% else %><%= answer.answer_text %><% end %>
+        <%= ', ' unless answer == learning_object.answers.last %>
+      <% end %>
+    </div>
+  </div>
+</div>
