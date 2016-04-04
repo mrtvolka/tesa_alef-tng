@@ -91,54 +91,56 @@ namespace :tesa do
     # CSV format:
     # Title,Question,Concepts,Type,Answers,Difficulty,Picture,Is special flag,Week
     def import_tests_data(file, pictures_dir)
-      CSV.read(file, :headers => true).each do |row|
-        question_name = row[0]
-        question_text = row[1]
-        local_concept_names = row[2]
-        global_concept_names = row[3]
-        question_type = TESA_QUESTION_TYPES[row[4]]
-        answers = row[5]
-        difficulty_text = row[6]
-        picture = row[7]
-        is_special = check_is_special_flag(row[8])
-        week_number = row[9]
+      ActiveRecord::Base.transaction do
+        CSV.read(file, :headers => true).each do |row|
+          question_name = row[0]
+          question_text = row[1]
+          local_concept_names = row[2]
+          global_concept_names = row[3]
+          question_type = TESA_QUESTION_TYPES[row[4]]
+          answers = row[5]
+          difficulty_text = row[6]
+          picture = row[7]
+          is_special = check_is_special_flag(row[8])
+          week_number = row[9]
 
-        lo = LearningObject.find_or_create_by(question_text: question_text) do |lo|
-          lo.course = Course.first
-        end
-
-        lo.update( type: question_type, lo_id: question_name, question_text: question_text, is_test_question: true, is_special_question: is_special)
-
-        if (!TESA_QUESTION_TYPES.has_key?(row[4]))
-          puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has unknown question type!"
-        end
-
-        if question_name.nil?
-          puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has question name undefined!"
-        end
-
-        if  question_text.nil?
-          puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has questtion text undefined!"
-        end
-
-        # TODO import answers when updating existing LO, not only upon first creation
-        # ^NOTE: answer ID should be preserved whenever possible for logged relations
-        if lo.answers.empty? && question_type != 'OpenQuestion'
-          if(question_type == 'SingleChoiceQuestion' && answers.scan(/<correct>/).length>1) || (question_type != 'EvaluatorQuestion' && answers.scan(/<correct>/).length==0)
-            puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has wrong number of correct answers"
+          lo = LearningObject.find_or_create_by(question_text: question_text) do |lo|
+            lo.course = Course.first
           end
-          answers.split(';').each do |answer|
-            correct_answer = answer.include? '<correct>'
-            answer_text = convert_format(answer, true)
-            Answer.create!( learning_object_id: lo.id, answer_text: answer_text, is_correct: correct_answer )
-          end
-        end
 
-        import_difficulty(difficulty_text, lo)
-        import_concepts(local_concept_names,global_concept_names, lo, week_number)
-        import_pictures(picture, pictures_dir, lo) if picture
-        puts "INFO: '#{lo.external_reference}' - '#{lo.lo_id}' was saved"
-      end
+          lo.update( type: question_type, lo_id: question_name, question_text: question_text, is_test_question: true, is_special_question: is_special)
+
+          if (!TESA_QUESTION_TYPES.has_key?(row[4]))
+            puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has unknown question type!"
+          end
+
+          if question_name.nil?
+            puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has question name undefined!"
+          end
+
+          if  question_text.nil?
+            puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has questtion text undefined!"
+          end
+
+          # TODO import answers when updating existing LO, not only upon first creation
+          # ^NOTE: answer ID should be preserved whenever possible for logged relations
+          if lo.answers.empty? && question_type != 'OpenQuestion'
+            if(question_type == 'SingleChoiceQuestion' && answers.scan(/<correct>/).length>1) || (question_type != 'EvaluatorQuestion' && answers.scan(/<correct>/).length==0)
+              puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has wrong number of correct answers"
+            end
+            answers.split(';').each do |answer|
+              correct_answer = answer.include? '<correct>'
+              answer_text = convert_format(answer, true)
+              Answer.create!( learning_object_id: lo.id, answer_text: answer_text, is_correct: correct_answer )
+            end
+          end
+
+          import_difficulty(difficulty_text, lo)
+          import_concepts(local_concept_names,global_concept_names, lo, week_number)
+          import_pictures(picture, pictures_dir, lo) if picture
+          puts "INFO: '#{lo.external_reference}' - '#{lo.lo_id}' was saved"
+        end
+       end
     end
 
     task :import_tests, [:tests_questions_csv, :img_dir] => :environment do |t, args|

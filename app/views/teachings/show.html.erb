@@ -9,17 +9,6 @@
 <br>
 
 <div class="exercise-general">
-  <div class="my-mobile-content main">
-    <center><b>Import otázok</b></center>
-    <%= form_tag({action: :csv_question_import}, multipart: true) do %>
-        <%= file_field_tag 'test_data' %>
-        <%= submit_tag("Upload") %>
-    <% end %>
-  </div>
-  <br>
-</div>
-
-<div class="exercise-general">
 <div class="my-mobile-content main">
   <br>
   <center><b>Zoznam cvičení</b></center>

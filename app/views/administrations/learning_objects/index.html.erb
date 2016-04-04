@@ -18,3 +18,12 @@
 <div id="questions-list" class="admin">
   <%= render partial: 'learning_object', collection: @questions, as: :learning_object %>
 </div>
+<div id="questions-list" class="admin">
+<div id="learning-object10" class="question row">
+    <center><b>Import otázok</b></center>
+    <%= form_tag({action: :csv_question_import}, multipart: true) do %>
+        <%= file_field_tag 'test_data' %>
+        <%= submit_tag("Upload") %>
+    <% end %>
+</div>
+</div>

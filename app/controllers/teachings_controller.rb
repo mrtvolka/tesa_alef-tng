@@ -10,40 +10,6 @@ class TeachingsController < ApplicationController
     end
   end
 
-  def csv_question_import
-    csv_filepath= ""
-    filepath= Array.new
-    Zip::File.open(params[:test_data].path) do |zip_file|
-      # Handle entries one by one
-      zip_file.each do |entry|
-        # Extract to file/directory/symlink
-        if entry.name.end_with? '.png'
-          folder= "img"
-          filepath << Rails.root.join('img',entry.name)
-        elsif entry.name.end_with? '.csv'
-          folder= "tmp"
-          csv_filepath = Rails.root.join('tmp',entry.name)
-        end
-        entry.extract("#{folder}/#{entry.name}")
-      end
-    end
-
-
-    str = %x(rake tesa:data:import_tests[#{csv_filepath},img])
-
-    filepath.each do |file|
-      File.delete(file)
-    end
-    File.delete(csv_filepath)
-
-    File.open(Rails.root.join('tmp','output.txt'), 'wb') do |file|
-      file.write(str)
-    end
-
-    send_file Rails.root.join('tmp', 'output.txt'), :type=>"application/txt", :x_sendfile=>true
-    flash[:notice]= "Otázky boli úspešne nahraté"
-  end
-
   def statistics
     @setup = Setup.take
     @chart = []
