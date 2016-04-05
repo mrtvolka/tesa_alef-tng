@@ -12,12 +12,21 @@
             <div class="title_exercises"><b>Test práve prebieha</b></div><br>
             <div class="title_small_exercises"> Kód testu: <b><%= @exercise.code %></b><br>
               <div class="title_smaller_exercises"><br></div>
-          <b><%= url_for :action => 'show_test', :controller => 'questions', :exercise_code => @exercise.code , :only_path => false %></b></a>
-              <div class="title_smaller_exercises"><br></div>
-          <div id="counter<%= params[:id] %>">
-            <%= render partial: 'counter', :locals => { id: params[:id], :data => 0} %>
-          </div>
-          <br></div>
+                  <b>
+                    <%= url_for :action => 'show_test', :controller => 'questions', :exercise_code => @exercise.code , :only_path => false %>
+                  </b>
+                </a>
+                <div class="title_smaller_exercises"><br></div>
+                <div id="counter<%= params[:id] %>">
+                    <%= render partial: 'counter', :locals => { id: params[:id], :data => 0} %>
+                </div>
+              </div>
+            <div class="qr">
+              <%= image_tag("qrcode.png")%>
+            </div>
+
+
+
           </div>
           <%= form_for @exercise do |f| %>
               <%= f.hidden_field :real_end, :value => Time.current %>

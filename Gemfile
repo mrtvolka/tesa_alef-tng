@@ -73,6 +73,9 @@ gem 'mathjax-rails'
 # Charts
 gem 'lazy_high_charts'
 
+#QR code
+gem 'rqrcode'
+
 # Support
 gem 'activesupport'
 

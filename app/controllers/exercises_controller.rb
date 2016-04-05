@@ -4,7 +4,17 @@ class ExercisesController < ApplicationController
     gon.exercise_id = params[:id]
     @setup= Setup.take
     @exercise = Exercise.find_by_id(params[:id])
-
+    qrcode = RQRCode::QRCode.new((url_for :action => 'show_test', :controller => 'questions', :exercise_code => @exercise.code , :only_path => false))
+    png = qrcode.as_png(
+        resize_gte_to: false,
+        resize_exactly_to: false,
+        fill: 'white',
+        color: 'black',
+        size: 900,
+        border_modules: 4,
+        module_px_size: 6,
+        file: './app/assets/images/qrcode.png'
+    )
     if (!params[:real_start].nil?)
       @exercise.real_start= Time.current
       @exercise.save!
