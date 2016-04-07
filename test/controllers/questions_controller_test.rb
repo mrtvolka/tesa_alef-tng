@@ -7,8 +7,8 @@ class QuestionsControllerTest < ActionController::TestCase
     @student= User.where("role = 'student'").first
     @teacher=User.where("role = 'teacher'").first
     @admin=User.where("role = 'administrator'").first
-
-    @exercise= Exercise.first
+    @exercise=Exercise.where("real_start IS NOT NULL").first
+    #@exercise.real_start = "2016-05-02 14:00:00 +0200"
   end
 
   test "teacher cannot get show_test" do
@@ -30,11 +30,9 @@ class QuestionsControllerTest < ActionController::TestCase
   end
 
   test "student can get show_test" do
-
+    @request.env["devise.mapping"] = Devise.mappings[:admin]
     # devise
     sign_in @student
-
-
     #get show_my_test_url
     get(:show_test,{'week_id' => "#{@exercise.week_id}",'exercise_code' => "#{@exercise.code}"})    # simulates a get request on happening_now action
     assert_response :success    # makes sure response returns with status code 200
@@ -42,7 +40,7 @@ class QuestionsControllerTest < ActionController::TestCase
 
     # variables
     assert_not_nil assigns(:setup)
-    assert_not_nil assigns(:user)
+    #assert_not_nil assigns(:user)
     assert_not_nil assigns(:sorted_los)
     assert_not_nil assigns(:week)
 
@@ -77,8 +75,8 @@ class QuestionsControllerTest < ActionController::TestCase
     @request.env["devise.mapping"] = Devise.mappings[:admin]
     my_question= LearningObject.first
     sign_in @student
-
     get(:show_test, {'week_id' => "#{@exercise.week_id}",'exercise_code' => "#{@exercise.code}"})
+
     assert_difference 'UserToLoRelation.count' do
       post(:submit_test, {"questions"=>{ "#{my_question.id}"=>{"type"=>"#{my_question.type}", "commit"=>"send_answer", "answer"=>"#{my_question.construct_righ_hash}"}},
                           "commit"=>"submit_test", "week_id"=>"#{@exercise.week_id}", "exercise_code"=>"#{@exercise.code}"})    # simulates a get request on happening_now action

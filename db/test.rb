@@ -9,12 +9,20 @@ weeks = Week.create!([
   {setup_id: setup.id, number: 4},
 ])
 
+exercises = Exercise.create!([
+    {start: "2016-02-15 13:00:00", end: "2016-02-15 14:40:00", code: 10191, week_id: 1, user_id: 1, real_start: "2016-04-04 16:01:47.48686", cooldown_time_amount: 5},
+    {start: "2016-02-15 13:00:00", end: "2016-02-15 14:40:00", code: 10192, week_id: 2, user_id: 1, real_start: "2016-04-04 16:01:47.48686", real_end: "2016-04-04 16:01:47.48686", cooldown_time_amount: 5},
+])
+
 concepts = Concept.create!([
   {course_id: course.id, pseudo: false, name: 'Diagram prípadov použitia'},
   {course_id: course.id, pseudo: false, name: 'Diagram toku údajov'},
   {course_id: course.id, pseudo: false, name: 'Softvérové inžinierstvo'},
   {course_id: course.id, pseudo: false, name: 'Diagram aktivít'}
 ])
+
+exercises[1].concepts << [concepts[1]]
+exercises[0].concepts << [concepts[0]]
 
 weeks[0].concepts << [concepts[0],concepts[1]]
 weeks[1].concepts << [concepts[2],concepts[1]]
@@ -28,6 +36,7 @@ users = User.create!([
   {login: 'administrator1', role: User::ROLES[:ADMINISTRATOR], first_name: 'Lubos', last_name: 'Adminovic', password: 'administrator1', type: 'LocalUser'},
   {login: 'xpriezvisko', aisid: 12345, role: User::ROLES[:STUDENT], first_name: 'Igor', last_name: 'AISovic', password: '', type: 'LdapUser'}
 ])
+
 
 SetupsUser.create!([
       {setup_id: setup.id, user_id: users[0].id, is_valid: true, is_tracked: true},
@@ -49,12 +58,12 @@ multi_choice_questions = MultiChoiceQuestion.create!([
   {lo_id: 'Štrukturálne testovanie 1', question_text: 'Čo platí o štrukturálnom testovaní?'}
 ])
 
-evaluator_questions = EvaluatorQuestion.create!([
-  {lo_id: 'Výber jazyka 2', question_text: 'Cena vývojového prostredia je jedna zo základných otázok rozhodovania manažéra.'},
-  {lo_id: 'Diagram prípadov použitia 2', question_text: 'Digram prípadu použitia predstavuje dynamický model.'},
-  {lo_id: 'Testovanie 2', question_text: 'Štrukturálne testovanie vychádza zo štruktúry programu'},
-  {lo_id: 'Verifikácia a validácia 2', question_text: 'Cieľom verifikácie je preukázanie platnosti vlastností programu.'}
-])
+#evaluator_questions = EvaluatorQuestion.create!([
+#  {lo_id: 'Výber jazyka 2', question_text: 'Cena vývojového prostredia je jedna zo základných otázok rozhodovania manažéra.'},
+#  {lo_id: 'Diagram prípadov použitia 2', question_text: 'Digram prípadu použitia predstavuje dynamický model.'},
+#  {lo_id: 'Testovanie 2', question_text: 'Štrukturálne testovanie vychádza zo štruktúry programu'},
+#  {lo_id: 'Verifikácia a validácia 2', question_text: 'Cieľom verifikácie je preukázanie platnosti vlastností programu.'}
+#])
 
 answers = Answer.create!([
   {learning_object_id: single_choice_questions[0].id, answer_text: 'ci jazyk bude vyhovovat zlozitosti navrhu, ci sa mu bude dat lahko porozumiet ak v nom budeme implementovat, ci bude vyhovovat zakaznikovi, ci jazyk obsahuje tie prvky ktore manazer potrebuje', is_correct: true},
@@ -90,10 +99,10 @@ multi_choice_questions[0].concepts << [concepts[3],concepts[1]]
 multi_choice_questions[1].concepts << [concepts[3],concepts[1]]
 multi_choice_questions[2].concepts << [concepts[2],concepts[1],concepts[0]]
 multi_choice_questions[3].concepts << [concepts[0]]
-evaluator_questions[0].concepts << [concepts[0],concepts[1]]
-evaluator_questions[1].concepts << [concepts[0],concepts[2]]
-evaluator_questions[2].concepts << [concepts[2],concepts[1],concepts[0]]
-evaluator_questions[3].concepts << [concepts[2]]
+#evaluator_questions[0].concepts << [concepts[0],concepts[1]]
+#evaluator_questions[1].concepts << [concepts[0],concepts[2]]
+#evaluator_questions[2].concepts << [concepts[2],concepts[1],concepts[0]]
+#evaluator_questions[3].concepts << [concepts[2]]
 
 UserVisitedLoRelation.create!([
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[0].id, interaction: '??'},
@@ -102,19 +111,19 @@ UserVisitedLoRelation.create!([
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[2].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[0].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[1].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[0].id, learning_object_id: evaluator_questions[3].id, interaction: '??'},
+#  {setup_id: setup.id, user_id: users[0].id, learning_object_id: evaluator_questions[3].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[0].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[1].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[2].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[2].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: multi_choice_questions[3].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: multi_choice_questions[1].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[1].id, learning_object_id: evaluator_questions[2].id, interaction: '??'},
+  #{setup_id: setup.id, user_id: users[1].id, learning_object_id: evaluator_questions[2].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[2].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[3].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[1].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[2].id, learning_object_id: multi_choice_questions[2].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[2].id, learning_object_id: multi_choice_questions[1].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[2].id, learning_object_id: evaluator_questions[3].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[2].id, learning_object_id: evaluator_questions[3].id, interaction: '??'}
+  #{setup_id: setup.id, user_id: users[2].id, learning_object_id: evaluator_questions[3].id, interaction: '??'},
+  #{setup_id: setup.id, user_id: users[2].id, learning_object_id: evaluator_questions[3].id, interaction: '??'}
 ])
