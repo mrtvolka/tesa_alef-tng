@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
     @question = LearningObject.find(params[:id])
     rel = @question.seen_by_user(user_id)
     gon.userVisitedLoRelationId = rel.id
-    @next_question = @question.next(params[:week_number])
+    @next_question = @question.next_by_hybrid(params[:week_number],current_user.id)
     @previous_question = @question.previous(params[:week_number])
 
     @answers = @question.answers

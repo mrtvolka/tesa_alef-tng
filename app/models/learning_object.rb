@@ -36,6 +36,24 @@ class LearningObject < ActiveRecord::Base
     Week.find_by_number(week_number).learning_objects.where('learning_objects.id < ?', self.id).order(id: :desc).first
   end
 
+  def next_by_hybrid(week_number,user_id)
+    setup = Setup.take
+    week = setup.weeks.find_by_number(week_number)
+
+    learning_objects = week.learning_objects.all.distinct
+    RecommenderSystem::Recommender.setup(user_id,week.id)
+    recommendations = RecommenderSystem::HybridRecommender.new.get_list
+
+    recommendations.each_with_index do |key, index|
+      puts index
+      if (recommendations.count-1 <= index)
+        return nil
+      elsif (key[0] == self.id)
+         return  LearningObject.find(recommendations[index+1][0])
+      end
+    end
+  end
+
   def seen_by_user(user_id)
     UserVisitedLoRelation.create(user_id: user_id, learning_object_id: self.id, setup_id: 1)
   end
