@@ -8,7 +8,7 @@ class QuestionsControllerTest < ActionController::TestCase
     @teacher=User.where("role = 'teacher'").first
     @admin=User.where("role = 'administrator'").first
     @exercise=Exercise.where("real_start IS NOT NULL").first
-    #@exercise.real_start = "2016-05-02 14:00:00 +0200"
+    @ended_exercise=Exercise.where("real_end IS NOT NULL").first
   end
 
   test "teacher cannot get show_test" do
@@ -43,7 +43,6 @@ class QuestionsControllerTest < ActionController::TestCase
     #assert_not_nil assigns(:user)
     assert_not_nil assigns(:sorted_los)
     assert_not_nil assigns(:week)
-
     #View
     #assert_select 'h2', 'Test'
     #TODO: change structure of html to better differentiate between question divs, look css_select
@@ -52,6 +51,7 @@ class QuestionsControllerTest < ActionController::TestCase
 
     sign_out @student
   end
+
 
   test "administrator cannot post submit_test" do
     @request.env["devise.mapping"] = Devise.mappings[:admin]
@@ -86,4 +86,21 @@ class QuestionsControllerTest < ActionController::TestCase
 
     sign_out @student
   end
+
+  test "answers should not show" do
+    sign_in @student
+    request.env["HTTP_REFERER"] = "back location"
+    get(:show_answers,{'week_id' => "#{@exercise.week_id}",'exercise_code' => "#{@exercise.code}"})
+    assert_response 302
+    sign_out @student
+  end
+
+  test "answers should show" do
+    sign_in @student
+    get(:show_answers,{'week_id' => "#{@ended_exercise.week_id}",'exercise_code' => "#{@ended_exercise.code}"})
+    assert_response 200
+    sign_out @student
+  end
+
+
 end
