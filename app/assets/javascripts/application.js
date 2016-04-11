@@ -23,4 +23,6 @@
 //= require_tree .
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
+//= require chosen-jquery
+//= require scaffold
 

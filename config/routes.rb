@@ -103,8 +103,15 @@ Rails.application.routes.draw do
       delete :destroy
     end
 
-
+    resources :teachings do
+      get :index, :new, :edit, :deleteconcept
+      patch :update
+      post :create, :addconcept
+      delete :destroy
+    end
   end
+
+  #get 'administrations/exercises/addconcept' => 'administrations#exercises#addconcept'
 
   # Docasne takto, postupne sa prejde na namespace aj pre vzdelavacie objekty.
   get 'learning_objects/:id/image' => 'questions#show_image', as: 'show_single_image'

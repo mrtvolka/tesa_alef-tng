@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401154705) do
+ActiveRecord::Schema.define(version: 20160409152029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160401154705) do
     t.datetime "real_start"
     t.datetime "real_end"
     t.integer  "cooldown_time_amount"
+    t.integer  "test_length"
   end
 
   create_table "feedbacks", force: :cascade do |t|

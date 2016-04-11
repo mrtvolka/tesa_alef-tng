@@ -1,0 +1,52 @@
+<nav>
+  <div class="admin-nav">
+    <h2>Administrácia</h2>
+    <%= link_to "Domov", root_path, class: 'admin-nav-button' %>
+  </div>
+</nav>
+<hr class="nav-offset">
+<div class="container">
+  <div class="tabs">
+    <ul id="editor-tabs" class="tablist" role="tablist">
+      <li class="active"><a href="#" data-target="#question-settings" role="tab" id="question-tab" data-toggle="tab">Nastavenia termínu</a></li>
+    </ul>
+    <div id="editor-tabs-content" class="tab-content is-first">
+      <div role="tabpanel" class="tab-pane active" id="question-settings">
+        <div class="admin">
+          <div class="form-group">
+            <dl class="dl-horizontal">
+              <%= form_for @exercise, url: administrations_teachings_path, method: :post do |f|%>
+                  <dt><%= f.label :user_id, "Cviciaci" %>
+                  <dd><%= f.select :user_id, @teachers.map {|t| [t.first_name+" "+t.last_name, t.id]}%></dd>
+
+                  <dt><%= f.label :week_id, "Tyzden" %></dt>
+                  <dd><%= f.select :week_id, Week.all.map {|w| [w.number, w.id]}%></dd>
+
+                  <dt><%= f.label :start, "Zaciatok" %></dt>
+                  <dd><%= f.time_select :start %></dd>
+
+                  <dt><%= f.label :end, "Koniec" %></dt>
+                  <dd><%= f.time_select :end %></dd>
+
+                  <dt><%= f.label :code, "Kod" %></dt>
+                  <dd><%= f.number_field :code, class: "question_text_field" %></dd>
+
+                  <dt><%= f.label :cooldown_time_amount, "Zverejnenie o [min]" %></dt>
+                  <dd><%= f.number_field :cooldown_time_amount, class: "question_text_field", :value => 5 %></dd>
+
+                  <dt><%= f.label :test_length, "Trvanie testu [min]" %></dt>
+                  <dd><%= f.number_field :test_length, class: "question_text_field", :value => 5 %></dd>
+
+                  <dt></dt>
+                  <dd>
+                    <%= submit_tag 'Ulozit', class: :btn, data: { disable_with: t('global.texts.saving') } %>
+                    <%= button_tag 'Zrusit', class: :btn, type: :reset %>
+                  </dd>
+              <% end %>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

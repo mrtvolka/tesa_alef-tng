@@ -1,0 +1,31 @@
+<nav>
+  <div class="admin-nav">
+    <h2>Administrácia</h2>
+    <%= link_to "Domov", root_path, class: 'admin-nav-button' %>
+  </div>
+</nav>
+<hr class="nav-offset">
+<div id="header-panel" class="admin">
+
+  <div class="buttons">
+    <%= link_to "+ Pridat termin", new_administrations_teaching_path, class: 'btn' %>
+  </div>
+
+  <div class="tools">
+  </div>
+
+</div>
+<div id="questions-list" class="admin">
+  <% @exercises.each do |exercise| %>
+      <div id="user" class="question row">
+        <div class="question-tools">
+          <%= link_to('<i class="icon-edit"></i>'.html_safe, edit_administrations_teaching_path(exercise)) %>
+        </div>
+        <div class="question-icon"><i data-toggle="tooltip" title="user" class="icon-calendar-1"></i></div>
+        <div class="question-headline">
+          <div class="title">Termín (Cvičenie/Prednáška) <%= exercise.start.strftime("%d.%m.%Y %H:%M") %></div>
+          <div class="text"><%= exercise.user.first_name + " " + exercise.user.last_name %></div>
+        </div>
+      </div>
+  <% end %>
+</div>

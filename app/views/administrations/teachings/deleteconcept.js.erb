@@ -1,0 +1,1 @@
+$('#exercise-concepts-<%=params[:teaching_id]%>').html("<%= escape_javascript(render partial: 'concepts', :locals => { id: params[:teaching_id], :concepts => @concepts, :concept => @concept,:exercise_concepts => @exercise_concepts }) %>");

@@ -79,6 +79,9 @@ gem 'activesupport'
 # ZIP- file compression
 gem 'rubyzip'
 
+# Chosen select boxes
+gem 'chosen-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug'  # disabled for it interferes with RubyMine's debugger
