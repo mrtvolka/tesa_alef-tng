@@ -7,4 +7,8 @@ module ApplicationHelper
       ''
     end
   end
+
+  def replace_whitespace(string)
+    string.gsub(/(?:\n\r?|\r\n?|\\n)/, "\n")
+  end
 end

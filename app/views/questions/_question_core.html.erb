@@ -1,9 +1,7 @@
-<div class="question-text">
-  <%= mathjax_tag :config=> 'TeX-AMS-MML_SVG' %><%= learning_object.question_text %>
+<div class="question-text"><%= mathjax_tag :config=> 'TeX-AMS-MML_SVG' %><%= replace_whitespace(learning_object.question_text) %></div>
   <% unless learning_object.image.nil? %>
     <%= image_tag(show_single_image_path(learning_object.id), class: 'question-image', alt: "#{learning_object.lo_id} - obrázok") %>
   <% end %>
-</div>
 <form method="post" action="<%= request.original_url %>/evaluate_answers" id="question-form-<%= learning_object.type.downcase %>" class="question-form" data-remote>
   <input type="hidden" name="type" value="<%= learning_object.type %>">
   <div id="question-options">

@@ -2,31 +2,32 @@
 <hr class="nav-offset not-zoomable">
 <div class="question-name not-zoomable">
 </div>
-<br>
-<div class="my-mobile-content main">
-     <% @sorted_los.each do |lo| %>
-            <p class="card-text">
-              <%= lo.question_text %>
-              <% unless lo.image.nil? %>
-                  <%= image_tag qimages_url(@week.id,lo.id), class: 'question-image', alt: 'Obrázok' %>
-              <% end %>
-            <div id="question-options">
-              <% case lo.type
-                   when 'SingleChoiceQuestion' %>
-                  <% @question= lo%>
-                  <%= render 'answer_single_q' %>
-              <% when 'MultiChoiceQuestion' %>
-                  <% @question= lo%>
-                  <%= render 'answer_multi_q' %>
-              <% when 'OpenQuestion' %>
-                  <% @question= lo%>
-                  <%= render 'answer_open_q' %>
-              <% when 'EvaluatorQuestion' %>
-                  <p><b>  not working </b></p>
-              <% end %>
-            </div>
-            </p>
+
+<% @sorted_los.each do |lo| %>
+    <div class="my-mobile-content main">
+      <div class="card-text">
+        <br>
+        <p><%= mathjax_tag :config=> 'TeX-AMS-MML_SVG' %><%= replace_whitespace(lo.question_text) %></p></div>
+      <% unless lo.image.nil? %>
+          <%= image_tag qimages_url(@week.id,lo.id), class: 'question-image', alt: 'Obrázok' %>
       <% end %>
-</div>
+      <div id="question-options">
+        <% case lo.type
+             when 'SingleChoiceQuestion' %>
+            <% @question= lo%>
+            <%= render 'answer_single_q' %>
+        <% when 'MultiChoiceQuestion' %>
+            <% @question= lo%>
+            <%= render 'answer_multi_q' %>
+        <% when 'OpenQuestion' %>
+            <% @question= lo%>
+            <%= render 'answer_open_q' %>
+        <% when 'EvaluatorQuestion' %>
+            <p><b>  not working </b></p>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+<br>
 
 
