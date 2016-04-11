@@ -188,7 +188,7 @@ class QuestionsController < ApplicationController
 
 
     learning_objects = @week.learning_objects.all
-    RecommenderSystem::TesaSimpleRecommender.setup(@user,@week.id,@exercise.code)
+    RecommenderSystem::TesaSimpleRecommender.setup(@user,@week.id,@exercise.code,false,true)
     recommendations = RecommenderSystem::TesaSimpleRecommender.new.get_list
 
     @sorted_los = Array.new
