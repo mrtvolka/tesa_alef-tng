@@ -43,7 +43,7 @@ sk:
 
     user:
         links:
-          create:                     "Pridať používateľa"
+          create:                     "+ Pridať používateľa"
         texts:
           created:                    "Používateľ bol úspešne vytvorený"
         labels:
@@ -54,3 +54,23 @@ sk:
           types:
             localuser:                "lokálne"
             ldapuser:                 "cez LDAP"
+    teaching:
+          links:
+            create:                 "+ Pridať termín"
+          texts:
+            created:                "Termín bol úspešne vytvorený."
+            updated:                "Termín bol úspešne upravený."
+            deleted:                "Termín bol úspešne vymazaný."
+            codeexists:             "Kod termínu už existuje."
+          labels:
+            teacher:                 "Cvičiaci"
+            week:                    "Týždeň"
+            start:                   "Začiatok"
+            end:                     "Koniec"
+            code:                    "Kod"
+            test_length:             "Trvanie testu [min]"
+            cooldown_time:           "Zverejnenie o [min]"
+            concepts:                "Koncepty"
+            exercise_concepts:       "Termínové koncepty"
+            week_concepts:           "Týždňové koncepty"
+          settings:                  "Nastavenia termínu"

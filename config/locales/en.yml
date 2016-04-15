@@ -41,6 +41,7 @@ en:
       restore:                        "Restore"
       save_changes:                   "Save changes"
       submit:                         "Submit"
+      save:                           "Save"
     texts:
       please_fill_in:                 "Please, fill in all required fields."
       saving:                         "saving..."

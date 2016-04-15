@@ -8,7 +8,7 @@
 <div class="container">
   <div class="tabs">
     <ul id="editor-tabs" class="tablist" role="tablist">
-      <li class="active"><a href="#" data-target="#question-settings" role="tab" id="question-tab" data-toggle="tab">Nastavenia termínu</a></li>
+      <li class="active"><a href="#" data-target="#question-settings" role="tab" id="question-tab" data-toggle="tab"><%= t('admin.teaching.settings')%></a></li>
     </ul>
     <div id="editor-tabs-content" class="tab-content is-first">
       <div role="tabpanel" class="tab-pane active" id="question-settings">
@@ -16,31 +16,35 @@
           <div class="form-group">
             <dl class="dl-horizontal">
               <%= form_for @exercise, url: administrations_teachings_path, method: :post do |f|%>
-                  <dt><%= f.label :user_id, "Cviciaci" %>
-                  <dd><%= f.select :user_id, @teachers.map {|t| [t.first_name+" "+t.last_name, t.id]}%></dd>
+                  <dt><%= f.label :user_id, t('admin.teaching.labels.teacher') %>
+                  <dd><%= f.select :user_id, @teachers.map {|t| ["#{t.first_name} #{t.last_name} (#{t.login})", t.id]}%></dd>
 
-                  <dt><%= f.label :week_id, "Tyzden" %></dt>
+                  <dt><%= f.label :week_id, t('admin.teaching.labels.week') %></dt>
                   <dd><%= f.select :week_id, Week.all.map {|w| [w.number, w.id]}%></dd>
 
-                  <dt><%= f.label :start, "Zaciatok" %></dt>
-                  <dd><%= f.time_select :start %></dd>
+                  <dt><%= f.label :start, t('admin.teaching.labels.start') %></dt>
+                  <dd><%= f.datetime_select :start %></dd>
 
-                  <dt><%= f.label :end, "Koniec" %></dt>
-                  <dd><%= f.time_select :end %></dd>
+                  <dt><%= f.label :end, t('admin.teaching.labels.end') %></dt>
+                  <dd><%= f.datetime_select :end %></dd>
 
-                  <dt><%= f.label :code, "Kod" %></dt>
-                  <dd><%= f.number_field :code, class: "question_text_field" %></dd>
+                  <%= f.fields_for :options, OpenStruct.new(f.object.options || {}) do |fo|%>
+                      <dt><%= fo.label :test_length, t('admin.teaching.labels.test_length')%></dt>
+                      <dd><%= fo.number_field :test_length, class: "question_text_field" %></dd>
 
-                  <dt><%= f.label :cooldown_time_amount, "Zverejnenie o [min]" %></dt>
-                  <dd><%= f.number_field :cooldown_time_amount, class: "question_text_field", :value => 5 %></dd>
+                      <dt><%= fo.label :cooldown_time, t('admin.teaching.labels.cooldown_time')%></dt>
+                      <dd><%= fo.number_field :cooldown_time, class: "question_text_field" %></dd>
 
-                  <dt><%= f.label :test_length, "Trvanie testu [min]" %></dt>
-                  <dd><%= f.number_field :test_length, class: "question_text_field", :value => 5 %></dd>
+                      <dt><%= fo.label :exercise_concepts, t('admin.teaching.labels.exercise_concepts')%></dt>
+                      <dd><%= fo.check_box :exercise_concepts %></dd>
 
+                      <dt><%= fo.label :week_concepts, t('admin.teaching.labels.week_concepts')%></dt>
+                      <dd><%= fo.check_box :week_concepts %></dd>
+                  <% end %>
                   <dt></dt>
                   <dd>
-                    <%= submit_tag 'Ulozit', class: :btn, data: { disable_with: t('global.texts.saving') } %>
-                    <%= button_tag 'Zrusit', class: :btn, type: :reset %>
+                    <%= submit_tag t('global.links.save'), class: :btn, data: { disable_with: t('global.texts.saving') } %>
+                    <%= button_tag t('global.links.cancel'), class: :btn, type: :reset %>
                   </dd>
               <% end %>
             </dl>

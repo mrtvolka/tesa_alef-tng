@@ -43,7 +43,7 @@ en:
 
     user:
         links:
-          create:                     "Add user"
+          create:                     "+ Add user"
         texts:
           created:                    "User has been successfully created."
         labels:
@@ -54,3 +54,23 @@ en:
         types:
           localuser:                "local"
           ldapuser:                 "LDAP"
+    teaching:
+          links:
+            create:                 "+ Add teachning"
+          texts:
+            created:                "Teaching has been successfuly created."
+            updated:                "Teaching has been successfully updated."
+            deleted:                "Teaching has been successfully deleted."
+            codeexists:             "Teaching code already used."
+          labels:
+            teacher:                 "Teacher"
+            week:                    "Week"
+            start:                   "Start"
+            end:                     "End"
+            code:                    "Code"
+            test_length:             "Test length [min]"
+            cooldown_time:           "Cooldown time [min]"
+            concepts:                "Concepts"
+            exercise_concepts:       "Term concepts"
+            week_concepts:           "Week concepts"
+          settings:                  "Term settings"

@@ -41,6 +41,7 @@ sk:
       restore:                        "Obnoviť"
       save_changes:                   "Uložiť zmeny"
       submit:                         "Odoslať"
+      save:                           "Uložiť"
     texts:
       please_fill_in:                 "Prosím, vyplňte všetky povinné polia."
       saving:                         "prebieha ukladanie..."

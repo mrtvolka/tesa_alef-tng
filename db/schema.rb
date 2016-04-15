@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409152029) do
+ActiveRecord::Schema.define(version: 20160413111805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "activity_recommender_records", force: :cascade do |t|
     t.integer "learning_object_id",                      null: false
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20160409152029) do
     t.datetime "real_end"
     t.integer  "cooldown_time_amount"
     t.integer  "test_length"
+    t.hstore   "options"
   end
 
   create_table "feedbacks", force: :cascade do |t|
