@@ -6,7 +6,16 @@
 </div>
 <br>
     <div class="exercise-general">
-      <% if !@exercise.real_end %>
+      <% if !@exercise.real_start %>
+          <div class="my-mobile-content main">
+            <div class="title_exercises"><b>Test zatiaľ nebol spustený</b></div><br>
+            <div class="title_small_exercises"> Kód testu: <b><%= @exercise.code %></b></div><br>
+          </div>
+          <%= form_for @exercise do |f| %>
+              <%= f.hidden_field :real_start, :value => Time.current %>
+              <%= f.submit "Spustiť" ,id: "teacher-submit"%>
+          <%end%>
+      <% elsif !@exercise.real_end %>
           <div class="my-mobile-content main">
             <br>
             <div class="title_exercises"><b>Test práve prebieha</b></div><br>

@@ -85,6 +85,11 @@ var ready = (function () {
         Nav.init();
         Progressbar.setupProgressbars();
     }
+
+    if ($('#body-exercises-options').length) {
+        Nav.init();
+
+    }
 });
 
 // Uprava kvoli turbolinkam, tento ready kod sa nacita pri kazdom presmerovani

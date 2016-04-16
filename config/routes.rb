@@ -78,6 +78,8 @@ Rails.application.routes.draw do
   get 'tests' => 'weeks#test_list', as: 'tests'
   get  'exercise/results' => 'exercises#results' , as: 'results'
   get 'exercises/:id/answers' => 'exercises#answers', as: 'answers'
+  get 'exercise/:id/options' => 'exercises#options', as: 'exercise_options'
+  post 'exercice/:id/update_options' => 'exercises#update_options', as: 'exercise_update_options'
   get 'i' => 'weeks#index'
 
   namespace :administrations do

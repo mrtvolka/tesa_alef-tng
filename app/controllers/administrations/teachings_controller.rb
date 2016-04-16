@@ -44,7 +44,7 @@ module Administrations
     private
 
     def exercise_params
-      params.require(:exercise).permit(:week_id, :user_id, :start, :end, :code, :test_length, :cooldown_time_amount,
+      params.require(:exercise).permit(:week_id, :user_id, :start, :end, :code,
                                        options: [:exercise_concepts, :week_concepts, :cooldown_time, :test_length, ])
     end
 

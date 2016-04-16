@@ -5,8 +5,13 @@ class ExercisesController < ApplicationController
     @setup= Setup.take
     @exercise = Exercise.find_by_id(params[:id])
 
-    if (!params[:real_start].nil?)
-      @exercise.real_start= Time.current
+    unless params[:real_start].nil?
+      @exercise.real_end = nil
+      @exercise.real_start = Time.current
+      @exercise.save!
+    end
+    unless params[:real_end].nil?
+      @exercise.real_end = Time.current
       @exercise.save!
     end
   end
@@ -65,10 +70,33 @@ class ExercisesController < ApplicationController
     end
   end
 
+  def options
+    @exercise = Exercise.find_by_id(params[:id])
+  end
+
+  def update_options
+    @exercise = Exercise.find_by_id(params[:id])
+    options = @exercise.options
+    if options.nil?
+      options = Hash.new
+    end
+    unless params[:exercise][:options]['cooldown_time'].nil?
+      options['cooldown_time'] = params[:exercise][:options]['cooldown_time']
+    end
+    unless params[:exercise][:options]['test_length'].nil?
+      options['test_length'] = params[:exercise][:options]['test_length']
+    end
+    respond_to do |format|
+      if @exercise.update(options)
+        format.html { redirect_to exercise_options_path(@exercise), notice: t('admin.teaching.texts.updated')}
+        format.json { head :no_content }
+      end
+    end
+  end
+
   private
 
   def exercise_params
     params.require(:exercise).permit(:start, :user_id, :week_id, :code)
   end
-
 end

@@ -83,7 +83,15 @@
                 <% end %>
 
           </td>
-          <td class="tg-yw4l"><%=  if (!c.real_start && !c.real_end)  then  link_to 'Spustiť', exercises_show_path(:id => c.id, :real_start=> Time.current) else link_to 'Vstúpiť', exercises_show_path(:id => c.id) end %></td>
+          <td class="tg-yw4l">
+            <%=  if !c.real_start  then  link_to raw("<i class='icon-play'></i>"), exercises_show_path(:id => c.id, :real_start=> Time.current)
+                 elsif !c.real_end then link_to raw("<i class='icon-stop'></i>"), exercises_show_path(:id => c.id, :real_end => Time.current)
+                 else link_to raw("<i class='icon-arrows-cw'></i>"), exercises_show_path(:id => c.id, :real_start => Time.current) end %>
+            <%= link_to raw("<i class='icon-login'></i>"), exercises_show_path(:id => c.id) %>
+            <%= link_to raw("<i class='icon-cog'></i>"), exercise_options_path(:id => c.id) %>
+            <%= if c.real_start && c.real_end then link_to raw("<i class='icon-chart-bar'></i>"), statistics_path(:id => c.id) end %>
+            <%= if c.real_start && c.real_end then link_to raw("<i class='icon-list'></i>"), results_path(:id => c.id) end %>
+          </td>
         </tr>
     <% end %>
   </table>

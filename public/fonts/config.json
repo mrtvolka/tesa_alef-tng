@@ -269,6 +269,18 @@
       "css": "calendar-1",
       "code": 59435,
       "src": "fontawesome"
+    },
+    {
+      "uid": "3a00327e61b997b58518bd43ed83c3df",
+      "css": "login",
+      "code": 59436,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "48b87105bd38c20315f1b705b8c7b38c",
+      "css": "list",
+      "code": 59437,
+      "src": "fontawesome"
     }
   ]
 }

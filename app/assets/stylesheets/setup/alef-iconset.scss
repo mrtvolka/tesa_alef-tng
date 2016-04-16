@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'alef-iconset';
-    src: url('../font/alef-iconset.svg?58092883#alef-iconset') format('svg');
+    src: url('../font/alef-iconset.svg?75651421#alef-iconset') format('svg');
   }
 }
 */
@@ -98,3 +98,5 @@
 .icon-home:before { content: '\e829'; } /* '' */
 .icon-delete:before { content: '\e82a'; } /* '' */
 .icon-calendar-1:before { content: '\e82b'; } /* '' */
+.icon-login:before { content: '\e82c'; } /* '' */
+.icon-list:before { content: '\e82d'; } /* '' */

@@ -1,0 +1,31 @@
+<%= render 'nav' %>
+<hr class="nav-offset not-zoomable">
+<div class="question-name not-zoomable">
+  <div class="mobile-content">
+  </div>
+</div>
+<div class="container">
+    <div class="tabs">
+      <div id="editor-tabs-content" class="tab-content is-first">
+        <div role="tabpanel" class="tab-pane active" id="question-settings">
+          <div class="admin">
+            <div class="form-group">
+              <dl class="dl-horizontal">
+                  <%= form_for @exercise, :url => exercise_update_options_path, :method => :post do |f|%>
+                      <%= f.fields_for :options, OpenStruct.new(f.object.options || {}) do |fo|%>
+                          <dt><%= fo.label :test_length, t('admin.teaching.labels.test_length')%></dt>
+                          <dd><%= fo.number_field :test_length, class: "question_text_field" %></dd>
+
+                          <dt><%= fo.label :cooldown_time, t('admin.teaching.labels.cooldown_time')%></dt>
+                          <dd><%= fo.number_field :cooldown_time, class: "question_text_field" %></dd>
+                      <% end %>
+                      <%= submit_tag t('global.links.save_changes'), class: :btn, data: { disable_with: t('global.texts.saving') } %>
+                      <%= button_tag t('global.links.discard_changes'), class: :btn, type: :reset %>
+                  <% end %>
+                </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
