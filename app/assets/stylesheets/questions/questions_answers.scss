@@ -24,11 +24,11 @@
   }
 
   &[type="checkbox"]:checked + .answer-icon::before {
-    content: '\e809';
+    content: '\e804';
   }
 
   &[type="radio"]:checked + .answer-icon::before {
-    content: '\e806';
+    content: '\e81d';
   }
 }
 
@@ -41,11 +41,11 @@
   }
 
   &[type="checkbox"]:checked + .answer-icon::before {
-    content: '\e809';
+    content: '\e804';
   }
 
   &[type="radio"]:checked + .answer-icon::before {
-    content: '\e806';
+    content: '\e81d';
   }
 }
 
