@@ -8,22 +8,22 @@ input[type="checkbox"].icon {
   }
 
   &+ label i.icon-checkbox:before {
-    content: '\e825';
+    content: '\e824';
     color: $gray;
     margin-left: 0;
   }
 
   &:checked + label i.icon-checkbox:before {
-    content: '\e826';
+    content: '\e825';
     color: #000000;
   }
 
   &+ label i.icon-eyebox:before {
-    content: '\e824';
+    content: '\e823';
   }
 
   &:checked + label i.icon-eyebox:before {
-    content: '\e803';
+    content: '\e807';
   }
 
 }
