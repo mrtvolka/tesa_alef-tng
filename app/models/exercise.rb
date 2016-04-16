@@ -10,7 +10,7 @@ class Exercise < ActiveRecord::Base
   accepts_nested_attributes_for :concepts
 
   def unavailable_answers? (user)
-    if real_end == nil || (real_end+options['cooldown_time'].to_i.minutes > Time.now && user.student?)
+    if real_end == nil || (!options.nil? && real_end+options['cooldown_time'].to_i.minutes > Time.now && user.student?)
       true
     else
       false
