@@ -1,0 +1,6 @@
+<div id="Modal" class="modal fade" data-toggle="modal">
+    <%= form_tag({action: :csv_question_import}, multipart: true) do %>
+        <%= file_field_tag 'test_data',:id => 'upload' %>
+        <%= submit_tag("Upload", :id => 'upload_submit') %>
+    <% end %>
+</div>

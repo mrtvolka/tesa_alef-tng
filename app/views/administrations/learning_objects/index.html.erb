@@ -9,7 +9,10 @@
 
   <div class="buttons">
     <%= link_to "+ #{t('admin.questions.links.create')}", new_administrations_learning_object_path(course: @course), class: 'btn' %>
+    <a data-toggle="modal" data-target="#Modal" data-backdrop="static" data-keyboard="false" class="btn">+ Importovať otázky</a>
+    <%= render "import" %>
   </div>
+
 
   <div class="tools">
   </div>
@@ -17,13 +20,4 @@
 </div>
 <div id="questions-list" class="admin">
   <%= render partial: 'learning_object', collection: @questions, as: :learning_object %>
-</div>
-<div id="questions-list" class="admin">
-<div id="learning-object10" class="question row">
-    <center><b>Import otázok</b></center>
-    <%= form_tag({action: :csv_question_import}, multipart: true) do %>
-        <%= file_field_tag 'test_data' %>
-        <%= submit_tag("Upload") %>
-    <% end %>
-</div>
 </div>

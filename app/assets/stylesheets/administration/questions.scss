@@ -10,6 +10,7 @@
   .buttons {
     float: right;
     padding: 20px 15px;
+    position: relative;
   }
 
   .tools {
@@ -155,5 +156,32 @@
     }
 
   }
+
+}
+
+#Modal {
+  background-color: #fefefe;
+  margin: 0px 5px; /* 15% from the top and centered */
+  //padding: 5px;
+  border: 2px solid #888;
+  width: auto;
+  height: auto;
+  display: none;
+  position: absolute;
+  right: 0px ;
+  top: 0px;
+  border: 3px solid $gray-light;
+  transform: translate(0, 100%);
+}
+#upload {
+    width: 45%;
+    float: left;
+    margin: 5px;
+    border: 0px;
+  }
+#upload_submit {
+    width: 25%;
+    float: right;
+    margin: 10px 10px ;
 
 }
