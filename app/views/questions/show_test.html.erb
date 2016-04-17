@@ -6,7 +6,7 @@
   </div>
 </nav>
 <hr class="nav-offset not-zoomable">
-<form method="post" action="<%= submit_test_path %>" id="test-form" class="question-form" data-remote>
+<form method="post" id="test-form" action="<%= submit_test_path %>"  class="question-form" data-remote>
   <% @sorted_los.each do |lo| %>
       <input type="hidden" name="questions[<%=lo.id%>][type]" value="<%= lo.type %>">
       <input type="hidden" name="questions[<%=lo.id%>][commit]" value="<%= "send_answer" %>">
@@ -37,6 +37,8 @@
       </div>
   <% end %>
 
-  <button class="question-button question-button-red" name="commit" value="submit_test">Odovzdaj test</button>
+  <button class="question-button question-button-red" id="clickButton" value="submit_test" style="background: transparent;border: none !important;"/>
 </form>
+<button class="question-button question-button-red"  onclick="getConfirmation()" >Odovzdaj test</button>
 </div>
+
