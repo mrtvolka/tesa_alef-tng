@@ -1,10 +1,12 @@
-<nav>
-  <div class="admin-nav">
-    <h2>Administrácia</h2>
-    <%= link_to "Domov", root_path, class: 'admin-nav-button' %>
+<nav class="question-nav not-zoomable">
+  <%= render 'shared/user_element_admin' %>
+  <div class="mobile-content wide">
+    <h2><%= Setup.first.name %> - administrácia</h2>
+    <a href="<%=url_for administrations_learning_objects_path(:course => @learning_object.course) %>"><i class="nav-right-icons icon-level-up"></i></a>
+    <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
   </div>
 </nav>
-<hr class="nav-offset">
+<hr class="nav-offset not-zoomable">
 <div class="container">
   <div class="tabs">
     <ul id="editor-tabs" class="tablist" role="tablist">

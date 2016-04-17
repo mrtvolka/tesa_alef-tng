@@ -90,6 +90,54 @@ var ready = (function () {
         Nav.init();
 
     }
+
+    if ($('#body-administrations-index').length) {
+        Nav.init()
+    }
+
+    if ($('#body-administrations-setup_config').length) {
+        Nav.init()
+    }
+
+    if ($('#body-administrations-question_concept_config').length) {
+        Nav.init()
+    }
+
+    if ($('#body-learning_objects-index').length) {
+        Nav.init()
+    }
+
+    if ($('#body-learning_objects-new').length) {
+        Nav.init()
+    }
+
+    if ($('#body-learning_objects-edit').length) {
+        Nav.init()
+    }
+
+    if ($('#body-users-index').length) {
+        Nav.init()
+    }
+
+    if ($('#body-users-new').length) {
+        Nav.init()
+    }
+
+    if ($('#body-users-edit').length) {
+        Nav.init()
+    }
+
+    if ($('#body-teachings-index').length) {
+        Nav.init()
+    }
+
+    if ($('#body-teachings-new').length) {
+        Nav.init()
+    }
+
+    if ($('#body-teachings-edit').length) {
+        Nav.init()
+    }
 });
 
 // Uprava kvoli turbolinkam, tento ready kod sa nacita pri kazdom presmerovani
