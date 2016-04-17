@@ -158,30 +158,26 @@
   }
 
 }
-
+#ModalDiv{
+  float: left;
+  width: 60%;
+  margin: 12px 10px;
+}
 #Modal {
   background-color: #fefefe;
-  margin: 0px 5px; /* 15% from the top and centered */
-  //padding: 5px;
+  margin: 0px 15px;
   border: 2px solid #888;
-  width: auto;
+  width: 100%;
   height: auto;
   display: none;
   position: absolute;
   right: 0px ;
   top: 0px;
   border: 3px solid $gray-light;
-  transform: translate(0, 100%);
+  transform: translate(0, 80%);
 }
-#upload {
-    width: 45%;
-    float: left;
-    margin: 5px;
-    border: 0px;
-  }
 #upload_submit {
-    width: 25%;
     float: right;
-    margin: 10px 10px ;
-
+    margin: 10px 5px 11px 5px ;
+    width: 25%;
 }

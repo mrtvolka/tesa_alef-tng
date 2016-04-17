@@ -25,4 +25,6 @@
 //= require highcharts/highcharts-more
 //= require chosen-jquery
 //= require scaffold
+//= require bootstrap
+//= require bootstrap-filestyle.js
 

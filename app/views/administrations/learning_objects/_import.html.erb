@@ -1,6 +1,8 @@
 <div id="Modal" class="modal fade" data-toggle="modal">
     <%= form_tag({action: :csv_question_import}, multipart: true) do %>
-        <%= file_field_tag 'test_data',:id => 'upload' %>
-        <%= submit_tag("Upload", :id => 'upload_submit') %>
+        <div id="ModalDiv">
+          <%= file_field_tag 'test_data',:id => 'upload',:class=> "filestyle",:"data-input"=>"false", :"data-buttonText"=>"Vyber archív",:"data-size"=> "sm",:"data-icon"=>"true", :"data-iconName"=>"icon-add", :"data-badge"=>"false"  %>
+        </div>
+        <%= submit_tag("Nahraj", :id => 'upload_submit') %>
     <% end %>
 </div>
