@@ -104,10 +104,8 @@ namespace :tesa do
           is_special = check_is_special_flag(row[8])
           week_number = row[9]
 
-          lo = LearningObject.find_or_create_by(question_text: question_text) do |lo|
-            lo.course = Course.first
-          end
-
+          lo = LearningObject.create(question_text: question_text)
+          lo.course = Course.first
           lo.update( type: question_type, lo_id: question_name, question_text: question_text, is_test_question: true, is_special_question: is_special)
 
           if (!TESA_QUESTION_TYPES.has_key?(row[4]))
