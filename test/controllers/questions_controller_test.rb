@@ -97,10 +97,10 @@ class QuestionsControllerTest < ActionController::TestCase
 
   test "answers should show" do
     sign_in @student
+    #question.id
     get(:show_answers,{'week_id' => "#{@ended_exercise.week_id}",'exercise_code' => "#{@ended_exercise.code}"})
     assert_response 200
     sign_out @student
   end
-
 
 end

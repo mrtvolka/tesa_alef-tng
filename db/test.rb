@@ -1,6 +1,7 @@
 course = Course.create!(name: 'PSI')
 
-setup = Setup.create!(name: 'PSI 2015', first_week_at: '2015-09-21 00:00:00.00000', week_count: 4, course_id: course.id)
+#setup = Setup.create!(name: 'PSI 2015', first_week_at: '2015-09-21 00:00:00.00000', week_count: 4, course_id: course.id)
+setup = Setup.create!(name: 'PSI 2015', first_week_at: '2015-09-21 00:00:00.00000', week_count: 4, course_id: 2)
 
 weeks = Week.create!([
   {setup_id: setup.id, number: 1},
@@ -15,10 +16,14 @@ exercises = Exercise.create!([
 ])
 
 concepts = Concept.create!([
-  {course_id: course.id, pseudo: false, name: 'Diagram prípadov použitia'},
-  {course_id: course.id, pseudo: false, name: 'Diagram toku údajov'},
-  {course_id: course.id, pseudo: false, name: 'Softvérové inžinierstvo'},
-  {course_id: course.id, pseudo: false, name: 'Diagram aktivít'}
+  #{course_id: course.id, pseudo: false, name: 'Diagram prípadov použitia'},
+  #{course_id: course.id, pseudo: false, name: 'Diagram toku údajov'},
+  #{course_id: course.id, pseudo: false, name: 'Softvérové inžinierstvo'},
+  #{course_id: course.id, pseudo: false, name: 'Diagram aktivít'}
+  {course_id: 2, pseudo: false, name: 'Diagram prípadov použitia'},
+  {course_id: 2, pseudo: false, name: 'Diagram toku údajov'},
+  {course_id: 2, pseudo: false, name: 'Softvérové inžinierstvo'},
+  {course_id: 2, pseudo: false, name: 'Diagram aktivít'}
 ])
 
 exercises[1].concepts << [concepts[1]]
@@ -112,18 +117,18 @@ UserVisitedLoRelation.create!([
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[0].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
 #  {setup_id: setup.id, user_id: users[0].id, learning_object_id: evaluator_questions[3].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[0].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[1].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[2].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[2].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[1].id, learning_object_id: multi_choice_questions[3].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[1].id, learning_object_id: multi_choice_questions[1].id, interaction: '??'},
+  {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[0].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[1].id, learning_object_id: multi_choice_questions[3].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[1].id, learning_object_id: multi_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
   #{setup_id: setup.id, user_id: users[1].id, learning_object_id: evaluator_questions[2].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[2].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[3].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[1].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[2].id, learning_object_id: multi_choice_questions[2].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[2].id, learning_object_id: multi_choice_questions[1].id, interaction: '??'},
+  {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[3].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[2].id, learning_object_id: multi_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[2].id, learning_object_id: multi_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
   #{setup_id: setup.id, user_id: users[2].id, learning_object_id: evaluator_questions[3].id, interaction: '??'},
   #{setup_id: setup.id, user_id: users[2].id, learning_object_id: evaluator_questions[3].id, interaction: '??'}
 ])
