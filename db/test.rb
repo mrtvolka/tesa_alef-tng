@@ -105,12 +105,12 @@ multi_choice_questions[3].concepts << [concepts[0]]
 #evaluator_questions[3].concepts << [concepts[2]]
 
 UserVisitedLoRelation.create!([
-  {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[0].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[1].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[1].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[2].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[0].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[1].id, interaction: '??'},
+  {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[0].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[0].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
 #  {setup_id: setup.id, user_id: users[0].id, learning_object_id: evaluator_questions[3].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[0].id, interaction: '??'},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[1].id, interaction: '??'},

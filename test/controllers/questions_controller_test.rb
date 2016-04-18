@@ -4,7 +4,7 @@ class QuestionsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   def setup
-    @student= User.where("role = 'student'").first
+    @student= User.where("login = 'student1'").first
     @teacher=User.where("role = 'teacher'").first
     @admin=User.where("role = 'administrator'").first
     @exercise=Exercise.where("real_start IS NOT NULL").first
