@@ -1,13 +1,13 @@
 <% if !exercise.real_start && !exercise.real_end %>
-    <%= link_to raw("<i class='icon-play'></i>"), exercise_path(:id => exercise.id, :exercise => {:real_start => Time.current}), :method=> :patch, :class => "focusable" %>
+    <%= link_to raw("<i class='icon-play'></i>"), exercise_path(:id => exercise.id), :method=> :patch, :class => "focusable" %>
 <%elsif exercise.real_start && exercise.real_end%>
-    <%= link_to raw("<i class='icon-arrows-cw'></i>"), exercise_path(:id => exercise.id, :exercise => {:real_end => Time.current}), :method=> :patch, :class => "focusable" %>
+    <%= link_to raw("<i class='icon-arrows-cw'></i>"), exercise_path(:id => exercise.id), :method=> :patch, :class => "focusable" %>
 <%else%>
     <i class='icon-play disabled'></i>
 <%end%>
 
 <% if exercise.real_start && !exercise.real_end %>
-    <%= link_to raw("<i class='icon-stop'></i>"),exercise_path(:id => exercise.id, :exercise => {:real_end => Time.current}), :method=> :patch, :class => "focusable" %>
+    <%= link_to raw("<i class='icon-stop'></i>"),exercise_path(:id => exercise.id), :method=> :patch, :class => "focusable" %>
 <%else %>
     <i class='icon-stop disabled'></i>
 <%end%>

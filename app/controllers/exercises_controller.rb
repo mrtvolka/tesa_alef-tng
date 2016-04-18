@@ -41,7 +41,7 @@ class ExercisesController < ApplicationController
         @exercise.real_end = nil
       end
       respond_to do |format|
-        if @exercise.update(exercise_params)
+        if @exercise.save
           format.html { redirect_to @exercise}
           format.json { head :no_content }
         end
