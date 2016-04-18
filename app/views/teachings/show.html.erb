@@ -7,33 +7,32 @@
 </nav>
 <hr class="nav-offset not-zoomable">
 <br>
-
 <div class="exercise-general">
-<div class="my-mobile-content main">
-  <br>
-  <center><b>Zoznam cvičení</b></center>
+  <div class="my-mobile-content main">
+    <br>
+    <center><b>Zoznam cvičení</b></center>
+    <br>
+  </div>
+</div>
 
-  <style type="text/css">
-      .tg  {border-collapse:collapse;border-spacing:0;}
-      .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 10px 10px 10px ;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-      .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 10px 10px 10px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-      .tg .tg-yw4l{vertical-align:top}
-  </style>
-  <center>
-  <table class="tg">
+<div class="my-mobile-content main">
+  <table class="tg sticky-header">
+    <thead>
     <tr>
       <th class="tg-yw4l">Týždeň</th>
       <th class="tg-yw4l">Deň</th>
       <th class="tg-yw4l">Čas<br></th>
       <% if current_user.administrator? %><th class="tg-yw4l">Cvičiaci</th><% end%>
       <th class="tg-yw4l">Stav<br></th>
-      <th class="tg-yw4l">Štart/Výsledky</th>
+      <th class="tg-yw4l">Akcie</th>
     </tr>
+    </thead>
+    <tbody>
     <%
-        wb= false # week before
-        ab= false  # all before (without week before, obviously)
-        wa= false  # week after
-        aa= false  # all after
+       wb= false # week before
+       ab= false  # all before (without week before, obviously)
+       wa= false  # week after
+       aa= false  # all after
     %>
     <% @exercises.each do |c| %>
         <% if c.week.number < @actual_week.number-1  && !ab %> <%# all other weeks before%>
@@ -78,24 +77,17 @@
           <td class="tg-yw4l">
 
             <% if c.real_start && !c.real_end %> Prebieha
-                <%elsif c.real_end %> Ukončený
-                <%else %> Nezačal
-                <% end %>
+            <%elsif c.real_end %> Ukončený
+            <%else %> Nezačal
+            <% end %>
 
           </td>
-          <td class="tg-yw4l">
-            <%=  if !c.real_start  then  link_to raw("<i class='icon-play'></i>"), exercises_show_path(:id => c.id, :real_start=> Time.current)
-                 elsif !c.real_end then link_to raw("<i class='icon-stop'></i>"), exercises_show_path(:id => c.id, :real_end => Time.current)
-                 else link_to raw("<i class='icon-arrows-cw'></i>"), exercises_show_path(:id => c.id, :real_start => Time.current) end %>
-            <%= link_to raw("<i class='icon-login'></i>"), exercises_show_path(:id => c.id) %>
-            <%= link_to raw("<i class='icon-cog'></i>"), exercise_options_path(:id => c.id) %>
-            <%= if c.real_start && c.real_end then link_to raw("<i class='icon-chart-bar'></i>"), statistics_path(:id => c.id) end %>
-            <%= if c.real_start && c.real_end then link_to raw("<i class='icon-list'></i>"), results_path(:id => c.id) end %>
+          <td class="tg-yw4l actions">
+            <%= render 'actions', exercise: c %>
           </td>
         </tr>
     <% end %>
+    </tbody>
   </table>
-</center>
   <br>
 </div>
-  </div>

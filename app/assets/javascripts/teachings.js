@@ -16,6 +16,18 @@ $(function() {
 
     });
 });
+$(document).on('ready page:load page:restore', function() {
+    var table = $(".sticky-header");
+    if (table.length > 0){
+        table.floatThead({
+            top: $('hr').height(),
+            autoReflow: true,
+            enableAria: true,
+            position: 'absolute',
+            zIndex: 95,
+        });
+    }
+});
 
 $(document).ready(
     function(event) {
@@ -34,4 +46,5 @@ $(document).ready(
                 }
             }
         }
-    })
+    }
+)

@@ -27,4 +27,5 @@
 //= require scaffold
 //= require bootstrap
 //= require bootstrap-filestyle.js
+//= require jquery.floatThead.min
 

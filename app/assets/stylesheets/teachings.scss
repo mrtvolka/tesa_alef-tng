@@ -226,10 +226,69 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-
 .graph-title{
   margin-top:2%;
   margin-bottom:1%;
   @include big-font;
   text-align:center;
+}
+
+.tg {
+  white-space: nowrap;
+  font-family: "Lato","sans-serif";
+}
+
+.tg table.one {
+  margin-bottom: 3em;
+  border-collapse:collapse;	}
+
+.tg td {							/* removed the border from the table data rows  */
+  text-align: center;
+  width: 10em;
+  padding: 1em;
+  font-family:Arial, sans-serif;
+  font-size:13px;
+  padding:2px 2px 2px 2px ;
+}
+
+.tg th {							  /* removed the border from the table heading row  */
+  text-align: center;
+  background-color: #D64541;
+  color: white;
+  -webkit-box-shadow:inset 0px 0px 0px 1px;
+  -moz-box-shadow:inset 0px 0px 0px 1px;
+  box-shadow:inset 0px 0px 0px 1px;
+  overflow:hidden;
+  word-break:normal;
+  font-family:Arial, sans-serif;
+  font-size:14px;
+  font-weight:normal;
+  padding:5px 5px 5px 5px;
+}
+
+.tg tr {
+  height: 1em;	}
+
+.tg tr:nth-child(even) {		      /* added all even rows a #eee color  */
+  background-color: #eee;
+}
+
+.tg tr:nth-child(odd) {		     /* added all odd rows a #fff color  */
+  background-color:#fff;
+}
+
+.tg .actions{
+  font-size: 115%;
+}
+.focusable{
+  padding: 3px;
+  border-radius: 2px;
+}
+.focusable:hover{
+  background-color: #D64541;
+  color: white;
+}
+.disabled{
+  padding: 3px;
+  color: #d0d0d0;
 }
