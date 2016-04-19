@@ -1,1 +1,2 @@
 $('#counter<%=params[:id]%>').html("<%= escape_javascript(render partial: 'counter', :locals => { id: params[:id], :data => @counter} ) %>");
+$('#timer-<%=params[:id]%>').html("<%= escape_javascript(render partial: 'timer', :locals => { time: @exercise.test_time_left}) %>");

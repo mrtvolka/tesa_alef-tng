@@ -1,0 +1,3 @@
+<div class="remaining-time<%=if time <= 0 then ' zero' elsif time < 16 then ' low' end%>">
+<%= if time then Time.at(time).strftime('%M:%S') end%>
+</div>

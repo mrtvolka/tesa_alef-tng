@@ -70,3 +70,29 @@
 .title_smaller_exercises{
   font-size: 20%;
 }
+
+.remaining-time {
+  font-size: 180%;
+}
+
+.remaining-time.low {
+  color: $red;
+  animation: blink 1s step-start 0s infinite;
+  -webkit-animation: blink 1s step-start 0s infinite;
+}
+
+.remaining-time.zero {
+  color: $red;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}

@@ -33,4 +33,21 @@ class Exercise < ActiveRecord::Base
       break random_code unless Exercise.exists?(code: random_code)
     end
   end
+
+  def test_length_defined?
+    if options.nil? || options['test_length'].empty?
+      false
+      return
+    end
+    true
+  end
+
+  def test_time_left
+    if test_length_defined?
+      time_left = real_start + options['test_length'].to_i.minutes - Time.now
+      time_left>0 ? time_left : 0
+    else
+      0
+    end
+  end
 end

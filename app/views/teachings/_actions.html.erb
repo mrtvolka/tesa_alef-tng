@@ -16,5 +16,5 @@
 <%else %>
     <i class='icon-chart-bar disabled'></i>
 <%end%>
-
-<%= link_to raw("<i class='icon-cog'></i>"), exercise_options_path(:id => exercise.id) %>
+<%= link_to raw("<i class='icon-login'></i>"), exercise_path(:id => exercise.id), :class => "focusable" %>
+<%= link_to raw("<i class='icon-cog'></i>"), exercise_options_path(:id => exercise.id), :class => "focusable" %>

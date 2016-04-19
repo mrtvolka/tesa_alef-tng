@@ -4,16 +4,6 @@ class ExercisesController < ApplicationController
     gon.exercise_id = params[:id]
     @setup= Setup.take
     @exercise = Exercise.find_by_id(params[:id])
-
-    unless params[:real_start].nil?
-      @exercise.real_end = nil
-      @exercise.real_start = Time.current
-      @exercise.save!
-    end
-    unless params[:real_end].nil?
-      @exercise.real_end = Time.current
-      @exercise.save!
-    end
   end
 
   def refresh

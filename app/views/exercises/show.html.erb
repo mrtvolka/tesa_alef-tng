@@ -18,7 +18,10 @@
       <% elsif !@exercise.real_end %>
           <div class="my-mobile-content main">
             <br>
-            <div class="title_exercises"><b>Test práve prebieha</b></div><br>
+            <div class="title_exercises"><b>Test práve prebieha</b></div>
+            <div id="timer-<%= params[:id]%>">
+              <%= render partial: 'timer', :locals => { :time => @exercise.test_time_left }%>
+            </div>
             <div class="title_small_exercises"> Kód testu: <b><%= @exercise.code %></b><br>
               <div class="title_smaller_exercises"><br></div>
           <b><%= url_for :action => 'show_test', :controller => 'questions', :exercise_code => @exercise.code , :only_path => false %></b></a>
