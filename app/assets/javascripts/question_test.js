@@ -3,6 +3,7 @@ function getConfirmation(){
     var form = document.getElementById('test-form');
     var questions = document.getElementsByClassName('my-mobile-content');
     var textareas = document.getElementsByTagName('textarea');
+    var eval = document.getElementsByClassName('eval');
     var count = 0;
 
     for(var x = 0; x < questions.length; x++){
@@ -20,8 +21,12 @@ function getConfirmation(){
     }
 
     for(var z=0 ; z < textareas.length; z++){
-        console.log(textareas[z].value)
         if(textareas[z].value != '') count += 1;
+    }
+
+    console.log(eval.length)
+    for(var z=0 ; z < eval.length; z++){
+        count += 1;
     }
 
     if (count != questions.length) {
