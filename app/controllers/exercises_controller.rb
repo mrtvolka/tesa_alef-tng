@@ -23,12 +23,15 @@ class ExercisesController < ApplicationController
     elsif (params[:answers])
       redirect_to answers_path(id: @exercise.id, format: "csv")
     else
-      if(!@exercise.real_start)
+      if(!@exercise.real_start)   # start test first time
         @exercise.real_start = Time.current
-      elsif(!@exercise.real_end)
+        create_qr_code
+      elsif(!@exercise.real_end) # end test
         @exercise.real_end = Time.current
-      else
+        FileUtils.rm('./public/assets/qrcode' + @exercise.id.to_s + '.png')
+      else # start test again
         @exercise.real_end = nil
+        create_qr_code
       end
       respond_to do |format|
         if @exercise.save
@@ -88,5 +91,18 @@ class ExercisesController < ApplicationController
 
   def exercise_params
     params.require(:exercise).permit(:start, :user_id, :week_id, :code)
+  end
+
+  def create_qr_code
+    qrcode = RQRCode::QRCode.new((url_for :action => 'show_test', :controller => 'questions', :exercise_code => @exercise.code , :only_path => false))
+    qrcode.as_png(
+        resize_gte_to: false,
+        resize_exactly_to: false,
+        fill: 'white',
+        color: 'black',
+        size: 900,
+        border_modules: 4,
+        module_px_size: 6,
+        file: './public/assets/qrcode' + @exercise.id.to_s + '.png')
   end
 end
