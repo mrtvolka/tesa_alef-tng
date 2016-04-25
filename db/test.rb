@@ -1,7 +1,7 @@
 course = Course.create!(name: 'PSI')
 
 #setup = Setup.create!(name: 'PSI 2015', first_week_at: '2015-09-21 00:00:00.00000', week_count: 4, course_id: course.id)
-setup = Setup.create!(name: 'PSI 2015', first_week_at: '2015-09-21 00:00:00.00000', week_count: 4, course_id: 2)
+setup = Setup.create!(name: 'PSI 2015', first_week_at: '2015-09-21 00:00:00.00000', week_count: 4, course_id: course.id)
 
 weeks = Week.create!([
   {setup_id: setup.id, number: 1},
@@ -20,10 +20,10 @@ concepts = Concept.create!([
   #{course_id: course.id, pseudo: false, name: 'Diagram toku údajov'},
   #{course_id: course.id, pseudo: false, name: 'Softvérové inžinierstvo'},
   #{course_id: course.id, pseudo: false, name: 'Diagram aktivít'}
-  {course_id: 2, pseudo: false, name: 'Diagram prípadov použitia'},
-  {course_id: 2, pseudo: false, name: 'Diagram toku údajov'},
-  {course_id: 2, pseudo: false, name: 'Softvérové inžinierstvo'},
-  {course_id: 2, pseudo: false, name: 'Diagram aktivít'}
+  {course_id: course.id, pseudo: false, name: 'Diagram prípadov použitia'},
+  {course_id: course.id, pseudo: false, name: 'Diagram toku údajov'},
+  {course_id: course.id, pseudo: false, name: 'Softvérové inžinierstvo'},
+  {course_id: course.id, pseudo: false, name: 'Diagram aktivít'}
 ])
 
 exercises[1].concepts << [concepts[1]]
