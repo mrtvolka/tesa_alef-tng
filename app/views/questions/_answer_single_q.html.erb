@@ -3,5 +3,5 @@
     <% interaction= (@student_answers.where("learning_object_id = ?", @question.id).first.interaction.to_s).eql?("#{a.id }")%>
     <label><input type="radio" name="answer<%= a.id%>" <%= interaction ? "checked=true":"" %> disabled= "true" class="answer-output <%= (a.is_correct && interaction)||(!a.is_correct && !interaction) ? "answer-is-correct" : "answer-is-incorrect"%>">
       <i class="icon-radio answer-icon"></i>
-      <div class="answer-text"><%= mathjax_tag %><%= a.answer_text %></div></label>
+      <div class="answer-text"><%= a.answer_text %></div></label>
 <% end %>

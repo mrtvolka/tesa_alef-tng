@@ -2,5 +2,5 @@
 <% @answers.each do |a| %>
     <label><input type="radio" name="questions[<%= @question.id%>][answer]" value="<%= a.id %>" class="answer-input">
       <i class="icon-radio answer-icon"></i>
-      <div class="answer-text"><%= mathjax_tag %><%= a.answer_text %></div></label>
+      <div class="answer-text"><%= a.answer_text %></div></label>
 <% end %>

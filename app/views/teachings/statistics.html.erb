@@ -25,7 +25,7 @@
   <div class="tab-content">
     <% @chart.each.with_index do |chart,index| %>
         <div id="<%=index.to_s%>" class=" tab-pane fade  <%= 'in active' unless index > 0 %>">
-          <div class="graph-title"> <%= mathjax_tag :config=> 'TeX-AMS-MML_SVG' %><%= @titles[index] %></div>
+          <div class="graph-title">><%= @titles[index] %></div>
           <% if chart.instance_of?(LazyHighCharts::HighChart)%>
               <div class="chart"><%= high_chart(chart.__id__.to_s, chart) %></div>
           <% else %>

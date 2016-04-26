@@ -28,4 +28,7 @@
 //= require bootstrap
 //= require bootstrap-filestyle.js
 //= require jquery.floatThead.min
+//= require katex.min.js
+//= require auto-render.min.js
+
 

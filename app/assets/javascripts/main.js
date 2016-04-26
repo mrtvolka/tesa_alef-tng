@@ -1,5 +1,8 @@
 var ready = (function () {
 
+    // math equatations (katex) rendering
+    renderMathInElement(document.body,{ delimiters: [{left: "\\[", right: "\\]", display: true}]});
+
     // reset eventov na window elemente
     $(window).off('resize');
     $(window).off('scroll');
