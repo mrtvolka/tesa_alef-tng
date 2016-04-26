@@ -37,8 +37,18 @@
       </div>
   <% end %>
 
+
   <button class="question-button question-button-red" id="clickButton" value="submit_test" style="background: transparent;border: none !important;"/>
 </form>
 <button class="question-button question-button-red"  onclick="getConfirmation()" >Odovzdaj test</button>
-</div>
 
+<div id="modal">
+  <div class="modal-content">
+    <div class="copy">
+      <p>Nevyplnil si všetky otázky. Chceš aj napriek tomu odovzdať test?</p>
+      <button class="form-buttons" onclick="clickYes()">áno</button>
+      <button id="unconfirmB" onclick="hide()">nie</button>
+    </div>
+  </div>
+  <div class="overlay"></div>
+</div>
