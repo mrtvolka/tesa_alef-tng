@@ -31,7 +31,7 @@ namespace :tesa do
       end
       unless stderr.gets.nil?
         STDERR.puts stderr.read
-        STDERR.puts "Error: Couldn't create database"
+        STDERR.puts "Error: There were some errors during db creation, if you want to ignore them use FORCED=true"
         unless forced
           exit 0
         end
@@ -46,7 +46,7 @@ namespace :tesa do
       end
       unless stderr.gets.nil?
         STDERR.puts stderr.read
-        STDERR.puts "Error: Couldn't migrate database"
+        STDERR.puts "Error: There were some errors during db migration, if you want to ignore them use FORCED=true"
         unless forced
           exit 0
         end
