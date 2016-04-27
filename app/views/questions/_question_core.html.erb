@@ -1,4 +1,4 @@
-<div class="question-text"><%= mathjax_tag :config=> 'TeX-AMS-MML_SVG' %><%= replace_whitespace(learning_object.question_text) %></div>
+<div class="question-text"><%= replace_whitespace(learning_object.question_text) %></div>
   <% unless learning_object.image.nil? %>
     <%= image_tag(show_single_image_path(learning_object.id), class: 'question-image', alt: "#{learning_object.lo_id} - obrázok") %>
   <% end %>

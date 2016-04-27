@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  mathjax 'mathjax'
-
   get 'exercises/show'
 
   get 'exercises/edit'
@@ -57,11 +55,15 @@ Rails.application.routes.draw do
   get 'admin/question_concept_config/:course_id' => 'administrations#question_concept_config', as: 'question_concept_config'
   post 'admin/question_concept_config/:course_id/delete_question_concept' => 'administrations#delete_question_concept', as: 'delete_question_concept'
   post 'admin/question_concept_config/:course_id/add_question_concept' => 'administrations#add_question_concept', as: 'add_question_concept'
+  post 'import_question_csv' => 'administrations/learning_objects#csv_question_import'
 
   #Ucenie
   get 'teaching' => 'teachings#show', as: 'teaching'
+  get 'teaching/questions' => 'teachings#list_questions', as: 'list'
+  get 'teaching/:id/answers' => 'teachings#list_answers'
+  post 'teaching/:id/submit_regexp' => 'teachings#submit_regexp', as: 'submit_regexp'
+  post 'teaching/:id/admit_answer' => 'teachings#admit_student_answer'
 
-  post 'import_question_csv' => 'administrations/learning_objects#csv_question_import'
   #testovanie
 
   get 'test/:exercise_code' => 'questions#show_test'

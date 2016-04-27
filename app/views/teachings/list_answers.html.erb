@@ -1,0 +1,120 @@
+<nav class="without-icons not-zoomable">
+  <%= render 'shared/user_element' %>
+  <div class="mobile-content">
+    <% if @previous_question == nil %>
+        <i class="icon-left disabled"></i>
+    <% else %>
+        <a href="<%=
+            url_for :controller => 'teachings', :action => 'list_answers', :id => @previous_question.id
+        %>"><i class="icon-left"></i></a>
+    <% end %>
+    <h2><%= @setup.name %> - zoznam odpovedí</h2>
+    <% if @next_question == nil %>
+        <i class="nav-right-icons icon-right disabled"></i>
+    <% else %>
+        <a href="<%=
+            url_for :controller => 'teachings', :action => 'list_answers', :id => @next_question.id
+        %>"><i class="nav-right-icons icon-right"></i></a>
+    <% end %>
+    <a href="<%=url_for :controller => 'teachings', :action => 'list_questions' %>"><i class="nav-right-icons icon-level-up"></i></a>
+    <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
+
+  </div>
+</nav>
+<hr class="nav-offset not-zoomable">
+
+<div class="question-body">
+    <%= @question.question_text%>
+    <% unless @question.image.nil? %>
+        <%= image_tag(show_single_image_path(@question.id), class: 'question-image', alt: "#{@question.lo_id} - obrázok") %>
+    <%end%>
+</div>
+<% @relations.each_with_index  do |relation,index| %>
+    <div class="answer-header">
+      <div class="container-fluid">
+        <div class="col-sm-<%= current_user.administrator? ? "3" : "4" %>">
+          <div class="answer-header-part"><%= "#{relation.user.login}(#{relation.user.aisid.nil? ? "localUser" : relation.user.aisid })"%> </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="answer-header-part"><%= "#{relation.exercise.week.number}. týždeň"%> </div>
+        </div>
+        <div class="col-sm-<%= current_user.administrator? ? "1" : "2" %> answer-header-part">
+          <%=case relation.exercise.start.wday
+            when 1
+              "Pondelok"
+            when 2
+              "Utorok"
+            when 3
+              "Streda"
+            when 4
+              "Štvrtok"
+            when 5
+              "Piatok"
+            else
+              "Toto sa nestane"
+          end %>
+        </div>
+        <div class="col-sm-1 answer-header-part">
+          <%= relation.exercise.start.strftime("%H:%M") %>
+        </div>
+        <% if current_user.administrator?%>
+            <div class="col-sm-2 answer-header-part">
+              <%= relation.exercise.user.last_name %>
+            </div>
+        <%end%>
+        <div class="col-sm-1 answer-header-part">
+          <%= relation.type=="UserSolvedLoRelation" ? "Správne" : "Nesprávne"  %>
+        </div>
+        <div class="col-sm-1 answer-header-part">
+          <%= relation.points.nil? ? "N/A" : relation.points  %>
+        </div>
+        <div class="col-sm-1 answer-header-part">
+          <a class="hide_button collapsed" data-toggle="collapse" data-target="#<%= index%>"></a>
+        </div>
+      </div>
+    </div>
+    <div id="<%= index%>" class="answer-body collapse">
+    <%if @question.type == 'SingleChoiceQuestion'%>
+          <% answers= @question.answers %>
+          <% answers.each do |a| %>
+              <% interaction= (relation.interaction.to_s).eql?("#{a.id }")%>
+              <label><input type="radio" name="answer<%= a.id%>" <%= interaction ? "checked=true":"" %> disabled= "true" class="answer-output <%= (a.is_correct && interaction)||(!a.is_correct && !interaction) ? "answer-is-correct" : "answer-is-incorrect"%>">
+                <i class="icon-radio answer-icon"></i>
+                <div class="answer-text"><%= mathjax_tag %><%= a.answer_text %></div></label>
+          <% end %>
+    <%elsif @question.type == 'MultiChoiceQuestion'%>
+          <% answers= @question.answers %>
+          <% answers.each do |a| %>
+              <% interaction= (relation.interaction.to_s).include?("\"#{a.id }\"=>\"#{a.id}\"")%>
+              <label><input type="checkbox" name="answer<%= a.id%>" <%= interaction ? "checked=true":"" %> disabled="true" class="answer-output <%= (a.is_correct && interaction)||(!a.is_correct && !interaction) ? "answer-is-correct" : "answer-is-incorrect"%>">
+                <i class="icon-checkbox answer-icon"></i>
+                <div class="answer-text"><%= mathjax_tag %><%= a.answer_text %></div></label>
+          <% end %>
+    <%elsif @question.type == 'OpenQuestion'%>
+            <textarea cols= 50 rows= 3 disabled="true" placeholder= "<%= relation.submitted_text%>" id="message" name="questions[<%= @question.id%>][submitted_text]" rows= "8" style="width:95%; margin:10px"></textarea>
+    <%end%>
+    <div class="condensed answer-form">
+            <%= form_tag(controller: "teachings",action: "admit_student_answer", method: "post") do %>
+                <button class="admit-button" name="commit" value="admit">Uznaj odpoveď</button>
+                <input class="right short" type="number" name="student_answer_points" value="0" min="0" step="0.05">
+                <label class="right"> Navrhový počet bodov: </label>
+                <input type="hidden" name="student_answer_id" value="<%= relation.id%>">
+            <% end %>
+    </div>
+    </div>
+<% end %>
+<% if @relations.empty?%>
+    <div class="admin main">
+        <h2>Nenašli sa žiadne odpovede</h2>
+    </div>
+<%end%>
+<%if @question.type == 'OpenQuestion'%>
+<div class="admin main">
+  <%= "Zadaj regulérny výraz: "%>
+  <%= form_tag(controller: "teachings",action: "submit_regexp", method: "post") do %>
+    <textarea rows= 3 placeholder= "Sem napíš regulárny výraz" id="message" name="regexp" rows= "8" style="width:95%; margin:10px"></textarea>
+    <button class="question-button question-button-red" name="commit" value="submit_regexp">Skontroluj</button>
+
+  <%end%>
+</div>
+<%end%>

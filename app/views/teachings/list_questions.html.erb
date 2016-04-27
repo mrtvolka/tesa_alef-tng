@@ -1,0 +1,25 @@
+<nav class="without-icons not-zoomable">
+<%= render 'shared/user_element' %>
+<div class="mobile-content">
+  <h2><%= @setup.name %> - zoznam otázok</h2>
+  <a href="<%=url_for :controller => 'teachings', :action => 'show' %>"><i class="nav-right-icons icon-level-up"></i></a>
+  <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
+</div>
+</nav>
+<hr class="nav-offset not-zoomable">
+
+
+<div class="admin main">
+  <% @questions.each do |lo| %>
+      <a href="<%=
+          url_for :controller => 'teachings', :action => 'list_answers', :id => lo.id
+      %>" class="card">
+        <div class="question-card-content">
+          <h3 class="card-header"><%= lo.lo_id %></h3>
+          <p class="card-text">
+            <%= lo.question_text %>
+          </p>
+        </div>
+      </a>
+  <% end %>
+</div>

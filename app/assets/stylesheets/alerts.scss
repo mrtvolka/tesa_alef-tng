@@ -46,3 +46,121 @@
   0%   {opacity: 1;}
   100% {opacity: 0;}
 }
+
+#overlay {
+
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  //display: table;
+
+}
+
+#overlay div {
+  //position: fixed;
+  //left: 40%;
+  //width: 100%;
+  //bottom: 20rem;
+  position: fixed;
+  bottom: 5rem;
+  width: 100%;
+  //width:40%;
+  //margin:0 auto;
+  //max-width: 100%;
+  //height: auto;
+  text-align:center;
+  background-color: $red;
+  z-index: 300;
+  border-radius: 5px ;
+  border:1px solid #fff;
+  padding:5px;
+}
+
+.vertical-align {
+  display: table-cell;
+}
+
+
+#overlay button{
+  @include button;
+  display: inline-block;
+  margin: 1rem 1rem 0 0;
+  position:relative;
+
+}
+
+
+#modal {
+  left: 50%;
+  margin: -250px 0 0 -32%;
+  opacity: 0;
+  position: fixed;
+  bottom: 10rem;
+  opacity: 0;
+  visibility: hidden;
+  width: 65%;
+  box-shadow: 0 3px 7px rgba(0,0,0,.25);
+  box-sizing: border-box;
+  transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out
+}
+
+
+#modal .header, #modal .footer {
+  border-bottom: 1px solid $red;
+  border-radius: 5px 5px 0 0
+}
+
+#modal .footer {
+  border: none;
+  border-top: 1px solid #e7e7e7;
+  border-radius: 0 0 5px 5px
+}
+
+#modal h2 {
+  margin: 0;
+  color: #fff
+}
+
+#modal .btn { float: bottom }
+
+#modal .copy, #modal .header, #modal .footer {
+  padding: 10px;
+  color: #fff
+}
+
+.modal-content {
+  opacity: 1;
+  top: 50%;
+  background:$red;
+  position: relative;
+  z-index: 20;
+  border-radius: 5px;
+  color: #fff
+}
+
+#modal .copy {
+  background: $red;
+  text-align:center;
+  border-radius: 5px ;
+}
+
+#modal .overlay {
+  background-color: #000;
+  background: rgba(0,0,0,.8);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10
+}
+
+#modal button {
+  @include button;
+  display: inline-block;
+  margin: 1rem 1rem 0 0;
+  position: relative;
+}
+

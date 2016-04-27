@@ -1,5 +1,8 @@
 var ready = (function () {
 
+    // math equatations (katex) rendering
+    renderMathInElement(document.body,{ delimiters: [{left: "\\[", right: "\\]", display: true}]});
+
     // reset eventov na window elemente
     $(window).off('resize');
     $(window).off('scroll');
@@ -137,6 +140,12 @@ var ready = (function () {
 
     if ($('#body-teachings-edit').length) {
         Nav.init()
+    }
+    if ($('#body-teachings-list_questions').length) {
+        Nav.init();
+    }
+    if ($('#body-teachings-list_answers').length) {
+        Nav.init();
     }
 });
 

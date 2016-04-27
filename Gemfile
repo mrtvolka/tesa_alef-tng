@@ -67,11 +67,11 @@ gem 'rails-i18n'
 # Reoccuring tasks
 gem 'whenever', :require => false
 
-# Math tex
-gem 'mathjax-rails'
-
 # Charts
 gem 'lazy_high_charts'
+
+#QR code
+gem 'rqrcode'
 
 # Support
 gem 'activesupport'

@@ -7,7 +7,7 @@
     <div class="my-mobile-content main">
       <div class="card-text">
         <br>
-        <p><%= mathjax_tag :config=> 'TeX-AMS-MML_SVG' %><%= replace_whitespace(lo.question_text) %></p></div>
+        <p><%= replace_whitespace(lo.question_text) %></p></div>
       <% unless lo.image.nil? %>
           <%= image_tag qimages_url(@week.id,lo.id), class: 'question-image', alt: 'Obrázok' %>
       <% end %>

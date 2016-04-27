@@ -10,6 +10,48 @@ class TeachingsController < ApplicationController
     end
   end
 
+  def list_questions
+    @setup= Setup.take
+    @questions= LearningObject.where("is_test_question= true").order(id: :asc)
+  end
+
+  def list_answers
+    @setup= Setup.take
+    @question= LearningObject.find(params[:id])
+    if current_user.administrator?
+      @relations= @question.user_to_lo_relations.joins('JOIN users u ON user_id= u.id').order('type ASC,exercise_id DESC,u.last_name ASC, u.first_name ASC')
+    else
+      @relations= @question.user_to_lo_relations.joins('JOIN users u ON user_id= u.id').where("exercise_id IN (?)", Exercise.where("user_id = (?)", current_user.id).select(:id)).order('type ASC,exercise_id ASC,u.last_name ASC,u.first_name ASC')
+    end
+    @next_question= LearningObject.where('is_test_question= true AND (id > (?))',params[:id]).order(id: :asc).first
+    @previous_question= LearningObject.where('is_test_question= true AND (id < (?))',params[:id]).order(id: :asc).last
+  end
+
+  def submit_regexp
+    @question= LearningObject.find(params[:id])
+
+    regexp= /#{params[:regexp]}/
+    @question.user_to_lo_relations.each do |relation|
+      result=regexp.match(relation.submitted_text)
+      if(result.nil?)
+        relation.type= "UserFailedLoRelation"
+      else
+        relation.type= "UserSolvedLoRelation"
+      end
+      relation.save!
+    end
+
+    redirect_to :back
+  end
+
+  def admit_student_answer
+    @question= LearningObject.find(params[:id])
+    rel=@question.user_to_lo_relations.find(params[:student_answer_id])
+    rel.points= params[:student_answer_points]
+    rel.save!
+
+    redirect_to :back
+  end
   def statistics
     @setup = Setup.take
     @chart = []

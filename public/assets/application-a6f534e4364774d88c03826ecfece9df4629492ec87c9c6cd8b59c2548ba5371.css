@@ -1,0 +1,4796 @@
+/*!
+ * jQuery UI CSS Framework 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/category/theming/
+ *
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/
+ */
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+ */
+
+
+
+/* Component containers
+----------------------------------*/
+
+.ui-widget {
+	font-family: Verdana,Arial,sans-serif/*{ffDefault}*/;
+	font-size: 1.1em/*{fsDefault}*/;
+}
+.ui-widget .ui-widget {
+	font-size: 1em;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-family: Verdana,Arial,sans-serif/*{ffDefault}*/;
+	font-size: 1em;
+}
+.ui-widget-content {
+	border: 1px solid #aaaaaa/*{borderColorContent}*/;
+	background: #ffffff/*{bgColorContent}*/ url(/assets/jquery-ui/ui-bg_flat_75_ffffff_40x100-39ab7ccd9f4e82579da78a9241265df288d8eb65dbbd7cf48aed2d0129887df5.png)/*{bgImgUrlContent}*/ 50%/*{bgContentXPos}*/ 50%/*{bgContentYPos}*/ repeat-x/*{bgContentRepeat}*/;
+	color: #222222/*{fcContent}*/;
+}
+.ui-widget-content a {
+	color: #222222/*{fcContent}*/;
+}
+.ui-widget-header {
+	border: 1px solid #aaaaaa/*{borderColorHeader}*/;
+	background: #cccccc/*{bgColorHeader}*/ url(/assets/jquery-ui/ui-bg_highlight-soft_75_cccccc_1x100-54270656df079c4da5182629a080fc633b6f84b87985eb016d25a560e2c38d4a.png)/*{bgImgUrlHeader}*/ 50%/*{bgHeaderXPos}*/ 50%/*{bgHeaderYPos}*/ repeat-x/*{bgHeaderRepeat}*/;
+	color: #222222/*{fcHeader}*/;
+	font-weight: bold;
+}
+.ui-widget-header a {
+	color: #222222/*{fcHeader}*/;
+}
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+	border: 1px solid #d3d3d3/*{borderColorDefault}*/;
+	background: #e6e6e6/*{bgColorDefault}*/ url(/assets/jquery-ui/ui-bg_glass_75_e6e6e6_1x400-ddf5dd4e0ef2b185e8bb0af7b6e90ebe74a84384cb4700658e76e754c8bfe550.png)/*{bgImgUrlDefault}*/ 50%/*{bgDefaultXPos}*/ 50%/*{bgDefaultYPos}*/ repeat-x/*{bgDefaultRepeat}*/;
+	font-weight: normal/*{fwDefault}*/;
+	color: #555555/*{fcDefault}*/;
+}
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+	color: #555555/*{fcDefault}*/;
+	text-decoration: none;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+	border: 1px solid #999999/*{borderColorHover}*/;
+	background: #dadada/*{bgColorHover}*/ url(/assets/jquery-ui/ui-bg_glass_75_dadada_1x400-c108f5cbf2dd9ec07a26530695ddd95e1664597ce6c056ae44c162cc2e28cec4.png)/*{bgImgUrlHover}*/ 50%/*{bgHoverXPos}*/ 50%/*{bgHoverYPos}*/ repeat-x/*{bgHoverRepeat}*/;
+	font-weight: normal/*{fwDefault}*/;
+	color: #212121/*{fcHover}*/;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited {
+	color: #212121/*{fcHover}*/;
+	text-decoration: none;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+	border: 1px solid #aaaaaa/*{borderColorActive}*/;
+	background: #ffffff/*{bgColorActive}*/ url(/assets/jquery-ui/ui-bg_glass_65_ffffff_1x400-f0e6cd91b837d5c5644d026e5ffeccd907953317cd5c0f689901733afda260b2.png)/*{bgImgUrlActive}*/ 50%/*{bgActiveXPos}*/ 50%/*{bgActiveYPos}*/ repeat-x/*{bgActiveRepeat}*/;
+	font-weight: normal/*{fwDefault}*/;
+	color: #212121/*{fcActive}*/;
+}
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+	color: #212121/*{fcActive}*/;
+	text-decoration: none;
+}
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+	border: 1px solid #fcefa1/*{borderColorHighlight}*/;
+	background: #fbf9ee/*{bgColorHighlight}*/ url(/assets/jquery-ui/ui-bg_glass_55_fbf9ee_1x400-691597e8a40a891ea94d3589976ecfc33e6145c49422443b00ac2b5a0022964c.png)/*{bgImgUrlHighlight}*/ 50%/*{bgHighlightXPos}*/ 50%/*{bgHighlightYPos}*/ repeat-x/*{bgHighlightRepeat}*/;
+	color: #363636/*{fcHighlight}*/;
+}
+.ui-state-highlight a,
+.ui-widget-content .ui-state-highlight a,
+.ui-widget-header .ui-state-highlight a {
+	color: #363636/*{fcHighlight}*/;
+}
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error {
+	border: 1px solid #cd0a0a/*{borderColorError}*/;
+	background: #fef1ec/*{bgColorError}*/ url(/assets/jquery-ui/ui-bg_glass_95_fef1ec_1x400-f6f1c1bedf1a0f37cfef81d12f5f012869d1ee7c984775a569827a1784d34f5c.png)/*{bgImgUrlError}*/ 50%/*{bgErrorXPos}*/ 50%/*{bgErrorYPos}*/ repeat-x/*{bgErrorRepeat}*/;
+	color: #cd0a0a/*{fcError}*/;
+}
+.ui-state-error a,
+.ui-widget-content .ui-state-error a,
+.ui-widget-header .ui-state-error a {
+	color: #cd0a0a/*{fcError}*/;
+}
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text,
+.ui-widget-header .ui-state-error-text {
+	color: #cd0a0a/*{fcError}*/;
+}
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary,
+.ui-widget-header .ui-priority-primary {
+	font-weight: bold;
+}
+.ui-priority-secondary,
+.ui-widget-content .ui-priority-secondary,
+.ui-widget-header .ui-priority-secondary {
+	opacity: .7;
+	filter:Alpha(Opacity=70); /* support: IE8 */
+	font-weight: normal;
+}
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled {
+	opacity: .35;
+	filter:Alpha(Opacity=35); /* support: IE8 */
+	background-image: none;
+}
+.ui-state-disabled .ui-icon {
+	filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
+}
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon {
+	width: 16px;
+	height: 16px;
+}
+.ui-icon,
+.ui-widget-content .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_222222_256x240-57adb0d65f4e91dacfee975d9574422bee7486c8a182d60133728c672f2cdbbc.png)/*{iconsContent}*/;
+}
+.ui-widget-header .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_222222_256x240-57adb0d65f4e91dacfee975d9574422bee7486c8a182d60133728c672f2cdbbc.png)/*{iconsHeader}*/;
+}
+.ui-state-default .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_888888_256x240-ea2e29625de3463465e93b002b065f5833e05b97f7a052b1c141e754d62e1a8b.png)/*{iconsDefault}*/;
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_454545_256x240-07460e843c3e59aaadbb34231e699e856a2980753c7a47b66447da5d9f93fb7f.png)/*{iconsHover}*/;
+}
+.ui-state-active .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_454545_256x240-07460e843c3e59aaadbb34231e699e856a2980753c7a47b66447da5d9f93fb7f.png)/*{iconsActive}*/;
+}
+.ui-state-highlight .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_2e83ff_256x240-20f8c6667afc48aa433ee9eb6d8a0584bdbd6b4a4a9091ff1e6b3adb31e63bd9.png)/*{iconsHighlight}*/;
+}
+.ui-state-error .ui-icon,
+.ui-state-error-text .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_cd0a0a_256x240-1e32c6dbf5d3fd342f27a78aa881550d6412aa207f48468724a6a15402b6041b.png)/*{iconsError}*/;
+}
+
+/* positioning */
+.ui-icon-blank { background-position: 16px 16px; }
+.ui-icon-carat-1-n { background-position: 0 0; }
+.ui-icon-carat-1-ne { background-position: -16px 0; }
+.ui-icon-carat-1-e { background-position: -32px 0; }
+.ui-icon-carat-1-se { background-position: -48px 0; }
+.ui-icon-carat-1-s { background-position: -64px 0; }
+.ui-icon-carat-1-sw { background-position: -80px 0; }
+.ui-icon-carat-1-w { background-position: -96px 0; }
+.ui-icon-carat-1-nw { background-position: -112px 0; }
+.ui-icon-carat-2-n-s { background-position: -128px 0; }
+.ui-icon-carat-2-e-w { background-position: -144px 0; }
+.ui-icon-triangle-1-n { background-position: 0 -16px; }
+.ui-icon-triangle-1-ne { background-position: -16px -16px; }
+.ui-icon-triangle-1-e { background-position: -32px -16px; }
+.ui-icon-triangle-1-se { background-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-position: -64px -16px; }
+.ui-icon-triangle-1-sw { background-position: -80px -16px; }
+.ui-icon-triangle-1-w { background-position: -96px -16px; }
+.ui-icon-triangle-1-nw { background-position: -112px -16px; }
+.ui-icon-triangle-2-n-s { background-position: -128px -16px; }
+.ui-icon-triangle-2-e-w { background-position: -144px -16px; }
+.ui-icon-arrow-1-n { background-position: 0 -32px; }
+.ui-icon-arrow-1-ne { background-position: -16px -32px; }
+.ui-icon-arrow-1-e { background-position: -32px -32px; }
+.ui-icon-arrow-1-se { background-position: -48px -32px; }
+.ui-icon-arrow-1-s { background-position: -64px -32px; }
+.ui-icon-arrow-1-sw { background-position: -80px -32px; }
+.ui-icon-arrow-1-w { background-position: -96px -32px; }
+.ui-icon-arrow-1-nw { background-position: -112px -32px; }
+.ui-icon-arrow-2-n-s { background-position: -128px -32px; }
+.ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
+.ui-icon-arrow-2-e-w { background-position: -160px -32px; }
+.ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
+.ui-icon-arrowstop-1-n { background-position: -192px -32px; }
+.ui-icon-arrowstop-1-e { background-position: -208px -32px; }
+.ui-icon-arrowstop-1-s { background-position: -224px -32px; }
+.ui-icon-arrowstop-1-w { background-position: -240px -32px; }
+.ui-icon-arrowthick-1-n { background-position: 0 -48px; }
+.ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
+.ui-icon-arrowthick-1-e { background-position: -32px -48px; }
+.ui-icon-arrowthick-1-se { background-position: -48px -48px; }
+.ui-icon-arrowthick-1-s { background-position: -64px -48px; }
+.ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
+.ui-icon-arrowthick-1-w { background-position: -96px -48px; }
+.ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
+.ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
+.ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
+.ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
+.ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
+.ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
+.ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
+.ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
+.ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
+.ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
+.ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
+.ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
+.ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
+.ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
+.ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
+.ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
+.ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
+.ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
+.ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
+.ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
+.ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
+.ui-icon-arrow-4 { background-position: 0 -80px; }
+.ui-icon-arrow-4-diag { background-position: -16px -80px; }
+.ui-icon-extlink { background-position: -32px -80px; }
+.ui-icon-newwin { background-position: -48px -80px; }
+.ui-icon-refresh { background-position: -64px -80px; }
+.ui-icon-shuffle { background-position: -80px -80px; }
+.ui-icon-transfer-e-w { background-position: -96px -80px; }
+.ui-icon-transferthick-e-w { background-position: -112px -80px; }
+.ui-icon-folder-collapsed { background-position: 0 -96px; }
+.ui-icon-folder-open { background-position: -16px -96px; }
+.ui-icon-document { background-position: -32px -96px; }
+.ui-icon-document-b { background-position: -48px -96px; }
+.ui-icon-note { background-position: -64px -96px; }
+.ui-icon-mail-closed { background-position: -80px -96px; }
+.ui-icon-mail-open { background-position: -96px -96px; }
+.ui-icon-suitcase { background-position: -112px -96px; }
+.ui-icon-comment { background-position: -128px -96px; }
+.ui-icon-person { background-position: -144px -96px; }
+.ui-icon-print { background-position: -160px -96px; }
+.ui-icon-trash { background-position: -176px -96px; }
+.ui-icon-locked { background-position: -192px -96px; }
+.ui-icon-unlocked { background-position: -208px -96px; }
+.ui-icon-bookmark { background-position: -224px -96px; }
+.ui-icon-tag { background-position: -240px -96px; }
+.ui-icon-home { background-position: 0 -112px; }
+.ui-icon-flag { background-position: -16px -112px; }
+.ui-icon-calendar { background-position: -32px -112px; }
+.ui-icon-cart { background-position: -48px -112px; }
+.ui-icon-pencil { background-position: -64px -112px; }
+.ui-icon-clock { background-position: -80px -112px; }
+.ui-icon-disk { background-position: -96px -112px; }
+.ui-icon-calculator { background-position: -112px -112px; }
+.ui-icon-zoomin { background-position: -128px -112px; }
+.ui-icon-zoomout { background-position: -144px -112px; }
+.ui-icon-search { background-position: -160px -112px; }
+.ui-icon-wrench { background-position: -176px -112px; }
+.ui-icon-gear { background-position: -192px -112px; }
+.ui-icon-heart { background-position: -208px -112px; }
+.ui-icon-star { background-position: -224px -112px; }
+.ui-icon-link { background-position: -240px -112px; }
+.ui-icon-cancel { background-position: 0 -128px; }
+.ui-icon-plus { background-position: -16px -128px; }
+.ui-icon-plusthick { background-position: -32px -128px; }
+.ui-icon-minus { background-position: -48px -128px; }
+.ui-icon-minusthick { background-position: -64px -128px; }
+.ui-icon-close { background-position: -80px -128px; }
+.ui-icon-closethick { background-position: -96px -128px; }
+.ui-icon-key { background-position: -112px -128px; }
+.ui-icon-lightbulb { background-position: -128px -128px; }
+.ui-icon-scissors { background-position: -144px -128px; }
+.ui-icon-clipboard { background-position: -160px -128px; }
+.ui-icon-copy { background-position: -176px -128px; }
+.ui-icon-contact { background-position: -192px -128px; }
+.ui-icon-image { background-position: -208px -128px; }
+.ui-icon-video { background-position: -224px -128px; }
+.ui-icon-script { background-position: -240px -128px; }
+.ui-icon-alert { background-position: 0 -144px; }
+.ui-icon-info { background-position: -16px -144px; }
+.ui-icon-notice { background-position: -32px -144px; }
+.ui-icon-help { background-position: -48px -144px; }
+.ui-icon-check { background-position: -64px -144px; }
+.ui-icon-bullet { background-position: -80px -144px; }
+.ui-icon-radio-on { background-position: -96px -144px; }
+.ui-icon-radio-off { background-position: -112px -144px; }
+.ui-icon-pin-w { background-position: -128px -144px; }
+.ui-icon-pin-s { background-position: -144px -144px; }
+.ui-icon-play { background-position: 0 -160px; }
+.ui-icon-pause { background-position: -16px -160px; }
+.ui-icon-seek-next { background-position: -32px -160px; }
+.ui-icon-seek-prev { background-position: -48px -160px; }
+.ui-icon-seek-end { background-position: -64px -160px; }
+.ui-icon-seek-start { background-position: -80px -160px; }
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+.ui-icon-seek-first { background-position: -80px -160px; }
+.ui-icon-stop { background-position: -96px -160px; }
+.ui-icon-eject { background-position: -112px -160px; }
+.ui-icon-volume-off { background-position: -128px -160px; }
+.ui-icon-volume-on { background-position: -144px -160px; }
+.ui-icon-power { background-position: 0 -176px; }
+.ui-icon-signal-diag { background-position: -16px -176px; }
+.ui-icon-signal { background-position: -32px -176px; }
+.ui-icon-battery-0 { background-position: -48px -176px; }
+.ui-icon-battery-1 { background-position: -64px -176px; }
+.ui-icon-battery-2 { background-position: -80px -176px; }
+.ui-icon-battery-3 { background-position: -96px -176px; }
+.ui-icon-circle-plus { background-position: 0 -192px; }
+.ui-icon-circle-minus { background-position: -16px -192px; }
+.ui-icon-circle-close { background-position: -32px -192px; }
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-position: -96px -192px; }
+.ui-icon-circle-arrow-e { background-position: -112px -192px; }
+.ui-icon-circle-arrow-s { background-position: -128px -192px; }
+.ui-icon-circle-arrow-w { background-position: -144px -192px; }
+.ui-icon-circle-arrow-n { background-position: -160px -192px; }
+.ui-icon-circle-zoomin { background-position: -176px -192px; }
+.ui-icon-circle-zoomout { background-position: -192px -192px; }
+.ui-icon-circle-check { background-position: -208px -192px; }
+.ui-icon-circlesmall-plus { background-position: 0 -208px; }
+.ui-icon-circlesmall-minus { background-position: -16px -208px; }
+.ui-icon-circlesmall-close { background-position: -32px -208px; }
+.ui-icon-squaresmall-plus { background-position: -48px -208px; }
+.ui-icon-squaresmall-minus { background-position: -64px -208px; }
+.ui-icon-squaresmall-close { background-position: -80px -208px; }
+.ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
+.ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
+.ui-icon-grip-solid-vertical { background-position: -32px -224px; }
+.ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
+.ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
+.ui-icon-grip-diagonal-se { background-position: -80px -224px; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Corner radius */
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+	border-top-left-radius: 4px/*{cornerRadius}*/;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+	border-top-right-radius: 4px/*{cornerRadius}*/;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-bl {
+	border-bottom-left-radius: 4px/*{cornerRadius}*/;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br {
+	border-bottom-right-radius: 4px/*{cornerRadius}*/;
+}
+
+/* Overlays */
+.ui-widget-overlay {
+	background: #aaaaaa/*{bgColorOverlay}*/ url(/assets/jquery-ui/ui-bg_flat_0_aaaaaa_40x100-9a8492a580bf85d3e98ae8861fbd45567e5a1f83eeafcf9574da0399d5f602ab.png)/*{bgImgUrlOverlay}*/ 50%/*{bgOverlayXPos}*/ 50%/*{bgOverlayYPos}*/ repeat-x/*{bgOverlayRepeat}*/;
+	opacity: .3/*{opacityOverlay}*/;
+	filter: Alpha(Opacity=30)/*{opacityFilterOverlay}*/; /* support: IE8 */
+}
+.ui-widget-shadow {
+	margin: -8px/*{offsetTopShadow}*/ 0 0 -8px/*{offsetLeftShadow}*/;
+	padding: 8px/*{thicknessShadow}*/;
+	background: #aaaaaa/*{bgColorShadow}*/ url(/assets/jquery-ui/ui-bg_flat_0_aaaaaa_40x100-9a8492a580bf85d3e98ae8861fbd45567e5a1f83eeafcf9574da0399d5f602ab.png)/*{bgImgUrlShadow}*/ 50%/*{bgShadowXPos}*/ 50%/*{bgShadowYPos}*/ repeat-x/*{bgShadowRepeat}*/;
+	opacity: .3/*{opacityShadow}*/;
+	filter: Alpha(Opacity=30)/*{opacityFilterShadow}*/; /* support: IE8 */
+	border-radius: 8px/*{cornerRadiusShadow}*/;
+}
+/*!
+ * jQuery UI CSS Framework 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/category/theming/
+ */
+/*
+
+ */
+
+/* Layout helpers
+----------------------------------*/
+
+.ui-helper-hidden {
+	display: none;
+}
+.ui-helper-hidden-accessible {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+.ui-helper-reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	line-height: 1.3;
+	text-decoration: none;
+	font-size: 100%;
+	list-style: none;
+}
+.ui-helper-clearfix:before,
+.ui-helper-clearfix:after {
+	content: "";
+	display: table;
+	border-collapse: collapse;
+}
+.ui-helper-clearfix:after {
+	clear: both;
+}
+.ui-helper-clearfix {
+	min-height: 0; /* support: IE7 */
+}
+.ui-helper-zfix {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	opacity: 0;
+	filter:Alpha(Opacity=0); /* support: IE8 */
+}
+
+.ui-front {
+	z-index: 100;
+}
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled {
+	cursor: default !important;
+}
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon {
+	display: block;
+	text-indent: -99999px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+}
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/*!
+ * jQuery UI Menu 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/menu/#theming
+ */
+/*
+
+
+ */
+
+.ui-menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: block;
+	outline: none;
+}
+.ui-menu .ui-menu {
+	position: absolute;
+}
+.ui-menu .ui-menu-item {
+	position: relative;
+	margin: 0;
+	padding: 3px 1em 3px .4em;
+	cursor: pointer;
+	min-height: 0; /* support: IE7 */
+	/* support: IE10, see #8844 */
+	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+}
+.ui-menu .ui-menu-divider {
+	margin: 5px 0;
+	height: 0;
+	font-size: 0;
+	line-height: 0;
+	border-width: 1px 0 0 0;
+}
+.ui-menu .ui-state-focus,
+.ui-menu .ui-state-active {
+	margin: -1px;
+}
+
+/* icon support */
+.ui-menu-icons {
+	position: relative;
+}
+.ui-menu-icons .ui-menu-item {
+	padding-left: 2em;
+}
+
+/* left-aligned */
+.ui-menu .ui-icon {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: .2em;
+	margin: auto 0;
+}
+
+/* right-aligned */
+.ui-menu .ui-menu-icon {
+	left: auto;
+	right: 0;
+}
+/*!
+ * jQuery UI Autocomplete 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/autocomplete/#theming
+ */
+/*
+
+
+
+ */
+
+.ui-autocomplete {
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: default;
+}
+/*!
+ * jQuery UI Progressbar 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/progressbar/#theming
+ */
+/*
+
+
+ */
+
+.ui-progressbar {
+	height: 2em;
+	text-align: left;
+	overflow: hidden;
+}
+.ui-progressbar .ui-progressbar-value {
+	margin: -1px;
+	height: 100%;
+}
+.ui-progressbar .ui-progressbar-overlay {
+	background: url("data:image/gif;base64,R0lGODlhKAAoAIABAAAAAP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJAQABACwAAAAAKAAoAAACkYwNqXrdC52DS06a7MFZI+4FHBCKoDeWKXqymPqGqxvJrXZbMx7Ttc+w9XgU2FB3lOyQRWET2IFGiU9m1frDVpxZZc6bfHwv4c1YXP6k1Vdy292Fb6UkuvFtXpvWSzA+HycXJHUXiGYIiMg2R6W459gnWGfHNdjIqDWVqemH2ekpObkpOlppWUqZiqr6edqqWQAAIfkECQEAAQAsAAAAACgAKAAAApSMgZnGfaqcg1E2uuzDmmHUBR8Qil95hiPKqWn3aqtLsS18y7G1SzNeowWBENtQd+T1JktP05nzPTdJZlR6vUxNWWjV+vUWhWNkWFwxl9VpZRedYcflIOLafaa28XdsH/ynlcc1uPVDZxQIR0K25+cICCmoqCe5mGhZOfeYSUh5yJcJyrkZWWpaR8doJ2o4NYq62lAAACH5BAkBAAEALAAAAAAoACgAAAKVDI4Yy22ZnINRNqosw0Bv7i1gyHUkFj7oSaWlu3ovC8GxNso5fluz3qLVhBVeT/Lz7ZTHyxL5dDalQWPVOsQWtRnuwXaFTj9jVVh8pma9JjZ4zYSj5ZOyma7uuolffh+IR5aW97cHuBUXKGKXlKjn+DiHWMcYJah4N0lYCMlJOXipGRr5qdgoSTrqWSq6WFl2ypoaUAAAIfkECQEAAQAsAAAAACgAKAAAApaEb6HLgd/iO7FNWtcFWe+ufODGjRfoiJ2akShbueb0wtI50zm02pbvwfWEMWBQ1zKGlLIhskiEPm9R6vRXxV4ZzWT2yHOGpWMyorblKlNp8HmHEb/lCXjcW7bmtXP8Xt229OVWR1fod2eWqNfHuMjXCPkIGNileOiImVmCOEmoSfn3yXlJWmoHGhqp6ilYuWYpmTqKUgAAIfkECQEAAQAsAAAAACgAKAAAApiEH6kb58biQ3FNWtMFWW3eNVcojuFGfqnZqSebuS06w5V80/X02pKe8zFwP6EFWOT1lDFk8rGERh1TTNOocQ61Hm4Xm2VexUHpzjymViHrFbiELsefVrn6XKfnt2Q9G/+Xdie499XHd2g4h7ioOGhXGJboGAnXSBnoBwKYyfioubZJ2Hn0RuRZaflZOil56Zp6iioKSXpUAAAh+QQJAQABACwAAAAAKAAoAAACkoQRqRvnxuI7kU1a1UU5bd5tnSeOZXhmn5lWK3qNTWvRdQxP8qvaC+/yaYQzXO7BMvaUEmJRd3TsiMAgswmNYrSgZdYrTX6tSHGZO73ezuAw2uxuQ+BbeZfMxsexY35+/Qe4J1inV0g4x3WHuMhIl2jXOKT2Q+VU5fgoSUI52VfZyfkJGkha6jmY+aaYdirq+lQAACH5BAkBAAEALAAAAAAoACgAAAKWBIKpYe0L3YNKToqswUlvznigd4wiR4KhZrKt9Upqip61i9E3vMvxRdHlbEFiEXfk9YARYxOZZD6VQ2pUunBmtRXo1Lf8hMVVcNl8JafV38aM2/Fu5V16Bn63r6xt97j09+MXSFi4BniGFae3hzbH9+hYBzkpuUh5aZmHuanZOZgIuvbGiNeomCnaxxap2upaCZsq+1kAACH5BAkBAAEALAAAAAAoACgAAAKXjI8By5zf4kOxTVrXNVlv1X0d8IGZGKLnNpYtm8Lr9cqVeuOSvfOW79D9aDHizNhDJidFZhNydEahOaDH6nomtJjp1tutKoNWkvA6JqfRVLHU/QUfau9l2x7G54d1fl995xcIGAdXqMfBNadoYrhH+Mg2KBlpVpbluCiXmMnZ2Sh4GBqJ+ckIOqqJ6LmKSllZmsoq6wpQAAAh+QQJAQABACwAAAAAKAAoAAAClYx/oLvoxuJDkU1a1YUZbJ59nSd2ZXhWqbRa2/gF8Gu2DY3iqs7yrq+xBYEkYvFSM8aSSObE+ZgRl1BHFZNr7pRCavZ5BW2142hY3AN/zWtsmf12p9XxxFl2lpLn1rseztfXZjdIWIf2s5dItwjYKBgo9yg5pHgzJXTEeGlZuenpyPmpGQoKOWkYmSpaSnqKileI2FAAACH5BAkBAAEALAAAAAAoACgAAAKVjB+gu+jG4kORTVrVhRlsnn2dJ3ZleFaptFrb+CXmO9OozeL5VfP99HvAWhpiUdcwkpBH3825AwYdU8xTqlLGhtCosArKMpvfa1mMRae9VvWZfeB2XfPkeLmm18lUcBj+p5dnN8jXZ3YIGEhYuOUn45aoCDkp16hl5IjYJvjWKcnoGQpqyPlpOhr3aElaqrq56Bq7VAAAOw==");
+	height: 100%;
+	filter: alpha(opacity=25); /* support: IE8 */
+	opacity: 0.25;
+}
+.ui-progressbar-indeterminate .ui-progressbar-value {
+	background-image: none;
+}
+/*!
+ * jQuery UI Slider 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/slider/#theming
+ */
+/*
+
+
+ */
+
+.ui-slider {
+	position: relative;
+	text-align: left;
+}
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 1.2em;
+	height: 1.2em;
+	cursor: default;
+	-ms-touch-action: none;
+	touch-action: none;
+}
+.ui-slider .ui-slider-range {
+	position: absolute;
+	z-index: 1;
+	font-size: .7em;
+	display: block;
+	border: 0;
+	background-position: 0 0;
+}
+
+/* support: IE8 - See #6727 */
+.ui-slider.ui-state-disabled .ui-slider-handle,
+.ui-slider.ui-state-disabled .ui-slider-range {
+	filter: inherit;
+}
+
+.ui-slider-horizontal {
+	height: .8em;
+}
+.ui-slider-horizontal .ui-slider-handle {
+	top: -.3em;
+	margin-left: -.6em;
+}
+.ui-slider-horizontal .ui-slider-range {
+	top: 0;
+	height: 100%;
+}
+.ui-slider-horizontal .ui-slider-range-min {
+	left: 0;
+}
+.ui-slider-horizontal .ui-slider-range-max {
+	right: 0;
+}
+
+.ui-slider-vertical {
+	width: .8em;
+	height: 100px;
+}
+.ui-slider-vertical .ui-slider-handle {
+	left: -.3em;
+	margin-left: 0;
+	margin-bottom: -.6em;
+}
+.ui-slider-vertical .ui-slider-range {
+	left: 0;
+	width: 100%;
+}
+.ui-slider-vertical .ui-slider-range-min {
+	bottom: 0;
+}
+.ui-slider-vertical .ui-slider-range-max {
+	top: 0;
+}
+/* @group Base */
+/* line 9, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 13px;
+  zoom: 1;
+  *display: inline;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+/* line 17, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 20, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .chosen-drop {
+  position: absolute;
+  top: 100%;
+  left: -9999px;
+  z-index: 1010;
+  width: 100%;
+  border: 1px solid #aaa;
+  border-top: 0;
+  background: #fff;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+}
+/* line 31, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container.chosen-with-drop .chosen-drop {
+  left: 0;
+}
+/* line 34, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container a {
+  cursor: pointer;
+}
+/* line 39, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .search-choice .group-name, .chosen-container .chosen-single .group-name {
+  margin-right: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: normal;
+  color: #999999;
+}
+/* line 46, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .search-choice .group-name:after, .chosen-container .chosen-single .group-name:after {
+  content: ":";
+  padding-left: 2px;
+  vertical-align: top;
+}
+
+/* @end */
+/* @group Single Chosen */
+/* line 58, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-single {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0 0 0 8px;
+  height: 25px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background-color: #fff;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIyMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2Y2ZjZmNiIvPjxzdG9wIG9mZnNldD0iNTIlIiBzdG9wLWNvbG9yPSIjZWVlZWVlIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjRmNGY0Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #ffffff), color-stop(50%, #f6f6f6), color-stop(52%, #eeeeee), color-stop(100%, #f4f4f4));
+  background: -moz-linear-gradient(#ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+  background: -webkit-linear-gradient(#ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+  background: linear-gradient(#ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+  background-clip: padding-box;
+  box-shadow: 0 0 3px #fff inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+  color: #444;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 24px;
+}
+/* line 75, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-default {
+  color: #999;
+}
+/* line 78, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-single span {
+  display: block;
+  overflow: hidden;
+  margin-right: 26px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 85, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-single-with-deselect span {
+  margin-right: 38px;
+}
+/* line 88, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-single abbr {
+  position: absolute;
+  top: 6px;
+  right: 26px;
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url(/assets/chosen-sprite-8aa69ee6b2376505578d758bfbbc52aec88fa5e591f1a7cabd8adfa80a7b613a.png) -42px 1px no-repeat;
+  font-size: 1px;
+}
+/* line 97, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-single abbr:hover {
+  background-position: -42px -10px;
+}
+/* line 101, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single.chosen-disabled .chosen-single abbr:hover {
+  background-position: -42px -10px;
+}
+/* line 104, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-single div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 18px;
+  height: 100%;
+}
+/* line 111, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-single div b {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url(/assets/chosen-sprite-8aa69ee6b2376505578d758bfbbc52aec88fa5e591f1a7cabd8adfa80a7b613a.png) no-repeat 0px 2px;
+}
+/* line 118, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-search {
+  position: relative;
+  z-index: 1010;
+  margin: 0;
+  padding: 3px 4px;
+  white-space: nowrap;
+}
+/* line 124, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-search input[type="text"] {
+  margin: 1px 0;
+  padding: 4px 20px 4px 5px;
+  width: 100%;
+  height: auto;
+  outline: 0;
+  border: 1px solid #aaa;
+  background: #fff url(/assets/chosen-sprite-8aa69ee6b2376505578d758bfbbc52aec88fa5e591f1a7cabd8adfa80a7b613a.png) no-repeat 100% -20px;
+  background: url(/assets/chosen-sprite-8aa69ee6b2376505578d758bfbbc52aec88fa5e591f1a7cabd8adfa80a7b613a.png) no-repeat 100% -20px;
+  font-size: 1em;
+  font-family: sans-serif;
+  line-height: normal;
+  border-radius: 0;
+}
+/* line 139, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single .chosen-drop {
+  margin-top: -1px;
+  border-radius: 0 0 4px 4px;
+  background-clip: padding-box;
+}
+/* line 144, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-single.chosen-container-single-nosearch .chosen-search {
+  position: absolute;
+  left: -9999px;
+}
+
+/* @end */
+/* @group Results */
+/* line 152, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .chosen-results {
+  color: #444;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 4px 4px 0;
+  padding: 0 0 0 4px;
+  max-height: 240px;
+  -webkit-overflow-scrolling: touch;
+}
+/* line 161, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .chosen-results li {
+  display: none;
+  margin: 0;
+  padding: 5px 6px;
+  list-style: none;
+  line-height: 15px;
+  word-wrap: break-word;
+  -webkit-touch-callout: none;
+}
+/* line 169, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .chosen-results li.active-result {
+  display: list-item;
+  cursor: pointer;
+}
+/* line 173, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .chosen-results li.disabled-result {
+  display: list-item;
+  color: #ccc;
+  cursor: default;
+}
+/* line 178, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .chosen-results li.highlighted {
+  background-color: #3875d7;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIyMCUiIHN0b3AtY29sb3I9IiMzODc1ZDciLz48c3RvcCBvZmZzZXQ9IjkwJSIgc3RvcC1jb2xvcj0iIzJhNjJiYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #3875d7), color-stop(90%, #2a62bc));
+  background-image: -moz-linear-gradient(#3875d7 20%, #2a62bc 90%);
+  background-image: -webkit-linear-gradient(#3875d7 20%, #2a62bc 90%);
+  background-image: linear-gradient(#3875d7 20%, #2a62bc 90%);
+  color: #fff;
+}
+/* line 183, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .chosen-results li.no-results {
+  color: #777;
+  display: list-item;
+  background: #f4f4f4;
+}
+/* line 188, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .chosen-results li.group-result {
+  display: list-item;
+  font-weight: bold;
+  cursor: default;
+}
+/* line 193, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .chosen-results li.group-option {
+  padding-left: 15px;
+}
+/* line 196, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container .chosen-results li em {
+  font-style: normal;
+  text-decoration: underline;
+}
+
+/* @end */
+/* @group Multi Chosen */
+/* line 206, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 5px;
+  width: 100%;
+  height: auto !important;
+  height: 1%;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iI2VlZWVlZSIvPjxzdG9wIG9mZnNldD0iMTUlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #eeeeee), color-stop(15%, #ffffff));
+  background-image: -moz-linear-gradient(#eeeeee 1%, #ffffff 15%);
+  background-image: -webkit-linear-gradient(#eeeeee 1%, #ffffff 15%);
+  background-image: linear-gradient(#eeeeee 1%, #ffffff 15%);
+  cursor: text;
+}
+/* line 219, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices li {
+  float: left;
+  list-style: none;
+}
+/* line 222, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices li.search-field {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+/* line 226, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+  margin: 1px 0;
+  padding: 0;
+  height: 25px;
+  outline: 0;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none;
+  color: #999;
+  font-size: 100%;
+  font-family: sans-serif;
+  line-height: normal;
+  border-radius: 0;
+}
+/* line 241, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices li.search-choice {
+  position: relative;
+  margin: 3px 5px 3px 0;
+  padding: 3px 20px 3px 5px;
+  border: 1px solid #aaa;
+  max-width: 100%;
+  border-radius: 3px;
+  background-color: #eeeeee;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIyMCUiIHN0b3AtY29sb3I9IiNmNGY0ZjQiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2YwZjBmMCIvPjxzdG9wIG9mZnNldD0iNTIlIiBzdG9wLWNvbG9yPSIjZThlOGU4Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWVlZWVlIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eeeeee));
+  background-image: -moz-linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+  background-image: -webkit-linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+  background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+  background-size: 100% 19px;
+  background-repeat: repeat-x;
+  background-clip: padding-box;
+  box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+  color: #333;
+  line-height: 13px;
+  cursor: default;
+}
+/* line 257, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices li.search-choice span {
+  word-wrap: break-word;
+}
+/* line 260, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+  position: absolute;
+  top: 4px;
+  right: 3px;
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url(/assets/chosen-sprite-8aa69ee6b2376505578d758bfbbc52aec88fa5e591f1a7cabd8adfa80a7b613a.png) -42px 1px no-repeat;
+  font-size: 1px;
+}
+/* line 269, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close:hover {
+  background-position: -42px -10px;
+}
+/* line 274, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices li.search-choice-disabled {
+  padding-right: 5px;
+  border: 1px solid #ccc;
+  background-color: #e4e4e4;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIyMCUiIHN0b3AtY29sb3I9IiNmNGY0ZjQiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2YwZjBmMCIvPjxzdG9wIG9mZnNldD0iNTIlIiBzdG9wLWNvbG9yPSIjZThlOGU4Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWVlZWVlIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eeeeee));
+  background-image: -moz-linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+  background-image: -webkit-linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+  background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+  color: #666;
+}
+/* line 281, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices li.search-choice-focus {
+  background: #d4d4d4;
+}
+/* line 283, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-choices li.search-choice-focus .search-choice-close {
+  background-position: -42px -10px;
+}
+/* line 288, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-results {
+  margin: 0;
+  padding: 0;
+}
+/* line 292, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-multi .chosen-drop .result-selected {
+  display: list-item;
+  color: #ccc;
+  cursor: default;
+}
+
+/* @end */
+/* @group Active  */
+/* line 302, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-active .chosen-single {
+  border: 1px solid #5897fb;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+/* line 307, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-active.chosen-with-drop .chosen-single {
+  border: 1px solid #aaa;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-bottom-left-radius: 0;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIyMCUiIHN0b3AtY29sb3I9IiNlZWVlZWUiLz48c3RvcCBvZmZzZXQ9IjgwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #eeeeee), color-stop(80%, #ffffff));
+  background-image: -moz-linear-gradient(#eeeeee 20%, #ffffff 80%);
+  background-image: -webkit-linear-gradient(#eeeeee 20%, #ffffff 80%);
+  background-image: linear-gradient(#eeeeee 20%, #ffffff 80%);
+  box-shadow: 0 1px 0 #fff inset;
+}
+/* line 316, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-active.chosen-with-drop .chosen-single div {
+  border-left: none;
+  background: transparent;
+}
+/* line 319, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-active.chosen-with-drop .chosen-single div b {
+  background-position: -18px 2px;
+}
+/* line 324, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-active .chosen-choices {
+  border: 1px solid #5897fb;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+/* line 327, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-container-active .chosen-choices li.search-field input[type="text"] {
+  color: #222 !important;
+}
+
+/* @end */
+/* @group Disabled Support */
+/* line 335, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-disabled {
+  opacity: 0.5 !important;
+  cursor: default;
+}
+/* line 338, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-disabled .chosen-single {
+  cursor: default;
+}
+/* line 341, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-disabled .chosen-choices .search-choice .search-choice-close {
+  cursor: default;
+}
+
+/* @end */
+/* @group Right to Left */
+/* line 348, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl {
+  text-align: right;
+}
+/* line 350, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-single {
+  overflow: visible;
+  padding: 0 8px 0 0;
+}
+/* line 354, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-single span {
+  margin-right: 0;
+  margin-left: 26px;
+  direction: rtl;
+}
+/* line 359, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-single-with-deselect span {
+  margin-left: 38px;
+}
+/* line 362, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-single div {
+  right: auto;
+  left: 3px;
+}
+/* line 366, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-single abbr {
+  right: auto;
+  left: 26px;
+}
+/* line 370, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-choices li {
+  float: right;
+}
+/* line 372, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-choices li.search-field input[type="text"] {
+  direction: rtl;
+}
+/* line 375, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-choices li.search-choice {
+  margin: 3px 5px 3px 0;
+  padding: 3px 5px 3px 19px;
+}
+/* line 378, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-choices li.search-choice .search-choice-close {
+  right: auto;
+  left: 4px;
+}
+/* line 384, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl.chosen-container-single-nosearch .chosen-search,
+.chosen-rtl .chosen-drop {
+  left: 9999px;
+}
+/* line 388, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl.chosen-container-single .chosen-results {
+  margin: 0 0 4px 4px;
+  padding: 0 4px 0 0;
+}
+/* line 392, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-results li.group-option {
+  padding-right: 15px;
+  padding-left: 0;
+}
+/* line 396, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl.chosen-container-active.chosen-with-drop .chosen-single div {
+  border-right: none;
+}
+/* line 399, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl .chosen-search input[type="text"] {
+  padding: 4px 5px 4px 20px;
+  background: #fff url(/assets/chosen-sprite-8aa69ee6b2376505578d758bfbbc52aec88fa5e591f1a7cabd8adfa80a7b613a.png) no-repeat -30px -20px;
+  background: url(/assets/chosen-sprite-8aa69ee6b2376505578d758bfbbc52aec88fa5e591f1a7cabd8adfa80a7b613a.png) no-repeat -30px -20px;
+  direction: rtl;
+}
+/* line 406, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl.chosen-container-single .chosen-single div b {
+  background-position: 6px 2px;
+}
+/* line 410, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+.chosen-rtl.chosen-container-single.chosen-with-drop .chosen-single div b {
+  background-position: -12px 2px;
+}
+
+/* @end */
+/* @group Retina compatibility */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx) {
+  /* line 421, /home/pasluka/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/chosen-rails-1.4.3/vendor/assets/stylesheets/chosen.scss */
+  .chosen-rtl .chosen-search input[type="text"],
+  .chosen-container-single .chosen-single abbr,
+  .chosen-container-single .chosen-single div b,
+  .chosen-container-single .chosen-search input[type="text"],
+  .chosen-container-multi .chosen-choices .search-choice .search-choice-close,
+  .chosen-container .chosen-results-scroll-down span,
+  .chosen-container .chosen-results-scroll-up span {
+    background-image: url(/assets/chosen-sprite@2x-1e349b80fba8c23b63656925fda8dfe3c5927b5d0d8a1672143416caacf460fb.png) !important;
+    background-size: 52px 37px !important;
+    background-repeat: no-repeat !important;
+  }
+}
+/* @end */
+@charset "UTF-8";
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+
+ * require_tree .
+ * require_self
+ */
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ * 3. Stretch html to whole screen
+ */
+/* line 10, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  min-height: 100%;
+  /* 3 */
+}
+
+/**
+ * Remove default margin.
+ * Stretch body to whole screen
+ */
+/* line 22, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 37, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+article,
+aside,
+button,
+details,
+figcaption,
+figure,
+footer,
+header,
+img,
+input,
+label,
+legend,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 62, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 75, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+/* line 85, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 97, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+a {
+  background-color: transparent;
+  color: inherit;
+  text-decoration: none;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 107, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+a:active,
+a:hover,
+input,
+select,
+textarea {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 122, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 130, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+b,
+strong {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 139, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 147, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 156, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 164, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 172, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 176, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 187, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 195, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 206, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 214, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 224, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 232, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 255, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+form {
+  width: 100%;
+}
+
+/* line 259, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+  background: inherit;
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 274, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 285, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 298, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 310, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 319, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 330, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 342, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 354, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 365, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 378, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 387, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 393, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+button {
+  border: none;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 402, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 411, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 420, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 431, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 436, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/reset.scss */
+td,
+th {
+  padding: 0;
+}
+
+/*! Typebase.less v0.1.0 | MIT License */
+/* Setup */
+/* line 3, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+html {
+  /* Change default typefaces here */
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+
+/* Copy & Lists */
+/* line 11, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+p {
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+/* line 16, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+ul,
+ol {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* line 21, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+ul li,
+ol li {
+  line-height: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* line 26, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* line 33, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+blockquote {
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Headings */
+/* line 39, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* Change heading typefaces here */
+  margin: 0;
+  line-height: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 1rem;
+}
+
+/* Tables */
+/* line 52, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+table {
+  margin-top: 1.5rem;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+/* line 57, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+table td,
+table th {
+  padding: 0;
+  line-height: 33px;
+}
+
+/* Code blocks */
+/* line 63, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+code {
+  vertical-align: bottom;
+}
+
+/* Leading paragraph text */
+/* line 67, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+.lead {
+  font-size: 1.414rem;
+}
+
+/* Hug a the block above you */
+/* line 71, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/typography.scss */
+.hug {
+  margin-top: 0;
+}
+
+@font-face {
+  font-family: 'alef-iconset';
+  src: url(/fonts/alef-iconset.eot);
+  src: url(/fonts/alef-iconset.eot#iefix) format("embedded-opentype"), url(/fonts/alef-iconset.woff) format("woff"), url(/fonts/alef-iconset.ttf) format("truetype"), url(/fonts/alef-iconset.svg#alef-iconset) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'alef-iconset';
+    src: url('../font/alef-iconset.svg?75651421#alef-iconset') format('svg');
+  }
+}
+*/
+/* line 22, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "alef-iconset";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+/* line 57, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-mail:before {
+  content: '\e800';
+}
+
+/* '' */
+/* line 58, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-user:before {
+  content: '\e801';
+}
+
+/* '' */
+/* line 59, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-camera:before {
+  content: '\e802';
+}
+
+/* '' */
+/* line 60, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-done:before {
+  content: '\e803';
+}
+
+/* '' */
+/* line 61, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-checkbox-checked:before {
+  content: '\e804';
+}
+
+/* '' */
+/* line 62, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-add:before {
+  content: '\e805';
+}
+
+/* '' */
+/* line 63, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-help:before {
+  content: '\e806';
+}
+
+/* '' */
+/* line 64, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-seen:before {
+  content: '\e807';
+}
+
+/* '' */
+/* line 65, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-thumbs-up:before {
+  content: '\e808';
+}
+
+/* '' */
+/* line 66, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-thumbs-down:before {
+  content: '\e809';
+}
+
+/* '' */
+/* line 67, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-edit:before {
+  content: '\e80a';
+}
+
+/* '' */
+/* line 68, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-new:before {
+  content: '\e80b';
+}
+
+/* '' */
+/* line 69, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-menu:before {
+  content: '\e80c';
+}
+
+/* '' */
+/* line 70, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-cog:before {
+  content: '\e80d';
+}
+
+/* '' */
+/* line 71, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-admin:before {
+  content: '\e80e';
+}
+
+/* '' */
+/* line 72, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-sliders:before {
+  content: '\e80f';
+}
+
+/* '' */
+/* line 73, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-calendar:before {
+  content: '\e810';
+}
+
+/* '' */
+/* line 74, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-logout:before {
+  content: '\e811';
+}
+
+/* '' */
+/* line 75, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-left:before {
+  content: '\e812';
+}
+
+/* '' */
+/* line 76, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-right:before {
+  content: '\e813';
+}
+
+/* '' */
+/* line 77, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-arrows-cw:before {
+  content: '\e814';
+}
+
+/* '' */
+/* line 78, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-level-up:before {
+  content: '\e815';
+}
+
+/* '' */
+/* line 79, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-history:before {
+  content: '\e816';
+}
+
+/* '' */
+/* line 80, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-play:before {
+  content: '\e817';
+}
+
+/* '' */
+/* line 81, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-stop:before {
+  content: '\e818';
+}
+
+/* '' */
+/* line 82, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-award:before {
+  content: '\e819';
+}
+
+/* '' */
+/* line 83, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-table:before {
+  content: '\e81a';
+}
+
+/* '' */
+/* line 84, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-checkbox:before {
+  content: '\e81b';
+}
+
+/* '' */
+/* line 85, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-radio:before {
+  content: '\e81c';
+}
+
+/* '' */
+/* line 86, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-radio-checked:before {
+  content: '\e81d';
+}
+
+/* '' */
+/* line 87, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-chart-bar:before {
+  content: '\e81e';
+}
+
+/* '' */
+/* line 88, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-smile:before {
+  content: '\e81f';
+}
+
+/* '' */
+/* line 89, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-frown:before {
+  content: '\e820';
+}
+
+/* '' */
+/* line 90, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-graduation-cap:before {
+  content: '\e821';
+}
+
+/* '' */
+/* line 91, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-stackoverflow:before {
+  content: '\e822';
+}
+
+/* '' */
+/* line 92, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-eye-off:before {
+  content: '\e823';
+}
+
+/* '' */
+/* line 93, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-cancel-circled:before {
+  content: '\e824';
+}
+
+/* '' */
+/* line 94, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-ok-circled:before {
+  content: '\e825';
+}
+
+/* '' */
+/* line 95, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-star:before {
+  content: '\e826';
+}
+
+/* '' */
+/* line 96, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-link-ext:before {
+  content: '\e827';
+}
+
+/* '' */
+/* line 97, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-user-secret:before {
+  content: '\e828';
+}
+
+/* '' */
+/* line 98, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-home:before {
+  content: '\e829';
+}
+
+/* '' */
+/* line 99, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-delete:before {
+  content: '\e82a';
+}
+
+/* '' */
+/* line 100, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-calendar-1:before {
+  content: '\e82b';
+}
+
+/* '' */
+/* line 101, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-login:before {
+  content: '\e82c';
+}
+
+/* '' */
+/* line 102, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset.scss */
+.icon-list:before {
+  content: '\e82d';
+}
+
+/* '' */
+/* line 2, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-mail:before {
+  content: '\e800';
+}
+
+/* '' */
+/* line 3, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-user:before {
+  content: '\e801';
+}
+
+/* '' */
+/* line 4, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-camera:before {
+  content: '\e802';
+}
+
+/* '' */
+/* line 5, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-done:before {
+  content: '\e803';
+}
+
+/* '' */
+/* line 6, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-checkbox-checked:before {
+  content: '\e804';
+}
+
+/* '' */
+/* line 7, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-add:before {
+  content: '\e805';
+}
+
+/* '' */
+/* line 8, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-help:before {
+  content: '\e806';
+}
+
+/* '' */
+/* line 9, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-seen:before {
+  content: '\e807';
+}
+
+/* '' */
+/* line 10, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-thumbs-up:before {
+  content: '\e808';
+}
+
+/* '' */
+/* line 11, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-thumbs-down:before {
+  content: '\e809';
+}
+
+/* '' */
+/* line 12, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-edit:before {
+  content: '\e80a';
+}
+
+/* '' */
+/* line 13, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-new:before {
+  content: '\e80b';
+}
+
+/* '' */
+/* line 14, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-menu:before {
+  content: '\e80c';
+}
+
+/* '' */
+/* line 15, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-cog:before {
+  content: '\e80d';
+}
+
+/* '' */
+/* line 16, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-admin:before {
+  content: '\e80e';
+}
+
+/* '' */
+/* line 17, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-sliders:before {
+  content: '\e80f';
+}
+
+/* '' */
+/* line 18, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-calendar:before {
+  content: '\e810';
+}
+
+/* '' */
+/* line 19, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-logout:before {
+  content: '\e811';
+}
+
+/* '' */
+/* line 20, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-left:before {
+  content: '\e812';
+}
+
+/* '' */
+/* line 21, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-right:before {
+  content: '\e813';
+}
+
+/* '' */
+/* line 22, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-arrows-cw:before {
+  content: '\e814';
+}
+
+/* '' */
+/* line 23, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-level-up:before {
+  content: '\e815';
+}
+
+/* '' */
+/* line 24, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-history:before {
+  content: '\e816';
+}
+
+/* '' */
+/* line 25, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-play:before {
+  content: '\e817';
+}
+
+/* '' */
+/* line 26, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-stop:before {
+  content: '\e818';
+}
+
+/* '' */
+/* line 27, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-award:before {
+  content: '\e819';
+}
+
+/* '' */
+/* line 28, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-table:before {
+  content: '\e81a';
+}
+
+/* '' */
+/* line 29, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-checkbox:before {
+  content: '\e81b';
+}
+
+/* '' */
+/* line 30, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-radio:before {
+  content: '\e81c';
+}
+
+/* '' */
+/* line 31, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-radio-checked:before {
+  content: '\e81d';
+}
+
+/* '' */
+/* line 32, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-chart-bar:before {
+  content: '\e81e';
+}
+
+/* '' */
+/* line 33, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-smile:before {
+  content: '\e81f';
+}
+
+/* '' */
+/* line 34, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-frown:before {
+  content: '\e820';
+}
+
+/* '' */
+/* line 35, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-graduation-cap:before {
+  content: '\e821';
+}
+
+/* '' */
+/* line 36, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-stackoverflow:before {
+  content: '\e822';
+}
+
+/* '' */
+/* line 37, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-eye-off:before {
+  content: '\e823';
+}
+
+/* '' */
+/* line 38, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-cancel-circled:before {
+  content: '\e824';
+}
+
+/* '' */
+/* line 39, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-ok-circled:before {
+  content: '\e825';
+}
+
+/* '' */
+/* line 40, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-star:before {
+  content: '\e826';
+}
+
+/* '' */
+/* line 41, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-link-ext:before {
+  content: '\e827';
+}
+
+/* '' */
+/* line 42, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-user-secret:before {
+  content: '\e828';
+}
+
+/* '' */
+/* line 43, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-home:before {
+  content: '\e829';
+}
+
+/* '' */
+/* line 44, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-delete:before {
+  content: '\e82a';
+}
+
+/* '' */
+/* line 45, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-calendar-1:before {
+  content: '\e82b';
+}
+
+/* '' */
+/* line 46, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-login:before {
+  content: '\e82c';
+}
+
+/* '' */
+/* line 47, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/alef-iconset-codes.scss */
+.icon-list:before {
+  content: '\e82d';
+}
+
+/* '' */
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+body {
+  background-color: #23313F;
+  color: #FFFFFF;
+}
+
+/* line 5, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+blockquote {
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+/* line 11, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.strong {
+  font-weight: bold;
+}
+
+/* line 15, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.danger {
+  color: #E26A6A;
+}
+
+/* line 19, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.inline {
+  display: inline;
+}
+
+/* line 23, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.mobile-content {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 720px;
+}
+
+/* line 29, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.mobile-content.wide {
+  max-width: 960px;
+}
+
+/* line 33, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.my-mobile-content {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 720px;
+  border-radius: 5px;
+}
+
+/* line 40, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.main {
+  background-color: #FFFFFF;
+  color: #23313F;
+}
+
+/* line 44, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+#faux-background {
+  position: absolute;
+  min-height: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  z-index: -1;
+  left: 0;
+  right: 0;
+}
+
+/* line 54, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.not-zoomable {
+  opacity: 1;
+  transition: opacity 250ms ease;
+}
+
+/* line 59, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #BBC1C6;
+}
+
+/* line 64, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.container {
+  max-width: 990px;
+  margin: 2rem auto;
+}
+
+/* line 69, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list, .mini-list {
+  background-color: #FFFFFF;
+  border: 1px solid #BBC1C6;
+  border-radius: 6px;
+  margin: 10px;
+  padding: 0;
+  list-style: none;
+  line-height: normal;
+}
+/* line 78, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item, .mini-list .list-item {
+  border-bottom: 1px solid #BBC1C6;
+  padding: 1.0rem;
+  margin: 0;
+  line-height: normal;
+}
+/* line 84, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item:first-child, .mini-list .list-item:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+/* line 89, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item:last-child, .mini-list .list-item:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom: none;
+}
+/* line 95, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item .meta, .mini-list .list-item .meta {
+  font-size: 0.8em;
+  color: #BBC1C6;
+  margin-top: 5px;
+}
+/* line 101, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item .tools, .mini-list .list-item .tools {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #BBC1C6;
+}
+/* line 106, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item .tools .status, .mini-list .list-item .tools .status {
+  background-color: #fafafa;
+  border-radius: 12px;
+  padding: 2px 8px;
+  color: #505050;
+  font-size: 0.80em;
+  text-transform: uppercase;
+}
+/* line 114, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item .tools .status.status-success, .mini-list .list-item .tools .status.status-success {
+  background-color: #ebf2e1;
+  color: #000000;
+}
+/* line 119, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item .tools .status.status-danger, .mini-list .list-item .tools .status.status-danger {
+  background-color: #f1c0bf;
+  color: #000000;
+}
+/* line 125, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item .tools a, .mini-list .list-item .tools a {
+  color: #E26A6A;
+}
+/* line 128, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item .tools a:hover, .mini-list .list-item .tools a:hover {
+  color: #D64541;
+  text-decoration: underline;
+}
+
+/* line 138, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.simple-list .list-item-highlighted {
+  background-color: #fafafa;
+}
+
+/* line 145, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.mini-list .list-item {
+  padding: 0.5rem;
+}
+
+/* line 151, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.content-widget {
+  background-color: #fafafa;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 10px;
+}
+/* line 157, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.content-widget .show-all {
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+/* line 164, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.content-widget .simple-list, .content-widget .mini-list {
+  margin: 5px 0;
+  max-height: 500px;
+  overflow: auto;
+}
+
+/* line 171, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.answer-text .MathJax_SVG_Display {
+  text-align: left !important;
+  margin: 0px !important;
+}
+
+/* line 177, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.row:after, .row:before {
+  display: table;
+  content: " ";
+}
+/* line 181, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.row:after {
+  clear: both;
+}
+/* line 185, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.row .col, .row .col-lg-4, .row .col-lg-8, .row .col-lg-12 {
+  float: left;
+  transition: width 0.5s ease-in-out;
+}
+/* line 190, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.row .col-lg-12 {
+  width: 100%;
+}
+/* line 193, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.row .col-lg-8 {
+  width: 66%;
+}
+/* line 196, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.row .col-lg-4 {
+  width: 33%;
+}
+
+/* line 201, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.pull-right {
+  float: right;
+}
+
+/* line 205, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+.text-right {
+  text-align: right;
+}
+
+/* line 210, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+dl {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* line 215, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+dt {
+  font-weight: bold;
+}
+
+/* line 219, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+dd {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  /* line 225, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+  .dl-horizontal dt {
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 10px;
+  }
+
+  /* line 236, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/layout.scss */
+  .dl-horizontal dd {
+    margin-left: 180px;
+    margin-top: 10px;
+  }
+}
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/navigation.scss */
+nav {
+  background-color: #D64541;
+  color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  z-index: 100;
+}
+
+/* line 11, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/navigation.scss */
+nav i {
+  font-size: 1.2rem;
+  display: inline-block;
+  line-height: 3rem;
+  margin: 0;
+  padding: 0 10px;
+}
+
+/* line 19, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/navigation.scss */
+nav i.disabled {
+  color: #E26A6A;
+}
+
+/* line 23, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/navigation.scss */
+nav h2 {
+  font-size: 1.5rem;
+  display: inline-block;
+  line-height: 3rem;
+  margin: 0;
+}
+
+/* line 30, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/navigation.scss */
+.without-icons h2 {
+  padding: 0 1rem;
+}
+
+/* line 34, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/navigation.scss */
+.nav-right-icons {
+  float: right;
+}
+
+/* line 38, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/navigation.scss */
+.nav-offset {
+  margin: 0;
+  height: 4rem;
+  border: 0;
+  background-color: #D64541;
+  transition: background-color 250ms, height 500ms ease-out;
+}
+/* line 45, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/navigation.scss */
+.nav-offset.hidden {
+  background-color: #FFFFFF;
+}
+
+/* line 52, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/navigation.scss */
+.nav-info {
+  font-weight: 700;
+  letter-spacing: 1px;
+  background-color: #E26A6A;
+  color: #FFFFFF;
+  padding: 1rem 0 0.5rem;
+  text-align: center;
+}
+
+/* line 60, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/navigation.scss */
+.test-offset {
+  margin: 0;
+  height: 5rem;
+  border: 0;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/card.scss */
+.card {
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px #BBC1C6 solid;
+  display: block;
+}
+/* line 7, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/card.scss */
+.card:hover {
+  background-color: #ECF0F1;
+  cursor: pointer;
+}
+
+/* line 14, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/card.scss */
+.card-header {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  margin: 0;
+}
+
+/* line 22, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/card.scss */
+.card-text {
+  margin: 10px;
+}
+
+/* line 26, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/card.scss */
+.card-info {
+  line-height: 1.5rem;
+}
+/* line 29, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/card.scss */
+.card-info i {
+  font-size: 1.2em;
+}
+
+/* line 34, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/card.scss */
+.card .week-progressbar {
+  border: 1px solid #BBC1C6;
+  margin: 1rem 0 0.5rem;
+}
+
+/* line 39, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/card.scss */
+.week-current {
+  color: #D64541;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/alerts.scss */
+.alert {
+  position: fixed;
+  bottom: 2rem;
+  width: 100%;
+  z-index: 300;
+  pointer-events: none;
+  animation-name: alert-kfs;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  -webkit-animation-name: alert-kfs;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+}
+/* line 20, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/alerts.scss */
+#body-sessions-new > .alert {
+  bottom: auto;
+  top: 2rem;
+}
+/* line 24, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/alerts.scss */
+#body-sessions-new > .alert .message {
+  background-color: #FFFFFF;
+  color: #D64541;
+}
+/* line 29, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/alerts.scss */
+.alert .message {
+  width: 60%;
+  padding: 2rem;
+  max-width: 560px;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #D64541;
+  color: #FFFFFF;
+}
+
+@keyframes alert-kfs {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes alert-kfs {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/toggle.scss */
+.toggle-item-list {
+  border: 1px solid white;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  border-radius: 1rem;
+  height: 1.5rem;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* line 9, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/toggle.scss */
+.toggle-item {
+  height: 1.5rem;
+  display: inline-block;
+  line-height: 1.5rem;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+/* line 16, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/toggle.scss */
+.toggle-item.active {
+  background-color: #FFFFFF;
+  color: #23313F;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* line 22, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/toggle.scss */
+.toggle-caption {
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  overflow: hidden;
+  display: inline-block;
+  padding-right: 0.5rem;
+}
+/* line 31, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/toggle.scss */
+.toggle-caption .icon-help {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* line 37, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/toggle.scss */
+.toggle-help {
+  text-align: left;
+  height: 0;
+  overflow: hidden;
+}
+/* line 42, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/toggle.scss */
+.toggle-help.active {
+  padding: 1rem 0;
+  height: auto;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+#login {
+  font-weight: 700;
+  letter-spacing: 1px;
+  min-height: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+/* line 9, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+#login-h1 {
+  color: #D64541;
+  position: relative;
+  margin: 0;
+}
+
+/* line 15, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+#logo {
+  margin: auto;
+}
+
+/* line 19, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+.login-form {
+  position: absolute;
+  bottom: 2rem;
+}
+
+/* line 32, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+.login-text {
+  margin-left: auto;
+  margin-right: auto;
+  height: 2rem;
+  border: 3px solid #FFFFFF;
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 19px;
+  -ms-border-radius: 19px;
+  border-radius: 19px;
+  padding: 0 1em;
+  width: 70%;
+  max-width: 300px;
+  background-color: #23313F;
+}
+
+/* line 39, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+.login-remember-me {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  max-width: 300px;
+}
+
+/* line 45, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+.remember-me-icon {
+  transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  -webkit-transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  padding: 0.8rem 0.1rem;
+  font-size: 1.25em;
+}
+
+/* line 51, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+.remember-me-input {
+  display: none;
+}
+/* line 55, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+.remember-me-input:checked + .remember-me-icon {
+  color: #D64541;
+}
+/* line 59, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+.remember-me-input[type="checkbox"]:checked + .remember-me-icon::before {
+  content: '\e809';
+}
+/* line 63, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+.remember-me-input[type="radio"]:checked + .remember-me-icon::before {
+  content: '\e806';
+}
+
+/* line 68, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+#login-fieldset > label {
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 73, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+#login-submit {
+  transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  -webkit-transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  background-color: #FFFFFF;
+  color: #23313F;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  height: 2rem;
+  border: 3px solid #FFFFFF;
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 19px;
+  -ms-border-radius: 19px;
+  border-radius: 19px;
+  padding: 0 1em;
+  box-sizing: content-box;
+  width: 125px;
+}
+/* line 82, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/login.scss */
+#login-submit:hover {
+  background-color: #D64541;
+  color: #23313F;
+  border-color: #D64541;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+#user-element {
+  background-color: #23313F;
+  color: #FFFFFF;
+  width: 100%;
+  margin: -0.5rem 0 0.5rem;
+  overflow: hidden;
+  transition: height 500ms ease-out;
+}
+/* line 8, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+#user-element #name {
+  font-style: italic;
+  padding: 1rem;
+  line-height: 2rem;
+}
+
+/* line 15, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+.user-panel-button {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  border-bottom: 1px solid #2C3E50;
+  float: left;
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+}
+/* line 25, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+.user-panel-button i {
+  display: inline-block;
+  padding-right: 1.5rem;
+  width: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  line-height: inherit;
+}
+/* line 34, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+.user-panel-button:hover {
+  background-color: #2C3E50;
+  cursor: pointer;
+}
+
+/* line 41, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+.user-element-cta {
+  cursor: pointer;
+}
+
+/* line 45, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+#contact {
+  background-color: #D64541;
+  color: #FFFFFF;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 300;
+  bottom: 200%;
+  transition: bottom 500ms ease-out;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 360px) {
+  /* line 59, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+  #contact-text {
+    display: none;
+  }
+}
+
+/* line 65, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+#contact-textarea {
+  background-color: #FFFFFF;
+  color: #D64541;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  width: 100%;
+  height: 80%;
+  padding: 1rem;
+  border: 1px solid #FFFFFF;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  border-radius: 1rem;
+  box-sizing: border-box;
+}
+
+/* line 77, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+#contact-button-field {
+  height: 20%;
+  box-sizing: border-box;
+  text-align: center;
+}
+/* line 82, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+#contact-button-field > button {
+  display: block;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  height: 2rem;
+  padding: 0 1.5rem;
+  line-height: 2rem;
+  cursor: pointer;
+  border: 1px solid #FFFFFF;
+  display: inline-block;
+  margin: 1rem 1rem 0 0;
+}
+/* line 11, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/mixins.scss */
+#contact-button-field > button:active, #contact-button-field > button:hover {
+  background-color: #FFFFFF;
+  color: #23313F;
+}
+
+/* line 89, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+.user-panel-button-inactive {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  border-bottom: 1px solid #2C3E50;
+  float: left;
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  pointer-events: none;
+  cursor: default;
+  color: dimgrey;
+}
+/* line 102, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+.user-panel-button-inactive i {
+  display: inline-block;
+  padding-right: 1.5rem;
+  width: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  line-height: inherit;
+}
+
+/* line 112, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/user_element.scss */
+.admin-panel-button {
+  max-width: 480px;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/weeks.scss */
+.week-progressbar {
+  -webkit-border-radius: 0.75rem;
+  -moz-border-radius: 0.75rem;
+  -ms-border-radius: 0.75rem;
+  border-radius: 0.75rem;
+  height: 1.5rem;
+  background-color: #FFFFFF;
+  background-image: none;
+  border: 1px solid #FFFFFF;
+  margin: 0.5rem 1rem 0.5rem;
+}
+
+/* line 10, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/weeks.scss */
+.week-progressbar > .ui-progressbar-value {
+  background-image: none;
+  background-color: #f1c0bf;
+  border-color: #f1c0bf;
+}
+
+/* line 16, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/weeks.scss */
+.progressbar-caption {
+  height: 0;
+  text-align: center;
+  line-height: 1.6rem;
+  color: #23313F;
+  font-size: 0.75rem;
+  font-weight: 400;
+  z-index: 20;
+}
+
+/* line 25, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/weeks.scss */
+.question-card-content {
+  height: 4.5rem;
+  overflow: hidden;
+}
+
+/* line 31, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/weeks.scss */
+#week-toggle {
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 1rem 1rem 0;
+}
+/* line 35, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/weeks.scss */
+#week-toggle .toggle-item {
+  width: 4rem;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setups.scss */
+.week-date {
+  font-size: 0.75rem;
+  float: right;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.question-name {
+  background-color: #D64541;
+  color: #FFFFFF;
+}
+
+/* line 5, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.question-name h2 {
+  padding: 0 1rem 0.5rem;
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+/* line 12, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.question-image {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+/* line 18, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+#question-info {
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 1rem 1rem 0.5rem;
+}
+/* line 22, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+#question-info i {
+  font-size: 1.2em;
+}
+
+/* line 27, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.question-text {
+  padding: 0.5rem 1rem 0.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.5rem;
+  /* accept new lines */
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */
+}
+
+/* line 39, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.card-text p {
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */
+  font-family: inherit;
+  margin: 0;
+}
+
+/* line 49, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+#question-evaluation-message {
+  display: none;
+}
+
+/* line 54, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.question-button {
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-align: center;
+  font-variant: small-caps;
+  background-color: #BBC1C6;
+  color: #FFFFFF;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+  padding: 0.5rem 0;
+  width: 12rem;
+  display: block;
+  cursor: pointer;
+}
+
+/* line 66, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+#question-options-wrapper {
+  padding: 1rem 0;
+}
+
+/* line 70, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.question-options-message {
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-align: center;
+  font-variant: small-caps;
+  color: #D64541;
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+}
+
+/* line 77, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.question-button-red {
+  background-color: #D64541;
+  color: #FFFFFF;
+}
+
+/* line 81, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.question-button:hover {
+  color: #23313F;
+}
+
+/* line 85, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+#question-feedback {
+  margin: 0 1rem;
+  padding: 1rem 0;
+}
+
+/* line 90, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.question-feedback-name {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* line 96, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions.scss */
+.question-feedback-message {
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  display: none;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-text {
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  -webkit-transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+}
+/* line 5, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-text:hover {
+  background-color: #ECF0F1;
+  cursor: pointer;
+}
+
+/* line 11, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-icon {
+  transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  -webkit-transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  position: absolute;
+  padding: 0.8rem 0.7rem;
+  font-size: 1.25em;
+}
+
+/* line 18, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-input {
+  display: none;
+}
+/* line 21, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-input:checked ~ .answer-text, .answer-input:checked + .answer-icon {
+  color: #D64541;
+}
+/* line 26, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-input[type="checkbox"]:checked + .answer-icon::before {
+  content: '\e804';
+}
+/* line 30, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-input[type="radio"]:checked + .answer-icon::before {
+  content: '\e81d';
+}
+
+/* line 35, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-output {
+  display: none;
+}
+/* line 38, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-output:checked ~ .answer-text, .answer-output:checked + .answer-icon {
+  color: #D64541;
+}
+/* line 43, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-output[type="checkbox"]:checked + .answer-icon::before {
+  content: '\e804';
+}
+/* line 47, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-output[type="radio"]:checked + .answer-icon::before {
+  content: '\e81d';
+}
+
+/* line 55, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-output.answer-is-incorrect + .answer-icon {
+  color: #D64541;
+}
+/* line 59, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-output.answer-is-incorrect ~ .answer-text {
+  color: #D64541;
+  text-decoration: underline;
+}
+/* line 64, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-output.answer-is-incorrect:checked + .answer-icon {
+  color: #23313F;
+}
+/* line 68, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-output.answer-is-incorrect:checked ~ .answer-text {
+  color: #23313F;
+  text-decoration: line-through;
+}
+
+/* line 76, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-input.answer-is-incorrect + .answer-icon {
+  color: #D64541;
+}
+/* line 80, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-input.answer-is-incorrect ~ .answer-text {
+  color: #D64541;
+  text-decoration: underline;
+}
+/* line 85, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-input.answer-is-incorrect:checked + .answer-icon {
+  color: #23313F;
+}
+/* line 89, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/questions_answers.scss */
+.answer-input.answer-is-incorrect:checked ~ .answer-text {
+  color: #23313F;
+  text-decoration: line-through;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/evaluator.scss */
+#evaluator-slider-container {
+  padding: 3rem 0;
+  overflow: auto !important;
+}
+
+/* line 6, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/evaluator.scss */
+#evaluator-slider.ui-slider {
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  height: 1rem;
+  border: 1px solid #BBC1C6;
+  margin: 0rem 1rem 0.5rem;
+}
+
+/* line 13, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/evaluator.scss */
+#evaluator-slider .ui-slider-range {
+  background: #f1c0bf;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+/* line 18, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/evaluator.scss */
+#evaluator-slider .ui-slider-handle {
+  height: 1.5rem !important;
+  width: 1.5rem !important;
+  border-color: #BBC1C6 !important;
+  -webkit-border-radius: 0.75rem;
+  -moz-border-radius: 0.75rem;
+  -ms-border-radius: 0.75rem;
+  border-radius: 0.75rem;
+  outline: none;
+}
+
+/* line 26, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/evaluator.scss */
+#evaluator-dont-agree, #evaluator-do-agree {
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin: 0 1rem;
+}
+
+/* line 31, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/evaluator.scss */
+#evaluator-dont-agree {
+  float: left;
+}
+
+/* line 35, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/evaluator.scss */
+#evaluator-do-agree {
+  float: right;
+}
+
+/* line 49, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/evaluator.scss */
+#handle-solution-info {
+  background-color: #D64541;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 400;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  position: relative;
+  text-align: center;
+  padding: 0.25rem 0;
+  right: 3rem;
+  width: 7rem;
+  top: 1.9rem;
+}
+
+/* line 55, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/questions/evaluator.scss */
+#handle-answer-info {
+  background-color: #23313F;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 400;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  position: relative;
+  text-align: center;
+  padding: 0.25rem 0;
+  right: 3rem;
+  width: 7rem;
+  bottom: 1.7rem;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin {
+  max-width: 960px;
+  background-color: #FFFFFF;
+  color: #23313F;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 4px;
+}
+@media screen and (max-width: 480px) {
+  /* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+  .admin {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+/* line 13, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin h3 {
+  border-bottom: 1px solid #d0d0d0;
+  font-size: 1.0em;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  color: #505050;
+  padding: 0 1rem 1rem;
+  margin: 0 -1rem;
+}
+/* line 23, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin .question_text_field, .admin .admin-markdown-edit-textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+}
+/* line 31, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin input[type="submit"] {
+  background-color: #D64541;
+  color: #FFFFFF;
+  border: none;
+}
+/* line 36, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin input.simple-text {
+  width: 350px;
+  display: inline-block;
+  margin: 0.5rem 10px 0.5rem 0;
+}
+/* line 42, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin select.form-control {
+  margin: 0;
+  width: 350px;
+}
+/* line 47, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin .form-buttons {
+  margin-top: 5px;
+}
+/* line 51, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin .options-label {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: #505050;
+}
+/* line 57, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin.wide {
+  max-width: none;
+  box-sizing: border-box;
+}
+/* line 62, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin .edit_question_table {
+  margin-top: 0px;
+  padding-top: 0rem;
+}
+/* line 65, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin .edit_question_table th {
+  font-weight: normal;
+  padding-right: 1rem;
+  padding-left: 0rem;
+}
+
+/* line 75, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin table th {
+  padding: 0.25rem 1rem;
+}
+/* line 79, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin table th.th-right {
+  text-align: right;
+}
+/* line 83, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin table tr:not(:first-child) {
+  border-top: 1px solid #BBC1C6;
+}
+
+/* line 88, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin-nav {
+  width: 100%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 94, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin input, .admin select, .admin textarea, .admin-markdown-textarea {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+  border: 1px solid #BBC1C6;
+  padding: 0.5rem 1rem;
+  transition: border 0.25s;
+}
+/* line 102, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin input:focus, .admin input:active, .admin select:focus, .admin select:active, .admin textarea:focus, .admin textarea:active, .admin-markdown-textarea:focus, .admin-markdown-textarea:active {
+  border-color: #747a7f;
+}
+
+/* line 108, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.form-group input, .form-group select, .form-group textarea, .form-group .admin-markdown-textarea {
+  margin: 0;
+}
+
+/* line 114, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#week-concept-table td:not(:first-child) {
+  text-align: center;
+}
+/* line 115, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#week-concept-table td:first-child {
+  text-align: right;
+  padding: 0 1rem;
+}
+/* line 116, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#week-concept-table td:nth-child(2n) {
+  background-color: #ECF0F1;
+}
+/* line 117, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#week-concept-table input {
+  display: inline-block;
+}
+/* line 118, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#week-concept-table tr:not(:first-child) {
+  border-top: 1px solid #BBC1C6;
+}
+
+/* line 122, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#question-concept-table tr:nth-child(2n) {
+  background-color: #ECF0F1;
+}
+/* line 124, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#question-concept-table .question-concept-table-cell {
+  height: 4.2rem;
+  overflow: hidden;
+  padding: 0.5rem 0.5rem;
+}
+/* line 129, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#question-concept-table .question-concept-table-cell.show {
+  height: auto;
+}
+/* line 134, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#question-concept-table button:hover {
+  color: #D64541;
+}
+/* line 138, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#question-concept-table .question-title {
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* line 145, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.question-concept-table-answers {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #BBC1C6;
+}
+
+/* line 150, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin-nav-button {
+  display: block;
+  border: 1px solid #FFFFFF;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  border-radius: 1rem;
+  height: 2.25rem;
+  line-height: 2.25rem;
+  float: right;
+  padding: 0 1.0rem;
+  margin: 0.3rem 1rem 0 0;
+}
+/* line 160, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin-nav-button i.fa {
+  margin-right: 5px;
+}
+
+/* line 165, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin-link {
+  border-width: 0;
+  border-bottom: 1px dashed #23313F;
+}
+/* line 169, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin-link:hover {
+  border-style: solid;
+}
+
+/* line 174, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.concept {
+  display: inline-block;
+  background-color: #ECF0F1;
+  color: #23313F;
+  border: 1px solid #BBC1C6;
+  padding: 0 0.5rem;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-top: 0.25rem;
+}
+/* line 185, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.concept:hover {
+  background-color: #FFFFFF;
+}
+/* line 189, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.concept .concept-delete {
+  display: inline-block;
+  padding: 0;
+}
+
+/* line 195, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.concept-autocomplete {
+  display: inline-block;
+}
+
+/* line 199, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.concept-add {
+  display: inline-block;
+}
+
+/* line 204, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin button.btn, .admin input.btn {
+  display: inline-block;
+}
+/* line 208, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin button.btn {
+  font-size: 0.875rem;
+}
+
+/* line 213, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table {
+  width: 100%;
+}
+/* line 216, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table tr.hidden {
+  opacity: 0.5;
+  transition: opacity 0.5s;
+}
+/* line 220, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table tr.hidden:hover {
+  opacity: 1.0;
+}
+/* line 225, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table .answers-table-id {
+  width: 30px;
+  text-align: center;
+}
+/* line 230, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table .answers-table-tools {
+  width: 100px;
+  text-align: center;
+}
+/* line 234, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table .answers-table-tools label, .answers-table .answers-table-tools a {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  border-radius: 50%;
+  display: inline-block;
+}
+/* line 241, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table .answers-table-tools label:hover, .answers-table .answers-table-tools a:hover {
+  background-color: #f0f0f0;
+}
+/* line 248, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table .question-answer {
+  width: 90%;
+}
+/* line 252, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table .question-answer-area, .answers-table .admin-markdown-textarea {
+  width: 90%;
+  height: 100px;
+}
+/* line 257, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table .admin-markdown-preview {
+  width: 100%;
+}
+/* line 260, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table .admin-markdown-preview .question-answer-area, .answers-table .admin-markdown-preview .admin-markdown-textarea {
+  width: 100%;
+  margin: 0;
+}
+/* line 267, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.answers-table input[type="checkbox"] {
+  padding: 0;
+  display: inline;
+}
+
+/* line 274, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin-markdown-textarea {
+  background-color: #ffffff;
+}
+
+/* line 279, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.admin .question-answer-with-original {
+  margin-bottom: 0;
+}
+
+/* line 284, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.original-answer, .original-input-text {
+  font-size: 0.85em;
+  letter-spacing: normal;
+  display: none;
+  color: #747a7f;
+  padding: 5px 15px;
+}
+/* line 291, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.original-answer a, .original-input-text a {
+  color: #D64541;
+}
+/* line 294, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.original-answer a:hover, .original-input-text a:hover {
+  text-decoration: underline;
+}
+
+/* line 300, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+.original-answer {
+  padding: 0;
+}
+
+/* line 304, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#answer-feedback-col {
+  display: none;
+}
+
+/* line 309, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#question-preview {
+  padding: 20px;
+}
+
+/* line 314, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#feedback-alert {
+  background-color: #E26A6A;
+  color: #FFFFFF;
+  border-radius: 6px;
+  font-size: 1.2em;
+  padding: 1.5rem 1rem;
+}
+/* line 320, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#feedback-alert .preicon {
+  width: 40px;
+  text-align: center;
+  display: inline-block;
+}
+/* line 326, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#feedback-alert a:not(.action-btn) {
+  display: block;
+  font-size: 0.8em;
+  margin-left: 40px;
+  color: #ffffff;
+}
+/* line 332, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#feedback-alert a:not(.action-btn):hover {
+  text-decoration: underline;
+}
+/* line 337, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#feedback-alert .action-btn {
+  background-color: #f0f0f0;
+  float: right;
+  padding: 0.5rem 0.75rem;
+  margin-top: 2px;
+  color: #747a7f;
+  border-radius: 6px;
+  font-size: 0.9em;
+  margin-right: 5px;
+}
+/* line 349, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#feedback-alert.feedback-lite .action-btn {
+  margin-top: -7px;
+}
+
+/* line 359, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#feedback-refresh-button.empty {
+  float: right;
+}
+/* line 363, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration.scss */
+#feedback-refresh-button:not(.empty) {
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+/* line 5, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+.exercise-general {
+  font-size: 2.5vh;
+  text-align: center;
+}
+
+/* line 10, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+.qr img {
+  margin: 0 auto;
+  max-height: 55vh;
+}
+
+/* line 23, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+.code-text {
+  margin-left: auto;
+  margin-right: auto;
+  height: 2rem;
+  border: 3px solid #FFFFFF;
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 19px;
+  -ms-border-radius: 19px;
+  border-radius: 19px;
+  padding: 0 1em;
+  width: 70%;
+  color: #FFFFFF;
+  max-width: 300px;
+  text-align: center;
+  background-color: #23313F;
+}
+
+/* line 32, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+#code-submit {
+  transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  -webkit-transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  background-color: #FFFFFF;
+  color: #23313F;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  height: 2rem;
+  border: 3px solid #FFFFFF;
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 19px;
+  -ms-border-radius: 19px;
+  border-radius: 19px;
+  padding: 0 1em;
+  box-sizing: content-box;
+  width: 125px;
+}
+/* line 43, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+#code-submit:hover {
+  background-color: #D64541;
+  color: #23313F;
+  border-color: #D64541;
+}
+
+/* line 49, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+#teacher-submit {
+  transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  -webkit-transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+  background-color: #FFFFFF;
+  color: #23313F;
+  margin-top: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  height: 2rem;
+  border: 3px solid #FFFFFF;
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 19px;
+  -ms-border-radius: 19px;
+  border-radius: 19px;
+  padding: 0 1em;
+  box-sizing: content-box;
+  width: auto;
+  margin-top: 20px;
+}
+/* line 60, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+#teacher-submit:hover {
+  background-color: #D64541;
+  color: #23313F;
+  border-color: #D64541;
+}
+
+/* line 66, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+.title_exercises {
+  font-size: 200%;
+}
+
+/* line 70, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+.title_small_exercises {
+  font-size: 150%;
+}
+
+/* line 74, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+.title_smaller_exercises {
+  font-size: 20%;
+}
+
+/* line 78, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+.remaining-time {
+  font-size: 180%;
+}
+
+/* line 82, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+.remaining-time.low {
+  color: #D64541;
+  animation: blink 1s step-start 0s infinite;
+  -webkit-animation: blink 1s step-start 0s infinite;
+}
+
+/* line 88, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/exercises.scss */
+.remaining-time.zero {
+  color: #D64541;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+/* line 2, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  overflow: auto;
+}
+
+/* line 8, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav > li {
+  position: relative;
+  display: block;
+}
+
+/* line 12, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+/* line 17, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
+
+/* line 22, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav > li.disabled > a {
+  color: #777;
+}
+
+/* line 25, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav > li.disabled > a:hover,
+.nav > li.disabled > a:focus {
+  color: #777;
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+/* line 32, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: #eee;
+  border-color: #337ab7;
+}
+
+/* line 38, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav .nav-divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+/* line 44, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav > li > a > img {
+  max-width: none;
+}
+
+/* line 47, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 50, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs > li {
+  float: left;
+  margin-bottom: -1px;
+}
+
+/* line 54, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+}
+
+/* line 60, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs > li > a:hover {
+  border-color: #eee #eee #ddd;
+}
+
+/* line 63, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #555;
+  cursor: default;
+  background-color: #D64541;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+/* line 72, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs.nav-justified {
+  width: 100%;
+  border-bottom: 0;
+}
+
+/* line 76, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs.nav-justified > li {
+  float: none;
+}
+
+/* line 79, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs.nav-justified > li > a {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* line 83, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs.nav-justified > .dropdown .dropdown-menu {
+  top: auto;
+  left: auto;
+}
+
+@media (min-width: 768px) {
+  /* line 88, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+  .nav-tabs.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
+
+  /* line 92, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+  .nav-tabs.nav-justified > li > a {
+    margin-bottom: 0;
+  }
+}
+/* line 96, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs.nav-justified > li > a {
+  margin-right: 0;
+  border-radius: 4px;
+}
+
+/* line 100, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs.nav-justified > .active > a:focus {
+  border: 1px solid #ddd;
+}
+
+@media (min-width: 768px) {
+  /* line 106, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+  .nav-tabs.nav-justified > li > a {
+    border-bottom: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+  }
+
+  /* line 110, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+  .nav-tabs.nav-justified > .active > a,
+  .nav-tabs.nav-justified > .active > a:hover,
+  .nav-tabs.nav-justified > .active > a:focus {
+    border-bottom-color: #fff;
+  }
+}
+/* line 116, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-pills > li {
+  float: left;
+}
+
+/* line 119, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-pills > li > a {
+  border-radius: 4px;
+}
+
+/* line 122, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-pills > li + li {
+  margin-left: 2px;
+}
+
+/* line 125, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #D64541;
+}
+
+/* line 131, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-stacked > li {
+  float: none;
+}
+
+/* line 134, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-stacked > li + li {
+  margin-top: 2px;
+  margin-left: 0;
+}
+
+/* line 138, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-justified {
+  width: 100%;
+}
+
+/* line 141, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-justified > li {
+  float: none;
+}
+
+/* line 144, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-justified > li > a {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* line 148, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-justified > .dropdown .dropdown-menu {
+  top: auto;
+  left: auto;
+}
+
+@media (min-width: 768px) {
+  /* line 153, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+  .nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
+
+  /* line 157, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+  .nav-justified > li > a {
+    margin-bottom: 0;
+  }
+}
+/* line 161, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs-justified {
+  border-bottom: 0;
+}
+
+/* line 164, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs-justified > li > a {
+  margin-right: 0;
+  border-radius: 4px;
+}
+
+/* line 168, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs-justified > .active > a,
+.nav-tabs-justified > .active > a:hover,
+.nav-tabs-justified > .active > a:focus {
+  border: 1px solid #ddd;
+}
+
+@media (min-width: 768px) {
+  /* line 174, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+  .nav-tabs-justified > li > a {
+    border-bottom: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+  }
+
+  /* line 178, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+  .nav-tabs-justified > .active > a,
+  .nav-tabs-justified > .active > a:hover,
+  .nav-tabs-justified > .active > a:focus {
+    border-bottom-color: #fff;
+  }
+}
+/* line 184, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tab-content > .tab-pane {
+  display: none;
+}
+
+/* line 187, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tab-content > .active {
+  display: block;
+}
+
+/* line 190, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* line 196, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tab-content > .tab-pane {
+  display: none;
+}
+
+/* line 199, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tab-content > .active {
+  display: block;
+}
+
+/* line 203, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.highcharts-container {
+  position: absolute;
+  overflow: hidden;
+  width: 600px;
+  height: 400px;
+  text-align: left;
+  line-height: normal;
+  z-index: 0;
+  -webkit-tap-highlight-color: transparent;
+  margin: 0 auto;
+}
+
+/* line 218, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.highcharts-container {
+  position: relative;
+  overflow: hidden;
+  min-width: 600px;
+  min-height: 200px;
+  text-align: left;
+  line-height: normal;
+  z-index: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* line 229, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.graph-title {
+  margin-top: 2%;
+  margin-bottom: 1%;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* line 236, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tg {
+  white-space: nowrap;
+  font-family: "Lato","sans-serif";
+}
+
+/* line 241, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tg table.one {
+  margin-bottom: 3em;
+  border-collapse: collapse;
+}
+
+/* line 245, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tg td {
+  /* removed the border from the table data rows  */
+  text-align: center;
+  width: 10em;
+  padding: 1em;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  padding: 2px 2px 2px 2px;
+}
+
+/* line 254, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tg th {
+  /* removed the border from the table heading row  */
+  text-align: center;
+  background-color: #D64541;
+  color: white;
+  -webkit-box-shadow: inset 0px 0px 0px 1px;
+  -moz-box-shadow: inset 0px 0px 0px 1px;
+  box-shadow: inset 0px 0px 0px 1px;
+  overflow: hidden;
+  word-break: normal;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 5px 5px 5px 5px;
+}
+
+/* line 269, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tg tr {
+  height: 1em;
+}
+
+/* line 272, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tg tr:nth-child(even) {
+  /* added all even rows a #eee color  */
+  background-color: #eee;
+}
+
+/* line 276, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tg tr:nth-child(odd) {
+  /* added all odd rows a #fff color  */
+  background-color: #fff;
+}
+
+/* line 280, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.tg .actions {
+  font-size: 115%;
+}
+
+/* line 283, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.focusable {
+  padding: 3px;
+  border-radius: 2px;
+}
+
+/* line 287, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.focusable:hover {
+  background-color: #D64541;
+  color: white;
+}
+
+/* line 291, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/teachings.scss */
+.disabled {
+  padding: 3px;
+  color: #d0d0d0;
+}
+
+/* line 2, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#header-panel {
+  border-bottom: 3px solid #d0d0d0;
+  border-radius: 6px 6px 0 0;
+  margin-bottom: 0;
+  max-width: 990px;
+  padding: 0;
+}
+/* line 69, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/mixins.scss */
+#header-panel:before, #header-panel:after {
+  content: " ";
+  display: table;
+}
+/* line 74, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/setup/mixins.scss */
+#header-panel:after {
+  clear: both;
+}
+/* line 10, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#header-panel .buttons {
+  float: right;
+  padding: 20px 15px;
+  position: relative;
+}
+/* line 16, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#header-panel .tools {
+  float: left;
+  padding: 10px;
+}
+
+/* line 24, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list {
+  max-width: 990px;
+  border-radius: 0 0 6px 6px;
+  padding: 0;
+  margin-top: 0;
+}
+/* line 30, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question {
+  border-bottom: 2px solid #ECF0F1;
+  transition: background-color 0.25s ease-in-out;
+}
+/* line 34, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question:last-child {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+/* line 39, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question:hover {
+  background-color: #fafafa;
+}
+/* line 43, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-tools {
+  float: right;
+}
+/* line 46, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-tools a {
+  background-color: #fafafa;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.1em;
+  margin-top: 30px;
+  margin-right: 10px;
+  border-radius: 24px;
+  transition: background-color 0.25s ease-in-out;
+}
+/* line 59, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-tools a.counter {
+  width: auto;
+  padding: 0 20px;
+}
+/* line 64, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-tools a:last-child {
+  margin-right: 20px;
+}
+/* line 68, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-tools a:hover {
+  background-color: #f0f0f0;
+}
+/* line 72, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-tools a.highlighted {
+  background-color: #D64541;
+  color: #ffffff;
+}
+/* line 79, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-icon {
+  background-color: #ffffff;
+  border: 3px solid #f0f0f0;
+  float: left;
+  border-radius: 50%;
+  line-height: 64px;
+  width: 64px;
+  height: 64px;
+  text-align: center;
+  font-size: 1.2em;
+  margin: 20px;
+}
+/* line 92, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-headline {
+  margin-left: 110px;
+  margin-right: 146px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/* line 98, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-headline .title {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+/* line 104, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-headline .text {
+  color: #505050;
+  margin-bottom: 4px;
+}
+/* line 109, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-headline .answers {
+  font-size: 0.85em;
+  color: #BBC1C6;
+}
+/* line 113, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question .question-headline .answers .correct {
+  font-weight: 700;
+  text-decoration: underline;
+}
+/* line 121, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question.deleted, #questions-list .question.deleted:hover {
+  background-color: #ffffff;
+}
+/* line 124, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question.deleted .question-icon, #questions-list .question.deleted:hover .question-icon {
+  color: #d0d0d0;
+}
+/* line 130, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question.deleted .question-headline .title, #questions-list .question.deleted:hover .question-headline .title {
+  text-decoration: line-through;
+  color: #d0d0d0;
+}
+/* line 135, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#questions-list .question.deleted .question-headline .text, #questions-list .question.deleted .question-headline .answers, #questions-list .question.deleted:hover .question-headline .text, #questions-list .question.deleted:hover .question-headline .answers {
+  color: #d0d0d0;
+}
+
+@media (min-width: 768px) {
+  /* line 150, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+  #question-settings .dl-horizontal dt {
+    margin-top: 21px;
+  }
+  /* line 154, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+  #question-settings .dl-horizontal dd {
+    padding-top: 10px;
+  }
+}
+
+/* line 161, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#ModalDiv {
+  float: left;
+  width: 60%;
+  margin: 12px 10px;
+}
+
+/* line 166, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#Modal {
+  background-color: #fefefe;
+  margin: 0px 15px;
+  border: 2px solid #888;
+  width: 100%;
+  height: auto;
+  display: none;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border: 3px solid #d0d0d0;
+  transform: translate(0, 80%);
+}
+
+/* line 179, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/administration/questions.scss */
+#upload_submit {
+  float: right;
+  margin: 10px 5px 11px 5px;
+  width: 25%;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tablist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 6, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tablist li {
+  display: inline-block;
+  margin: 0 1rem 0 0;
+}
+/* line 10, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tablist li a {
+  padding: 0.7rem 1.25rem;
+  display: inline-block;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+/* line 19, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tablist li.active {
+  font-weight: bold;
+}
+/* line 22, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tablist li.active a {
+  background-color: #FFFFFF;
+  color: #23313F;
+}
+/* line 27, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tablist li.icon {
+  float: right;
+}
+/* line 30, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tablist li.icon a {
+  margin: 0.5rem 0;
+  padding: 0.2rem 0.75rem;
+}
+
+/* line 42, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tab-content .tab-pane {
+  background-color: #FFFFFF;
+  color: #23313F;
+  display: none;
+  border-radius: 6px 6px;
+}
+/* line 47, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tab-content .tab-pane.active {
+  display: block;
+}
+/* line 51, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tab-content .tab-pane .admin {
+  margin: 0;
+  background-color: transparent;
+}
+/* line 58, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/tabs.scss */
+.tab-content.is-first .tab-pane {
+  border-radius: 0 6px 6px;
+}
+
+/* line 1, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+input[type="checkbox"].icon {
+  display: none !important;
+}
+/* line 4, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+input[type="checkbox"].icon + label i.icon-checkbox {
+  margin-left: 0;
+  margin-right: 0;
+  cursor: pointer;
+}
+/* line 10, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+input[type="checkbox"].icon + label i.icon-checkbox:before {
+  content: '\e824';
+  color: #BBC1C6;
+  margin-left: 0;
+}
+/* line 16, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+input[type="checkbox"].icon:checked + label i.icon-checkbox:before {
+  content: '\e825';
+  color: #000000;
+}
+/* line 21, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+input[type="checkbox"].icon + label i.icon-eyebox:before {
+  content: '\e823';
+}
+/* line 25, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+input[type="checkbox"].icon:checked + label i.icon-eyebox:before {
+  content: '\e807';
+}
+
+/* line 31, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+input[type="button"]:disabled, input[type="reset"]:disabled, input[type="submit"]:disabled {
+  background-color: #f0f0f0 !important;
+  color: #d0d0d0 !important;
+}
+
+/* Obycajne tlacidla */
+/* line 37, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+.btn {
+  background-color: #f0f0f0;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.5s;
+}
+/* line 43, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+.btn:hover {
+  background-color: #d0d0d0;
+}
+
+/* line 49, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+.form-control-errors {
+  background-color: #f0f0f0;
+  border: 2px solid #f1c0bf;
+  border-radius: 6px;
+  font-size: 0.9em;
+  padding: 5px 10px;
+  margin-top: 5px;
+  width: 50%;
+}
+/* line 58, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+.form-control-errors ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 63, /home/pasluka/Railsapps/tesa_alef-tng/app/assets/stylesheets/forms.scss */
+.form-control-errors ul li {
+  margin: 5px 0;
+}

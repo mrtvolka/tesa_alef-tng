@@ -16,6 +16,16 @@
 </div>
 
 <div class="my-mobile-content main">
+  <div class="relative">
+      <div class="global-teaching-actions">
+        <div class="global-teaching-icon">
+        <%= link_to raw("<i class='icon-cog'></i>"), {:controller => "teachings", :action => "list_questions" }, :class => "focusable"%>
+        </div>
+        <div class="global-teaching-icon">
+        <%= link_to raw("<i class='icon-chart-bar'></i>"), {:controller => "teachings", :action => "statistics", :id => 1 }, :class => "focusable"%>
+        </div>
+      </div>
+  </div>
   <table class="tg sticky-header">
     <thead>
     <tr>

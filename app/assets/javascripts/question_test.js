@@ -1,8 +1,11 @@
+var clickButton = document.getElementById("clickButton");
+
 function getConfirmation(){
 
     var form = document.getElementById('test-form');
     var questions = document.getElementsByClassName('my-mobile-content');
     var textareas = document.getElementsByTagName('textarea');
+    var eval = document.getElementsByClassName('eval');
     var count = 0;
 
     for(var x = 0; x < questions.length; x++){
@@ -20,22 +23,33 @@ function getConfirmation(){
     }
 
     for(var z=0 ; z < textareas.length; z++){
-        console.log(textareas[z].value)
         if(textareas[z].value != '') count += 1;
     }
 
+    for(var z=0 ; z < eval.length; z++){
+        count += 1;
+    }
+
+    clickButton = document.getElementById("clickButton");
     if (count != questions.length) {
-        var retVal = confirm("Nevyplnil si všetky otázky. Chceš aj napriek tomu odovzdať test?");
-        if (retVal == true) {
-            document.getElementById("clickButton").click();
-            return true;
-        }
-        else {
-            return false;
-        }
+        el = document.getElementById("modal");
+        //el.style.top = (el.style.top == "50%") ? "-50%" : "50%";
+        el.style.opacity = (el.style.opacity == "1") ? "0" : "1";
+        el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
     }else {
-        document.getElementById("clickButton").click();
+        clickButton.click();
         return true;
     }
 
+}
+
+function clickYes(){
+    clickButton.click();
+}
+
+function hide(){
+    el = document.getElementById("modal");
+    el.style.visibility = (el.style.visibility == "hidden") ? "visible" : "hidden";
+    //el.style.top = (el.style.top == "-50%") ? "50%" : "-50%";
+    el.style.opacity = (el.style.opacity == "0") ? "1" : "0";
 }
