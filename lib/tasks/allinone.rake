@@ -12,9 +12,11 @@ namespace :tesa do
       unless stdout.gets.nil?
         puts stdout.read
       end
-      unless stderr.gets.nil?
-        puts stderr.read
-        STDERR.puts "Error: Couldnt drop database, are you still connected?"
+      error= stderr.read
+      if error.include?("Couldn't drop aleftng_development")
+      #unless stderr.gets.nil?
+        STDERR.puts error
+        STDERR.puts "Error: Couldn't drop database, are you still connected?"
         unless forced
           exit 0
         end
@@ -28,8 +30,8 @@ namespace :tesa do
         puts stdout.read
       end
       unless stderr.gets.nil?
-        puts stderr.read
-        STDERR.puts "Error: Couldnt create database"
+        STDERR.puts stderr.read
+        STDERR.puts "Error: Couldn't create database"
         unless forced
           exit 0
         end
@@ -43,8 +45,8 @@ namespace :tesa do
         puts stdout.read
       end
       unless stderr.gets.nil?
-        puts stderr.read
-        STDERR.puts "Error: Couldnt migrate database"
+        STDERR.puts stderr.read
+        STDERR.puts "Error: Couldn't migrate database"
         unless forced
           exit 0
         end
