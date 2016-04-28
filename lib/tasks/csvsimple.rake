@@ -48,6 +48,44 @@ namespace :tesa do
 
       end
     end
+
+    # import concepts from csv
+    def import_weekly_concepts(file)
+      ActiveRecord::Base.transaction do
+        CSV.read(file, :headers => true).each do |row|
+          concepts= row['Concept'].split(';')
+          concepts.each do |concept_name|
+            concept=Concept.where('name = (?)',concept_name).first_or_create do |newConcept|
+              puts "INFO: New Concept on-the-fly generation"
+              newConcept.name= concept_name
+              newConcept.pseudo= false
+              newConcept.course_id= Course.take.id
+              puts "INFO: New Concept created with name :#{concept_name}"
+            end
+            if row['week_id_or_number']== 'id'
+              w= Week.where('id= (?)',row['Week']).first_or_create do |newWeek|
+                #TODO: make this interactive!
+                #puts "INFO: New week on-the-fly generation, please write week_number"
+                #newWeek.number= STDIN.gets.to_i
+                puts "WARNING: New week on-the-fly generation, week number was set same as id"
+                newWeek.number= row['Week']
+                newWeek.setup_id= Setup.take.id
+              end
+              concept.weeks << w
+            else
+              w= Week.where('number= (?)',row['Week']).first_or_create do |newWeek|
+                puts "INFO: New week on-the-fly generation"
+                newWeek.number= row['Week']
+                newWeek.setup_id= Setup.take.id
+              end
+              concept.weeks << w
+            end
+            puts "INFO: Added Concept with name #{concept_name} to week with id #{w.id}"
+          end
+        end
+      end
+    end
+
     # import exercises from CSV files
     # run:
     #    rake tesa:data:import_exercises[filename.csv]
@@ -55,6 +93,12 @@ namespace :tesa do
       import_exercises(args.exercise_csv)
     end
 
+    # import weekly-concepts
+    # run:
+    #     rake tesa:data:import_weekly_concepts[filename.csv]
+    task :import_weekly_concepts, [:concepts_csv] => :environment do |t, args|
+      import_weekly_concepts(args.concepts_csv)
+    end
 
     # import users from CSV files
     # run:

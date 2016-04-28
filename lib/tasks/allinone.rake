@@ -22,6 +22,7 @@ namespace :tesa do
         end
       end
     end
+    puts "Database was dropped"
   end
 
   def try_create(forced)
@@ -37,6 +38,7 @@ namespace :tesa do
         end
       end
     end
+    puts "Database was created"
   end
 
   def try_migrate(forced)
@@ -52,6 +54,7 @@ namespace :tesa do
         end
       end
     end
+    puts "Database was migrated"
   end
 
   def universal_import(forced, verbose)
@@ -62,6 +65,7 @@ namespace :tesa do
     #Seed
     if forced
       puts %x(rake tesa:data:aza_setup)
+      puts %x(rake tesa:data:import_weekly_concepts['weekly_concepts.csv'])
       puts %x(rake tesa:data:import_users[azausers.csv])
       puts %x(rake tesa:data:import_tests[otazkyAZA.csv,img])
       puts %x(rake tesa:data:import_exercises[exercises.csv])
@@ -74,14 +78,17 @@ namespace :tesa do
         #%x(rake tesa:data:import_OStests[tema05.csv])
 
         # Ready for AZA:
-
-        #Rake::Task['tesa:data:aza_setup'].invoke
-        puts %x(rake tesa:data:aza_setup)
-        puts %x(rake tesa:data:import_users[azausers.csv])
-        puts %x(rake tesa:data:import_tests[otazkyAZA.csv,img])
-        puts %x(rake tesa:data:import_exercises[exercises.csv])
+        Rake::Task['tesa:data:aza_setup'].invoke
+        #puts %x(rake tesa:data:aza_setup)
+        #puts %x(rake tesa:data:import_weekly_concepts['weekly_concepts.csv'])
+        Rake::Task['tesa:data:import_weekly_concepts'].invoke('weekly_concepts.csv')
+        Rake::Task['tesa:data:import_users'].invoke('azausers.csv')
+        #puts %x(rake tesa:data:import_users[azausers.csv])
+        #puts %x(rake tesa:data:import_tests[otazkyAZA.csv,img])
+        Rake::Task['tesa:data:import_tests'].invoke('otazkyAZA.csv','img')
+        #puts %x(rake tesa:data:import_exercises[exercises.csv])
         #Kernel.system('rake tesa:data:import_users[azausers.csv]')
-        #Rake::Task['tesa:data:import_exercises'].invoke('exercises.csv')
+        Rake::Task['tesa:data:import_exercises'].invoke('exercises.csv')
         #Kernel.system('rake tesa:data:import_tests[otazkyAZA.csv,img]')
       end
     end

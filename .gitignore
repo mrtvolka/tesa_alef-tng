@@ -16,4 +16,5 @@ config/database.yml
 otazkyAZA.csv
 azausers.csv
 azaschedule.csv
+weekly_concepts.csv
 img/*
