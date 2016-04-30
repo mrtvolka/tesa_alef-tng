@@ -64,21 +64,26 @@ namespace :tesa do
             end
             if row['week_id_or_number']== 'id'
               w= Week.where('id= (?)',row['Week']).first_or_create do |newWeek|
-                #TODO: make this interactive!
-                #puts "INFO: New week on-the-fly generation, please write week_number"
-                #newWeek.number= STDIN.gets.to_i
-                puts "WARNING: New week on-the-fly generation, week number was set same as id"
-                newWeek.number= row['Week']
+                puts "INFO: New week on-the-fly generation, please write week_number"
+                newWeek.number= STDIN.gets.to_i
                 newWeek.setup_id= Setup.take.id
               end
-              concept.weeks << w
+              if (!concept.weeks.include?(w))
+                concept.weeks << w
+              else
+                puts "WARNING: Tried to assign concept to week duplicitly"
+              end
             else
               w= Week.where('number= (?)',row['Week']).first_or_create do |newWeek|
                 puts "INFO: New week on-the-fly generation"
                 newWeek.number= row['Week']
                 newWeek.setup_id= Setup.take.id
               end
-              concept.weeks << w
+              if (!concept.weeks.include?(w))
+                concept.weeks << w
+              else
+                puts "WARNING: Tried to assign concept to week duplicitly"
+              end
             end
             puts "INFO: Added Concept with name #{concept_name} to week with id #{w.id}"
           end
