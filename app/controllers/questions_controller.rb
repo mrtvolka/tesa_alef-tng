@@ -114,14 +114,19 @@ class QuestionsController < ApplicationController
 
   def submit_test
     if (Exercise.find_by_code(params[:exercise_code]).nil?)
-      redirect_to root_path
+      render :js => "window.location = '#{weeks_path}'"
       flash[:notice] = "Zlý kód cvičenia!"
       log_warn current_user.login + " tried to submit test with exercise code: " + params[:exercise_code] + " ,which does not exists"
       return
     end
-
+    unless  Exercise.find_by_code(params[:exercise_code]).real_end.nil?
+      render :js => "window.location = '#{weeks_path}'"
+      flash[:notice] = "Test už bol ukončený!"
+      log_warn current_user.login + " tried to submit test after it was ended; exercise with code:" + params[:exercise_code]
+      return
+    end
     if  !Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.exists? && Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
-      redirect_to root_path
+      render :js => "window.location = '#{weeks_path}'"
       flash[:notice] = "Už ste raz odpovedali alebo ste zaslali duplicitné odpovede!"
       log_warn current_user.login + " tried to submit test with exercise code: " + params[:exercise_code] + " multiple times"
       return
