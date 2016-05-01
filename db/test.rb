@@ -8,6 +8,14 @@ weeks = Week.create!([
   {setup_id: setup.id, number: 2},
   {setup_id: setup.id, number: 3},
   {setup_id: setup.id, number: 4},
+  {setup_id: setup.id, number: 5},
+  {setup_id: setup.id, number: 6},
+  {setup_id: setup.id, number: 7},
+  {setup_id: setup.id, number: 8},
+  {setup_id: setup.id, number: 9},
+  {setup_id: setup.id, number: 10},
+  {setup_id: setup.id, number: 11},
+  {setup_id: setup.id, number: 12}
 ])
 
 exercises = Exercise.create!([
@@ -117,7 +125,7 @@ UserVisitedLoRelation.create!([
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[0].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
 #  {setup_id: setup.id, user_id: users[0].id, learning_object_id: evaluator_questions[3].id, interaction: '??'},
-  {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[0].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
