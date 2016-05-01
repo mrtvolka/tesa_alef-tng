@@ -15,7 +15,7 @@ module Administrations
       @exercise = Exercise.new(exercise_params)
       @exercise.generatecode
       @exercise.save!
-      redirect_to edit_administrations_teaching_path(@exercise), notice: t('admin.teaching.texts.created')
+      redirect_to edit_administrations_teaching_path(@exercise), notice: t('.notice.created')
     end
 
     def edit
@@ -29,16 +29,16 @@ module Administrations
       begin
         @exercise.update!(exercise_params)
       rescue ActiveRecord::RecordInvalid => e
-        redirect_to edit_administrations_teaching_path(@exercise), notice: t('admin.teaching.texts.codeexists')
+        redirect_to edit_administrations_teaching_path(@exercise), notice: t('.notice.codeexists')
         return
       end
-      redirect_to edit_administrations_teaching_path(@exercise), notice: t('admin.teaching.texts.updated')
+      redirect_to edit_administrations_teaching_path(@exercise), notice: t('.notice.updated')
     end
 
     def destroy
       @exercise = Exercise.find(params[:id])
       @exercise.destroy!
-      redirect_to administrations_teachings_path, notice: t('admin.teaching.texts.deleted')
+      redirect_to administrations_teachings_path, notice: t('.notice.deleted')
     end
 
     private

@@ -1,0 +1,109 @@
+# Locales for models, model attributes and attribute values
+# Keep in alphabetical order!
+en:
+  activerecord:
+
+    attributes:
+      answer:
+        answer_text:                                "Answer"
+        is_correct:                                 "Correctness"
+      concept:
+        name:                                       "Concept Name"
+      course:
+        name:                                       "Course Name"
+      exercise:
+        code:                                       "Access Code"
+        concepts:                                   "Concepts"
+        end:                                        "End"
+        options:
+          cooldown_time:                            "Cooldown Time"
+          exercise_concepts:                        "Term's Concepts"
+          test_length:                              "Test Length"
+          week_concepts:                            "Week's Concepts"
+        real_end:                                   "Real End"
+        real_start:                                 "Real Start"
+        start:                                      "Start"
+        user_id:                                    "Teacher"
+        week_id:                                    "Week"
+      feedback:
+        message:                                    "Message"
+        url:                                        "URL"
+        user_agent:                                 "User Agent"
+      learning_object:
+        difficulty:                                 "Difficulty"
+        external_reference:                         "External Reference"
+        image:                                      "Image"
+        is_special_question:                        "Special Question"
+        is_test_question:                           "Test Question"
+        lo_id:                                      "Question Unique ID"
+        points:                                     "Points"
+        question_text:                              "Question Text"
+        type:                                       "Type"
+      setup:
+        first_week_at:                              "First Week at"
+        name:                                       "Setup Name"
+        show_all:                                   "Show All Weeks"
+        week_count:                                 "Weeks Count"
+      user:
+        ais_email:                                  "AIS E-mail"
+        aisid:                                      "AIS ID"
+        confirm_password:                           "Confirm Password"
+        email:                                      "E-mail"
+        first_name:                                 "First Name"
+        group:                                      "Group"
+        last_name:                                  "Last Name"
+        login:                                      "Login"
+        password:                                   "Password"
+        role:                                       "User Role"
+        show_solutions:                             "Show Solutions Flag"
+        sign_in_count:                              "Sign in Count"
+        type:                                       "User Type"
+      user_to_lo_relation:
+        points:                                     "Points"
+        type:                                       "Answer Type"
+        interaction:                                "Interaction"
+        submitted_text:                             "Submitted Text"
+      week:
+        number:                                     "Term Week Number"
+    models:
+      answer:                                       "Answer"
+      concept:                                      "Concept"
+      course:                                       "Course"
+      exercise:                                     "Exercise"
+      feedback:                                     "Feedback"
+      learning_object:                              "Question"
+      setup:                                        "Setup"
+      user:                                         "User"
+      week:                                         "Week"
+      user_to_lo_relation:                          "Student's Answer"
+    values:
+      learning_object:
+        difficulty:
+          easy:                                     "Easy"
+          hard:                                     "Hard"
+          impossible:                               "Impossible"
+          medium:                                   "Medium"
+          trivial:                                  "Trivial"
+          unknown_difficulty:                       "Unknown"
+        type:
+          evaluatorquestion:                        "Evaluator"
+          multichoicequestion:                      "Multi-choice"
+          openquestion:                             "Open Text Question"
+          singlechoicequestion:                     "Single-choice"
+      user:
+        role:
+          administrator:                            "Administrator"
+          student:                                  "Student"
+          teacher:                                  "Teacher"
+        type:
+          ldapuser:                                 "LDAP User"
+          localuser:                                "Local User"
+      user_to_lo_relation:
+        type:
+          user_completed_lo_relation:               "Completed"
+          user_didnt_know_lo_relation:              "Didn't Know"
+          user_failed_lo_relation:                  "Failed"
+          user_solved_lo_relation:                  "Solved"
+          user_submitted_lo_relation:               "Submitted"
+          user_viewed_lo_relation:                  "Viewed"
+          user_visited_lo_relation:                 "Visited"

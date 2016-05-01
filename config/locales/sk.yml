@@ -3,24 +3,6 @@
 #
 
 sk:
-  activerecord:
-    attributes:
-      learning_object:
-        difficulty:                   "Náročnosť"
-        lo_id:                        "Názov"
-        question_text:                "Text otázky"
-        type:                         "Typ"
-      user:
-        aisemail:                     "AIS email"
-        confirm_password:             "Potvrdiť heslo"
-        email:                        "Email"
-        first_name:                   "Meno"
-        last_name:                    "Priezvisko"
-        login:                        "Prihlasovacie meno"
-        password:                     "Heslo"
-        role:                         "Rola"
-        type:                         "Typ autentifikácie"
-
   homescreen:
     links:
       admin:                          "Administrácia"

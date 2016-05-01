@@ -3,24 +3,6 @@
 #
 
 en:
-  activerecord:
-    attributes:
-      learning_object:
-        difficulty:                   "Difficulty"
-        lo_id:                        "Title"
-        question_text:                "Question text"
-        type:                         "Type"
-      user:
-        aisemail:                     "AIS Email"
-        confirm_password:             "Confirm password"
-        email:                        "Email"
-        first_name:                   "First Name"
-        last_name:                    "Last Name"
-        login:                        "Login"
-        password:                     "Password"
-        role:                         "Role"
-        type:                         "Authentification Type"
-
   homescreen:
     links:
       admin:                          "Admin"

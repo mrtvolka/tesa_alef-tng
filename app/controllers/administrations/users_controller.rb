@@ -26,7 +26,7 @@ module Administrations
             raise LoginExistsError
           end
           @user = User.create!(user_params_with_password)
-          redirect_to edit_administrations_user_path(@user), notice: t('admin.user.texts.created')
+          redirect_to edit_administrations_user_path(@user), notice: t('.notice.created')
         end
       rescue PasswordsNotMatchError
         flash[:notice] = t('global.password.notmatch_or_empty')

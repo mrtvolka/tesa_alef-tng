@@ -1,0 +1,109 @@
+# Locales for models, model attributes and attribute values
+# Keep in alphabetical order!
+sk:
+  activerecord:
+
+    attributes:
+      answer:
+        answer_text:                                "Odpoveď"
+        is_correct:                                 "Koreknosť"
+      concept:
+        name:                                       "Názov konceptu"
+      course:
+        name:                                       "Názov kurzu"
+      exercise:
+        code:                                       "Prístupový kód"
+        concepts:                                   "Koncepty"
+        end:                                        "Koniec"
+        options:
+          cooldown_time:                            "Sprístupnenie o"
+          exercise_concepts:                        "Termínové koncepty"
+          test_length:                              "Trvanie testu"
+          week_concepts:                            "Týždňové koncepty"
+        real_end:                                   "Reálny začiatok"
+        real_start:                                 "Reálny koniec"
+        start:                                      "Začiatok"
+        user_id:                                    "Učiteľ"
+        week_id:                                    "Týždeň"
+      feedback:
+        message:                                    "Správa"
+        url:                                        "URL"
+        user_agent:                                 "User Agent"
+      learning_object:
+        difficulty:                                 "Náročnosť"
+        external_reference:                         "Externá referencia"
+        image:                                      "Obrázok"
+        is_special_question:                        "Špeciálna otázka"
+        is_test_question:                           "Testová otázka"
+        lo_id:                                      "ID otázky"
+        points:                                     "Body"
+        question_text:                              "Text otázky"
+        type:                                       "Typ"
+      setup:
+        first_week_at:                              "Začiatok semestra"
+        name:                                       "Názov setupu"
+        show_all:                                   "Zobraziť všetky týždne"
+        week_count:                                 "Počet týždňov"
+      user:
+        ais_email:                                  "AIS E-mail"
+        aisid:                                      "AIS ID"
+        confirm_password:                           "Potvrdiť heslo"
+        email:                                      "E-mail"
+        first_name:                                 "Meno"
+        group:                                      "Skupina"
+        last_name:                                  "Priezvisko"
+        login:                                      "Prihlasovacie meno"
+        password:                                   "Heslo"
+        role:                                       "Rola používateľa"
+        show_solutions:                             "Zobraziť riešenia"
+        sign_in_count:                              "Počet prihlásení"
+        type:                                       "Typ používateľa"
+      user_to_lo_relation:
+        points:                                     "Získané body"
+        type:                                       "Typ interakcie"
+        interaction:                                "Interakcia"
+        submitted_text:                             "Odovzdaný text"
+      week:
+        number:                                     "Číslo týždňa"
+    models:
+      answer:                                       "Odpoveď"
+      concept:                                      "Koncept"
+      course:                                       "Kurz"
+      exercise:                                     "Termín"
+      feedback:                                     "Spätná väzba"
+      learning_object:                              "Otázka"
+      setup:                                        "Setup"
+      user:                                         "Používateľ"
+      week:                                         "Týždeň"
+      user_to_lo_relation:                          "Odpoveď študenta"
+    values:
+      learning_object:
+        difficulty:
+          easy:                                     "Easy"
+          hard:                                     "Hard"
+          impossible:                               "Impossible"
+          medium:                                   "Medium"
+          trivial:                                  "Trivial"
+          unknown_difficulty:                       "Unknown"
+        type:
+          evaluatorquestion:                        "Hodnotenie"
+          multichoicequestion:                      "Multi-choice"
+          openquestion:                             "Otvorená otázka"
+          singlechoicequestion:                     "Single-choice"
+      user:
+        role:
+          administrator:                            "Administrátor"
+          student:                                  "Študent"
+          teacher:                                  "Učiteľ"
+        type:
+          ldapuser:                                 "LDAP používateľ"
+          localuser:                                "Lokálny používateľ"
+      user_to_lo_relation:
+        type:
+          user_completed_lo_relation:               "Hotová"
+          user_didnt_know_lo_relation:              "Neodpovedaná"
+          user_failed_lo_relation:                  "Nesprávna"
+          user_solved_lo_relation:                  "Vyriešená"
+          user_submitted_lo_relation:               "Odovzdaná"
+          user_viewed_lo_relation:                  "Videná"
+          user_visited_lo_relation:                 "Navštívená"

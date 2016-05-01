@@ -9,26 +9,26 @@
 <hr class="nav-offset not-zoomable">
 
 <div class="admin">
-  <h3>Aktivita študentov - Štatistiky</h3>
-  <ul><%= link_to "#{@setup.name} Štatistiky aktivity študentov", download_statistics_path(:_setup_id => @setup.id), class: "admin-link" %></ul>
+  <h3><%= t '.students_activity' %></h3>
+  <ul><%= link_to "#{@setup.name} "+t('.label.stats'), download_statistics_path(:_setup_id => @setup.id), class: "admin-link" %></ul>
 </div>
 <div class="admin">
-  <h3>Základné nastavenia</h3>
+  <h3><%= t '.main_settings'%></h3>
   <%= form_for @setup, url: url_for(setup_attributes_path), html: {method: 'post'} do |s| %>
       <table>
-        <tr><th class="th-right">Počet týždňov:</th><td><%= s.text_field :week_count %></td></tr>
-        <tr><th class="th-right">Začiatok kurzu:</th><td><%= date_select :setup, :first_week_at %></td></tr>
-        <tr><th class="th-right">Zobrazovať všetky týždne:   </th><td><%= s.check_box :show_all %></td></tr>
+        <tr><th class="th-right"><%= s.label :week_count %></th><td><%= s.text_field :week_count %></td></tr>
+        <tr><th class="th-right"><%= s.label :first_week_at %></th><td><%= date_select :setup, :first_week_at %></td></tr>
+        <tr><th class="th-right"><%= s.label :show_all %></th><td><%= s.check_box :show_all %></td></tr>
       </table>
       <%= s.submit "Uložiť" %>
   <% end %>
 </div>
 <div class="admin">
-  <h3>Nastavenia konceptov</h3>
+  <h3><%= t '.concepts_settings' %></h3>
   <%= form_tag url_for(setup_relations_path), html: {method: 'post'} do %>
       <table id="week-concept-table">
         <tr>
-          <th>Názov konceptu</th>
+          <th><%= t '.label.concept_name' %></th>
           <% @weeks.each do |w| %>
               <th>
                 <%= w.number %>
@@ -48,7 +48,7 @@
             </tr>
         <% end %>
         <tr>
-          <th>Počet otázok</th>
+          <th><%= t '.label.questions_count' %></th>
           <% @weeks.each do |w| %>
               <td>
                 <%= w.question_count %>
@@ -56,7 +56,7 @@
           <% end %>
         </tr>
         <tr>
-          <th>Nastaviť všetky</th>
+          <th><%= t '.label.select_all' %></th>
           <% @weeks.each do |w| %>
               <td>
                 <%= check_box_tag "switch_all", nil, false, class: "switch-all", 'data-week' => w.id %>

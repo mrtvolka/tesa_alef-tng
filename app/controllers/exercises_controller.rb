@@ -82,7 +82,7 @@ class ExercisesController < ApplicationController
     end
     respond_to do |format|
       if @exercise.update(options)
-        format.html { redirect_to exercise_options_path(@exercise), notice: t('admin.teaching.texts.updated')}
+        format.html { redirect_to exercise_options_path(@exercise), notice: t('.notice.updated')}
         format.json { head :no_content }
       end
     end

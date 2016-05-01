@@ -10,7 +10,7 @@
 <div id="header-panel" class="admin">
 
   <div class="buttons">
-    <%= link_to "#{t('admin.user.links.create')}", new_administrations_user_path, class: 'btn' %>
+    <%= link_to "+ "+t('.label.add_user'), new_administrations_user_path, class: 'btn' %>
   </div>
 
   <div class="tools">
@@ -21,9 +21,9 @@
   <% @users.each do |user| %>
       <div id="user" class="question row">
         <div class="question-tools">
-          <%= link_to('<i class="icon-edit"></i>'.html_safe, edit_administrations_user_path(user)) %>
+          <%= link_to('<i class="icon-edit"></i>'.html_safe, edit_administrations_user_path(user),  title: t('.tooltip.edit'), data: { toggle: :tooltip }) %>
         </div>
-        <div class="question-icon"><i data-toggle="tooltip" title="user" class="icon-user"></i></div>
+        <div class="question-icon"><i data-toggle="tooltip" title="<%= t '.tooltip.'+user.type.downcase %>" class="icon-user"></i></div>
         <div class="question-headline">
           <div class="title"><%= link_to user.login, edit_administrations_user_path(user) %></div>
           <div class="text"><%= user.first_name + " " + user.last_name %></div>

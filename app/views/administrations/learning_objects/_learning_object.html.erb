@@ -1,10 +1,11 @@
 <div id="learning-object<%= learning_object.id %>" class="question row">
   <div class="question-tools">
     <%= link_to(@feedbacks[:all_aggs][learning_object.id] || 0, edit_administrations_learning_object_path(learning_object),
-                class: 'counter',title: 'Žiadne nové komentáre', data: { toggle: :tooltip }) %>
-    <%= link_to('<i class="icon-edit"></i>'.html_safe, edit_administrations_learning_object_path(learning_object)) %>
+                class: 'counter',title: t('.tooltip.feedbacks.any'), data: { toggle: :tooltip }) %>
+    <%= link_to('<i class="icon-edit"></i>'.html_safe, edit_administrations_learning_object_path(learning_object),
+                title: t('.tooltip.edit'), data: { toggle: :tooltip }) %>
   </div>
-  <div class="question-icon"><i data-toggle="tooltip" title="<%= learning_object.type.downcase %>" class="icon-<%=
+  <div class="question-icon"><i data-toggle="tooltip" title="<%=t '.tooltip.learning_object.'+learning_object.type.downcase %>" class="icon-<%=
       case learning_object.type
         when "SingleChoiceQuestion"
           'radio-checked'

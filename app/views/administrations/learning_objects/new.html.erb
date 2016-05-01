@@ -12,7 +12,7 @@
   <%= form_for @learning_object, url: administrations_learning_objects_path(course: @course), method: :post do |f| %>
       <div class="form-group admin">
 
-        <h3><%= t('admin.questions.labels.new_lo') %></h3>
+        <h3><%= t '.lo_creation' %></h3>
 
         <dl class="dl-horizontal">
           <dt><%= f.label :lo_id, t('activerecord.attributes.learning_object.lo_id') %></dt>

@@ -8,7 +8,7 @@
 <hr class="nav-offset not-zoomable">
 
 <div class="admin">
-  <h3>Nastavenia setupov</h3>
+  <h3><%= t '.setups_settings' %></h3>
   <ul>
   <% @setups.each do |s| %>
     <li><%= link_to s.name, setup_config_path(s.id), class: "admin-link" %></li>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="admin">
-  <h3>Nastavenia kurzov</h3>
+  <h3><%= t '.courses_settings' %></h3>
   <ul>
     <% @courses.each do |c| %>
         <li><%= link_to c.name, question_concept_config_path(c.id), class: "admin-link" %></li>
@@ -26,7 +26,7 @@
 </div>
 
 <div class="admin">
-  <h3>Správa obsahu otázok</h3>
+  <h3><%= t '.questions_settings' %></h3>
   <ul>
     <% @courses.each do |c| %>
         <li><%= link_to c.name, administrations_learning_objects_path(course: c.id), class: "admin-link", id: "learning-objects#{c.id}" %></li>
@@ -35,15 +35,15 @@
 </div>
 
 <div class="admin">
-  <h3>Správa používateľov</h3>
+  <h3><%= t '.users_settings' %></h3>
   <ul>
-    <li><%= link_to "Používatelia", administrations_users_path, class: "admin-link", id: "users" %></li>
+    <li><%= link_to t('.label.users'), administrations_users_path, class: "admin-link", id: "users" %></li>
   </ul>
 </div>
 
 <div class="admin">
-  <h3>Správa termínov</h3>
+  <h3><%= t '.teachings_settings' %></h3>
   <ul>
-    <li><%= link_to "Termíny", administrations_teachings_path, class: "admin-link", id: "users" %></li>
+    <li><%= link_to t('.label.teachings'), administrations_teachings_path, class: "admin-link", id: "users" %></li>
   </ul>
 </div>

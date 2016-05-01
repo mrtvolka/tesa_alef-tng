@@ -26,7 +26,7 @@ module Administrations
       begin
         @learning_object = @course.learning_objects.new(learning_object_params)
         @learning_object.save!
-        redirect_to edit_administrations_learning_object_path(@learning_object), notice: t('admin.questions.texts.created')
+        redirect_to edit_administrations_learning_object_path(@learning_object), notice: t('.notice.created')
       rescue ActiveRecord::RecordInvalid
         flash[:notice] = t('global.texts.please_fill_in')
         flash[:notice] = t('global.texts.please_fill_in')
@@ -54,7 +54,7 @@ module Administrations
     def destroy
       lo = LearningObject.find(params[:id])
       lo.destroy!
-      redirect_to administration_learning_objects_path(course: lo.course_id), notice: t('admin.questions.texts.deleted')
+      redirect_to administration_learning_objects_path(course: lo.course_id), notice: t('.notice.deleted')
     end
 
 

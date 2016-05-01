@@ -10,11 +10,11 @@
 <div class="container">
   <div class="tabs">
     <ul id="editor-tabs" class="tablist" role="tablist">
-      <li class="active"><a href="#" data-target="#question-settings" role="tab" id="question-tab" data-toggle="tab">Nastavenia otázky</a></li>
-      <li><a href="#" data-target="#answer-settings" role="tab" id="answer-tab" data-toggle="tab">Odpovede</a></li>
+      <li class="active"><a href="#" data-target="#question-settings" role="tab" id="question-tab" data-toggle="tab"><%= t '.settings'%></a></li>
+      <li><a href="#" data-target="#answer-settings" role="tab" id="answer-tab" data-toggle="tab"><%= t '.answers'%></a></li>
       <!--li><a href="#" data-target="#feedbacks" role="tab" id="feedback-tab" data-toggle="tab">Spätná väzba<span id="feedback-not-reviewed-count"></span></a></li>-->
-      <li><a href="#" data-target="#question-preview" role="tab" id="question-preview-tab" data-toggle="tab">Náhľad</a></li>
-      <li class="icon"><a class="" ><i class="icon-delete"></i></a></li>
+      <li><a href="#" data-target="#question-preview" role="tab" id="question-preview-tab" data-toggle="tab"><%= t '.insight'%></a></li>
+      <li class="icon"><a class="" ><i class="icon-delete" data-toggle="tooltip" title="<%=t '.tooltip.delete' %>"></i></a></li>
     </ul>
     <div id="editor-tabs-content" class="tab-content is-first">
       <div role="tabpanel" class="tab-pane active" id="question-settings">
@@ -26,24 +26,24 @@
             <div class="admin">
               <div class="form-group">
                 <dl class="dl-horizontal">
-                  <dt><%= f.label :lo_id, t('activerecord.attributes.learning_object.lo_id') %></dt>
+                  <dt><%= f.label :lo_id %></dt>
                   <dd><%= f.text_field :lo_id, class: "question_text_field" %></dd>
 
-                  <dt><%= f.label :question_text, t('activerecord.attributes.learning_object.question_text') %></dt>
+                  <dt><%= f.label :question_text %></dt>
                   <dd><%= f.text_area :question_text, class: "question_text_field" %></dd>
 
-                  <dt><%= f.label :type, t('activerecord.attributes.learning_object.type') %></dt>
-                  <dd><%= t("admin.questions.labels.types.#{@learning_object.type.downcase}") %></dd>
+                  <dt><%= f.label :type %></dt>
+                  <dd><%= t("activerecord.values.learning_object.type.#{@learning_object.type.downcase}") %></dd>
 
-                  <dt><%= f.label :difficulty, t('activerecord.attributes.learning_object.difficulty') %></dt>
+                  <dt><%= f.label :difficulty %></dt>
                   <dd><%= f.select(:difficulty, options_for_select(LearningObject::DIFFICULTY.map { |id, difficulty|
-                                                                     [t("admin.questions.labels.difficulties.#{difficulty}"), difficulty]
+                                                                     [t("activerecord.values.learning_object.difficulty.#{difficulty}"), difficulty]
                                                                    }, @learning_object.difficulty), class: 'form-control') %></dd>
 
-                  <dt><%= f.label :external_reference, t('admin.questions.labels.external_reference') %></dt>
+                  <dt><%= f.label :external_reference %></dt>
                   <dd><%= @learning_object.external_reference || '-' %></dd>
 
-                  <dt><%= label_tag t('admin.questions.labels.successfulness') %></dt>
+                  <dt><%=t '.label.success_rate' %></dt>
                   <% successfulness = @learning_object.successfulness %>
                   <dd><%= "#{successfulness[:rate]} % (#{successfulness[:solved]} úspešných z #{successfulness[:total]})" %></dd>
 

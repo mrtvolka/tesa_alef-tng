@@ -10,7 +10,7 @@
 <div class="container">
   <div class="tabs">
     <ul id="editor-tabs" class="tablist" role="tablist">
-      <li class="active"><a href="#" data-target="#question-settings" role="tab" id="question-tab" data-toggle="tab"><%= t('admin.teaching.settings')%></a></li>
+      <li class="active"><a href="#" data-target="#question-settings" role="tab" id="question-tab" data-toggle="tab"><%= t('.term_creation')%></a></li>
     </ul>
     <div id="editor-tabs-content" class="tab-content is-first">
       <div role="tabpanel" class="tab-pane active" id="question-settings">
@@ -18,29 +18,29 @@
           <div class="form-group">
             <dl class="dl-horizontal">
               <%= form_for @exercise, url: administrations_teachings_path, method: :post do |f|%>
-                  <dt><%= f.label :user_id, t('admin.teaching.labels.teacher') %>
+                  <dt><%= f.label :user_id %>
                   <dd><%= f.select :user_id, @teachers.map {|t| ["#{t.first_name} #{t.last_name} (#{t.login})", t.id]}%></dd>
 
-                  <dt><%= f.label :week_id, t('admin.teaching.labels.week') %></dt>
+                  <dt><%= f.label :week_id %></dt>
                   <dd><%= f.select :week_id, Week.all.map {|w| [w.number, w.id]}%></dd>
 
-                  <dt><%= f.label :start, t('admin.teaching.labels.start') %></dt>
+                  <dt><%= f.label :start %></dt>
                   <dd><%= f.datetime_select :start %></dd>
 
-                  <dt><%= f.label :end, t('admin.teaching.labels.end') %></dt>
+                  <dt><%= f.label :end %></dt>
                   <dd><%= f.datetime_select :end %></dd>
 
                   <%= f.fields_for :options, OpenStruct.new(f.object.options || {}) do |fo|%>
-                      <dt><%= fo.label :test_length, t('admin.teaching.labels.test_length')%></dt>
+                      <dt><%= fo.label :test_length, t('activerecord.attributes.exercise.options.test_length') %></dt>
                       <dd><%= fo.number_field :test_length, class: "question_text_field" %></dd>
 
-                      <dt><%= fo.label :cooldown_time, t('admin.teaching.labels.cooldown_time')%></dt>
+                      <dt><%= fo.label :cooldown_time, t('activerecord.attributes.exercise.options.cooldown_time') %></dt>
                       <dd><%= fo.number_field :cooldown_time, class: "question_text_field" %></dd>
 
-                      <dt><%= fo.label :exercise_concepts, t('admin.teaching.labels.exercise_concepts')%></dt>
+                      <dt><%= fo.label :exercise_concepts, t('activerecord.attributes.exercise.options.exercise_concepts') %></dt>
                       <dd><%= fo.check_box :exercise_concepts %></dd>
 
-                      <dt><%= fo.label :week_concepts, t('admin.teaching.labels.week_concepts')%></dt>
+                      <dt><%= fo.label :week_concepts, t('activerecord.attributes.exercise.options.week_concepts') %></dt>
                       <dd><%= fo.check_box :week_concepts %></dd>
                   <% end %>
                   <dt></dt>

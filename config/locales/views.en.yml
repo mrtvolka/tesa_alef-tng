@@ -1,0 +1,105 @@
+# Locales for specific views usage
+# uses 'Lazy' Lookup
+# more: http://guides.rubyonrails.org/i18n.html#looking-up-translations
+# Keep in alphabetical order!
+en:
+  administrations:
+    index:
+      courses_settings:                              "Courses Settings"
+      label:
+        teachings:                                   "Teachings"
+        users:                                       "Users"
+      questions_settings:                            "Questions Settings"
+      setups_settings:                               "Setups Settings"
+      teachings_settings:                            "Terms Settings"
+      users_settings:                                "Users Settings"
+    learning_objects:
+      answers:
+        label:
+          add_new:                                   "Add new Answer"
+          answer_text:                               "Answer Text"
+          id:                                        "ID"
+          options:                                   "Options"
+        tooltip:
+          correctness:                               "Answer Correctness"
+          delete:                                    "Delete Answer"
+          visibility:                                "Answer Visibility"
+      create:
+        notice:
+          created:                                   "Learning object has been successfully created."
+      destroy:
+        notice:
+          deleted:                                   "Learning object has been deleted."
+      edit:
+        answers:                                     "Answers"
+        insight:                                     "Insight"
+        label:
+          success_rate:                              "Success Rate"
+        settings:                                    "Question Settings"
+        tooltip:
+          delete:                                    "Delete Question"
+      index:
+        label:
+          add_question:                              "Add question"
+          import_questions:                          "Import questions"
+      learning_object:
+        tooltip:
+          edit:                                      "Edit question"
+          feedbacks:
+            any:                                     "Any new feedback"
+          learning_object:
+            evaluatorquestion:                       "Evaluator Question"
+            openquestion:                            "Open Question"
+            multichoicequestion:                     "Multi-choice Question"
+            singlechoicequestion:                    "Single-choice Question"
+      new:
+        lo_creation:                                 "Learning Object Creation"
+    setup_config:
+      concepts_settings:                             "Concepts Settings"
+      label:
+        concept_name:                                "Concept Name"
+        questions_count:                             "Questions Count"
+        select_all:                                  "Select All"
+        stats:                                       "Student Activity Statistics"
+        students_activity:                           "Students Activity - Statistics"
+      main_settings:                                 "Main Settings"
+    teachings:
+      create:
+        notice:
+          created:                                   "Term has been successfully created."
+      destroy:
+        notice:
+          deleted:                                   "Term has been successfully deleted."
+      edit:
+        term_settings:                               "Term Settings"
+        tooltip:
+          delete:                                    "Delete Term"
+      index:
+        label:
+          add_teaching:                              "Add Term"
+          term:                                      "Term"
+          # Exercise/Lecture
+        tooltip:
+          term:                                      "Term"
+          # Exercise/Lecture
+          edit:                                      "Edit Term"
+      new:
+        term_creation:                               "Teaching Creation"
+      update:
+        notice:
+          updated:                                   "Term has been successfully updated."
+    users:
+      create:
+        notice:
+          created:                                   "User has been successfully created."
+      index:
+        label:
+          add_user:                                  "Add User"
+        tooltip:
+          edit:                                      "Edit User"
+          ldapuser:                                  "LDAP User"
+          localuser:                                 "Local User"
+  exercises:
+    update_options:
+      notice:
+        updated:                                     "Term Times has been successfully updated."

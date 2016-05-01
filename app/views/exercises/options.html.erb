@@ -14,10 +14,10 @@
               <dl class="dl-horizontal">
                   <%= form_for @exercise, :url => exercise_update_options_path, :method => :post do |f|%>
                       <%= f.fields_for :options, OpenStruct.new(f.object.options || {}) do |fo|%>
-                          <dt><%= fo.label :test_length, t('admin.teaching.labels.test_length')%></dt>
+                          <dt><%= fo.label :test_length, t('activerecord.attributes.exercise.options.test_length')%></dt>
                           <dd><%= fo.number_field :test_length, class: "question_text_field" %></dd>
 
-                          <dt><%= fo.label :cooldown_time, t('admin.teaching.labels.cooldown_time')%></dt>
+                          <dt><%= fo.label :cooldown_time, t('activerecord.attributes.exercise.options.cooldown_time')%></dt>
                           <dd><%= fo.number_field :cooldown_time, class: "question_text_field" %></dd>
                       <% end %>
                       <%= submit_tag t('global.links.save_changes'), class: :btn, data: { disable_with: t('global.texts.saving') } %>

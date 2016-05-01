@@ -14,30 +14,30 @@
             <div class="admin">
               <div class="form-group">
                 <dl class="dl-horizontal">
-                  <dt><%= f.label :login, t('activerecord.attributes.user.login') %></dt>
+                  <dt><%= f.label :login %></dt>
                   <dd><%= f.text_field :login, class: "question_text_field" %></dd>
 
-                  <dt><%= f.label :type, t('activerecord.attributes.user.type') %></dt>
-                  <dd><%= f.label :type, :value => LocalUser %></dd>
+                  <dt><%= f.label :type %></dt>
+                  <dd><%= label_tag t 'activerecord.values.user.type.localuser' %></dd>
                   <%= f.hidden_field :type, :value => LocalUser %>
 
-                  <dt><%= f.label :role, t('activerecord.attributes.user.role') %></dt>
+                  <dt><%= f.label :role %></dt>
                   <dd><%= f.select(:role, options_for_select(User::ROLES.map { |id, role|
-                                                               [t("admin.users.labels.roles.#{role}"), role]
+                                                               [t("activerecord.values.user.role.#{role}"), role]
                                                              }, @user.role), class: 'form-control') %></dd>
-                  <dt><%= f.label :first_name, t('activerecord.attributes.user.first_name') %></dt>
+                  <dt><%= f.label :first_name %></dt>
                   <dd><%= f.text_field :first_name, class: "question_text_field" %></dd>
 
-                  <dt><%= f.label :last_name, t('activerecord.attributes.user.last_name') %></dt>
+                  <dt><%= f.label :last_name %></dt>
                   <dd><%= f.text_field :last_name, class: "question_text_field" %></dd>
 
-                  <dt><%= f.label :email, t('activerecord.attributes.user.email') %></dt>
+                  <dt><%= f.label :email %></dt>
                   <dd><%= f.email_field :email, class: "question_text_field" %></dd>
 
-                  <dt><%= f.label :password, t('activerecord.attributes.user.password') %></dt>
+                  <dt><%= f.label :password %></dt>
                   <dd><%= f.password_field :password, class: "question_text_field" %></dd>
 
-                  <dt><%= f.label :confirm_password, t('activerecord.attributes.user.confirm_password') %></dt>
+                  <dt><%= f.label :confirm_password %></dt>
                   <dd><%= f.password_field :confirm_password, class: "question_text_field" %></dd>
 
                   <dt></dt>

@@ -1,0 +1,105 @@
+# Locales for specific views usage
+# uses 'Lazy' Lookup
+# more: http://guides.rubyonrails.org/i18n.html#looking-up-translations
+# Keep in alphabetical order!
+sk:
+  administrations:
+    index:
+      courses_settings:                              "Nastavenia kurzov"
+      label:
+        teachings:                                   "Termíny"
+        users:                                       "Používatelia"
+      questions_settings:                            "Nastavenia otázok"
+      setups_settings:                               "Nastavenia setupov"
+      teachings_settings:                            "Nastavenie termínov"
+      users_settings:                                "Nastavenia používateľov"
+    learning_objects:
+      answers:
+        label:
+          add_new:                                   "Pridať odpoved"
+          answer_text:                               "Text odpovede"
+          id:                                        "ID"
+          options:                                   "Možnosti"
+        tooltip:
+          correctness:                               "Korektnosť"
+          delete:                                    "Vymazať odpoved"
+          visibility:                                "Viditeľnosť odpovede"
+      create:
+        notice:
+          created:                                   "Otázka bola úspešne vytvorená."
+      destroy:
+        notice:
+          deleted:                                   "Otázka bola vymazaná!"
+      edit:
+        answers:                                     "Odpovede"
+        insight:                                     "Náhľad"
+        label:
+          success_rate:                              "Uspešnosť"
+        settings:                                    "Nastavenia otázky"
+        tooltip:
+          delete:                                    "Vymazať otázku"
+      index:
+        label:
+          add_question:                              "Pridať otázku"
+          import_questions:                          "Importovať otázky"
+      learning_object:
+        tooltip:
+          edit:                                      "Upraviť otázku"
+          feedbacks:
+            any:                                     "Žiadna nová spätná väzba"
+          learning_object:
+            evaluatorquestion:                       "Evaluator otázka"
+            openquestion:                            "Otvorená otázka"
+            multichoicequestion:                     "Multi-choice otázka"
+            singlechoicequestion:                    "Single-choice otázka"
+      new:
+        lo_creation:                                 "Vytváranie novej otázky"
+    setup_config:
+      concepts_settings:                             "Nastavenia konceptov"
+      label:
+        concept_name:                                "Názov konceptu"
+        questions_count:                             "Počet otázok"
+        select_all:                                  "Označiť všetky"
+        stats:                                       "Štatistika aktivity študentov"
+        students_activity:                           "Aktivita študentov - štatistiky"
+      main_settings:                                 "Hlavné nastavenia"
+    teachings:
+      create:
+        notice:
+          created:                                   "Termín bol úspešne vytvorený."
+      destroy:
+        notice:
+          deleted:                                   "Termín bol vymazaný."
+      edit:
+        term_settings:                               "Nastavenia termínu"
+        tooltip:
+          delete:                                    "Vymazať termín"
+      index:
+        label:
+          add_teaching:                              "Pridať termín"
+          term:                                      "Termín"
+          # Exercise/Lecture
+        tooltip:
+          term:                                      "Term"
+          # Exercise/Lecture
+          edit:                                      "Upraviť termín"
+      new:
+        term_creation:                               "Vytváranie nového termínu"
+      update:
+        notice:
+          updated:                                   "Termín bol úspešne upravený."
+    users:
+      create:
+        notice:
+          created:                                   "Používateľské konto bolo úspešne vytvorené."
+      index:
+        label:
+          add_user:                                  "Pridať používateľa"
+        tooltip:
+          edit:                                      "Upraviť používateľa"
+          ldapuser:                                  "LDAP používateľ"
+          localuser:                                 "Lokálny používateľ"
+  exercises:
+    update_options:
+      notice:
+        updated:                                     "Časy termínu úspešne upravené."
