@@ -9,7 +9,7 @@ namespace :tesa do
         course = Course.create!(name: 'AZA')
       end
 
-      setup = Setup.create!(name: 'AZA 2016', first_week_at: '2016-03-07 00:00:00.00000', week_count: 12, course_id: course.id)
+      setup = Setup.create!(name: 'AZA 2016', first_week_at: '2016-03-07 00:00:00.00000', week_count: 12, course_id: course.id, scoring_type: "Scoring")
 
       weeks = Week.create!([
                                {setup_id: setup.id, number: 1},

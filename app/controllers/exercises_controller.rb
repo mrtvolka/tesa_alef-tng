@@ -28,6 +28,7 @@ class ExercisesController < ApplicationController
         create_qr_code
       elsif(!@exercise.real_end) # end test
         @exercise.real_end = Time.current
+        ScoringSystem.const_get(Setup.take.scoring_type).doScoringForExercise(@exercise.id)
         FileUtils.rm('./public/assets/qrcode' + @exercise.id.to_s + '.png')
       else # start test again
         @exercise.real_end = nil

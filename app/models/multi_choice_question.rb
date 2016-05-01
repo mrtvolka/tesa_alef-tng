@@ -11,7 +11,7 @@ class MultiChoiceQuestion < LearningObject
     answers.each  do |key, val|
       response << "\"#{key.id}\"=>\"#{key.id}\","
     end
-    response.chomp(',')
+    response=response.chomp(',')
     response << '}'
     return response
   end
