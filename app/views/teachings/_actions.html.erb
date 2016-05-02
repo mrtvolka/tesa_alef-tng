@@ -1,20 +1,20 @@
 <% if !exercise.real_start && !exercise.real_end %>
-    <%= link_to raw("<i class='icon-play'></i>"), exercise_path(:id => exercise.id), :method=> :patch, :class => "focusable" %>
+    <%= link_to raw("<i class='icon-play'></i>"), exercise_path(:id => exercise.id), :method=> :patch, :class => "focusable", title: t('.icon-play'), data: { toggle: :tooltip } %>
 <%elsif exercise.real_start && exercise.real_end%>
-    <%= link_to raw("<i class='icon-arrows-cw'></i>"), exercise_path(:id => exercise.id), :method=> :patch, :class => "focusable" %>
+    <%= link_to raw("<i class='icon-arrows-cw'></i>"), exercise_path(:id => exercise.id), :method=> :patch, :class => "focusable", title: t('.icon-arrows-cw'), data: { toggle: :tooltip }%>
 <%else%>
     <i class='icon-play disabled'></i>
 <%end%>
 
 <% if exercise.real_start && !exercise.real_end %>
-    <%= link_to raw("<i class='icon-stop'></i>"),exercise_path(:id => exercise.id), :method=> :patch, :class => "focusable" %>
+    <%= link_to raw("<i class='icon-stop'></i>"),exercise_path(:id => exercise.id), :method=> :patch, :class => "focusable",  title: t('.icon-stop'), data: { toggle: :tooltip } %>
 <%else %>
     <i class='icon-stop disabled'></i>
 <%end%>
 <%if exercise.real_start && exercise.real_end%>
-    <%= link_to raw("<i class='icon-chart-bar'></i>"), {:controller => "teachings", :action => "statistics", :id => exercise.id }, :class => "focusable"%>
+    <%= link_to raw("<i class='icon-chart-bar'></i>"), {:controller => "teachings", :action => "statistics", :id => exercise.id }, :class => "focusable",  title: t('.icon-chart-bar'), data: { toggle: :tooltip }%>
 <%else %>
     <i class='icon-chart-bar disabled'></i>
 <%end%>
-<%= link_to raw("<i class='icon-login'></i>"), exercise_path(:id => exercise.id), :class => "focusable" %>
-<%= link_to raw("<i class='icon-cog'></i>"), exercise_options_path(:id => exercise.id), :class => "focusable" %>
+<%= link_to raw("<i class='icon-login'></i>"), exercise_path(:id => exercise.id), :class => "focusable",  title: t('.icon-login'), data: { toggle: :tooltip } %>
+<%= link_to raw("<i class='icon-cog'></i>"), exercise_options_path(:id => exercise.id), :class => "focusable",  title: t('.icon-cog'), data: { toggle: :tooltip } %>

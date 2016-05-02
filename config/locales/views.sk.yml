@@ -103,3 +103,11 @@ sk:
     update_options:
       notice:
         updated:                                     "Časy termínu úspešne upravené."
+  teachings:
+    actions:
+      icon-play:                                      "Spusti test"
+      icon-arrows-cw:                                 "Obnov test"
+      icon-stop:                                      "Zastav test"
+      icon-chart-bar:                                 "Štatistika"
+      icon-login:                                     "Informácie"
+      icon-cog:                                       "Nastavenia"
