@@ -41,6 +41,15 @@ weeks[0].concepts << [concepts[0],concepts[1]]
 weeks[1].concepts << [concepts[2],concepts[1]]
 weeks[2].concepts << [concepts[3],concepts[1],concepts[0]]
 weeks[3].concepts << [concepts[3]]
+weeks[4].concepts << [concepts[3]]
+weeks[5].concepts << [concepts[3]]
+weeks[6].concepts << [concepts[3]]
+weeks[7].concepts << [concepts[3]]
+weeks[8].concepts << [concepts[3]]
+weeks[9].concepts << [concepts[3]]
+weeks[10].concepts << [concepts[3]]
+weeks[11].concepts << [concepts[3]]
+
 
 users = User.create!([
   {login: 'student1', role: User::ROLES[:STUDENT], first_name: 'Peter', last_name: 'Studentovic', password: 'student1', type: 'LocalUser'},
@@ -107,11 +116,11 @@ answers = Answer.create!([
 single_choice_questions[0].concepts << [concepts[1],concepts[2]]
 single_choice_questions[1].concepts << [concepts[3],concepts[1]]
 single_choice_questions[2].concepts << [concepts[0],concepts[1],concepts[3]]
-single_choice_questions[3].concepts << [concepts[2]]
+single_choice_questions[3].concepts << [concepts[2],concepts[3]]
 multi_choice_questions[0].concepts << [concepts[3],concepts[1]]
 multi_choice_questions[1].concepts << [concepts[3],concepts[1]]
 multi_choice_questions[2].concepts << [concepts[2],concepts[1],concepts[0]]
-multi_choice_questions[3].concepts << [concepts[0]]
+multi_choice_questions[3].concepts << [concepts[0],concepts[2]]
 #evaluator_questions[0].concepts << [concepts[0],concepts[1]]
 #evaluator_questions[1].concepts << [concepts[0],concepts[2]]
 #evaluator_questions[2].concepts << [concepts[2],concepts[1],concepts[0]]
@@ -124,19 +133,19 @@ UserVisitedLoRelation.create!([
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: single_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[0].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
-#  {setup_id: setup.id, user_id: users[0].id, learning_object_id: evaluator_questions[3].id, interaction: '??'},
+  {setup_id: setup.id, user_id: users[0].id, learning_object_id: multi_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: single_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: multi_choice_questions[3].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[1].id, learning_object_id: multi_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
-  #{setup_id: setup.id, user_id: users[1].id, learning_object_id: evaluator_questions[2].id, interaction: '??'},
+  {setup_id: setup.id, user_id: users[1].id, learning_object_id: multi_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[3].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[2].id, learning_object_id: single_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[2].id, learning_object_id: multi_choice_questions[2].id, interaction: '??', exercise_id: exercises[1].id},
   {setup_id: setup.id, user_id: users[2].id, learning_object_id: multi_choice_questions[1].id, interaction: '??', exercise_id: exercises[1].id},
-  #{setup_id: setup.id, user_id: users[2].id, learning_object_id: evaluator_questions[3].id, interaction: '??'},
-  #{setup_id: setup.id, user_id: users[2].id, learning_object_id: evaluator_questions[3].id, interaction: '??'}
+  {setup_id: setup.id, user_id: users[2].id, learning_object_id: multi_choice_questions[0].id, interaction: '??', exercise_id: exercises[1].id},
+  {setup_id: setup.id, user_id: users[2].id, learning_object_id: multi_choice_questions[3].id, interaction: '??', exercise_id: exercises[1].id},
 ])
