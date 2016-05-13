@@ -349,6 +349,13 @@
   float: right;
   @include red-white;
 }
+.admit-button-red {
+  @include red-white;
+}
+
+.admit-button:hover {
+  color: $dark;
+}
 
 .right {
   @include button-font;;

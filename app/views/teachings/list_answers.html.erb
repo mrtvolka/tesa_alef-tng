@@ -95,9 +95,9 @@
     <%end%>
     <div class="condensed answer-form">
             <%= form_tag(controller: "teachings",action: "admit_student_answer", method: "post") do %>
-                <button class="admit-button" name="commit" value="admit">Uznaj odpoveď</button>
+                <button class="admit-button admit-button-red" name="commit" value="admit">Uznaj odpoveď</button>
                 <input class="right short" type="number" name="student_answer_points" value="0" min="0" step="0.05">
-                <label class="right"> Navrhový počet bodov: </label>
+                <label class="right"> Navrhovaný počet bodov: </label>
                 <input type="hidden" name="student_answer_id" value="<%= relation.id%>">
             <% end %>
     </div>
