@@ -54,9 +54,7 @@ var ready = (function () {
 
     if ($('#body-questions-show_test').length) {
         Nav.init();
-        Slider.setupEvaluatorSlider();
-        Question.setupForm();
-        Question.initTimeLog();
+        Slider.setupEvaluatorSlider()
     }
 
     if ($('#body-weeks-enter_test').length) {
