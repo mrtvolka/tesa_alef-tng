@@ -1,7 +1,7 @@
 <nav class="question-nav not-zoomable">
   <%= render 'shared/user_element_admin' %>
   <div class="mobile-content wide">
-    <h2><%= Setup.first.name %> - administrácia</h2>
+    <h2><%= Setup.first.name %> - <%= t '.navbar_heading' %></h2>
     <a href="<%=url_for administrations_learning_objects_path(:course => @course) %>"><i class="nav-right-icons icon-level-up"></i></a>
     <a class="user-element-cta"><i class="nav-right-icons icon-menu"></i></a>
   </div>

@@ -11,7 +11,7 @@ sk:
         users:                                       "Používatelia"
       questions_settings:                            "Nastavenia otázok"
       setups_settings:                               "Nastavenia setupov"
-      teachings_settings:                            "Nastavenie termínov"
+      teachings_settings:                            "Nastavenia termínov"
       users_settings:                                "Nastavenia používateľov"
     learning_objects:
       answers:
@@ -35,6 +35,7 @@ sk:
         insight:                                     "Náhľad"
         label:
           success_rate:                              "Uspešnosť"
+        navbar_heading:                              "úprava otázky"
         settings:                                    "Nastavenia otázky"
         tooltip:
           delete:                                    "Vymazať otázku"
@@ -42,6 +43,7 @@ sk:
         label:
           add_question:                              "Pridať otázku"
           import_questions:                          "Importovať otázky"
+        navbar_heading:                              "administrácia otázok"
       learning_object:
         tooltip:
           edit:                                      "Upraviť otázku"
@@ -54,6 +56,9 @@ sk:
             singlechoicequestion:                    "Single-choice otázka"
       new:
         lo_creation:                                 "Vytváranie novej otázky"
+        navbar_heading:                              "nová otázka"
+    question_concept_config:
+      navbar_heading:                                "nastavenia kurzov"
     setup_config:
       concepts_settings:                             "Nastavenia konceptov"
       label:
@@ -61,8 +66,9 @@ sk:
         questions_count:                             "Počet otázok"
         select_all:                                  "Označiť všetky"
         stats:                                       "Štatistika aktivity študentov"
-        students_activity:                           "Aktivita študentov - štatistiky"
       main_settings:                                 "Hlavné nastavenia"
+      navbar_heading:                                "nastavenia setupov"
+      students_activity:                             "Aktivita študentov - štatistiky"
     teachings:
       create:
         notice:
@@ -71,10 +77,12 @@ sk:
         notice:
           deleted:                                   "Termín bol vymazaný."
       edit:
+        navbar_heading:                              "úprava termínu"
         term_settings:                               "Nastavenia termínu"
         tooltip:
           delete:                                    "Vymazať termín"
       index:
+        navbar_heading:                              "administrácia termínov"
         label:
           add_teaching:                              "Pridať termín"
           term:                                      "Termín"
@@ -84,6 +92,7 @@ sk:
           # Exercise/Lecture
           edit:                                      "Upraviť termín"
       new:
+        navbar_heading:                               "nový termín"
         term_creation:                               "Vytváranie nového termínu"
       update:
         notice:
@@ -92,13 +101,18 @@ sk:
       create:
         notice:
           created:                                   "Používateľské konto bolo úspešne vytvorené."
+      edit:
+        navbar_heading:                              "úprava používateľa"
       index:
+        navbar_heading:                              "administrácia používateľov"
         label:
           add_user:                                  "Pridať používateľa"
         tooltip:
           edit:                                      "Upraviť používateľa"
           ldapuser:                                  "LDAP používateľ"
           localuser:                                 "Lokálny používateľ"
+      new:
+        navbar_heading:                              "nový používateľ"
   exercises:
     update_options:
       notice:

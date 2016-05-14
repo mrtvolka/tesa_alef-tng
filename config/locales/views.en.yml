@@ -35,25 +35,30 @@ en:
         insight:                                     "Insight"
         label:
           success_rate:                              "Success Rate"
+        navbar_heading:                              "edit Question"
         settings:                                    "Question Settings"
         tooltip:
           delete:                                    "Delete Question"
       index:
         label:
-          add_question:                              "Add question"
-          import_questions:                          "Import questions"
+          add_question:                              "Add Question"
+          import_questions:                          "Import Questions"
+        navbar_heading:                              "Questions Administration"
       learning_object:
         tooltip:
-          edit:                                      "Edit question"
+          edit:                                      "Edit Question"
           feedbacks:
-            any:                                     "Any new feedback"
+            any:                                     "Any new Feedback"
           learning_object:
             evaluatorquestion:                       "Evaluator Question"
             openquestion:                            "Open Question"
             multichoicequestion:                     "Multi-choice Question"
             singlechoicequestion:                    "Single-choice Question"
       new:
+        navbar_heading:                              "new Question"
         lo_creation:                                 "Learning Object Creation"
+    question_concept_config:
+      navbar_heading:                                "Courses' Settings"
     setup_config:
       concepts_settings:                             "Concepts Settings"
       label:
@@ -61,8 +66,9 @@ en:
         questions_count:                             "Questions Count"
         select_all:                                  "Select All"
         stats:                                       "Student Activity Statistics"
-        students_activity:                           "Students Activity - Statistics"
       main_settings:                                 "Main Settings"
+      navbar_heading:                                "Setups' Settings"
+      students_activity:                           "Students Activity - Statistics"
     teachings:
       create:
         notice:
@@ -71,10 +77,12 @@ en:
         notice:
           deleted:                                   "Term has been successfully deleted."
       edit:
+        navbar_heading:                              "edit Teaching"
         term_settings:                               "Term Settings"
         tooltip:
           delete:                                    "Delete Term"
       index:
+        navbar_heading:                              "Terms Administration"
         label:
           add_teaching:                              "Add Term"
           term:                                      "Term"
@@ -84,6 +92,7 @@ en:
           # Exercise/Lecture
           edit:                                      "Edit Term"
       new:
+        navbar_heading:                              "new Teaching"
         term_creation:                               "Teaching Creation"
       update:
         notice:
@@ -92,13 +101,18 @@ en:
       create:
         notice:
           created:                                   "User has been successfully created."
+      edit:
+          navbar_heading:                              "edit User"
       index:
         label:
           add_user:                                  "Add User"
+        navbar_heading:                              "Users Administration"
         tooltip:
           edit:                                      "Edit User"
           ldapuser:                                  "LDAP User"
           localuser:                                 "Local User"
+      new:
+        navbar_heading:                              "new User"
   exercises:
     update_options:
       notice:
