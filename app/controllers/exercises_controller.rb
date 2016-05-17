@@ -53,7 +53,7 @@ class ExercisesController < ApplicationController
     @answers = UserToLoRelation.where(:exercise_id => params[:id])
     if !@answers.any?
       redirect_to :back
-      flash[:notice] = "Žiadne odpovede na export!"
+      flash[:notice] = t('global.exercise.no_answers_for_export')
     else
       teacher = User.find_by_id(@exercise.user_id).login
       filename = "Vysledky_pre_#{@exercise.id.to_s}_#{teacher}.csv"

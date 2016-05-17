@@ -12,6 +12,14 @@ sk:
       logout:                         "Odhlásiť"
 
   global:
+    admin:
+      saved:                          "Úspešne uložené"
+    answers:
+      added:                          "Odpoveď bola pridaná"
+      changes_saved:                  "Zmeny v odpovediach boli úspešne uložené"
+      deleted:                        "Otázka bola odstránená"
+    exercise:
+      no_answers_for_export:          "Žiadne odpovede na export!"
     labels:
       choose:                         "vyberte si..."
     links:
@@ -24,11 +32,18 @@ sk:
       save_changes:                   "Uložiť zmeny"
       submit:                         "Odoslať"
       save:                           "Uložiť"
+    test:
+      commited_test:                  "Test bol odovzdaný"
+      duplicit_answers:               "Už ste raz odpovedali alebo ste zaslali duplicitné odpovede!"
+      ended_test:                     "Test už bol ukončený!"
+      repeatable_opening_test:        "Test je možné písať len raz!"
+      unreachable:                    "Test nie je dostupný"
+      unsupported_answers:            "Odpovede ešte nie sú dostupné!"
+      wrong_key:                      "Nesprávny kód!"
     texts:
       please_fill_in:                 "Prosím, vyplňte všetky povinné polia."
       saving:                         "prebieha ukladanie..."
       updated:                        "Všetky zmeny boli úspešne uložené."
-      login_exists:
     password:
       notmatch:                        "Heslá sa nezhodujú!"
       notmatch_or_empty:               "Heslá sa nezhodujú alebo ste ich zadali prázdne!"

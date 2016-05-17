@@ -17,7 +17,7 @@ module Administrations
       rescue AnswersVisibilityError
         return redirect_to edit_administrations_learning_object_path id: @learning_object.id, :alert => 'Otázka nesmie mať viac ako jednu viditeľnú odpoveď.'
       end
-      redirect_to edit_administrations_learning_object_path id: @learning_object.id, :notice => 'Odpoveď bola pridaná.'
+      redirect_to edit_administrations_learning_object_path id: @learning_object.id, flash[:notice] => t('global.answers.added')
     end
 
     def update
@@ -39,12 +39,12 @@ module Administrations
         return redirect_to route, :alert => 'Otázka nesmie mať viac ako jednu viditeľnú odpoveď.'
       end
 
-      redirect_to route, :notice => 'Zmeny v odpovediach boli úspešne uložené.'
+      redirect_to route, flash[:notice] => t('global.answers.changes_saved')
     end
 
     def destroy
       Answer.find_by_id(params[:answer_id]).destroy!
-      redirect_to edit_administrations_learning_object_path(id: @learning_object.id), notice: 'Otazka bola odstranena'
+      redirect_to edit_administrations_learning_object_path(id: @learning_object.id), flash[:notice] = t('global.answers.deleted')
     end
 
     private

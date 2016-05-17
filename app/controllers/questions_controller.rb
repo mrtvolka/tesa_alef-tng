@@ -87,14 +87,14 @@ class QuestionsController < ApplicationController
     exercise = Exercise.find_by_code(params[:exercise_code])
     if exercise.nil? || exercise.real_start.nil? ||!exercise.real_end.nil?
       redirect_to root_path
-      flash[:notice] = "Test nie je dostupný"
+      flash[:notice] = t('global.test.unreachable')
       log_warn current_user.login + " tried to access test with code: " + params[:exercise_code]
       return
     end
 
     if Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
       redirect_to root_path
-      flash[:notice] = "Test je možné písať len raz!"
+      flash[:notice] = t('global.test.repeatable_opening_test')
       log_warn current_user.login + " tried to write test with code: " + params[:exercise_code] + " multiple times"
       return
     end
@@ -115,19 +115,19 @@ class QuestionsController < ApplicationController
   def submit_test
     if (Exercise.find_by_code(params[:exercise_code]).nil?)
       render :js => "window.location = '#{weeks_path}'"
-      flash[:notice] = "Zlý kód cvičenia!"
+      flash[:notice] = t('global.test.wrong_key')
       log_warn current_user.login + " tried to submit test with exercise code: " + params[:exercise_code] + " ,which does not exists"
       return
     end
     unless  Exercise.find_by_code(params[:exercise_code]).real_end.nil?
       render :js => "window.location = '#{weeks_path}'"
-      flash[:notice] = "Test už bol ukončený!"
+      flash[:notice] = t('global.test.ended_test')
       log_warn current_user.login + " tried to submit test after it was ended; exercise with code:" + params[:exercise_code]
       return
     end
     if  !Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.exists? && Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
       render :js => "window.location = '#{weeks_path}'"
-      flash[:notice] = "Už ste raz odpovedali alebo ste zaslali duplicitné odpovede!"
+      flash[:notice] = t('global.test.duplicit_answers')
       log_warn current_user.login + " tried to submit test with exercise code: " + params[:exercise_code] + " multiple times"
       return
     end
@@ -154,7 +154,7 @@ class QuestionsController < ApplicationController
     end
 
     render :js => "window.location = '#{weeks_path}'"
-    flash[:notice] = "Test bol odovzdaný"
+    flash[:notice] = t('global.test.commited_test')
   end
 
   def check_code
@@ -162,12 +162,12 @@ class QuestionsController < ApplicationController
     @exercise = Exercise.find_by_code(@exercise.code)
     if(@exercise.nil?)
       redirect_to :root
-      flash[:notice] = "Nesprávny kód!"
+      flash[:notice] = t('global.test.wrong_key')
       log_warn current_user.login + " tried to access test with code: " + exercise_code_param.to_s
     elsif(!@exercise.real_end.nil?)
       # TODO: working with submitted tests
       redirect_to :root
-      flash[:notice] = "Test už bol ukončený!"
+      flash[:notice] = t('global.test.ended_test')
       log_warn current_user.login + " tried to access finished test with code: " + @exercise.code.to_s
     else
       @exercise = Exercise.find_by_code(@exercise.code)
@@ -179,7 +179,7 @@ class QuestionsController < ApplicationController
     @exercise = Exercise.find_by_code(params[:exercise_code])
     if @exercise.unavailable_answers?(current_user)
       redirect_to :back
-      flash[:notice] = "Odpovede ešte nie sú dostupné!"
+      flash[:notice] = t('global.test.unsupported_answers')
       return
     end
     @week = @exercise.week

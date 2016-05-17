@@ -25,7 +25,7 @@ class AdministrationsController < ApplicationController
       end
       @setup.update(params.require(:setup).permit(:week_count, :first_week_at, :show_all))
     end
-    redirect_to setup_config_path, :notice => "Úspešne uložené"
+    redirect_to setup_config_path, flash[:notice] = t('global.admin.saved')
   end
 
   def setup_config_relations
@@ -35,7 +35,7 @@ class AdministrationsController < ApplicationController
       w = Setup.find(params[:setup_id]).weeks.find(weeks.keys)
       c.weeks = w
     end
-    redirect_to setup_config_path, :notice => "Úspešne uložené"
+    redirect_to setup_config_path, flash[:notice] = t('global.admin.saved')
   end
 
 

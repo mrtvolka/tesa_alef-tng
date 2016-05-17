@@ -12,6 +12,14 @@ en:
       logout:                         "Sign out"
 
   global:
+    admin:
+      saved:                          "Successfully saved"
+    answers:
+      added:                          "The answer has been added"
+      changes_saved:                  "Changes in answers were saved successfully"
+      deleted:                        "The question has been removed"
+    exercise:
+      no_answers_for_export:          "No answers to export!"
     labels:
       choose:                         "choose..."
     links:
@@ -24,6 +32,14 @@ en:
       save_changes:                   "Save changes"
       submit:                         "Submit"
       save:                           "Save"
+    test:
+      commited_test:                  "The test was submitted"
+      duplicit_answers:               "You have already answered or you send duplicate answers!"
+      ended_test:                     "The test was already closed"
+      repeatable_opening_test:        "The test can be written only once!"
+      unreachable:                    "Test is not available"
+      unsupported_answers:            "Answers are not available yet!"
+      wrong_key:                      "Wrong code!"
     texts:
       please_fill_in:                 "Please, fill in all required fields."
       saving:                         "saving..."
