@@ -2,8 +2,8 @@
 <div class="question-text">"<%= @answers.first.answer_text %>" Súhlasíte s touto odpoveďou?</div>
 
 <div id="evaluator-slider-container" class="eval">
-  <div id="evaluator-slider"></div>
+  <div class= "Axd" id="evaluator-slider"></div>
   <div id="evaluator-dont-agree">nesúhlasím</div>
   <div id="evaluator-do-agree">súhlasím</div>
+  <input type="hidden" value="50" name="questions[<%= @question.id%>][answer]" > <%# 50 je stred slidera, vid. slider.js %>
 </div>
-<input type="hidden" value="50" name="questions[<%= @question.id%>][answer]" > <%# 50 je stred slidera, vid. slider.js %>

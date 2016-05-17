@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20160501003246) do
     t.integer  "course_id",                 null: false
   end
 
-  create_table "concepts_exercises", id: false, force: :cascade do |t|
-    t.integer "concept_id",  null: false
+  create_table "concepts_exercises", force: :cascade do |t|
     t.integer "exercise_id", null: false
+    t.integer "concept_id",  null: false
   end
 
   create_table "concepts_learning_objects", force: :cascade do |t|
