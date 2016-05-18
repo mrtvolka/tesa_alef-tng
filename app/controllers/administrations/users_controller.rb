@@ -2,16 +2,23 @@ module Administrations
   class UsersController < ApplicationController
     authorize_resource :class => false
 
-    # all teachings
+    # Specifies action for listing all users
+    # get 'administrations/users'
     def index
       @users = User.all
     end
 
-    # add new teaching
+    # Specifies action for new user
+    # get 'administrations/users/new'
     def new
       @user = User.new
     end
 
+    # Specifies action for saving new created user
+    # post 'administrations/users/:user_id/create'
+    # checks if filled password are identical and if user login is not already used
+    # checks some empty fields too
+    # uses params posted in <tt>params[:user]</tt>
     def create
       begin
         @user = User.new(user_params)
@@ -39,15 +46,21 @@ module Administrations
         render 'new'
       rescue ActiveRecord::RecordInvalid
         flash[:notice] = t('global.texts.please_fill_in')
-        flash[:notice] = t('global.texts.please_fill_in')
         render 'new'
       end
     end
 
+    # Specifies action for editing existing user account
+    # get 'administrations/users/:user_id/edit'
+    # user for editing is selected using <tt>params[:user_id]</tt>
     def edit
       @user = User.find_by_id(params[:user_id])
     end
 
+    # Specifies action for updating user account
+    # patch 'administrations/users/:user_id/update'
+    # updates user using params in <tt>params[:user_id]</tt>
+    # checks if filled password are identical
     def update
       begin
         @user = User.find(params[:user_id])
@@ -70,7 +83,6 @@ module Administrations
     end
 
     def destroy
-
     end
 
     private

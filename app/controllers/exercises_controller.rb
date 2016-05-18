@@ -1,11 +1,18 @@
 class ExercisesController < ApplicationController
   load_and_authorize_resource
+
+  # Specifies action for exercise show page
+  # get 'exercises/show'
+  # shows exercise with id from params[:id]
   def show
     gon.exercise_id = params[:id]
     @setup= Setup.take
     @exercise = Exercise.find_by_id(params[:id])
   end
 
+  # Specifies action for ajax call rereshing counter and test timer
+  # get 'exercises/event/refresh'
+  # called from view's js
   def refresh
     unless params[:id].blank?
       @counter = UserToLoRelation.where(exercise_id: params[:id]).group(:user_id).count.count
@@ -15,6 +22,14 @@ class ExercisesController < ApplicationController
     end
   end
 
+  # Specifies action for exercise update
+  # get 'exercises/edit'
+  # called from different actions in exercise show view
+  # <tt>params[:stats]</tt> - if defined redirects to statistic page
+  # <tt>params[:results]<tt> - if defined redirects to exercise results page
+  # when any params posted in request - change state of exercise
+  # if test not yet started: start test
+  # if test started: stop test
   def update
     if(params[:stats])
       redirect_to statistics_path(id: @exercise.id)
@@ -44,11 +59,18 @@ class ExercisesController < ApplicationController
 
   end
 
+  # Specifies action for exercise results
+  # get  'exercise/results'
+  # shows results for exercise with id from <tt>params[:id]</tt>
   def results
     @setup= Setup.take
     @exercise = Exercise.find_by_id(params[:id])
   end
 
+  # Specifies action for exporting answers to csv
+  # get 'exercises/:id/answers'
+  # <tt>param[:id]</tt> - id of exercise
+  # responds with csv file if any answers exist
   def answers
     @answers = UserToLoRelation.where(:exercise_id => params[:id])
     if !@answers.any?
@@ -64,10 +86,17 @@ class ExercisesController < ApplicationController
     end
   end
 
+  # Specifies action for options of exercise
+  # get 'exercise/:id/options'
+  # used for setting exercise times: test length and cooldown time
   def options
     @exercise = Exercise.find_by_id(params[:id])
   end
 
+  # Specifies action for saving updated options for exercise
+  # post 'exercice/:id/update_options'
+  # updates options from params
+  # <tt>params[:exercise][:options]</tt> - params
   def update_options
     @exercise = Exercise.find_by_id(params[:id])
     options = @exercise.options
@@ -90,10 +119,13 @@ class ExercisesController < ApplicationController
 
   private
 
+  # params used as helper in some controller questions
   def exercise_params
     params.require(:exercise).permit(:start, :user_id, :week_id, :code)
   end
 
+  # Specifies creation of QR code in assets folder
+  # generates qr code with url for accessing exercise test
   def create_qr_code
     qrcode = RQRCode::QRCode.new((url_for :action => 'show_test', :controller => 'questions', :exercise_code => @exercise.code , :only_path => false))
     qrcode.as_png(

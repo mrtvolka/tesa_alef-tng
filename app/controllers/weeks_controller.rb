@@ -19,12 +19,16 @@ class WeeksController < ApplicationController
     @user = current_user
   end
 
+  # Specifies action for listing weeks info in weeks page
+  # get 'w'
   def list
     @setup = Setup.take
     @weeks = @setup.weeks.order(number: :desc)
     @user = current_user
   end
 
+  # Specifies action for listing tests already written by student
+  # get 'tests'
   def test_list
     @setup = Setup.take
     @user = current_user
@@ -41,6 +45,10 @@ class WeeksController < ApplicationController
     @exercise = Exercise.new
   end
 
+  # Specifies action for showing home page in different situations
+  # get 'i'
+  # home page is diffent for users with different role
+  # for student role, home page is set according to existence of available tests
   def index
     @setup = Setup.take
     @user = current_user

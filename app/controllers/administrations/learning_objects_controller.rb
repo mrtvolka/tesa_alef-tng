@@ -3,6 +3,8 @@ module Administrations
     authorize_resource :class => false
     before_action :get_course, only: [:index, :new, :create]
 
+    # Specifies action for showing list of available learning objects
+    # get 'administrations/learning_objects'
     def index
       @questions = @course.learning_objects.all
 
@@ -16,12 +18,15 @@ module Administrations
       }
     end
 
-    # Vytvorenie novej otazky.
+    # Specifies action for creating new learning object
+    # get 'administrations/learning_object/new'
     def new
       @learning_object = LearningObject.new
     end
 
-    # Ulozenie novej otazky.
+    # Specifies action for saving created learning object
+    # post 'administrations/learning_object/:learning_object_id/create'
+    # rescues invalid records - properties not filled in correctly
     def create
       begin
         @learning_object = @course.learning_objects.new(learning_object_params)
@@ -29,17 +34,21 @@ module Administrations
         redirect_to edit_administrations_learning_object_path(@learning_object), notice: t('.notice.created')
       rescue ActiveRecord::RecordInvalid
         flash[:notice] = t('global.texts.please_fill_in')
-        flash[:notice] = t('global.texts.please_fill_in')
         render 'new'
       end
     end
 
-    # Editacia otazky.
+    # Specifies action for editing existing learning object
+    # get 'administrations/learning_objects/:learning_object_id/edit'
     def edit
       @learning_object = LearningObject.find_by_id(params[:learning_object_id])
       @answers = @learning_object.answers
     end
 
+    # Specifies action for update of learning objects
+    # patch 'administrations/learning_objects/:learning_object_id/update'
+    # updates all attributes of learning object specified in learning_object_params
+    # rescues problems with not filled required attributes
     def update
       begin
         @learning_object = LearningObject.find(params[:learning_object_id])
@@ -51,6 +60,9 @@ module Administrations
       end
     end
 
+    # Specifies action for deleting learning object
+    # delete 'administrations/learning_objects/:learning_object_id/destroy'
+    # learning object is selected using its id in <tt>param[:id]</tt>
     def destroy
       lo = LearningObject.find(params[:id])
       lo.destroy!
@@ -58,6 +70,10 @@ module Administrations
     end
 
 
+    # Specifies action for importing questions from csv file and images uploaded using zip
+    # post 'import_question_csv'
+    # opens zip and imports question using import tasks
+    # <tt>params[:test_data]</tt> - zip file containing subfolder img with images and one csv
     def csv_question_import
       csv_filepath= ""
       filepath= Array.new

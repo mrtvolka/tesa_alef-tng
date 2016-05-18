@@ -1,5 +1,12 @@
 class QuestionsController < ApplicationController
   authorize_resource :class => false , :only => [:submit_test,:show_test]
+
+  # Specifies action for showing questions in learning
+  # get 'w/:week_number/:id'
+  # shows one learning object for week preparation
+  # <tt>params[:week_number]</tt> - week number info
+  # <tt>params[:id]<tt> - id of learning object
+  # calls functions for specifiing next and previous questions
   def show
     @user = current_user
     user_id = @user.id
@@ -23,6 +30,11 @@ class QuestionsController < ApplicationController
     @feedbacks = @question.feedbacks.includes(:user)
   end
 
+  # Specifies evaluation of question in learning
+  # post 'w/:week_number/:id/evaluate_answers'
+  # <tt>params[:week_number]</tt> - week number info
+  # <tt>params[:id]<tt> - id of learning object
+  # evaluates questions submitted answers for autoevaluating types of questions
   def evaluate
 
     unless ["SingleChoiceQuestion","MultiChoiceQuestion","EvaluatorQuestion"].include? params[:type]
@@ -55,6 +67,10 @@ class QuestionsController < ApplicationController
 
   end
 
+  # Specifies action for showing images in question text
+  # get 'learning_objects/:id/image'
+  # <tt>params[:id]</tt> - learning object id
+  # sends image data created from database bytea
   def show_image
     lo = LearningObject.find(params[:id])
     send_data lo.image, :type => 'image/png', :disposition => 'inline'
@@ -70,6 +86,10 @@ class QuestionsController < ApplicationController
     render nothing: true
   end
 
+  # Specifies action for redirecting to next question
+  # get 'w/:week_number/next'
+  # next question is determined using recommender system
+  # <tt>params[:week_number]</tt> - week number info
   def next
     setup = Setup.take
     week = setup.weeks.find_by_number(params[:week_number])
@@ -79,9 +99,11 @@ class QuestionsController < ApplicationController
     redirect_to action: "show", id: los.url_name
   end
 
-  #
-  # Testing
-  #
+  # Specifies action action for showing test
+  # get 'test/:exercise_code'
+  # <tt>params[:exercise_code]</tt> - access key for test
+  # test has to be started and not submitted by same student
+  # questions are generated using recommender system for test questions
   def show_test
     @setup = Setup.take
     exercise = Exercise.find_by_code(params[:exercise_code])
@@ -112,6 +134,12 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # Specifies action for submitting test
+  # post 'test/:exercise_code/submit'
+  # <tt>params[:exercise_code]</tt> - access key for test
+  # before submitting: checks correct params, test state and previous submitting
+  # autoevaluating types of questions are evaluated and user relations are updated
+  # with result information
   def submit_test
     if (Exercise.find_by_code(params[:exercise_code]).nil?)
       render :js => "window.location = '#{weeks_path}'"
@@ -157,6 +185,9 @@ class QuestionsController < ApplicationController
     flash[:notice] = t('global.test.commited_test')
   end
 
+  # Specifies question for checking test access code
+  # post 'check_code'
+  # checks test state: exists and not finished
   def check_code
     @exercise = Exercise.new(exercise_code_param)
     @exercise = Exercise.find_by_code(@exercise.code)
@@ -175,6 +206,9 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # Specifies action for showing evaluated answers
+  # get 'test/:exercise_code/answers'
+  # questions are showed only after specified cooldown time
   def show_answers
     @exercise = Exercise.find_by_code(params[:exercise_code])
     if @exercise.unavailable_answers?(current_user)

@@ -11,6 +11,11 @@ module RecommenderSystem
       super(user_id,week_id)
     end
 
+    # Specifies method for returning generated list of test questions
+    # questions are selected using 1 of 3 strategies and their combinations
+    # questions are selected from sets of questions mapped with week's or term's concepts.
+    # on each term specified questions set is generated from which students get questions
+    # each student gets specified number of these questions - using random with <tt>user_id</tt>
     def get_list
 
       exercise_questions = Hash.new
