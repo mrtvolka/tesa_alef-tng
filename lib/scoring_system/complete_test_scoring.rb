@@ -1,5 +1,7 @@
 module ScoringSystem
   class CompleteTestScoring < ScoringSystem::Scoring
+
+    # Grants points so that student can get 1 point or none, excluding open questions.
     def self.doScoring(exercise_id, user_id)
       rels=UserToLoRelation.where("user_id= (?) AND exercise_id= (?)",user_id,exercise_id)
 

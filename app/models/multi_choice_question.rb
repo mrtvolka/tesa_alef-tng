@@ -1,9 +1,11 @@
 class MultiChoiceQuestion < LearningObject
 
+  # Returns correct options
   def get_solution(user_id)
     self.answers.where(is_correct: true).ids
   end
 
+  # Constructs hash for right answer, which has same format as hash posted in student response.
   def construct_righ_hash
     #{"8"=>"8", "10"=>"10", "11"=>"11"}
     answers= Answer.where("learning_object_id = (?) ANd is_correct = true",self.id)

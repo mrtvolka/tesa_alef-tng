@@ -1,5 +1,7 @@
 class EvaluatorQuestion < LearningObject
 
+  # Computes soulution of evaluator question for specified student.
+  # This is done by averaging all answers, which are not his.
   def get_solution(user_id)
     rels = UserSolvedLoRelation.where('learning_object_id = (?) AND user_id <> (?)   ',self.id, user_id).order(created_at: :desc)
     values = Hash.new

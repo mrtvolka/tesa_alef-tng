@@ -36,6 +36,7 @@ class LearningObject < ActiveRecord::Base
     Week.find_by_number(week_number).learning_objects.where('learning_objects.id < ?', self.id).order(id: :desc).first
   end
 
+  # Gets next week according to HybridRecommender
   def next_by_hybrid(week_number,user_id)
     setup = Setup.take
     week = setup.weeks.find_by_number(week_number)
@@ -70,7 +71,7 @@ class LearningObject < ActiveRecord::Base
 
   end
 
-  # Overi, ci nova odpoved moze byt oznacena ako spravna.
+  # Checks if new answer can be tagged as correct
   def allow_new_correctness?
     if type == "SingleChoiceQuestion"
       answers.each do |answer|
@@ -80,7 +81,7 @@ class LearningObject < ActiveRecord::Base
     true
   end
 
-  # Overi, ci nova odpoved moze byt oznacena ako viditelna.
+  # Checks if new answer can be tagged as visible
   def allow_new_visibility?
     if type == "EvaluatorQuestion"
       answers.each do |answer|
@@ -90,6 +91,9 @@ class LearningObject < ActiveRecord::Base
     true
   end
 
+  # Validates answers
+  # For single choice question it checks if there is only one correct
+  # For evaluator question it checks if only one answer is visible
   def validate_answers!
 
     case type
@@ -113,6 +117,7 @@ class LearningObject < ActiveRecord::Base
     end
   end
 
+  # Returns average success rate for question
   def successfulness
 
     stats = UserToLoRelation.where(learning_object: self.id).group(:type).count(:id)

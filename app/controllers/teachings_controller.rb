@@ -1,5 +1,8 @@
 class TeachingsController < ApplicationController
   authorize_resource :class => false
+
+  # Specifies action for teachers main page
+  # get 'teaching'
   def show
     @setup= Setup.take
     @actual_week= Week.get_actual
@@ -10,11 +13,16 @@ class TeachingsController < ApplicationController
     end
   end
 
+  # Defines action for list of questions
+  # get 'teaching/questions'
   def list_questions
     @setup= Setup.take
     @questions= LearningObject.where("is_test_question= true").order(id: :asc)
   end
 
+  # Action for list of all answers for specified question
+  # get 'teaching/:id/answers'
+  #   <tt>params[:id]</tt> => id of specified question
   def list_answers
     @setup= Setup.take
     @question= LearningObject.find(params[:id])
@@ -27,6 +35,10 @@ class TeachingsController < ApplicationController
     @previous_question= LearningObject.where('is_test_question= true AND (id < (?))',params[:id]).order(id: :asc).last
   end
 
+  # Specifies action for posting regexp and subsequent evaluation of open questions
+  # post 'teaching/:id/submit_regexp'
+  #   <tt>params[:id]</tt> => id of specified question
+  #   <tt>params[:regexp]</tt> => string with regular expression
   def submit_regexp
     @question= LearningObject.find(params[:id])
 
@@ -44,6 +56,11 @@ class TeachingsController < ApplicationController
     redirect_to :back
   end
 
+  # Defines action to admit points to student answer
+  # post 'teaching/:id/admit_answer'
+  #   <tt>params[:id]</tt> => id of specified question
+  #   <tt>params[:student_answer_id]</tt> => id of student answer
+  #   <tt>params[:student_answer_points]<//tt> => points to give
   def admit_student_answer
     @question= LearningObject.find(params[:id])
     rel=@question.user_to_lo_relations.find(params[:student_answer_id])
@@ -52,6 +69,10 @@ class TeachingsController < ApplicationController
 
     redirect_to :back
   end
+
+  # Specifies action for statistics of a single exercise
+  # get 'exercise/statistics'
+  #   <tt>params[:id]</tt> => exercise id
   def statistics
     @setup = Setup.take
     @chart = []

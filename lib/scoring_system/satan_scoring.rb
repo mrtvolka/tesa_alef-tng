@@ -1,5 +1,7 @@
 module ScoringSystem
   class SatanScoring < ScoringSystem::Scoring
+
+    # Grants points while penalizing guessing by subtracting point for incorrect options
     def self.doScoring(exercise_id, user_id)
       rels=UserToLoRelation.where("user_id= (?) AND exercise_id= (?)",user_id,exercise_id)
 

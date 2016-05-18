@@ -1,5 +1,7 @@
 module ScoringSystem
   class Scoring
+
+    # Computes points for specific test. If answer is entirely correct it grants one point if not it grants no points
     def self.doScoring(exercise_id, user_id)
       rels=UserToLoRelation.where("user_id= (?) AND exercise_id = (?)",user_id,exercise_id)
 
@@ -13,6 +15,7 @@ module ScoringSystem
       end
     end
 
+    # Method that scores test for all students. It invokes <tt>doScoring</tt> for every student
     def self.doScoringForExercise(exercise_id)
       rels=UserToLoRelation.where("exercise_id= (?)",exercise_id)
 

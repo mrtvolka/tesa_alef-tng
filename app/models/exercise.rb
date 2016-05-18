@@ -9,6 +9,7 @@ class Exercise < ActiveRecord::Base
   store_accessor :options, :exercise_concepts, :week_concepts, :cooldown_time, :test_length
   accepts_nested_attributes_for :concepts
 
+  # Tests whether answers to this test are avavaible. Checks for ending of test and cooldown period
   def unavailable_answers? (user)
     if real_end == nil || (!options.nil? && real_end+options['cooldown_time'].to_i.minutes > Time.now && user.student?)
       true
@@ -26,6 +27,7 @@ class Exercise < ActiveRecord::Base
     end
   end
 
+  # Generates random, unique code for test
   def generatecode()
     self.code = loop do
       random_code = SecureRandom.random_number(Exercise.count + 2) + 1
@@ -42,6 +44,7 @@ class Exercise < ActiveRecord::Base
     true
   end
 
+  # Calculate time left for test
   def test_time_left
     if test_length_defined?
       time_left = real_start + options['test_length'].to_i.minutes - Time.now
