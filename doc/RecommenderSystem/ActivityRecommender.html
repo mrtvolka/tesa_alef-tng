@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class RecommenderSystem::ActivityRecommender - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Recommender.html">RecommenderSystem::Recommender</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-process_model">::process_model</a>
+    
+    <li ><a href="#method-c-remove_redundant_relations">::remove_redundant_relations</a>
+    
+    <li ><a href="#method-c-update_table">::update_table</a>
+    
+    <li ><a href="#method-i-get_list">#get_list</a>
+    
+    <li ><a href="#method-i-get_model">#get_model</a>
+    
+    <li ><a href="#method-i-get_probability">#get_probability</a>
+    
+    <li ><a href="#method-i-get_success_rate">#get_success_rate</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-RecommenderSystem::ActivityRecommender">
+  <h1 id="class-RecommenderSystem::ActivityRecommender" class="class">
+    class RecommenderSystem::ActivityRecommender
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-process_model" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_model</span><span
+            class="method-args">(model)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_model-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/activity_recommender.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_model</span> <span class="ruby-identifier">model</span>
+
+  <span class="ruby-identifier">final_model</span> = <span class="ruby-identifier">remove_redundant_relations</span> <span class="ruby-identifier">model</span>
+
+  <span class="ruby-identifier">final_model</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rel</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+
+      <span class="ruby-identifier">operation</span> = <span class="ruby-value">:none</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">rel</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserSolvedLoRelation&#39;</span>
+        <span class="ruby-identifier">operation</span> = <span class="ruby-value">:right</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">rel</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserFailedLoRelation&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">rel</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserDidntKnowLoRelation&#39;</span>
+        <span class="ruby-identifier">operation</span> = <span class="ruby-value">:wrong</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">operation</span> <span class="ruby-operator">==</span> <span class="ruby-value">:none</span>
+        <span class="ruby-identifier">final_model</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">index</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rel_before</span><span class="ruby-operator">|</span>
+          <span class="ruby-constant">ActivityRecommenderRecord</span>.<span class="ruby-identifier">process_record</span> <span class="ruby-identifier">rel</span>.<span class="ruby-identifier">learning_object_id</span>, <span class="ruby-identifier">operation</span>, <span class="ruby-identifier">rel_before</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-constant">UserToLoRelation</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;id IN (?)&#39;</span>, <span class="ruby-identifier">model</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:id</span>)).<span class="ruby-identifier">update_all</span>(<span class="ruby-identifier">activity_recommender_check</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>)
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-remove_redundant_relations" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_redundant_relations</span><span
+            class="method-args">(model)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="remove_redundant_relations-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/activity_recommender.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">remove_redundant_relations</span> <span class="ruby-identifier">model</span>
+  <span class="ruby-comment"># Odstrani nadbytocne relacie Visited</span>
+  (<span class="ruby-value">1</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">model</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)).<span class="ruby-identifier">reverse_each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>  <span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserVisitedLoRelation&#39;</span> <span class="ruby-keyword">and</span>
+        (<span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserSolvedLoRelation&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserFailedLoRelation&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserDidntKnowLoRelation&#39;</span>) <span class="ruby-keyword">and</span>
+        <span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">learning_object_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">learning_object_id</span>
+
+      <span class="ruby-identifier">model</span>.<span class="ruby-identifier">delete_at</span> (<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Odstrani nadbytocne relacie Solved</span>
+  (<span class="ruby-value">1</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">model</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)).<span class="ruby-identifier">reverse_each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>  <span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserSolvedLoRelation&#39;</span> <span class="ruby-keyword">and</span>
+        (<span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserViewedSolutionLoRelation&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserFailedLoRelation&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;UserDidntKnowLoRelation&#39;</span>) <span class="ruby-keyword">and</span>
+        <span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">learning_object_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">model</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">learning_object_id</span>
+
+      <span class="ruby-identifier">model</span>.<span class="ruby-identifier">delete_at</span> <span class="ruby-identifier">i</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">model</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-update_table" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_table</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Opakuje sa o stvrtej rano, vid. config/schedule.rb</p>
+          
+          
+
+          
+          <div class="method-source-code" id="update_table-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/activity_recommender.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">update_table</span>
+
+  <span class="ruby-identifier">relations</span> = <span class="ruby-constant">UserToLoRelation</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">activity_recommender_check</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:user_id</span>, <span class="ruby-value">:created_at</span>)
+
+  <span class="ruby-identifier">breakpoints</span> = [<span class="ruby-value">0</span>]
+  <span class="ruby-identifier">relations</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">_</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">relations</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">user_id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">relations</span>[<span class="ruby-identifier">index</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">user_id</span> <span class="ruby-keyword">or</span>
+          <span class="ruby-identifier">relations</span>[<span class="ruby-identifier">index</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">created_at</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">relations</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">created_at</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">hour</span>
+
+        <span class="ruby-identifier">breakpoints</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">index</span>
+
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">breakpoints</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">relations</span>.<span class="ruby-identifier">count</span>
+
+  <span class="ruby-identifier">models</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+
+  (<span class="ruby-value">1</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">breakpoints</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">models</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">relations</span>[<span class="ruby-identifier">breakpoints</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]<span class="ruby-operator">..</span>(<span class="ruby-identifier">breakpoints</span>[<span class="ruby-identifier">i</span>]<span class="ruby-operator">-</span><span class="ruby-value">1</span>)]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">models</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">model</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">process_model</span> <span class="ruby-identifier">model</span>
+  <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-get_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_list</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_list-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/activity_recommender.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_list</span>
+
+  <span class="ruby-identifier">relations</span> = <span class="ruby-identifier">get_model</span>
+
+  <span class="ruby-identifier">list</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+
+  <span class="ruby-identifier">product</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nontest_learning_objects</span>.<span class="ruby-identifier">product</span>(<span class="ruby-identifier">relations</span>)
+  <span class="ruby-identifier">product</span>.<span class="ruby-identifier">map!</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;(#{p[0].id}, #{p[1].learning_object_id}, \&#39;#{p[1].type}\&#39;)&quot;</span> <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">product</span> = <span class="ruby-identifier">product</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;,&#39;</span>)
+
+
+
+  <span class="ruby-ivar">@activity</span> = <span class="ruby-constant">ActivityRecommenderRecord</span>.<span class="ruby-identifier">where</span>(
+      <span class="ruby-node">&quot;(learning_object_id, relation_learning_object_id, relation_type) IN (#{product})&quot;</span>
+  )
+
+  <span class="ruby-comment"># Pre kazdu otazku z tyzdna vyrata priemernu pravdepodobnost vzhladom na otazky z modelu aktivity</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nontest_learning_objects</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lo</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">list</span>[<span class="ruby-identifier">lo</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">relations</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">list</span>[<span class="ruby-identifier">lo</span>.<span class="ruby-identifier">id</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">get_probability</span>(<span class="ruby-identifier">lo</span>, <span class="ruby-identifier">r</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">list</span>[<span class="ruby-identifier">lo</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">list</span>[<span class="ruby-identifier">lo</span>.<span class="ruby-identifier">id</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">relations</span>.<span class="ruby-identifier">count</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">relations</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">normalize</span> <span class="ruby-identifier">list</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_model" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_model</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_model-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/activity_recommender.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_model</span>
+  <span class="ruby-identifier">recent_activity</span> = <span class="ruby-constant">UserToLoRelation</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;user_id = (?) AND created_at &gt; (?)&#39;</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">user_id</span>, <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">day</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:created_at</span>).<span class="ruby-identifier">to_a</span>
+
+  <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">recent_activity</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">recent_activity</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">created_at</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">hour</span>
+
+  <span class="ruby-comment"># Zoberie poslednu aktivitu pouzivatela z dnesneho dna a odstrihne vsetky relacie, ktore od zvysku oddeluje aspon hodinova pauza</span>
+  <span class="ruby-identifier">model</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">model</span> = [<span class="ruby-identifier">recent_activity</span>.<span class="ruby-identifier">pop</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">model</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-keyword">while</span> (<span class="ruby-keyword">not</span> <span class="ruby-identifier">recent_activity</span>.<span class="ruby-identifier">empty?</span>) <span class="ruby-keyword">and</span>
+            <span class="ruby-identifier">model</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">created_at</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">hour</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">recent_activity</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">created_at</span>
+
+  <span class="ruby-identifier">final_model</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">remove_redundant_relations</span> <span class="ruby-identifier">model</span>
+
+  <span class="ruby-identifier">final_model</span>.<span class="ruby-identifier">last</span> <span class="ruby-value">10</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_probability" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_probability</span><span
+            class="method-args">(learning_object, relation)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_probability-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/activity_recommender.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_probability</span> (<span class="ruby-identifier">learning_object</span>, <span class="ruby-identifier">relation</span>)
+  <span class="ruby-identifier">record</span> = <span class="ruby-ivar">@activity</span>.<span class="ruby-identifier">find</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">a</span>.<span class="ruby-identifier">learning_object_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">learning_object</span>.<span class="ruby-identifier">id</span> <span class="ruby-keyword">and</span>
+    <span class="ruby-identifier">a</span>.<span class="ruby-identifier">relation_learning_object_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">learning_object_id</span> <span class="ruby-keyword">and</span>
+    <span class="ruby-identifier">a</span>.<span class="ruby-identifier">relation_type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">type</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">activity_rate</span> = <span class="ruby-identifier">get_success_rate</span> <span class="ruby-identifier">record</span>
+  <span class="ruby-identifier">success_rate</span> = <span class="ruby-identifier">get_success_rate</span> <span class="ruby-identifier">learning_object</span>
+
+  <span class="ruby-identifier">activity_rate</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">success_rate</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_success_rate" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_success_rate</span><span
+            class="method-args">(obj)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Uprednostnuje este neriesene otazky, aby sa nazbierala aktivita</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_success_rate-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/activity_recommender.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_success_rate</span> <span class="ruby-identifier">obj</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-value">1</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">right_answers</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-value">0</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">right_answers</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> (<span class="ruby-identifier">obj</span>.<span class="ruby-identifier">right_answers</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">wrong_answers</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

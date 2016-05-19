@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class TeachingsController - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-admit_student_answer">#admit_student_answer</a>
+    
+    <li ><a href="#method-i-extract_names">#extract_names</a>
+    
+    <li ><a href="#method-i-list_answers">#list_answers</a>
+    
+    <li ><a href="#method-i-list_questions">#list_questions</a>
+    
+    <li ><a href="#method-i-process_legend">#process_legend</a>
+    
+    <li ><a href="#method-i-process_multi_choice_answers">#process_multi_choice_answers</a>
+    
+    <li ><a href="#method-i-process_open_answers">#process_open_answers</a>
+    
+    <li ><a href="#method-i-process_single_choice_answers">#process_single_choice_answers</a>
+    
+    <li ><a href="#method-i-show">#show</a>
+    
+    <li ><a href="#method-i-statistics">#statistics</a>
+    
+    <li ><a href="#method-i-submit_regexp">#submit_regexp</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-TeachingsController">
+  <h1 id="class-TeachingsController" class="class">
+    class TeachingsController
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-admit_student_answer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">admit_student_answer</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Defines action to admit points to student answer post
+&#39;teaching/:id/admit_answer&#39;</p>
+
+<pre>&lt;tt&gt;params[:id]&lt;/tt&gt; =&gt; id of specified question
+&lt;tt&gt;params[:student_answer_id]&lt;/tt&gt; =&gt; id of student answer
+&lt;tt&gt;params[:student_answer_points]&lt;//tt&gt; =&gt; points to give</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="admit_student_answer-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">admit_student_answer</span>
+  <span class="ruby-ivar">@question</span>= <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">rel</span>=<span class="ruby-ivar">@question</span>.<span class="ruby-identifier">user_to_lo_relations</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:student_answer_id</span>])
+  <span class="ruby-identifier">rel</span>.<span class="ruby-identifier">points</span>= <span class="ruby-identifier">params</span>[<span class="ruby-value">:student_answer_points</span>]
+  <span class="ruby-identifier">rel</span>.<span class="ruby-identifier">save!</span>
+
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-extract_names" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">extract_names</span><span
+            class="method-args">(legend)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="extract_names-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">extract_names</span>(<span class="ruby-identifier">legend</span>)
+  <span class="ruby-identifier">names</span> = []
+  <span class="ruby-identifier">legend</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">names</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">element</span>[<span class="ruby-value">1</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">names</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-list_answers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">list_answers</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Action for list of all answers for specified question get
+&#39;teaching/:id/answers&#39;</p>
+
+<pre>&lt;tt&gt;params[:id]&lt;/tt&gt; =&gt; id of specified question</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="list_answers-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">list_answers</span>
+  <span class="ruby-ivar">@setup</span>= <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">take</span>
+  <span class="ruby-ivar">@question</span>= <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">administrator?</span>
+    <span class="ruby-ivar">@relations</span>= <span class="ruby-ivar">@question</span>.<span class="ruby-identifier">user_to_lo_relations</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-string">&#39;JOIN users u ON user_id= u.id&#39;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;type ASC,exercise_id DESC,u.last_name ASC, u.first_name ASC&#39;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@relations</span>= <span class="ruby-ivar">@question</span>.<span class="ruby-identifier">user_to_lo_relations</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-string">&#39;JOIN users u ON user_id= u.id&#39;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;exercise_id IN (?)&quot;</span>, <span class="ruby-constant">Exercise</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;user_id = (?)&quot;</span>, <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">select</span>(<span class="ruby-value">:id</span>)).<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;type ASC,exercise_id ASC,u.last_name ASC,u.first_name ASC&#39;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@next_question</span>= <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;is_test_question= true AND (id &gt; (?))&#39;</span>,<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">order</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-value">:asc</span>).<span class="ruby-identifier">first</span>
+  <span class="ruby-ivar">@previous_question</span>= <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;is_test_question= true AND (id &lt; (?))&#39;</span>,<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">order</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-value">:asc</span>).<span class="ruby-identifier">last</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-list_questions" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">list_questions</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Defines action for list of questions get &#39;teaching/questions&#39;</p>
+          
+          
+
+          
+          <div class="method-source-code" id="list_questions-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">list_questions</span>
+  <span class="ruby-ivar">@setup</span>= <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">take</span>
+  <span class="ruby-ivar">@questions</span>= <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;is_test_question= true&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-value">:asc</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-process_legend" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_legend</span><span
+            class="method-args">(question, answers)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_legend-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_legend</span>(<span class="ruby-identifier">question</span>, <span class="ruby-identifier">answers</span>)
+  <span class="ruby-identifier">legend</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">answers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">answer</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">legend</span>[<span class="ruby-identifier">answer</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">answer</span>[<span class="ruby-string">&#39;answer_text&#39;</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">legend</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-process_multi_choice_answers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_multi_choice_answers</span><span
+            class="method-args">(question, legend)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_multi_choice_answers-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_multi_choice_answers</span>(<span class="ruby-identifier">question</span>, <span class="ruby-identifier">legend</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">legend</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result</span>[<span class="ruby-identifier">key</span>[<span class="ruby-value">0</span>]] =  <span class="ruby-value">0</span> ;
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">answers</span> = <span class="ruby-constant">UserToLoRelation</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">learning_object_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">question</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">exercise_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">answers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">answer</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">choice</span> = <span class="ruby-constant">JSON</span>(<span class="ruby-identifier">answer</span>.<span class="ruby-identifier">interaction</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39;=&gt;&#39;</span>, <span class="ruby-string">&#39;:&#39;</span>));
+    <span class="ruby-identifier">choice</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">result</span>[<span class="ruby-identifier">i</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>] <span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">values</span> = []
+  <span class="ruby-identifier">result</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span>  <span class="ruby-identifier">element</span>[<span class="ruby-value">1</span>] ;
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">values</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-process_open_answers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_open_answers</span><span
+            class="method-args">(question)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_open_answers-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 162</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_open_answers</span>(<span class="ruby-identifier">question</span>)
+  <span class="ruby-identifier">result</span> = []
+  <span class="ruby-identifier">result</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">question</span>.<span class="ruby-identifier">question_text</span>
+  <span class="ruby-identifier">result</span>[<span class="ruby-value">1</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+
+  <span class="ruby-identifier">answers</span> = <span class="ruby-constant">UserToLoRelation</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">learning_object_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">question</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">exercise_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">answers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">answer</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">choice</span> = <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">transliterate</span>(<span class="ruby-identifier">answer</span>.<span class="ruby-identifier">submitted_text</span>).<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\W/</span>, <span class="ruby-string">&#39; &#39;</span>).<span class="ruby-identifier">strip</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span>[<span class="ruby-value">1</span>][<span class="ruby-identifier">choice</span>].<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">result</span>[<span class="ruby-value">1</span>][<span class="ruby-identifier">choice</span>] = <span class="ruby-value">1</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">result</span>[<span class="ruby-value">1</span>][<span class="ruby-identifier">choice</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">result</span>[<span class="ruby-value">1</span>] = <span class="ruby-identifier">result</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">sort_by</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>}.<span class="ruby-identifier">reverse</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-process_single_choice_answers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">process_single_choice_answers</span><span
+            class="method-args">(question, legend)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="process_single_choice_answers-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">process_single_choice_answers</span>(<span class="ruby-identifier">question</span>, <span class="ruby-identifier">legend</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">legend</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result</span>[<span class="ruby-identifier">key</span>[<span class="ruby-value">0</span>]] =  <span class="ruby-value">0</span> ;
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">answers</span> = <span class="ruby-constant">UserToLoRelation</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">learning_object_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">question</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">exercise_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">answers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">answer</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result</span>[<span class="ruby-identifier">answer</span>.<span class="ruby-identifier">interaction</span>.<span class="ruby-identifier">to_i</span>] <span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">values</span> = []
+  <span class="ruby-identifier">result</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span>  <span class="ruby-identifier">element</span>[<span class="ruby-value">1</span>] ;
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">values</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies action for teachers main page get &#39;teaching&#39;</p>
+          
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@setup</span>= <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">take</span>
+  <span class="ruby-ivar">@actual_week</span>= <span class="ruby-constant">Week</span>.<span class="ruby-identifier">get_actual</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">role</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;administrator&#39;</span>
+    <span class="ruby-ivar">@exercises</span>= <span class="ruby-constant">Exercise</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:week_id</span>, <span class="ruby-value">:start</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@exercises</span>= <span class="ruby-constant">Exercise</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:week_id</span>, <span class="ruby-value">:start</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-statistics" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">statistics</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies action for statistics of a single exercise get
+&#39;exercise/statistics&#39;</p>
+
+<pre>&lt;tt&gt;params[:id]&lt;/tt&gt; =&gt; exercise id</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="statistics-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">statistics</span>
+  <span class="ruby-ivar">@setup</span> = <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">take</span>
+  <span class="ruby-ivar">@chart</span> = []
+  <span class="ruby-ivar">@titles</span> = []
+  <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">submitted_answer</span> = <span class="ruby-constant">UserToLoRelation</span>.<span class="ruby-identifier">select</span>(<span class="ruby-value">:learning_object_id</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;exercise_id = (?)&quot;</span>, <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-value">:learning_object_id</span>)
+  <span class="ruby-identifier">submitted_answer</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">answer</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">questions</span> = <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;id = (?) AND is_test_question = TRUE&quot;</span>, <span class="ruby-identifier">answer</span>.<span class="ruby-identifier">learning_object_id</span>)
+    <span class="ruby-identifier">question</span> = <span class="ruby-identifier">questions</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-ivar">@titles</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">question</span>.<span class="ruby-identifier">question_text</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">question</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;SingleChoiceQuestion&#39;</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">question</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;MultiChoiceQuestion&#39;</span>
+      <span class="ruby-ivar">@chart</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">LazyHighCharts</span><span class="ruby-operator">::</span><span class="ruby-constant">HighChart</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;graph&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">answers</span> = <span class="ruby-constant">Answer</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">learning_object_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">question</span>.<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">legend</span> = <span class="ruby-identifier">process_legend</span>(<span class="ruby-identifier">question</span>, <span class="ruby-identifier">answers</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">question</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;SingleChoiceQuestion&#39;</span>
+          <span class="ruby-identifier">data</span> = <span class="ruby-identifier">process_single_choice_answers</span>(<span class="ruby-identifier">question</span>, <span class="ruby-identifier">legend</span>)
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">data</span> = <span class="ruby-identifier">process_multi_choice_answers</span>(<span class="ruby-identifier">question</span>, <span class="ruby-identifier">legend</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">chart</span>({<span class="ruby-value">:defaultSeriesType=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;bar&quot;</span>})
+        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">colors</span>([<span class="ruby-node">&quot;#D64541&quot;</span>])
+        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">xAxis</span>(<span class="ruby-value">:categories</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">extract_names</span>(<span class="ruby-identifier">legend</span>), <span class="ruby-value">:labels</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:style</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;&quot;</span>}) <span class="ruby-comment"># clear style</span>
+        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">series</span>(<span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Počet odpovedí&quot;</span>, <span class="ruby-value">:yAxis</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-value">:data</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">data</span>)
+        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">yAxis</span> [ {<span class="ruby-value">:min</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-value">:tickInterval=</span><span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, <span class="ruby-value">:title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>},]
+        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">legend</span>(<span class="ruby-value">:enabled</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:align</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;right&#39;</span>, <span class="ruby-value">:verticalAlign</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;top&#39;</span>, <span class="ruby-value">:y</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">75</span>, <span class="ruby-value">:x</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">-50</span>, <span class="ruby-value">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;vertical&#39;</span>,)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">question</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;OpenQuestion&#39;</span>
+      <span class="ruby-ivar">@chart</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">process_open_answers</span>(<span class="ruby-identifier">question</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-submit_regexp" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">submit_regexp</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies action for posting regexp and subsequent evaluation of open
+questions post &#39;teaching/:id/submit_regexp&#39;</p>
+
+<pre>&lt;tt&gt;params[:id]&lt;/tt&gt; =&gt; id of specified question
+&lt;tt&gt;params[:regexp]&lt;/tt&gt; =&gt; string with regular expression</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="submit_regexp-source">
+            <pre><span class="ruby-comment"># File app/controllers/teachings_controller.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">submit_regexp</span>
+  <span class="ruby-ivar">@question</span>= <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+
+  <span class="ruby-identifier">regexp</span>= <span class="ruby-node">/#{params[:regexp]}/</span>
+  <span class="ruby-ivar">@question</span>.<span class="ruby-identifier">user_to_lo_relations</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">relation</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result</span>=<span class="ruby-identifier">regexp</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">relation</span>.<span class="ruby-identifier">submitted_text</span>)
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">result</span>.<span class="ruby-identifier">nil?</span>)
+      <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">type</span>= <span class="ruby-string">&quot;UserFailedLoRelation&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">type</span>= <span class="ruby-string">&quot;UserSolvedLoRelation&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">save!</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

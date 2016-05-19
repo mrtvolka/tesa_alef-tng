@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class RecommenderSystem::TesaSimpleRecommender - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Recommender.html">RecommenderSystem::Recommender</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-setup">::setup</a>
+    
+    <li ><a href="#method-i-access_key">#access_key</a>
+    
+    <li ><a href="#method-i-get_list">#get_list</a>
+    
+    <li ><a href="#method-i-random_value">#random_value</a>
+    
+    <li ><a href="#method-i-random_value_seed">#random_value_seed</a>
+    
+    <li ><a href="#method-i-use_global_concepts">#use_global_concepts</a>
+    
+    <li ><a href="#method-i-use_local_concepts">#use_local_concepts</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-RecommenderSystem::TesaSimpleRecommender">
+  <h1 id="class-RecommenderSystem::TesaSimpleRecommender" class="class">
+    class RecommenderSystem::TesaSimpleRecommender
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-setup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setup</span><span
+            class="method-args">(user_id, week_id, access_key, use_local_concepts, use_global_concept)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Recommender.html#method-c-setup">RecommenderSystem::Recommender.setup</a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="setup-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/tesa_simple_recommender.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">setup</span>(<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">week_id</span>, <span class="ruby-identifier">access_key</span>, <span class="ruby-identifier">use_local_concepts</span>, <span class="ruby-identifier">use_global_concept</span>)
+  <span class="ruby-identifier">@@access_key</span> = <span class="ruby-identifier">access_key</span>
+  <span class="ruby-identifier">@@use_global_concepts</span>= <span class="ruby-identifier">use_global_concept</span>
+  <span class="ruby-identifier">@@use_local_concepts</span>= <span class="ruby-identifier">use_local_concepts</span>
+
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">user_id</span>,<span class="ruby-identifier">week_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-access_key" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">access_key</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="access_key-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/tesa_simple_recommender.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">access_key</span>
+  <span class="ruby-identifier">@@access_key</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_list</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies method for returning generated list of test questions questions
+are selected using 1 of 3 strategies and their combinations questions are
+selected from sets of questions mapped with week&#39;s or term&#39;s
+concepts. on each term specified questions set is generated from which
+students get questions each student gets specified number of these
+questions - using random with <code>user_id</code></p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_list-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/tesa_simple_recommender.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_list</span>
+
+  <span class="ruby-identifier">exercise_questions</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">student_questions</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">list</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+
+  <span class="ruby-comment">#Get all question according to their concepts, and concepts of exercises/weeks</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">use_global_concepts</span>
+    <span class="ruby-identifier">global_questions</span>= <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-identifier">concepts</span><span class="ruby-operator">:</span> <span class="ruby-value">:exercises</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;exercises.code = (?)&quot;</span>,<span class="ruby-identifier">access_key</span>).<span class="ruby-identifier">distinct</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">use_local_concepts</span>
+    <span class="ruby-identifier">local_questions</span>= <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-identifier">concepts</span><span class="ruby-operator">:</span> <span class="ruby-value">:weeks</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;weeks.id= (?)&quot;</span>, <span class="ruby-identifier">@@week_id</span>).<span class="ruby-identifier">distinct</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">use_global_concepts</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">use_local_concepts</span>
+    <span class="ruby-identifier">all_questions</span>= <span class="ruby-identifier">global_questions</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">local_questions</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">use_global_concepts</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">use_local_concepts</span>
+    <span class="ruby-identifier">all_questions</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">test_learning_objects</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">use_global_concepts</span>
+    <span class="ruby-identifier">all_questions</span>= <span class="ruby-identifier">global_questions</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">use_local_concepts</span>
+    <span class="ruby-identifier">all_questions</span>= <span class="ruby-identifier">local_questions</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># adding special questions for all students</span>
+  <span class="ruby-identifier">special_questions</span> = <span class="ruby-identifier">all_questions</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">is_special_question</span><span class="ruby-operator">:</span> <span class="ruby-constant">TRUE</span>)
+  <span class="ruby-identifier">all_questions</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">special_questions</span>
+  <span class="ruby-identifier">special_questions</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">special_question</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">list</span>[<span class="ruby-identifier">special_question</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># set questions counts</span>
+  <span class="ruby-identifier">all_questions_count</span> = <span class="ruby-identifier">all_questions</span>.<span class="ruby-identifier">length</span>
+  <span class="ruby-comment"># TODO setting these parameters for subject, actual for OS</span>
+  <span class="ruby-comment"># exercise_questions_count &gt; student_questions_count</span>
+  <span class="ruby-identifier">exercise_questions_count</span> = <span class="ruby-value">7</span>
+  <span class="ruby-identifier">student_questions_count</span> = <span class="ruby-value">4</span>
+
+  <span class="ruby-comment"># reduce student questions count</span>
+  <span class="ruby-identifier">student_questions_count</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">special_questions</span>.<span class="ruby-identifier">length</span>
+
+  <span class="ruby-comment"># change questions counts to as many as possible</span>
+  <span class="ruby-identifier">exercise_questions_count</span> = <span class="ruby-identifier">all_questions_count</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">exercise_questions_count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">all_questions_count</span>
+  <span class="ruby-identifier">student_questions_count</span> = <span class="ruby-identifier">exercise_questions_count</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">student_questions_count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exercise_questions_count</span>
+
+  <span class="ruby-comment"># select specific number of questions for exercise</span>
+  <span class="ruby-identifier">srand</span>(<span class="ruby-identifier">access_key</span>.<span class="ruby-identifier">to_i</span>)
+  (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">exercise_questions_count</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-comment"># try generate random number</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-comment"># generate random number with exercise test access key seed</span>
+      <span class="ruby-identifier">random_number</span> = <span class="ruby-identifier">random_value</span>(<span class="ruby-identifier">all_questions_count</span>)
+      <span class="ruby-comment"># numbers must be unique!</span>
+    <span class="ruby-keyword">end</span> <span class="ruby-keyword">until</span> <span class="ruby-operator">!</span><span class="ruby-identifier">exercise_questions</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">random_number</span>
+    <span class="ruby-identifier">exercise_questions</span>[<span class="ruby-identifier">random_number</span>] = <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">srand</span>(<span class="ruby-identifier">user_id</span>.<span class="ruby-identifier">id</span>)
+  (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">student_questions_count</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-comment"># generate random number with current time seed</span>
+      <span class="ruby-identifier">random_number</span> = <span class="ruby-identifier">random_value</span>(<span class="ruby-identifier">exercise_questions_count</span>)
+      <span class="ruby-comment"># numbers must be unique!</span>
+    <span class="ruby-keyword">end</span> <span class="ruby-keyword">until</span> <span class="ruby-operator">!</span><span class="ruby-identifier">student_questions</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">random_number</span>
+    <span class="ruby-identifier">student_questions</span>[<span class="ruby-identifier">random_number</span>] = <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># specify final list of questions</span>
+  (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">student_questions_count</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment"># select final question with id (hash with key=id, value = 1)</span>
+    <span class="ruby-identifier">list</span>[<span class="ruby-identifier">all_questions</span>[<span class="ruby-identifier">exercise_questions</span>.<span class="ruby-identifier">keys</span>[<span class="ruby-identifier">student_questions</span>.<span class="ruby-identifier">keys</span>[<span class="ruby-identifier">i</span>]]].<span class="ruby-identifier">id</span>] = <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">normalize</span> <span class="ruby-identifier">list</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-random_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">random_value</span><span
+            class="method-args">(range)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="random_value-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/tesa_simple_recommender.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">random_value</span>(<span class="ruby-identifier">range</span>)
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">range</span>)
+  <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-random_value_seed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">random_value_seed</span><span
+            class="method-args">(range)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="random_value_seed-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/tesa_simple_recommender.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">random_value_seed</span>(<span class="ruby-identifier">range</span>)
+  <span class="ruby-identifier">srand</span>()
+  <span class="ruby-identifier">value</span> = <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">range</span>)
+  <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-use_global_concepts" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">use_global_concepts</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="use_global_concepts-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/tesa_simple_recommender.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">use_global_concepts</span>
+  <span class="ruby-identifier">@@use_global_concepts</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-use_local_concepts" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">use_local_concepts</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="use_local_concepts-source">
+            <pre><span class="ruby-comment"># File lib/recommender_system/tesa_simple_recommender.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">use_local_concepts</span>
+  <span class="ruby-identifier">@@use_local_concepts</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class LearningObject - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">ActiveRecord::Base
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="Exceptions.html">Exceptions</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-allow_new_correctness-3F">#allow_new_correctness?</a>
+    
+    <li ><a href="#method-i-allow_new_visibility-3F">#allow_new_visibility?</a>
+    
+    <li ><a href="#method-i-construct_righ_hash">#construct_righ_hash</a>
+    
+    <li ><a href="#method-i-link_concept">#link_concept</a>
+    
+    <li ><a href="#method-i-next">#next</a>
+    
+    <li ><a href="#method-i-next_by_hybrid">#next_by_hybrid</a>
+    
+    <li ><a href="#method-i-previous">#previous</a>
+    
+    <li ><a href="#method-i-seen_by_user">#seen_by_user</a>
+    
+    <li ><a href="#method-i-successfulness">#successfulness</a>
+    
+    <li ><a href="#method-i-url_name">#url_name</a>
+    
+    <li ><a href="#method-i-validate_answers-21">#validate_answers!</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-LearningObject">
+  <h1 id="class-LearningObject" class="class">
+    class LearningObject
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DIFFICULTY">DIFFICULTY
+        
+        <dd>
+        
+      
+        <dt id="TYPE">TYPE
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-allow_new_correctness-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">allow_new_correctness?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Checks if new answer can be tagged as correct</p>
+          
+          
+
+          
+          <div class="method-source-code" id="allow_new_correctness-3F-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">allow_new_correctness?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;SingleChoiceQuestion&quot;</span>
+    <span class="ruby-identifier">answers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">answer</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">answer</span>.<span class="ruby-identifier">is_correct</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-allow_new_visibility-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">allow_new_visibility?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Checks if new answer can be tagged as visible</p>
+          
+          
+
+          
+          <div class="method-source-code" id="allow_new_visibility-3F-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">allow_new_visibility?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;EvaluatorQuestion&quot;</span>
+    <span class="ruby-identifier">answers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">answer</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-comment">#if answer.visible</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-construct_righ_hash" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">construct_righ_hash</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="construct_righ_hash-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">construct_righ_hash</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-link_concept" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">link_concept</span><span
+            class="method-args">(concept)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="link_concept-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">link_concept</span>(<span class="ruby-identifier">concept</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">concepts</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">concept</span> <span class="ruby-keyword">unless</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">concepts</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">concept</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-next" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">next</span><span
+            class="method-args">(week_number)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="next-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">next</span>(<span class="ruby-identifier">week_number</span>)
+  <span class="ruby-constant">Week</span>.<span class="ruby-identifier">find_by_number</span>(<span class="ruby-identifier">week_number</span>).<span class="ruby-identifier">learning_objects</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;learning_objects.id &gt; ?&#39;</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">order</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-value">:asc</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-next_by_hybrid" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">next_by_hybrid</span><span
+            class="method-args">(week_number,user_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Gets next week according to HybridRecommender</p>
+          
+          
+
+          
+          <div class="method-source-code" id="next_by_hybrid-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">next_by_hybrid</span>(<span class="ruby-identifier">week_number</span>,<span class="ruby-identifier">user_id</span>)
+  <span class="ruby-identifier">setup</span> = <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">take</span>
+  <span class="ruby-identifier">week</span> = <span class="ruby-identifier">setup</span>.<span class="ruby-identifier">weeks</span>.<span class="ruby-identifier">find_by_number</span>(<span class="ruby-identifier">week_number</span>)
+
+  <span class="ruby-identifier">learning_objects</span> = <span class="ruby-identifier">week</span>.<span class="ruby-identifier">learning_objects</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">distinct</span>
+  <span class="ruby-constant">RecommenderSystem</span><span class="ruby-operator">::</span><span class="ruby-constant">Recommender</span>.<span class="ruby-identifier">setup</span>(<span class="ruby-identifier">user_id</span>,<span class="ruby-identifier">week</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-identifier">recommendations</span> = <span class="ruby-constant">RecommenderSystem</span><span class="ruby-operator">::</span><span class="ruby-constant">HybridRecommender</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">get_list</span>
+
+  <span class="ruby-identifier">recommendations</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-identifier">index</span>
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">recommendations</span>.<span class="ruby-identifier">count</span><span class="ruby-operator">-</span><span class="ruby-value">1</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">index</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">key</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>)
+       <span class="ruby-keyword">return</span>  <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">recommendations</span>[<span class="ruby-identifier">index</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>][<span class="ruby-value">0</span>])
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-previous" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">previous</span><span
+            class="method-args">(week_number)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="previous-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">previous</span>(<span class="ruby-identifier">week_number</span>)
+  <span class="ruby-constant">Week</span>.<span class="ruby-identifier">find_by_number</span>(<span class="ruby-identifier">week_number</span>).<span class="ruby-identifier">learning_objects</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;learning_objects.id &lt; ?&#39;</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">order</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-value">:desc</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-seen_by_user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">seen_by_user</span><span
+            class="method-args">(user_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="seen_by_user-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">seen_by_user</span>(<span class="ruby-identifier">user_id</span>)
+  <span class="ruby-constant">UserVisitedLoRelation</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">learning_object_id</span><span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">setup_id</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-successfulness" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">successfulness</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns average success rate for question</p>
+          
+          
+
+          
+          <div class="method-source-code" id="successfulness-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">successfulness</span>
+
+  <span class="ruby-identifier">stats</span> = <span class="ruby-constant">UserToLoRelation</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">learning_object</span><span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">group</span>(<span class="ruby-value">:type</span>).<span class="ruby-identifier">count</span>(<span class="ruby-value">:id</span>)
+  <span class="ruby-identifier">total</span> = <span class="ruby-identifier">stats</span>[<span class="ruby-string">&#39;UserSolvedLoRelation&#39;</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">stats</span>[<span class="ruby-string">&#39;UserFailedLoRelation&#39;</span>].<span class="ruby-identifier">to_i</span>
+
+  <span class="ruby-identifier">rate</span> = <span class="ruby-identifier">total</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> ((<span class="ruby-identifier">stats</span>[<span class="ruby-string">&#39;UserSolvedLoRelation&#39;</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">total</span>.<span class="ruby-identifier">to_f</span>)<span class="ruby-operator">*</span><span class="ruby-value">100</span>).<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0.0</span>
+  { <span class="ruby-identifier">solved</span><span class="ruby-operator">:</span> <span class="ruby-identifier">stats</span>[<span class="ruby-string">&#39;UserSolvedLoRelation&#39;</span>], <span class="ruby-identifier">failed</span><span class="ruby-operator">:</span> <span class="ruby-identifier">stats</span>[<span class="ruby-string">&#39;UserFailedLoRelation&#39;</span>], <span class="ruby-identifier">total</span><span class="ruby-operator">:</span> <span class="ruby-identifier">total</span>, <span class="ruby-identifier">rate</span><span class="ruby-operator">:</span> <span class="ruby-identifier">rate</span> }
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-url_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">url_name</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="url_name-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">url_name</span>
+  <span class="ruby-node">&quot;#{id}-#{lo_id.parameterize}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validate_answers-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validate_answers!</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Validates answers For single choice question it checks if there is only one
+correct For evaluator question it checks if only one answer is visible</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validate_answers-21-source">
+            <pre><span class="ruby-comment"># File app/models/learning_object.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">validate_answers!</span>
+
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;SingleChoiceQuestion&quot;</span>
+
+      <span class="ruby-identifier">correct_answers</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">answers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">answer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">correct_answers</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">answer</span>.<span class="ruby-identifier">is_correct</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">AnswersCorrectnessError</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">correct_answers</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;EvaluatorQuestion&quot;</span>
+
+      <span class="ruby-identifier">visible_answers</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">answers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">answer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">visible_answers</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">answer</span>.<span class="ruby-identifier">visible</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">AnswersVisibilityError</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">visible_answers</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">else</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

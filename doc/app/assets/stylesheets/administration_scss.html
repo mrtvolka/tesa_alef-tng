@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>administration.scss - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/jquery.js"></script>
+<script src="../../../js/darkfish.js"></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../#_travis_yml#.html">#.travis.yml#</a>
+  
+    <li><a href="../../../#travis_exercises_csv#.html">#travis_exercises.csv#</a>
+  
+    <li><a href="../../../Capfile.html">Capfile</a>
+  
+    <li><a href="../../../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../../../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../../../README_md.html">README</a>
+  
+    <li><a href="../../../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../app/assets/images/logo_svg.html">logo.svg</a>
+  
+    <li><a href="../../../app/assets/javascripts/TestSliders_js.html">TestSliders.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/administration_js.html">administration.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/alert_js.html">alert.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/bootstrap-filestyle_js.html">bootstrap-filestyle.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/bootstrap_js.html">bootstrap.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/contact_js.html">contact.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/exercises_js.html">exercises.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/lib_js.html">lib.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/login_js.html">login.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/main_js.html">main.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/navigation_js.html">navigation.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/progressbar_js.html">progressbar.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/question_js.html">question.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/question_test_js.html">question_test.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/refresh_handler_js.html">refresh_handler.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/scaffold_js_coffee.html">scaffold.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/slider_js.html">slider.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/teachings_js.html">teachings.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/toggle_js.html">toggle.js</a>
+  
+    <li><a href="../../../app/assets/stylesheets/administration_scss.html">administration.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/administration/questions_scss.html">questions.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/alerts_scss.html">alerts.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/application_scss.html">application.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/card_scss.html">card.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/exercises_scss.html">exercises.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/forms_scss.html">forms.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/layout_scss.html">layout.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/login_scss.html">login.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/navigation_scss.html">navigation.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/questions/evaluator_scss.html">evaluator.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/questions/questions_scss.html">questions.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/questions/questions_answers_scss.html">questions_answers.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/alef-iconset-codes_scss.html">alef-iconset-codes.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/alef-iconset_scss.html">alef-iconset.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/color_scss.html">color.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/mixins_scss.html">mixins.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/reset_scss.html">reset.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/typography_scss.html">typography.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/variables_scss.html">variables.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setups_scss.html">setups.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/tabs_scss.html">tabs.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/teachings_scss.html">teachings.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/toggle_scss.html">toggle.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/user_element_scss.html">user_element.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/weeks_scss.html">weeks.scss</a>
+  
+    <li><a href="../../../azaschedule_csv.html">azaschedule.csv</a>
+  
+    <li><a href="../../../azausers_csv.html">azausers.csv</a>
+  
+    <li><a href="../../../config_ru.html">config.ru</a>
+  
+    <li><a href="../../../config/database_yml_example.html">database.yml.example</a>
+  
+    <li><a href="../../../config/database_yml~.html">database.yml~</a>
+  
+    <li><a href="../../../exercises_csv.html">exercises.csv</a>
+  
+    <li><a href="../../../exercisesdump1_csv.html">exercisesdump1.csv</a>
+  
+    <li><a href="../../../lib/tasks/allinone_rake.html">allinone.rake</a>
+  
+    <li><a href="../../../lib/tasks/aza_setup_rake.html">aza_setup.rake</a>
+  
+    <li><a href="../../../lib/tasks/csvsimple_rake.html">csvsimple.rake</a>
+  
+    <li><a href="../../../lib/tasks/data_rake.html">data.rake</a>
+  
+    <li><a href="../../../lib/tasks/generate_exercises_rake.html">generate_exercises.rake</a>
+  
+    <li><a href="../../../lib/tasks/groups_rake.html">groups.rake</a>
+  
+    <li><a href="../../../lib/tasks/rec_rake.html">rec.rake</a>
+  
+    <li><a href="../../../lib/tasks/testdata_rake.html">testdata.rake</a>
+  
+    <li><a href="../../../lib/tasks/testquestions_rake.html">testquestions.rake</a>
+  
+    <li><a href="../../../log/TEST_log.html">TEST.log</a>
+  
+    <li><a href="../../../log/development_log.html">development.log</a>
+  
+    <li><a href="../../../log/newrelic_agent_log.html">newrelic_agent.log</a>
+  
+    <li><a href="../../../log/test_log.html">test.log</a>
+  
+    <li><a href="../../../otazkyAZA_csv.html">otazkyAZA.csv</a>
+  
+    <li><a href="../../../otazkyTEST_csv.html">otazkyTEST.csv</a>
+  
+    <li><a href="../../../public/404_html.html">404.html</a>
+  
+    <li><a href="../../../public/422_html.html">422.html</a>
+  
+    <li><a href="../../../public/500_html.html">500.html</a>
+  
+    <li><a href="../../../public/assets/application-1d81428a125e8c2912c4ad739eb488e30fa16f65bb1deb92d042fefc90493283_css.html">application-1d81428a125e8c2912c4ad739eb488e30fa16f65bb1deb92d042fefc90493283.css</a>
+  
+    <li><a href="../../../public/assets/application-84332a16d51b238a621e69a32a1e108cf62a0fb0aeae11f2f5eb77a0ebd462c9_js.html">application-84332a16d51b238a621e69a32a1e108cf62a0fb0aeae11f2f5eb77a0ebd462c9.js</a>
+  
+    <li><a href="../../../public/assets/application-9a3d3105fe2bf7bc8ed89e0002d7cc3098a3c3f7d35a6e81bf6e86db3d6f1caf_js.html">application-9a3d3105fe2bf7bc8ed89e0002d7cc3098a3c3f7d35a6e81bf6e86db3d6f1caf.js</a>
+  
+    <li><a href="../../../public/assets/application-a6f534e4364774d88c03826ecfece9df4629492ec87c9c6cd8b59c2548ba5371_css.html">application-a6f534e4364774d88c03826ecfece9df4629492ec87c9c6cd8b59c2548ba5371.css</a>
+  
+    <li><a href="../../../public/assets/logo-8dda0ab4d3da937f0df6862b10c08e5ceb20418c4586ecac816d75d2141501e6_svg.html">logo-8dda0ab4d3da937f0df6862b10c08e5ceb20418c4586ecac816d75d2141501e6.svg</a>
+  
+    <li><a href="../../../public/favicon_ico.html">favicon.ico</a>
+  
+    <li><a href="../../../public/fonts/alef-iconset_svg.html">alef-iconset.svg</a>
+  
+    <li><a href="../../../public/fonts/config_json.html">config.json</a>
+  
+    <li><a href="../../../public/robots_txt.html">robots</a>
+  
+    <li><a href="../../../schedule_csv.html">schedule.csv</a>
+  
+    <li><a href="../../../travis_exercises_csv.html">travis_exercises.csv</a>
+  
+    <li><a href="../../../travis_question_csv.html">travis_question.csv</a>
+  
+    <li><a href="../../../travis_users_csv.html">travis_users.csv</a>
+  
+    <li><a href="../../../usersdump1_csv.html">usersdump1.csv</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/auto-render_min_js.html">auto-render.min.js</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/detect-zoom_js.html">detect-zoom.js</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/ifvisible_js.html">ifvisible.js</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/jquery_floatThead_min_js.html">jquery.floatThead.min.js</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/katex_min_js.html">katex.min.js</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/time-me_js.html">time-me.js</a>
+  
+    <li><a href="../../../vendor/assets/stylesheets/katex_css.html">katex.css</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page app/assets/stylesheets/administration.scss">
+
+<p>.admin {</p>
+
+<pre>max-width: 960px;
+@include white-dark;
+margin: 2rem auto;
+padding: 1rem;
+border-radius: 4px;
+
+@media screen and (max-width: 480px) {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+h3 {
+  border-bottom: 1px solid $gray-light;
+  font-size: 1.0em;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  color: $gray-darker;
+  padding: 0 1rem 1rem;
+  margin: 0 -1rem;
+}
+
+.question_text_field, .admin-markdown-edit-textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+}
+
+input[type=&quot;submit&quot;] {
+  @include red-white;
+  border: none;
+}
+
+input.simple-text {
+  width: 350px;
+  display: inline-block;
+  margin: 0.5rem 10px 0.5rem 0;
+}
+
+select.form-control {
+  margin: 0;
+  width: 350px;
+}
+
+.form-buttons {
+  margin-top: 5px;
+}
+
+.options-label {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: $gray-darker;
+}
+
+&amp;.wide {
+  max-width: none;
+  box-sizing: border-box;
+}
+
+.edit_question_table {
+  margin-top: 0px;
+  padding-top: 0rem;
+  th {
+    font-weight: normal;
+    padding-right: 1rem;
+    padding-left: 0rem;
+  }
+}</pre>
+
+<p>}</p>
+
+<p>.admin table {</p>
+
+<pre>th {
+  padding: 0.25rem 1rem;
+}
+
+th.th-right {
+  text-align: right;
+}
+
+tr:not(:first-child) {
+  border-top: 1px solid $gray;
+}</pre>
+
+<p>}</p>
+
+<p>.admin-nav {</p>
+
+<pre>width: 100%;
+max-width: 960px;
+@include center-block;</pre>
+
+<p>}</p>
+
+<p>.admin input, .admin select, .admin textarea, .admin-markdown-textarea {</p>
+
+<pre>@include medium-font;
+@include border-radius(0.25rem);
+margin: 1rem 0;
+border: 1px solid $gray;
+padding: 0.5rem 1rem;
+transition: border 0.25s;
+
+&amp;:focus, &amp;:active {
+  border-color: $gray-dark;
+}</pre>
+
+<p>}</p>
+
+<p>.form-group {</p>
+
+<pre>input, select, textarea, .admin-markdown-textarea {
+  margin: 0;
+}</pre>
+
+<p>}</p>
+
+<p>week-concept-table {</p>
+
+<pre>td:not(:first-child) {text-align: center;}
+td:first-child {text-align: right; padding: 0 1rem;}
+td:nth-child(2n) {background-color: $porcelain;}
+input {display: inline-block;}
+tr:not(:first-child) {border-top: 1px solid $gray;}</pre>
+
+<p>}</p>
+
+<p>question-concept-table {</p>
+
+<pre>tr:nth-child(2n) {background-color: $porcelain;}
+
+.question-concept-table-cell {
+  height: 4.2rem;
+  overflow: hidden;
+  padding: 0.5rem 0.5rem;
+
+  &amp;.show {
+    height: auto;
+  }
+}
+
+button:hover {
+  color: $red;
+}
+
+.question-title {
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 0.5rem;
+}</pre>
+
+<p>}</p>
+
+<p>.question-concept-table-answers {</p>
+
+<pre>@include small-font;
+color: $gray;</pre>
+
+<p>}</p>
+
+<p>.admin-nav-button {</p>
+
+<pre>display: block;
+border: 1px solid $white;
+@include border-radius(1rem);
+height: 2.25rem;
+line-height: 2.25rem;
+float: right;
+padding: 0 1.0rem;
+margin: 0.3rem 1rem 0 0;
+
+i.fa {
+  margin-right: 5px;
+}</pre>
+
+<p>}</p>
+
+<p>.admin-link {</p>
+
+<pre>border-width: 0;
+border-bottom: 1px dashed $dark;
+
+&amp;:hover {
+  border-style: solid;
+}</pre>
+
+<p>}</p>
+
+<p>.concept {</p>
+
+<pre>display: inline-block;
+background-color
+: $porcelain;
+color: $dark;
+border: 1px solid $gray;
+padding: 0 0.5rem;
+@include border-radius(3px);
+@include small-font;
+margin-top: 0.25rem;
+
+&amp;:hover {
+  background-color: $white;
+}
+
+.concept-delete {
+  display: inline-block;
+  padding: 0;
+}</pre>
+
+<p>}</p>
+
+<p>.concept-autocomplete {</p>
+
+<pre>display: inline-block;</pre>
+
+<p>}</p>
+
+<p>.concept-add {</p>
+
+<pre>display: inline-block;</pre>
+
+<p>}</p>
+
+<p>.admin {</p>
+
+<pre>button.btn, input.btn {
+  display: inline-block;
+}
+
+button.btn {
+  font-size: 0.875rem;
+}</pre>
+
+<p>}</p>
+
+<p>.answers-table {</p>
+
+<pre>width: 100%;
+
+tr.hidden {
+  opacity: 0.5;
+  transition: opacity 0.5s;
+
+  &amp;:hover {
+    opacity: 1.0;
+  }
+}
+
+.answers-table-id {
+  width: 30px;
+  text-align: center;
+}
+
+.answers-table-tools {
+  width: 100px;
+  text-align: center;
+
+  label, a {
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    border-radius: 50%;
+    display: inline-block;
+
+    &amp;:hover {
+      background-color: $gray-lighter;
+    }
+  }
+
+}
+
+.question-answer {
+  width: 90%;
+}
+
+.question-answer-area, .admin-markdown-textarea {
+  width: 90%;
+  height: 100px;
+}
+
+.admin-markdown-preview {
+  width: 100%;
+
+  .question-answer-area, .admin-markdown-textarea {
+    width: 100%;
+    margin: 0;
+  }
+
+}
+
+input[type=&quot;checkbox&quot;] {
+  padding: 0;
+  display: inline;
+}</pre>
+
+<p>}</p>
+
+<p>.admin-markdown-textarea {</p>
+
+<pre>background-color: #ffffff;</pre>
+
+<p>}</p>
+
+<p>.admin {</p>
+
+<pre>.question-answer-with-original {
+  margin-bottom: 0;
+}</pre>
+
+<p>}</p>
+
+<p>.original-answer, .original-input-text {</p>
+
+<pre>font-size: 0.85em;
+letter-spacing: normal;
+display: none;
+color: $gray-dark;
+padding: 5px 15px;
+
+a {
+  color: $red;
+
+  &amp;:hover {
+    text-decoration: underline;
+  }
+}</pre>
+
+<p>}</p>
+
+<p>.original-answer {</p>
+
+<pre>padding: 0;</pre>
+
+<p>}</p>
+
+<p>answer-feedback-col {</p>
+
+<pre>display: none;</pre>
+
+<p>}</p>
+
+<p>// Nahlad otazky. question-preview {</p>
+
+<pre>padding: 20px;</pre>
+
+<p>}</p>
+
+<p>// Zoznam otazok v editacii otazok. feedback-alert {</p>
+
+<pre>@include red-light-white;
+border-radius: 6px;
+font-size: 1.2em;
+padding: 1.5rem 1rem;
+
+.preicon {
+  width: 40px;
+  text-align: center;
+  display: inline-block;
+}
+
+a:not(.action-btn) {
+  display: block;
+  font-size: 0.8em;
+  margin-left: 40px;
+  color: #ffffff;
+
+  &amp;:hover {
+    text-decoration: underline;
+  }
+}
+
+.action-btn {
+  background-color: $gray-lighter;
+  float: right;
+  padding: 0.5rem 0.75rem;
+  margin-top: 2px;
+  color: $gray-dark;
+  border-radius: 6px;
+  font-size: 0.9em;
+  margin-right: 5px;
+}
+
+&amp;.feedback-lite {
+  .action-btn {
+    margin-top: -7px;
+  }
+}</pre>
+
+<p>}</p>
+
+<p>// Tlacidla na pracu so spatnou vazbou. feedback-refresh-button {</p>
+
+<pre>&amp;.empty {
+  float: right;
+}
+
+&amp;:not(.empty) {
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}</pre>
+
+<p>}</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

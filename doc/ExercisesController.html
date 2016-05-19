@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class ExercisesController - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-answers">#answers</a>
+    
+    <li ><a href="#method-i-options">#options</a>
+    
+    <li ><a href="#method-i-refresh">#refresh</a>
+    
+    <li ><a href="#method-i-results">#results</a>
+    
+    <li ><a href="#method-i-show">#show</a>
+    
+    <li ><a href="#method-i-update">#update</a>
+    
+    <li ><a href="#method-i-update_options">#update_options</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-ExercisesController">
+  <h1 id="class-ExercisesController" class="class">
+    class ExercisesController
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-answers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">answers</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies action for exporting answers to csv get
+&#39;exercises/:id/answers&#39; <code>param[:id]</code> - id of exercise
+responds with csv file if any answers exist</p>
+          
+          
+
+          
+          <div class="method-source-code" id="answers-source">
+            <pre><span class="ruby-comment"># File app/controllers/exercises_controller.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">answers</span>
+  <span class="ruby-ivar">@answers</span> = <span class="ruby-constant">UserToLoRelation</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:exercise_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@answers</span>.<span class="ruby-identifier">any?</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:back</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-string">&#39;global.exercise.no_answers_for_export&#39;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">teacher</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">user_id</span>).<span class="ruby-identifier">login</span>
+    <span class="ruby-identifier">filename</span> = <span class="ruby-node">&quot;Vysledky_pre_#{@exercise.id.to_s}_#{teacher}.csv&quot;</span>
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span>
+        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">csv</span> { <span class="ruby-identifier">send_data</span> <span class="ruby-ivar">@answers</span>.<span class="ruby-identifier">to_csv</span>, <span class="ruby-identifier">filename</span><span class="ruby-operator">:</span> <span class="ruby-identifier">filename</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">options</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies action for options of exercise get &#39;exercise/:id/options&#39;
+used for setting exercise times: test length and cooldown time</p>
+          
+          
+
+          
+          <div class="method-source-code" id="options-source">
+            <pre><span class="ruby-comment"># File app/controllers/exercises_controller.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">options</span>
+  <span class="ruby-ivar">@exercise</span> = <span class="ruby-constant">Exercise</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-refresh" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">refresh</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies action for ajax call rereshing counter and test timer get
+&#39;exercises/event/refresh&#39; called from view&#39;s js</p>
+          
+          
+
+          
+          <div class="method-source-code" id="refresh-source">
+            <pre><span class="ruby-comment"># File app/controllers/exercises_controller.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">refresh</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>].<span class="ruby-identifier">blank?</span>
+    <span class="ruby-ivar">@counter</span> = <span class="ruby-constant">UserToLoRelation</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">exercise_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-value">:user_id</span>).<span class="ruby-identifier">count</span>.<span class="ruby-identifier">count</span>
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-results" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">results</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies action for exercise results get  &#39;exercise/results&#39; shows
+results for exercise with id from <code>params[:id]</code></p>
+          
+          
+
+          
+          <div class="method-source-code" id="results-source">
+            <pre><span class="ruby-comment"># File app/controllers/exercises_controller.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">results</span>
+  <span class="ruby-ivar">@setup</span>= <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">take</span>
+  <span class="ruby-ivar">@exercise</span> = <span class="ruby-constant">Exercise</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies action for exercise show page get &#39;exercises/show&#39; shows
+exercise with id from <a href=":id">params</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/exercises_controller.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-identifier">gon</span>.<span class="ruby-identifier">exercise_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+  <span class="ruby-ivar">@setup</span>= <span class="ruby-constant">Setup</span>.<span class="ruby-identifier">take</span>
+  <span class="ruby-ivar">@exercise</span> = <span class="ruby-constant">Exercise</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies action for exercise update get &#39;exercises/edit&#39; called
+from different actions in exercise show view <code>params[:stats]</code> -
+if defined redirects to statistic page &lt;<a
+href=":results">tt>params</a>&lt;tt&gt; - if defined redirects to exercise
+results page when any params posted in request - change state of exercise
+if test not yet started: start test if test started: stop test</p>
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/exercises_controller.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:stats</span>])
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">statistics_path</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:results</span>])
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">results_path</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:answers</span>])
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">answers_path</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">format</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;csv&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">real_start</span>)   <span class="ruby-comment"># start test first time</span>
+      <span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">real_start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">current</span>
+      <span class="ruby-identifier">create_qr_code</span>
+    <span class="ruby-keyword">elsif</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">real_end</span>) <span class="ruby-comment"># end test</span>
+      <span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">real_end</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">current</span>
+      <span class="ruby-constant">ScoringSystem</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-constant">Setup</span>.<span class="ruby-identifier">take</span>.<span class="ruby-identifier">scoring_type</span>).<span class="ruby-identifier">doScoringForExercise</span>(<span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">id</span>)
+      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm</span>(<span class="ruby-string">&#39;./public/assets/qrcode&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;.png&#39;</span>)
+    <span class="ruby-keyword">else</span> <span class="ruby-comment"># start test again</span>
+      <span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">real_end</span> = <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">create_qr_code</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">save</span>
+        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@exercise</span>}
+        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update_options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_options</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies action for saving updated options for exercise post
+&#39;exercice/:id/update_options&#39; updates options from params
+<code>params[:exercise][:options]</code> - params</p>
+          
+          
+
+          
+          <div class="method-source-code" id="update_options-source">
+            <pre><span class="ruby-comment"># File app/controllers/exercises_controller.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_options</span>
+  <span class="ruby-ivar">@exercise</span> = <span class="ruby-constant">Exercise</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">options</span> = <span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">options</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">options</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:exercise</span>][<span class="ruby-value">:options</span>][<span class="ruby-string">&#39;cooldown_time&#39;</span>].<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;cooldown_time&#39;</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exercise</span>][<span class="ruby-value">:options</span>][<span class="ruby-string">&#39;cooldown_time&#39;</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:exercise</span>][<span class="ruby-value">:options</span>][<span class="ruby-string">&#39;test_length&#39;</span>].<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-string">&#39;test_length&#39;</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:exercise</span>][<span class="ruby-value">:options</span>][<span class="ruby-string">&#39;test_length&#39;</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@exercise</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">exercise_options_path</span>(<span class="ruby-ivar">@exercise</span>), <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&#39;.notice.updated&#39;</span>)}
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

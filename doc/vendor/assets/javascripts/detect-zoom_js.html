@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>detect-zoom.js - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/jquery.js"></script>
+<script src="../../../js/darkfish.js"></script>
+
+<link href="../../../css/fonts.css" rel="stylesheet">
+<link href="../../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../#_travis_yml#.html">#.travis.yml#</a>
+  
+    <li><a href="../../../#travis_exercises_csv#.html">#travis_exercises.csv#</a>
+  
+    <li><a href="../../../Capfile.html">Capfile</a>
+  
+    <li><a href="../../../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../../../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../../../README_md.html">README</a>
+  
+    <li><a href="../../../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../app/assets/images/logo_svg.html">logo.svg</a>
+  
+    <li><a href="../../../app/assets/javascripts/TestSliders_js.html">TestSliders.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/administration_js.html">administration.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/alert_js.html">alert.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/bootstrap-filestyle_js.html">bootstrap-filestyle.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/bootstrap_js.html">bootstrap.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/contact_js.html">contact.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/exercises_js.html">exercises.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/lib_js.html">lib.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/login_js.html">login.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/main_js.html">main.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/navigation_js.html">navigation.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/progressbar_js.html">progressbar.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/question_js.html">question.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/question_test_js.html">question_test.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/refresh_handler_js.html">refresh_handler.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/scaffold_js_coffee.html">scaffold.js.coffee</a>
+  
+    <li><a href="../../../app/assets/javascripts/slider_js.html">slider.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/teachings_js.html">teachings.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/toggle_js.html">toggle.js</a>
+  
+    <li><a href="../../../app/assets/stylesheets/administration_scss.html">administration.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/administration/questions_scss.html">questions.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/alerts_scss.html">alerts.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/application_scss.html">application.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/card_scss.html">card.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/exercises_scss.html">exercises.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/forms_scss.html">forms.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/layout_scss.html">layout.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/login_scss.html">login.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/navigation_scss.html">navigation.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/questions/evaluator_scss.html">evaluator.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/questions/questions_scss.html">questions.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/questions/questions_answers_scss.html">questions_answers.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/alef-iconset-codes_scss.html">alef-iconset-codes.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/alef-iconset_scss.html">alef-iconset.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/color_scss.html">color.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/mixins_scss.html">mixins.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/reset_scss.html">reset.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/typography_scss.html">typography.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setup/variables_scss.html">variables.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/setups_scss.html">setups.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/tabs_scss.html">tabs.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/teachings_scss.html">teachings.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/toggle_scss.html">toggle.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/user_element_scss.html">user_element.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/weeks_scss.html">weeks.scss</a>
+  
+    <li><a href="../../../azaschedule_csv.html">azaschedule.csv</a>
+  
+    <li><a href="../../../azausers_csv.html">azausers.csv</a>
+  
+    <li><a href="../../../config_ru.html">config.ru</a>
+  
+    <li><a href="../../../config/database_yml_example.html">database.yml.example</a>
+  
+    <li><a href="../../../config/database_yml~.html">database.yml~</a>
+  
+    <li><a href="../../../exercises_csv.html">exercises.csv</a>
+  
+    <li><a href="../../../exercisesdump1_csv.html">exercisesdump1.csv</a>
+  
+    <li><a href="../../../lib/tasks/allinone_rake.html">allinone.rake</a>
+  
+    <li><a href="../../../lib/tasks/aza_setup_rake.html">aza_setup.rake</a>
+  
+    <li><a href="../../../lib/tasks/csvsimple_rake.html">csvsimple.rake</a>
+  
+    <li><a href="../../../lib/tasks/data_rake.html">data.rake</a>
+  
+    <li><a href="../../../lib/tasks/generate_exercises_rake.html">generate_exercises.rake</a>
+  
+    <li><a href="../../../lib/tasks/groups_rake.html">groups.rake</a>
+  
+    <li><a href="../../../lib/tasks/rec_rake.html">rec.rake</a>
+  
+    <li><a href="../../../lib/tasks/testdata_rake.html">testdata.rake</a>
+  
+    <li><a href="../../../lib/tasks/testquestions_rake.html">testquestions.rake</a>
+  
+    <li><a href="../../../log/TEST_log.html">TEST.log</a>
+  
+    <li><a href="../../../log/development_log.html">development.log</a>
+  
+    <li><a href="../../../log/newrelic_agent_log.html">newrelic_agent.log</a>
+  
+    <li><a href="../../../log/test_log.html">test.log</a>
+  
+    <li><a href="../../../otazkyAZA_csv.html">otazkyAZA.csv</a>
+  
+    <li><a href="../../../otazkyTEST_csv.html">otazkyTEST.csv</a>
+  
+    <li><a href="../../../public/404_html.html">404.html</a>
+  
+    <li><a href="../../../public/422_html.html">422.html</a>
+  
+    <li><a href="../../../public/500_html.html">500.html</a>
+  
+    <li><a href="../../../public/assets/application-1d81428a125e8c2912c4ad739eb488e30fa16f65bb1deb92d042fefc90493283_css.html">application-1d81428a125e8c2912c4ad739eb488e30fa16f65bb1deb92d042fefc90493283.css</a>
+  
+    <li><a href="../../../public/assets/application-84332a16d51b238a621e69a32a1e108cf62a0fb0aeae11f2f5eb77a0ebd462c9_js.html">application-84332a16d51b238a621e69a32a1e108cf62a0fb0aeae11f2f5eb77a0ebd462c9.js</a>
+  
+    <li><a href="../../../public/assets/application-9a3d3105fe2bf7bc8ed89e0002d7cc3098a3c3f7d35a6e81bf6e86db3d6f1caf_js.html">application-9a3d3105fe2bf7bc8ed89e0002d7cc3098a3c3f7d35a6e81bf6e86db3d6f1caf.js</a>
+  
+    <li><a href="../../../public/assets/application-a6f534e4364774d88c03826ecfece9df4629492ec87c9c6cd8b59c2548ba5371_css.html">application-a6f534e4364774d88c03826ecfece9df4629492ec87c9c6cd8b59c2548ba5371.css</a>
+  
+    <li><a href="../../../public/assets/logo-8dda0ab4d3da937f0df6862b10c08e5ceb20418c4586ecac816d75d2141501e6_svg.html">logo-8dda0ab4d3da937f0df6862b10c08e5ceb20418c4586ecac816d75d2141501e6.svg</a>
+  
+    <li><a href="../../../public/favicon_ico.html">favicon.ico</a>
+  
+    <li><a href="../../../public/fonts/alef-iconset_svg.html">alef-iconset.svg</a>
+  
+    <li><a href="../../../public/fonts/config_json.html">config.json</a>
+  
+    <li><a href="../../../public/robots_txt.html">robots</a>
+  
+    <li><a href="../../../schedule_csv.html">schedule.csv</a>
+  
+    <li><a href="../../../travis_exercises_csv.html">travis_exercises.csv</a>
+  
+    <li><a href="../../../travis_question_csv.html">travis_question.csv</a>
+  
+    <li><a href="../../../travis_users_csv.html">travis_users.csv</a>
+  
+    <li><a href="../../../usersdump1_csv.html">usersdump1.csv</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/auto-render_min_js.html">auto-render.min.js</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/detect-zoom_js.html">detect-zoom.js</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/ifvisible_js.html">ifvisible.js</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/jquery_floatThead_min_js.html">jquery.floatThead.min.js</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/katex_min_js.html">katex.min.js</a>
+  
+    <li><a href="../../../vendor/assets/javascripts/time-me_js.html">time-me.js</a>
+  
+    <li><a href="../../../vendor/assets/stylesheets/katex_css.html">katex.css</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page vendor/assets/javascripts/detect-zoom.js">
+
+<pre>Detect-zoom
+-----------
+Cross Browser Zoom and Pixel Ratio Detector
+Version 1.0.4 | Apr 1 2013
+dual-licensed under the WTFPL and MIT license
+Maintained by https://github/tombigel
+Original developer https://github.com/yonran</pre>
+
+<p>//AMD and CommonJS initialization copied from <a
+href="https://github.com/zohararad/audio5js">github.com/zohararad/audio5js</a>
+(function (root, ns, factory) {</p>
+
+<pre>&quot;use strict&quot;;
+
+if (typeof (module) !== &#39;undefined&#39; &amp;&amp; module.exports) { // CommonJS
+    module.exports = factory(ns, root);
+} else if (typeof (define) === &#39;function&#39; &amp;&amp; define.amd) { // AMD
+    define(&quot;detect-zoom&quot;, function () {
+        return factory(ns, root);
+    });
+} else {
+    root[ns] = factory(ns, root);
+}</pre>
+
+<p>}(window, &#39;detectZoom&#39;, function () {</p>
+
+<pre>   Use devicePixelRatio if supported by the browser
+   @return {Number}
+   @private
+  /
+var devicePixelRatio = function () {
+    return window.devicePixelRatio || 1;
+};
+
+/**
+   Fallback function to set default values
+   @return {Object}
+   @private
+  /
+var fallback = function () {
+    return {
+        zoom: 1,
+        devicePxPerCssPx: 1
+    };
+};
+/**
+   IE 8 and 9: no trick needed!
+   TODO: Test on IE10 and Windows 8 RT
+   @return {Object}
+   @private
+
+var ie8 = function () {
+    var zoom = Math.round((screen.deviceXDPI / screen.logicalXDPI) * 100) / 100;
+    return {
+        zoom: zoom,
+        devicePxPerCssPx: zoom * devicePixelRatio()
+    };
+};
+
+/**
+   For IE10 we need to change our technique again...
+   thanks https://github.com/stefanvanburen
+   @return {Object}
+   @private
+  /
+var ie10 = function () {
+    var zoom = Math.round((document.documentElement.offsetHeight / window.innerHeight) * 100) / 100;
+    return {
+        zoom: zoom,
+        devicePxPerCssPx: zoom * devicePixelRatio()
+    };
+};
+
+/**
+   For chrome
+
+  /
+var chrome = function()
+{
+    var zoom = Math.round(((window.outerWidth) / window.innerWidth)*100) / 100;
+    return {
+        zoom: zoom,
+        devicePxPerCssPx: zoom * devicePixelRatio()
+    };
+}
+
+/**
+   For safari (same as chrome)
+
+  /
+var safari= function()
+{
+    var zoom = Math.round(((window.outerWidth) / window.innerWidth)*100) / 100;
+    return {
+        zoom: zoom,
+        devicePxPerCssPx: zoom * devicePixelRatio()
+    };
+}
+
+/**
+   Mobile WebKit
+   the trick: window.innerWIdth is in CSS pixels, while
+   screen.width and screen.height are in system pixels.
+   And there are no scrollbars to mess up the measurement.
+   @return {Object}
+   @private
+  /
+var webkitMobile = function () {
+    var deviceWidth = (Math.abs(window.orientation) == 90) ? screen.height : screen.width;
+    var zoom = deviceWidth / window.innerWidth;
+    return {
+        zoom: zoom,
+        devicePxPerCssPx: zoom * devicePixelRatio()
+    };
+};
+
+/**
+   Desktop Webkit
+   the trick: an element&#39;s clientHeight is in CSS pixels, while you can
+   set its line-height in system pixels using font-size and
+   -webkit-text-size-adjust:none.
+   device-pixel-ratio: http://www.webkit.org/blog/55/high-dpi-web-sites/
+
+   Previous trick (used before http://trac.webkit.org/changeset/100847):
+   documentElement.scrollWidth is in CSS pixels, while
+   document.width was in system pixels. Note that this is the
+   layout width of the document, which is slightly different from viewport
+   because document width does not include scrollbars and might be wider
+   due to big elements.
+   @return {Object}
+   @private
+  /
+var webkit = function () {
+    var important = function (str) {
+        return str.replace(/;/g, &quot; !important;&quot;);
+    };
+
+    var div = document.createElement(&#39;div&#39;);
+    div.innerHTML = &quot;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;4&lt;br&gt;5&lt;br&gt;6&lt;br&gt;7&lt;br&gt;8&lt;br&gt;9&lt;br&gt;0&quot;;
+    div.setAttribute(&#39;style&#39;, important(&#39;font: 100px/1em sans-serif; -webkit-text-size-adjust: none; text-size-adjust: none; height: auto; width: 1em; padding: 0; overflow: visible;&#39;));
+
+    // The container exists so that the div will be laid out in its own flow
+    // while not impacting the layout, viewport size, or display of the
+    // webpage as a whole.
+    // Add !important and relevant CSS rule resets
+    // so that other rules cannot affect the results.
+    var container = document.createElement(&#39;div&#39;);
+    container.setAttribute(&#39;style&#39;, important(&#39;width:0; height:0; overflow:hidden; visibility:hidden; position: absolute;&#39;));
+    container.appendChild(div);
+
+    document.body.appendChild(container);
+    var zoom = 1000 / div.clientHeight;
+    zoom = Math.round(zoom * 100) / 100;
+    document.body.removeChild(container);
+
+    return{
+        zoom: zoom,
+        devicePxPerCssPx: zoom * devicePixelRatio()
+    };
+};
+
+/**
+   no real trick; device-pixel-ratio is the ratio of device dpi / css dpi.
+   (Note that this is a different interpretation than Webkit&#39;s device
+   pixel ratio, which is the ratio device dpi / system dpi).
+
+   Also, for Mozilla, there is no difference between the zoom factor and the device ratio.
+
+   @return {Object}
+   @private
+  /
+var firefox4 = function () {
+    var zoom = mediaQueryBinarySearch(&#39;min--moz-device-pixel-ratio&#39;, &#39;&#39;, 0, 10, 20, 0.0001);
+    zoom = Math.round(zoom * 100) / 100;
+    return {
+        zoom: zoom,
+        devicePxPerCssPx: zoom
+    };
+};
+
+/**
+   Firefox 18.x
+   Mozilla added support for devicePixelRatio to Firefox 18,
+   but it is affected by the zoom level, so, like in older
+   Firefox we can&#39;t tell if we are in zoom mode or in a device
+   with a different pixel ratio
+   @return {Object}
+   @private
+  /
+var firefox18 = function () {
+    return {
+        zoom: firefox4().zoom,
+        devicePxPerCssPx: devicePixelRatio()
+    };
+};
+
+/**
+   works starting Opera 11.11
+   the trick: outerWidth is the viewport width including scrollbars in
+   system px, while innerWidth is the viewport width including scrollbars
+   in CSS px
+   @return {Object}
+   @private
+  /
+var opera11 = function () {
+    var zoom = window.top.outerWidth / window.top.innerWidth;
+    zoom = Math.round(zoom * 100) / 100;
+    return {
+        zoom: zoom,
+        devicePxPerCssPx: zoom * devicePixelRatio()
+    };
+};
+
+/**
+   Use a binary search through media queries to find zoom level in Firefox
+   @param property
+   @param unit
+   @param a
+   @param b
+   @param maxIter
+   @param epsilon
+   @return {Number}
+  /
+var mediaQueryBinarySearch = function (property, unit, a, b, maxIter, epsilon) {
+    var matchMedia;
+    var head, style, div;
+    if (window.matchMedia) {
+        matchMedia = window.matchMedia;
+    } else {
+        head = document.getElementsByTagName(&#39;head&#39;)[0];
+        style = document.createElement(&#39;style&#39;);
+        head.appendChild(style);
+
+        div = document.createElement(&#39;div&#39;);
+        div.className = &#39;mediaQueryBinarySearch&#39;;
+        div.style.display = &#39;none&#39;;
+        document.body.appendChild(div);
+
+        matchMedia = function (query) {
+            style.sheet.insertRule(&#39;@media &#39; + query + &#39;{.mediaQueryBinarySearch &#39; + &#39;{text-decoration: underline} }&#39;, 0);
+            var matched = getComputedStyle(div, null).textDecoration == &#39;underline&#39;;
+            style.sheet.deleteRule(0);
+            return {matches: matched};
+        };
+    }
+    var ratio = binarySearch(a, b, maxIter);
+    if (div) {
+        head.removeChild(style);
+        document.body.removeChild(div);
+    }
+    return ratio;
+
+    function binarySearch(a, b, maxIter) {
+        var mid = (a + b) / 2;
+        if (maxIter &lt;= 0 || b - a &lt; epsilon) {
+            return mid;
+        }
+        var query = &quot;(&quot; + property + &quot;:&quot; + mid + unit + &quot;)&quot;;
+        if (matchMedia(query).matches) {
+            return binarySearch(mid, b, maxIter - 1);
+        } else {
+            return binarySearch(a, mid, maxIter - 1);
+        }
+    }
+};
+
+/**
+   Generate detection function
+   @private
+  /
+var detectFunction = (function () {
+    var func = fallback;
+    //IE8+
+    if (!isNaN(screen.logicalXDPI) &amp;&amp; !isNaN(screen.systemXDPI)) {
+        func = ie8;
+    }
+    // IE10+ / Touch
+    else if (window.navigator.msMaxTouchPoints) {
+        func = ie10;
+    }
+    //chrome
+    else if(!!window.chrome &amp;&amp; !(!!window.opera || navigator.userAgent.indexOf(&#39; Opera&#39;) &gt;= 0)){
+        func = chrome;
+    }
+    //safari
+    else if(Object.prototype.toString.call(window.HTMLElement).indexOf(&#39;Constructor&#39;) &gt; 0){
+        func = safari;
+    }
+    //Mobile Webkit
+    else if (&#39;orientation&#39; in window &amp;&amp; &#39;webkitRequestAnimationFrame&#39; in window) {
+        func = webkitMobile;
+    }
+    //WebKit
+    else if (&#39;webkitRequestAnimationFrame&#39; in window) {
+        func = webkit;
+    }
+    //Opera
+    else if (navigator.userAgent.indexOf(&#39;Opera&#39;) &gt;= 0) {
+        func = opera11;
+    }
+    //Last one is Firefox
+    //FF 18.x
+    else if (window.devicePixelRatio) {
+        func = firefox18;
+    }
+    //FF 4.0 - 17.x
+    else if (firefox4().zoom &gt; 0.001) {
+        func = firefox4;
+    }
+
+    return func;
+}());
+
+return ({
+
+    /**
+       Ratios.zoom shorthand
+       @return {Number} Zoom level
+      /
+    zoom: function () {
+        return detectFunction().zoom;
+    },
+
+    /**
+       Ratios.devicePxPerCssPx shorthand
+       @return {Number} devicePxPerCssPx level
+      /
+    device: function () {
+        return detectFunction().devicePxPerCssPx;
+    }
+});</pre>
+
+<p>}));</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

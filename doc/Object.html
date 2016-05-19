@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Object - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">BasicObject
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="Exceptions.html">Exceptions</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Object">
+  <h1 id="class-Object" class="class">
+    class Object
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="APP_PATH">APP_PATH
+        
+        <dd>
+        
+      
+        <dt id="APP_ROOT">APP_ROOT
+        
+        <dd><p>path to your application root.</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(params = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>overridden method from devise_ldap_authenticatable gem for working with
+multiple different LDAP configs in ldap.yml</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File config/initializers/custom_ldap.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">ldap_configs</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">ERB</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-operator">::</span><span class="ruby-constant">Devise</span>.<span class="ruby-identifier">ldap_config</span> <span class="ruby-operator">||</span> <span class="ruby-node">&quot;#{Rails.root}/config/ldap.yml&quot;</span>)).<span class="ruby-identifier">result</span>)[<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">env</span>]
+  <span class="ruby-identifier">ldap_configs</span> = <span class="ruby-identifier">ldap_configs</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> [<span class="ruby-identifier">ldap_configs</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">ldap_configs</span>
+  <span class="ruby-identifier">ldap_options</span> = <span class="ruby-identifier">params</span>
+  <span class="ruby-identifier">ldap_configs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ldap_config</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">ldap_options</span> = <span class="ruby-identifier">params</span>
+    <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;ssl&quot;</span>] = <span class="ruby-value">:simple_tls</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;ssl&quot;</span>] <span class="ruby-operator">===</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">ldap_options</span>[<span class="ruby-value">:encryption</span>] = <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;ssl&quot;</span>].<span class="ruby-identifier">to_sym</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;ssl&quot;</span>]
+    <span class="ruby-ivar">@ldap</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">LDAP</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">ldap_options</span>)
+    <span class="ruby-ivar">@ldap</span>.<span class="ruby-identifier">host</span> = <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;host&quot;</span>]
+    <span class="ruby-ivar">@ldap</span>.<span class="ruby-identifier">port</span> = <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;port&quot;</span>]
+    <span class="ruby-ivar">@ldap</span>.<span class="ruby-identifier">base</span> = <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;base&quot;</span>]
+    <span class="ruby-ivar">@attribute</span> = <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;attribute&quot;</span>]
+    <span class="ruby-ivar">@allow_unauthenticated_bind</span> = <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;allow_unauthenticated_bind&quot;</span>]
+
+    <span class="ruby-ivar">@ldap_auth_username_builder</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:ldap_auth_username_builder</span>]
+
+    <span class="ruby-ivar">@group_base</span> = <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;group_base&quot;</span>]
+    <span class="ruby-ivar">@check_group_membership</span> = <span class="ruby-identifier">ldap_config</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&quot;check_group_membership&quot;</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;check_group_membership&quot;</span>] <span class="ruby-operator">:</span> <span class="ruby-operator">::</span><span class="ruby-constant">Devise</span>.<span class="ruby-identifier">ldap_check_group_membership</span>
+    <span class="ruby-ivar">@required_groups</span> = <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;required_groups&quot;</span>]
+    <span class="ruby-ivar">@required_attributes</span> = <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;require_attribute&quot;</span>]
+
+    <span class="ruby-ivar">@ldap</span>.<span class="ruby-identifier">auth</span> <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;admin_user&quot;</span>], <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;admin_password&quot;</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:admin</span>]
+    <span class="ruby-ivar">@ldap</span>.<span class="ruby-identifier">auth</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:login</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:password</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">ldap_config</span>[<span class="ruby-string">&quot;admin_as_user&quot;</span>]
+
+    <span class="ruby-ivar">@login</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:login</span>]
+    <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:password</span>]
+    <span class="ruby-ivar">@new_password</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:new_password</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ldap</span>.<span class="ruby-identifier">bind</span>
+       <span class="ruby-comment"># puts &quot;Authentification success on &quot; + ldap_config[&quot;host&quot;]</span>
+       <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

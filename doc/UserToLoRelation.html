@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class UserToLoRelation - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">ActiveRecord::Base
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-get_basic_relations">::get_basic_relations</a>
+    
+    <li ><a href="#method-c-get_results">::get_results</a>
+    
+    <li ><a href="#method-c-to_csv">::to_csv</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-UserToLoRelation">
+  <h1 id="class-UserToLoRelation" class="class">
+    class UserToLoRelation
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-get_basic_relations" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_basic_relations</span><span
+            class="method-args">(los, user_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_basic_relations-source">
+            <pre><span class="ruby-comment"># File app/models/user_to_lo_relations/user_to_lo_relation.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_basic_relations</span>(<span class="ruby-identifier">los</span>, <span class="ruby-identifier">user_id</span>)
+  <span class="ruby-keyword">self</span>.
+      <span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;learning_object_id IN (?)&quot;</span>, <span class="ruby-identifier">los</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:id</span>)).
+      <span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;user_id = ?&quot;</span>, <span class="ruby-identifier">user_id</span>).
+      <span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;type = &#39;UserVisitedLoRelation&#39; OR type = &#39;UserSolvedLoRelation&#39;&quot;</span>).
+      <span class="ruby-identifier">group</span>(<span class="ruby-value">:learning_object_id</span>, <span class="ruby-value">:type</span>).<span class="ruby-identifier">count</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-get_results" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_results</span><span
+            class="method-args">(user_id,week_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_results-source">
+            <pre><span class="ruby-comment"># File app/models/user_to_lo_relations/user_to_lo_relation.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_results</span>(<span class="ruby-identifier">user_id</span>,<span class="ruby-identifier">week_id</span>)
+  <span class="ruby-identifier">sql</span> = <span class="ruby-string">&#39;
+    SELECT los.id as result_id,
+    sum(case when rels.type = \UserVisitedLoRelation\ then 1 else 0 end) as visited,
+    sum(case when rels.type = \UserSolvedLoRelation\ then 1 else 0 end) as solved
+    FROM
+    (
+      SELECT learning_objects.*
+      FROM &quot;learning_objects&quot;
+      INNER JOIN &quot;concepts_learning_objects&quot; ON &quot;learning_objects&quot;.&quot;id&quot; = &quot;concepts_learning_objects&quot;.&quot;learning_object_id&quot;
+      INNER JOIN &quot;concepts&quot; ON &quot;concepts_learning_objects&quot;.&quot;concept_id&quot; = &quot;concepts&quot;.&quot;id&quot;
+      INNER JOIN &quot;concepts_weeks&quot; ON &quot;concepts&quot;.&quot;id&quot; = &quot;concepts_weeks&quot;.&quot;concept_id&quot;
+      WHERE &quot;concepts_weeks&quot;.&quot;week_id&quot; = &#39;</span><span class="ruby-operator">+</span><span class="ruby-identifier">week_id</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&#39;
+      GROUP BY learning_objects.id
+    ) AS los
+    LEFT JOIN user_to_lo_relations as rels ON rels.learning_object_id = los.id
+    WHERE user_id = &#39;</span><span class="ruby-operator">+</span><span class="ruby-identifier">user_id</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&#39; AND rels.exercise_id IS NULL
+    GROUP BY los.id
+  &#39;</span>
+  <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>.<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">sql</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-to_csv" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_csv</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_csv-source">
+            <pre><span class="ruby-comment"># File app/models/user_to_lo_relations/user_to_lo_relation.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_csv</span>
+  <span class="ruby-identifier">selected_columns</span> = [<span class="ruby-string">&#39;user_id&#39;</span>,<span class="ruby-string">&#39;learning_object_id&#39;</span>,<span class="ruby-string">&#39;type&#39;</span>,<span class="ruby-string">&#39;interaction&#39;</span>,<span class="ruby-string">&#39;submitted_text&#39;</span>]
+  <span class="ruby-identifier">output_column_names</span> = [<span class="ruby-string">&#39;Meno študenta&#39;</span>,<span class="ruby-string">&#39;Otázka&#39;</span>,<span class="ruby-string">&#39;Výsledok&#39;</span>,<span class="ruby-string">&#39;Označené&#39;</span>,<span class="ruby-string">&#39;Textová odpoveď&#39;</span>]
+  <span class="ruby-constant">CSV</span>.<span class="ruby-identifier">generate</span>(<span class="ruby-value">:col_sep</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;|&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">csv</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">csv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">output_column_names</span>
+    <span class="ruby-identifier">all</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">answer</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">csv_values</span> = []
+      <span class="ruby-comment">#answer.attributes.values_at(*selected_columns).each do |attr_value|</span>
+      <span class="ruby-identifier">answer</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">selected_columns</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">k</span>)}.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr_name</span>, <span class="ruby-identifier">attr_value</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;user_id&#39;</span>
+          <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">attr_value</span>)
+          <span class="ruby-identifier">attr_value</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">aisid</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">first_name</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">last_name</span>
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">attr_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;learning_object_id&#39;</span>
+          <span class="ruby-identifier">question</span> = <span class="ruby-constant">LearningObject</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">attr_value</span>)
+          <span class="ruby-comment"># lo_id + id because of potential duplicity of lo_id values</span>
+          <span class="ruby-identifier">attr_value</span> = <span class="ruby-identifier">question</span>.<span class="ruby-identifier">lo_id</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">question</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">attr_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;type&#39;</span>
+          <span class="ruby-keyword">case</span> <span class="ruby-identifier">attr_value</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;UserVisitedLoRelation&#39;</span>
+              <span class="ruby-identifier">attr_value</span> = <span class="ruby-string">&#39;videné&#39;</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;UserSolvedLoRelation&#39;</span>
+              <span class="ruby-identifier">attr_value</span> = <span class="ruby-string">&#39;správne&#39;</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;UserFailedLoRelation&#39;</span>
+              <span class="ruby-identifier">attr_value</span> = <span class="ruby-string">&#39;nesprávne&#39;</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;UserSubmittedLoRelation&#39;</span>
+              <span class="ruby-identifier">attr_value</span> = <span class="ruby-string">&#39;odoslané&#39;</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;UserCompletedLoRelation&#39;</span>
+              <span class="ruby-identifier">attr_value</span> = <span class="ruby-string">&#39;dokončené&#39;</span>
+            <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;UserDidntKnowLoRelation&#39;</span>
+              <span class="ruby-identifier">attr_value</span> = <span class="ruby-string">&#39;neodpovedané&#39;</span>
+            <span class="ruby-keyword">else</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">attr_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;interaction&#39;</span>
+          <span class="ruby-comment"># TODO: answer numbers</span>
+        <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">csv_values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attr_value</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">csv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">csv_values</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
