@@ -37,7 +37,7 @@ class WeeksController < ApplicationController
                                         ON e.id=u.exercise_id
                                         JOIN users us
                                         ON u.user_id=us.id
-                                        WHERE us.id = ? ORDER BY e.id DESC", current_user.id])
+                                        WHERE us.id = (?) AND u.type != (?) ORDER BY e.id DESC", current_user.id, 'UserVisitedLoRelation'])
   end
 
   def enter_test

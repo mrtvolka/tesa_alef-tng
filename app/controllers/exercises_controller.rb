@@ -8,6 +8,8 @@ class ExercisesController < ApplicationController
     gon.exercise_id = params[:id]
     @setup= Setup.take
     @exercise = Exercise.find_by_id(params[:id])
+    @counter = UserToLoRelation.where(exercise_id: params[:id]).where.not(type: 'UserVisitedLoRelation').group(:user_id).count.count
+    @entry_counter = UserVisitedLoRelation.where(exercise_id: params[:id]).group(:user_id).count.count
   end
 
   # Specifies action for ajax call rereshing counter and test timer
@@ -15,7 +17,8 @@ class ExercisesController < ApplicationController
   # called from view's js
   def refresh
     unless params[:id].blank?
-      @counter = UserToLoRelation.where(exercise_id: params[:id]).group(:user_id).count.count
+      @counter = UserToLoRelation.where(exercise_id: params[:id]).where.not(type: 'UserVisitedLoRelation').group(:user_id).count.count
+      @entry_counter = UserVisitedLoRelation.where(exercise_id: params[:id]).group(:user_id).count.count
       respond_to do |format|
         format.js
       end
@@ -40,6 +43,7 @@ class ExercisesController < ApplicationController
     else
       if(!@exercise.real_start)   # start test first time
         @exercise.real_start = Time.current
+
         create_qr_code
       elsif(!@exercise.real_end) # end test
         @exercise.real_end = Time.current
@@ -72,7 +76,7 @@ class ExercisesController < ApplicationController
   # <tt>param[:id]</tt> - id of exercise
   # responds with csv file if any answers exist
   def answers
-    @answers = UserToLoRelation.where(:exercise_id => params[:id])
+    @answers = UserToLoRelation.where(:exercise_id => params[:id]).where.not(type: 'UserVisitedLoRelation')
     if !@answers.any?
       redirect_to :back
       flash[:notice] = t('global.exercise.no_answers_for_export')

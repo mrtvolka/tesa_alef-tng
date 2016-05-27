@@ -27,9 +27,9 @@ class TeachingsController < ApplicationController
     @setup= Setup.take
     @question= LearningObject.find(params[:id])
     if current_user.administrator?
-      @relations= @question.user_to_lo_relations.joins('JOIN users u ON user_id= u.id').order('type ASC,exercise_id DESC,u.last_name ASC, u.first_name ASC')
+      @relations= @question.user_to_lo_relations.where.not(type: 'UserVisitedLoRelation').joins('JOIN users u ON user_id= u.id').order('type ASC,exercise_id DESC,u.last_name ASC, u.first_name ASC')
     else
-      @relations= @question.user_to_lo_relations.joins('JOIN users u ON user_id= u.id').where("exercise_id IN (?)", Exercise.where("user_id = (?)", current_user.id).select(:id)).order('type ASC,exercise_id ASC,u.last_name ASC,u.first_name ASC')
+      @relations= @question.user_to_lo_relations.where.not(type: 'UserVisitedLoRelation').joins('JOIN users u ON user_id= u.id').where("exercise_id IN (?)", Exercise.where("user_id = (?)", current_user.id).select(:id)).order('type ASC,exercise_id ASC,u.last_name ASC,u.first_name ASC')
     end
     @next_question= LearningObject.where('is_test_question= true AND (id > (?))',params[:id]).order(id: :asc).first
     @previous_question= LearningObject.where('is_test_question= true AND (id < (?))',params[:id]).order(id: :asc).last
@@ -77,12 +77,17 @@ class TeachingsController < ApplicationController
     @setup = Setup.take
     @chart = []
     @titles = []
+    @indexes = []
+    @images = []
+    @week = Exercise.find(params[:id]).week
     i = 0
-    submitted_answer = UserToLoRelation.select(:learning_object_id).where("exercise_id = (?)", params[:id]).group(:learning_object_id)
+    submitted_answer = UserToLoRelation.select(:learning_object_id).where("exercise_id = (?)", params[:id]).group(:learning_object_id).where.not(type: 'UserVisitedLoRelation')
     submitted_answer.each do |answer|
       questions = LearningObject.where("id = (?) AND is_test_question = TRUE", answer.learning_object_id)
       question = questions[0]
       @titles << question.question_text
+      @indexes << question.id
+      @images << question.image
       if question.type == 'SingleChoiceQuestion' or question.type == 'MultiChoiceQuestion'
         @chart << LazyHighCharts::HighChart.new('graph') do |f|
           answers = Answer.where(learning_object_id: question.id)
@@ -119,6 +124,7 @@ class TeachingsController < ApplicationController
     legend.each do |element|
       names << element[1]
     end
+    names << "bez odpovede"
     return names
   end
 
@@ -127,15 +133,20 @@ class TeachingsController < ApplicationController
     legend.each do |key|
       result[key[0]] =  0 ;
     end
-
-    answers = UserToLoRelation.where(learning_object_id: question.id, exercise_id: params[:id])
+    no_answer = 0
+    answers = UserToLoRelation.where(learning_object_id: question.id, exercise_id: params[:id]).where.not(type: 'UserVisitedLoRelation')
     answers.each do |answer|
-      result[answer.interaction.to_i] +=1
+      if answer.interaction.nil?
+        no_answer += 1
+      else
+        result[answer.interaction.to_i] +=1
+      end
     end
     values = []
     result.each do |element|
       values <<  element[1] ;
     end
+    values << no_answer
     return values
   end
 
@@ -144,18 +155,23 @@ class TeachingsController < ApplicationController
     legend.each do |key|
       result[key[0]] =  0 ;
     end
-
-    answers = UserToLoRelation.where(learning_object_id: question.id, exercise_id: params[:id])
+    no_answer = 0
+    answers = UserToLoRelation.where(learning_object_id: question.id, exercise_id: params[:id]).where.not(type: 'UserVisitedLoRelation')
     answers.each do |answer|
-      choice = JSON(answer.interaction.gsub('=>', ':'));
-      choice.each do |i|
-        result[i[0].to_i] +=1
+      if answer.interaction.nil?
+        no_answer += 1
+      else
+        choice = JSON(answer.interaction.gsub('=>', ':'));
+        choice.each do |i|
+          result[i[0].to_i] +=1
+        end
       end
     end
     values = []
     result.each do |element|
       values <<  element[1] ;
     end
+    values << no_answer
     return values
   end
 
@@ -163,14 +179,18 @@ class TeachingsController < ApplicationController
     result = []
     result[0] = question.question_text
     result[1] = Hash.new
-
-    answers = UserToLoRelation.where(learning_object_id: question.id, exercise_id: params[:id])
+    no_answer = 0
+    answers = UserToLoRelation.where(learning_object_id: question.id, exercise_id: params[:id]).where.not(type: 'UserVisitedLoRelation')
     answers.each do |answer|
-      choice = ActiveSupport::Inflector.transliterate(answer.submitted_text).downcase.gsub(/\W/, ' ').strip
-      if result[1][choice].nil?
-        result[1][choice] = 1
+      if answer.submitted_text.nil?
+        no_answer += 1
       else
-        result[1][choice] += 1
+        choice = ActiveSupport::Inflector.transliterate(answer.submitted_text).downcase.gsub(/\W/, ' ').strip
+        if result[1][choice].nil?
+          result[1][choice] = 1
+        else
+          result[1][choice] += 1
+        end
       end
     end
     result[1] = result[1].sort_by {|k,v| v}.reverse

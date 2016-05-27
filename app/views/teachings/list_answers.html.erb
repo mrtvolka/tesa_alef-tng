@@ -80,7 +80,7 @@
               <% interaction= (relation.interaction.to_s).eql?("#{a.id }")%>
               <label><input type="radio" name="answer<%= a.id%>" <%= interaction ? "checked=true":"" %> disabled= "true" class="answer-output <%= (a.is_correct && interaction)||(!a.is_correct && !interaction) ? "answer-is-correct" : "answer-is-incorrect"%>">
                 <i class="icon-radio answer-icon"></i>
-                <div class="answer-text"><%= mathjax_tag %><%= a.answer_text %></div></label>
+                <div class="answer-text"><%= a.answer_text %></div></label>
           <% end %>
     <%elsif @question.type == 'MultiChoiceQuestion'%>
           <% answers= @question.answers %>
@@ -88,7 +88,7 @@
               <% interaction= (relation.interaction.to_s).include?("\"#{a.id }\"=>\"#{a.id}\"")%>
               <label><input type="checkbox" name="answer<%= a.id%>" <%= interaction ? "checked=true":"" %> disabled="true" class="answer-output <%= (a.is_correct && interaction)||(!a.is_correct && !interaction) ? "answer-is-correct" : "answer-is-incorrect"%>">
                 <i class="icon-checkbox answer-icon"></i>
-                <div class="answer-text"><%= mathjax_tag %><%= a.answer_text %></div></label>
+                <div class="answer-text"><%= a.answer_text %></div></label>
           <% end %>
     <%elsif @question.type == 'OpenQuestion'%>
             <textarea cols= 50 rows= 3 disabled="true" placeholder= "<%= relation.submitted_text%>" id="message" name="questions[<%= @question.id%>][submitted_text]" rows= "8" style="width:95%; margin:10px"></textarea>

@@ -27,7 +27,7 @@
           <b><%= url_for :action => 'show_test', :controller => 'questions', :exercise_code => @exercise.code , :only_path => false %></b></a>
               <div class="title_smaller_exercises"><br></div>
           <div id="counter<%= params[:id] %>">
-            <%= render partial: 'counter', :locals => { id: params[:id], :data => 0} %>
+            <%= render partial: 'counter', :locals => { id: params[:id], :submits => @counter, :entries => @entry_counter} %>
           </div>
           <br></div>
           <div class="qr">

@@ -114,7 +114,7 @@ class QuestionsController < ApplicationController
       return
     end
 
-    if Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
+    if Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).where.not(type: 'UserVisitedLoRelation').exists?
       redirect_to root_path
       flash[:notice] = t('global.test.repeatable_opening_test')
       log_warn current_user.login + " tried to write test with code: " + params[:exercise_code] + " multiple times"
@@ -132,7 +132,13 @@ class QuestionsController < ApplicationController
     recommendations.each do |key, value|
       @sorted_los << learning_objects.find_by(id: key.to_i)
     end
-  end
+    # create UserViewedLoRelations on first enter
+    if UserVisitedLoRelation.where(:user_id => current_user.id, :exercise_id => exercise.id).empty?
+      @sorted_los.each do |lo|
+        UserVisitedLoRelation.create(user_id: current_user.id, learning_object_id: lo.id, setup_id: 1, exercise_id: exercise.id)
+      end
+    end
+   end
 
   # Specifies action for submitting test
   # post 'test/:exercise_code/submit'
@@ -153,7 +159,8 @@ class QuestionsController < ApplicationController
       log_warn current_user.login + " tried to submit test after it was ended; exercise with code:" + params[:exercise_code]
       return
     end
-    if  !Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.exists? && Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).exists?
+    if  !Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.exists? &&
+        Exercise.find_by_code(params[:exercise_code]).user_to_lo_relations.where(user_id: current_user.id).where.not(type: 'UserVisitedLoRelation').exists?
       render :js => "window.location = '#{weeks_path}'"
       flash[:notice] = t('global.test.duplicit_answers')
       log_warn current_user.login + " tried to submit test with exercise code: " + params[:exercise_code] + " multiple times"
@@ -225,7 +232,6 @@ class QuestionsController < ApplicationController
       @user = current_user
     end
 
-
     learning_objects = LearningObject.all #@week.learning_objects.all
     RecommenderSystem::TesaSimpleRecommender.setup(@user,@week.id,@exercise.code,false,true)
     recommendations = RecommenderSystem::TesaSimpleRecommender.new.get_list
@@ -234,9 +240,9 @@ class QuestionsController < ApplicationController
     recommendations.each do |key, value|
       @sorted_los << learning_objects.find {|l| l.id == key}
     end
-    @student_answers= UserToLoRelation.where("user_id = ? AND exercise_id = ?", @user.id, @exercise.id)
-    prev_answer = UserToLoRelation.where("id < ? AND user_id = ? AND exercise_id IS NOT NULL",@student_answers.first.id, @user.id).last
-    next_answer = UserToLoRelation.where("id > ? AND user_id = ? AND exercise_id IS NOT NULL",@student_answers.last.id, @user.id).first
+    @student_answers= UserToLoRelation.where(user_id: @user.id, exercise_id: @exercise.id).where.not(type: 'UserVisitedLoRelation')
+    prev_answer = UserToLoRelation.where("id < ? AND user_id = ? AND exercise_id IS NOT NULL",@student_answers.first.id, @user.id).where.not(type: 'UserVisitedLoRelation').last
+    next_answer = UserToLoRelation.where("id > ? AND user_id = ? AND exercise_id IS NOT NULL",@student_answers.last.id, @user.id).where.not(type: 'UserVisitedLoRelation').first
     @previous_test = prev_answer.nil? ? nil : prev_answer.exercise
     @next_test = next_answer.nil? ? nil : next_answer.exercise
   end

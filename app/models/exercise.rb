@@ -50,7 +50,10 @@ class Exercise < ActiveRecord::Base
       time_left = real_start + options['test_length'].to_i.minutes - Time.now
       time_left>0 ? time_left : 0
     else
-      0
+      # TODO: global time settings
+      # 0
+      time_left = real_start + 5.minutes - Time.now
+      time_left>0 ? time_left : 0
     end
   end
 end

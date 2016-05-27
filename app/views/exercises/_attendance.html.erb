@@ -22,13 +22,18 @@
         case c.user.aisid.nil?
             when true
             #WILL NOT HAPPEN
-            "NIL-local_user-are you testing?"
+            "Local user"
             when false
             c.user.aisid
         end %>
         </td>
-        <td> <%=@exercise.user_to_lo_relations.where("user_id=? AND type= 'UserSolvedLoRelation'",c.user_id).count %></td>
-        <td> <%= link_to "Prezrieť test" , student_results_path(exercise_code: @exercise.code, user_id: c.user.id )%></td>
+        <% if !@exercise.user_to_lo_relations.where(user_id: c.user_id).where.not(type: 'UserVisitedLoRelation').any? %>
+            <td>N/A</td>
+            <td>N/A</td>
+        <% else %>
+            <td> <%=@exercise.user_to_lo_relations.where("user_id=? AND type= 'UserSolvedLoRelation'",c.user_id).count %></td>
+            <td> <%= link_to "Prezrieť test" , student_results_path(exercise_code: @exercise.code, user_id: c.user.id )%></td>
+        <% end %>
     </tr>
   <% end %>
 
