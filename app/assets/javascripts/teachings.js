@@ -13,6 +13,10 @@ $(function() {
                 }
             }
         }
+        var table = $(".sticky-header");
+        if (table.length > 0){
+            table.floatThead('reflow');
+        }
 
     });
 });
