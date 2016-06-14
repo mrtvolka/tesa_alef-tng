@@ -92,7 +92,9 @@
           <% end %>
     <%elsif @question.type == 'OpenQuestion'%>
             <textarea cols= 50 rows= 3 disabled="true" placeholder= "<%= relation.submitted_text%>" id="message" name="questions[<%= @question.id%>][submitted_text]" rows= "8" style="width:95%; margin:10px"></textarea>
-    <%end%>
+      <%elsif @question.type == 'PhotoQuestion'%>
+          <img src="<%= relation.submitted_image.to_s.encode("UTF-8")%>" />
+      <%end%>
     <div class="condensed answer-form">
             <%= form_tag(controller: "teachings",action: "admit_student_answer", method: "post") do %>
                 <button class="admit-button admit-button-red" name="commit" value="admit">Uznaj odpoveď</button>

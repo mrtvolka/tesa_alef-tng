@@ -1,0 +1,54 @@
+<div>
+
+  <video id="video" width="640" height="480" autoplay></video>
+  <canvas id="canvas" width="640" height="480"  hidden ></canvas>
+  <label id="snap">Odfot</label>
+  <input type="text" id="image<%= @question.id %>" name="questions[<%= @question.id%>][image]" value="" class="answer-input">
+<script>window.addEventListener("DOMContentLoaded", function() {
+    // Grab elements, create settings, etc.
+    var canvas = document.getElementById("canvas"),
+        context = canvas.getContext("2d"),
+        video = document.getElementById("video"),
+        input= document.getElementById("image<%= @question.id%>"),
+        button= document.getElementById("snap"),
+        videoObj = { "video": true },
+        errBack = function(error) {
+            console.log("Video capture error: ", error.code);4
+        };
+
+    // Put video listeners into place
+    if(navigator.getUserMedia) { // Standard
+        navigator.getUserMedia(videoObj, function(stream) {
+            video.src = stream;
+            video.play();
+        }, errBack);
+    } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+        navigator.webkitGetUserMedia(videoObj, function(stream){
+            video.src = window.webkitURL.createObjectURL(stream);
+            video.play();
+        }, errBack);
+    }
+    else if(navigator.mozGetUserMedia) { // Firefox-prefixed
+        navigator.mozGetUserMedia(videoObj, function(stream){
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+        }, errBack);
+    }
+    document.getElementById("snap").addEventListener("click", function() {
+        if (button.innerHTML== "Odfot") {
+            context.drawImage(video, 0, 0, 640, 480);
+            video.hidden = true;
+            canvas.hidden = false;
+            button.innerHTML="Reset";
+            input.value= canvas.toDataURL();
+        }
+        else {
+            video.hidden = false;
+            canvas.hidden = true;
+            button.innerHTML="Odfot";
+            input.value= "";
+        }
+
+    });
+}, false);</script>
+</div>

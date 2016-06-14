@@ -11,6 +11,7 @@ namespace :tesa do
         'single-choice' => 'SingleChoiceQuestion',
         'multi-choice' => 'MultiChoiceQuestion',
         'answer-validator' => 'EvaluatorQuestion',
+        'photo-question' => 'PhotoQuestion',
         'complement' => 'Complement',
         'open-question' => 'OpenQuestion'
     }
@@ -119,20 +120,22 @@ namespace :tesa do
           if  question_text.nil?
             puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has questtion text undefined!"
           end
-
-          # TODO import answers when updating existing LO, not only upon first creation
-          # ^NOTE: answer ID should be preserved whenever possible for logged relations
-          if lo.answers.empty? && question_type != 'OpenQuestion'
-            if(question_type == 'SingleChoiceQuestion' && answers.scan(/<correct>/).length>1) || (question_type != 'EvaluatorQuestion' && answers.scan(/<correct>/).length==0)
-              puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has wrong number of correct answers"
+          if answers.nil?
+            puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has answers undefined!"
+          else
+            # TODO import answers when updating existing LO, not only upon first creation
+            # ^NOTE: answer ID should be preserved whenever possible for logged relations
+            if lo.answers.empty? && question_type != 'OpenQuestion'
+              if(question_type == 'SingleChoiceQuestion' && answers.scan(/<correct>/).length>1) || (question_type != 'EvaluatorQuestion' && answers.scan(/<correct>/).length==0)
+                puts "WARNING: '#{lo.external_reference}' - '#{lo.lo_id}' has wrong number of correct answers"
+              end
+              answers.split(';').each do |answer|
+                correct_answer = answer.include? '<correct>'
+                answer_text = convert_format(answer, true)
+                Answer.create!( learning_object_id: lo.id, answer_text: answer_text, is_correct: correct_answer )
+              end
             end
-            answers.split(';').each do |answer|
-              correct_answer = answer.include? '<correct>'
-              answer_text = convert_format(answer, true)
-              Answer.create!( learning_object_id: lo.id, answer_text: answer_text, is_correct: correct_answer )
-            end
-          end
-
+        end
           import_difficulty(difficulty_text, lo)
           import_concepts(local_concept_names,global_concept_names, lo, week_number)
           import_pictures(picture, pictures_dir, lo) if picture

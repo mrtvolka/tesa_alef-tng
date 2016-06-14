@@ -22,6 +22,9 @@
         <% when 'OpenQuestion' %>
             <% @question= lo%>
             <%= render 'answer_open_q' %>
+        <% when 'PhotoQuestion'%>
+            <% @question= lo%>
+            <%= render 'answer_photo_q' %>
         <% when 'EvaluatorQuestion' %>
             <p><b>  not working </b></p>
         <% end %>

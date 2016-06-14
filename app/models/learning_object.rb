@@ -19,7 +19,9 @@ class LearningObject < ActiveRecord::Base
   TYPE = {
       singlechoicequestion: "SingleChoiceQuestion",
       multichoicequestion: "MultiChoiceQuestion",
-      evaluatorquestion: "EvaluatorQuestion"
+      evaluatorquestion: "EvaluatorQuestion",
+      openquestion: "OpenQuestion",
+      photoquestion: "PhotoQuestion"
   }
 
   # generuje metody z hashu DIFFICULTY, napr. 'learning_object.trivial?'

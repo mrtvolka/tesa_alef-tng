@@ -31,7 +31,9 @@
           <% when 'EvaluatorQuestion' %>
               <% @question= lo%>
               <%= render 'test_eval_q' %>
-              <!--- submitting answer does not work---->
+          <% when 'PhotoQuestion'%>
+              <% @question= lo%>
+              <%= render 'test_photo_q' %>
           <% end %>
         </div>
       </div>

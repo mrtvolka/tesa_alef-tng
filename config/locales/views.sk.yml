@@ -54,6 +54,7 @@ sk:
             openquestion:                            "Otvorená otázka"
             multichoicequestion:                     "Multi-choice otázka"
             singlechoicequestion:                    "Single-choice otázka"
+            photoquestion:                           "Otázka s fotkou"
       new:
         lo_creation:                                 "Vytváranie novej otázky"
         navbar_heading:                              "nová otázka"

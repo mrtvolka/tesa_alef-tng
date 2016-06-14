@@ -172,19 +172,19 @@ class QuestionsController < ApplicationController
       rel = UserToLoRelation.new(setup_id: Setup.take.id,
                                  user_id: current_user.id,
                                  exercise_id: Exercise.find_by_code(params[:exercise_code]).id)
-
-      if params[:questions][key][:type]!= 'OpenQuestion'
+      if params[:questions][key][:type]== 'PhotoQuestion'
+        rel.submitted_image=  params[:questions][key][:image]
+        rel.type= "UserSubmittedLoRelation"
+      elsif params[:questions][key][:type]!= 'OpenQuestion'
         solution = lo.get_solution(current_user.id)
         result = lo.right_answer? params[:questions][key][:answer], solution
 
         rel.interaction = params[:questions][key][:answer]
         rel.type = result ? 'UserSolvedLoRelation' : 'UserFailedLoRelation'
-      elsif params[:questions][key][:type]== 'OpenQuestion'
-            rel.submitted_text= params[:questions][key][:submitted_text]
-            rel.type =  'UserSubmittedLoRelation'
-           elsif(params[:questions][key][:type]== 'PhotoQuestion')
-                  #TODO
-                end
+        elsif params[:questions][key][:type]== 'OpenQuestion'
+              rel.submitted_text= params[:questions][key][:submitted_text]
+              rel.type =  'UserSubmittedLoRelation'
+            end
       lo.user_to_lo_relations << rel
     end
 

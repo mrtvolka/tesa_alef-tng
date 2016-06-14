@@ -1,0 +1,4 @@
+<div id="answer-photo">
+  <% image= @student_answers.where("learning_object_id = ?", @question.id).first.submitted_image.to_s.encode("UTF-8")%>
+  <img src="<%= image%>" />
+</div>
