@@ -1,3 +1,4 @@
 <div id="answer-open">
-  <i>Nie sú podporované automatickým hodnotením. Otázka sa hodnotí ručne.</i>
+  <% interaction= @student_answers.where("learning_object_id = ?", @question.id).first.submitted_text%>
+  <textarea placeholder= "<%= interaction %>" id="message" name="questions[<%= @question.id%>][submitted_text]" rows= "8" style="width:95%; margin:10px"></textarea>
 </div>
