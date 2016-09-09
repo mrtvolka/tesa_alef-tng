@@ -1,4 +1,4 @@
-# Inštalačná príručka - TESA
+# Inštalačná príručka - TESATEAM
 verzia: 1.0<br>
 zostavené: 13.5.2016<br>
 vypracoval: Lukáš Csóka, xcsokal@stuba.sk
