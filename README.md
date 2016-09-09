@@ -5,7 +5,7 @@ vypracoval: Lukáš Csóka, xcsokal@stuba.sk
 
 # Úvod
 Táto príručka udáva podmienky a spôsob inštalácie systému TESA - Priebežné overovanie prípravy študentov na cvičeniach. Tento systém je založený na open-source riešení Alef-tng (https://github.com/PewePro/alef-tng).
-Kompletné zdrojové kódy sú dostupné tu: https://github.com/tesa/tesa_alef-tng .
+Kompletné zdrojové kódy sú dostupné tu: https://github.com/tesa/tesa_alef-tng vo vetve osicky_develop.
 
 # Podmienky inštalácie
 TESA nie je náročná na výpočtový výkon, vyžaduje ale splnenie viacerých podmienok na funkčný beh:
